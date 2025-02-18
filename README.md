@@ -1,2 +1,2 @@
 # GameZone
-GameZone Website Hosted in Firebase
+Website URL: https://playgamezonegames.web.app/

@@ -2,41 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My First Website</title>
-  <link rel="stylesheet" href="style.css">
+ 
+  <link rel="stylesheet" href="/public/style.css">
+ 
 </head>
-<body>
-  <header>
-    <h1>GameZone</h1>
-</header>
 
-<nav>
+<body>
+  <!-- header started  -->
+
+
+  <nav>
+    <div class="logo">
+        <img src="img/utubeLogo.png" width="100px" height="50px" alt="YouTube Logo">
+    </div>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Trending</a>
+        <a href="#">Subscriptions</a>
+        <a href="#">Library</a>
+    </div>
+</nav>
+
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+
+
+<!-- header end -->
+<!-- <nav>
     <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
-</nav>
+</nav> -->
 
-<main>
-    <article>
-        <h2>Welcome</h2>
-        <p>This is a GameZone.  You can replace this text with your own content.</p>
+
+  
+ 
+    
+     
+    
+        <h2>Welcom</h2>
+        <p>This is a GameZon.  You can replace this text with your own content.</p>
         <img src="placeholder.png" alt="Placeholder Image" width="200">
-    </article>
+   
 
-    <article>
         <h2>Another Section</h2>
         <p>This is another section of the GameZone.</p>
-    </article>
-</main>
+  
 
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route"
+  style="background-image: url(assets/img/overlay-bg.jpg)">
+  <div class="overlay-mf"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="contact-mf">
+          <div id="contact" class="box-shadow-full">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="title-box-2">
+                  <h5 class="title-left">
+                    Send Message Us
+                  </h5>
+                </div>
+                <div>
+                  <form action="https://formsubmit.co/957d24e1ad57589bce91138fe9f1b8f8" method="post" role="form" class="php-email-form"
+                  >
+                    <div class="row">
+                      <div class="col-md-12 mb-3">
+                        <div class="form-group">
+                          <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                            required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                        <div class="form-group">
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                            required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                            required>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                            required></textarea>
+                        </div>
+                      </div>
+                     
+                      <div class="col-md-12 text-center">
+                        <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="title-box-2 pt-4 pt-md-0">
+                  <h5 class="title-left">
+                    Get in Touch
+                  </h5>
+                </div>
+                <div class="address">
+                  <i class="bi bi-geo-alt"></i>
+                  <h3>Location:</h3>
+                  <p>Koni, Bilaspur, Chhattisgarh</p>
+                </div>
+  
+                <div class="email">
+                  <i class="bi bi-envelope"></i>
+                  <h3>Email:</h3>
+                  <p>Rb610883@gmail.com</p>
+                </div>
+  
+                <iframe title="This is my hometown map."
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.7322171988885!2d82.12111081500743!3d22.13618335442591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a280c069838dcef%3A0x179bf741514b1de7!2sKoni%2C%20Bilaspur%2C%20Chhattisgarh%20495009!5e0!3m2!1sen!2sin!4v1654611878125!5m2!1sen!2sin"
+                  frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="socials">
+                  <ul>
+                    <li><a href=""><span class="ico-circle"><i class="bi bi-facebook"></i></span></a></li>
+                    <li><a href=""><span class="ico-circle"><i class="bi bi-instagram"></i></span></a></li>
+                    <li><a href=""><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
+                    <li><a href=""><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Contact Section -->
+
+
+<!-- ======= Footer ======= -->
 <footer>
-    <p>&copy; GameZone</p>
-</footer>
-</body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="copyright-box">
+          <p class="copyright">&copy; Copyright <strong>Rakesh Bhardwaj</strong>. All Rights Reserved</p>
+         </div>
+      </div>
+    </div>
+  </div>
+</footer><!-- End  Footer -->
+
 
 <script type="module">
     // Import the functions you need from the SDKs you need
@@ -60,5 +201,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
   </script>
+
+   
+   
+
+</body>
 </html>
