@@ -9,9 +9,7 @@ nav {
   align-items: center; /* Center vertically */
 }
 
-.container {
 
-}
 
 .col-left {
   grid-area: left; /* Assign to the 'left' area defined in grid-template-areas */
@@ -41,10 +39,7 @@ nav {
   border: 1px solid #ccc; /* Optional border for visual separation */
 }
 
-.logo {
-  /* Style your logo */
 
-}
 
 .search-bar {
   display: flex;
