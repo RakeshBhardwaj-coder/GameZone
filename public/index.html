@@ -26,7 +26,8 @@
        
       <div class="search-bar">
           <input type="text" placeholder="Search...">
-          <button><img src="icon/search_logo.png" width="25px"></button>
+          <button id="search-btn">
+            <img src="icon/search_logo.png" width="25px" alt="Search"> </button>
       </div>
     
       </div>
@@ -48,9 +49,7 @@
     
       
     </div>
-    <div class="logo">
-      
-    </div>
+
   
   
    
@@ -63,6 +62,17 @@
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
+
+    const searchButton = document.getElementById('search-btn');
+
+if (searchButton) { // Check if the element exists
+  searchButton.addEventListener('click', function() {
+    console.log('Button clicked!'); // This should print to the console
+    // ... your other code ...
+  });
+} else {
+  console.log("Search button element not found!"); // Check if the element exists
+}
 </script>
 
 
@@ -225,7 +235,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
   </script>
-
+<script src="js/script.js"></script> 
    
    
 
