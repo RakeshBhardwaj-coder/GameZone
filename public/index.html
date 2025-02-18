@@ -43,7 +43,7 @@
           <a href="#">Home</a>
           <a href="#">Trending</a>
           <a href="#">Subscriptions</a>
-          <a href="#">Library</a>
+          <button id="night-mode-button">Night Mode</button>
       </div>
 
     
@@ -79,29 +79,6 @@ if (searchButton) { // Check if the element exists
   console.log("Search button element not found!"); // Check if the element exists
 }
 
-
-const myParagraph = document.getElementById('myParagraph');
-    const myButton = document.getElementById('myButton');
-
-    // 2. Add an event listener to the button
-    myButton.addEventListener('click', function() {
-      // 3. Code to run when the button is clicked
-
-      // Change the text of the paragraph
-      myParagraph.textContent = "The text has been changed!";
-
-      // Change the button's text
-      this.textContent = "Text changed!";
-
-      // Change the color of the paragraph (inline style)
-      myParagraph.style.color = "blue";
-
-      // You can also change styles using CSS classes (better approach)
-      // myParagraph.classList.add('highlighted'); // Add a class
-
-      // Log a message to the console (for debugging)
-      console.log("Button clicked!");
-    });
 
 
     // Example of adding a CSS class (better for styling):
@@ -281,9 +258,11 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
   </script>
-<script src="js/script.js"></script> 
    
+<script src="js/script.js"></script> 
    
 
 </body>
+
+
 </html>
