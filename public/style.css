@@ -1,15 +1,52 @@
 nav {
-  background-color: #f0f0f0; /* Example background color */
-  display: flex;
-  justify-content: space-between; /* Distribute space between elements */
-  align-items: center; /* Vertically align items */
-  padding: 10px 20px; /* Add padding */
-  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  background-color: #e7e7e7b9;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Define three columns: left (1fr), center (2fr), right (1fr) */
+  grid-template-rows: auto 1fr; /* Two rows: auto for columns, 1fr for content (or auto if content height is known) */
+  grid-template-areas:
+    "left center right" /* Areas for the column headers */
+    "content content content"; /* Area for the content section spanning all columns */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.container {
+
+}
+
+.col-left {
+  grid-area: left; /* Assign to the 'left' area defined in grid-template-areas */
+  background-color: #f0f0f0; /* Light grey background */
+  display: flex; /* Enable flexbox for centering */
+    justify-content: left; /* Center horizontally */
+    align-items: left; /* Center vertically */
+}
+
+.col-center {
+  grid-area: center; /* Assign to the 'center' area */
+  display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.col-right {
+  grid-area: right; /* Assign to the 'right' area */
+  background-color: #f0f0f0; /* Light grey background */
+  display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.content {
+  grid-area: content; /* Assign to the 'content' area spanning all columns */
+  background-color: #ffffff; /* White background for content */
+  padding: 30px;
+  border: 1px solid #ccc; /* Optional border for visual separation */
 }
 
 .logo {
   /* Style your logo */
-  margin-right: 50px;
+
 }
 
 .search-bar {
