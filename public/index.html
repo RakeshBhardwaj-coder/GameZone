@@ -50,10 +50,15 @@
       
     </div>
 
+
   
   
    
 </nav>
+
+<p id="myParagraph">This is some initial text.</p>
+
+  <button id="myButton">Click me to change the text</button>
 
 <script>
     const hamburger = document.querySelector('.hamburger');
@@ -73,6 +78,47 @@ if (searchButton) { // Check if the element exists
 } else {
   console.log("Search button element not found!"); // Check if the element exists
 }
+
+
+const myParagraph = document.getElementById('myParagraph');
+    const myButton = document.getElementById('myButton');
+
+    // 2. Add an event listener to the button
+    myButton.addEventListener('click', function() {
+      // 3. Code to run when the button is clicked
+
+      // Change the text of the paragraph
+      myParagraph.textContent = "The text has been changed!";
+
+      // Change the button's text
+      this.textContent = "Text changed!";
+
+      // Change the color of the paragraph (inline style)
+      myParagraph.style.color = "blue";
+
+      // You can also change styles using CSS classes (better approach)
+      // myParagraph.classList.add('highlighted'); // Add a class
+
+      // Log a message to the console (for debugging)
+      console.log("Button clicked!");
+    });
+
+
+    // Example of adding a CSS class (better for styling):
+    /*
+    const style = document.createElement('style');
+    style.textContent = `
+      .highlighted {
+        font-weight: bold;
+        background-color: yellow;
+        padding: 5px;
+      }
+    `;
+    document.head.appendChild(style);
+    */
+
+    // Another way to check if JS is working (runs when the script loads):
+    console.log("JavaScript is running!");
 </script>
 
 
