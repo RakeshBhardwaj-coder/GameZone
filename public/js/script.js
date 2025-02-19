@@ -1,43 +1,58 @@
-const searchButton = document.getElementById('search-btn');
+   
+// day/night button
+    const nightModeBtn = document.getElementById('night-mode-button');
+    const body2 = document.body;
+    nightModeBtn.addEventListener('click',function(){
+      //  document.body.style.backgroundColor = "black"; 
 
-// Now you can work with the button element:
-searchButton.addEventListener('click', function() {
-    console.log('Search button clicked!');
-    // ... your code here ...
+      body2.classList.toggle('night-mode');
+      if (body2.classList.contains('night-mode')) {
+          this.textContent = "Light Mode";
+      } else {
+          this.textContent = "Night Mode";
+      }
+   
+   
 });
 
-const nightModeButton = document.getElementById('night-mode-button');
-const body = document.body;
+const checkbox = document.querySelector('.switch input'); // Select the checkbox
+const body = document.body; // Or a specific element you want to apply dark mode to
 
-nightModeButton.addEventListener('click', function() {
+checkbox.addEventListener('change', function() {
   body.classList.toggle('night-mode');
-  if (body.classList.contains('night-mode')) {
-      this.textContent = "Light Mode";
+  if (this.checked) {
+    document.body.style.backgroundColor = "black"
+    body.classList.add('dark-mode'); // Add dark mode class
+    this.textContent = "Night Mode";
   } else {
-      this.textContent = "Night Mode";
+    body.classList.remove('dark-mode'); // Remove dark mode class
+    this.textContent = "Light Mode";
+    document.body.style.backgroundColor = "white"
+
   }
 });
 
+// day/night button End!
+    
+//mobile mode slider start
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
 
-const myParagraph = document.getElementById('myParagraph');
-    const myButton = document.getElementById('myButton');
-
-    // 2. Add an event listener to the button
-    myButton.addEventListener('click', function() {
-      // 3. Code to run when the button is clicked
-
-      // Change the text of the paragraph
-      myParagraph.textContent = "The text has been changed!";
-
-      // Change the button's text
-      this.textContent = "Text changed!";
-
-      // Change the color of the paragraph (inline style)
-      myParagraph.style.color = "blue";
-
-      // You can also change styles using CSS classes (better approach)
-      // myParagraph.classList.add('highlighted'); // Add a class
-
-      // Log a message to the console (for debugging)
-      console.log("Button clicked!");
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
     });
+
+    const searchButton = document.getElementById('search-btn');
+
+if (searchButton) { // Check if the element exists
+  searchButton.addEventListener('click', function() {
+    console.log('Button clicked!'); // This should print to the console
+    // ... your other code ...
+  });
+} else {
+  console.log("Search button element not found!"); // Check if the element exists
+}
+
+//mobile mode slider end
+
+
