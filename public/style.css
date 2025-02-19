@@ -307,16 +307,19 @@ nav {
   border-radius: 8px;
   overflow: hidden; /* Hide overflowing image */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  transition: transform 0.2s; /* Smooth hover effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /*Smooth transition back to normal*/
   cursor: pointer; /* Indicate clickable image */
 }
 .game-card:hover {
   transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 0 15px 5px rgba(38, 203, 253, 0.26); /* Blue glowing shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
 .game-card img {
   width: 100%;
-  height: auto;
+  height: 400px;
+  object-fit: cover;
   display: block; /* Prevent image from creating extra space */
   border-radius: 8px 8px 0 0; /* Rounded top corners */
 }

@@ -59,31 +59,38 @@ if (searchButton) { // Check if the element exists
 // Game Available 
 const gameData = [
   {
-      title: "God of War Ragnarök",
-      description: "From Santa Monica Studio comes the sequel to the critically acclaimed God of War (2018). Embark on an epic and heartfelt journey as Kratos and Atreus struggle with holding on and letting go. Go on this mythic journey for answers before Ragnarök arrives.",
-      thumbnail: "https://i.pinimg.com/736x/a1/73/f2/a173f2b0e94d297c63a35cf06f269d65.jpg",
-      videoId: "mZb1IHPvxYw"
+    title: "Valorant",
+    description: "VALORANT is a character-based 5v5 tactical shooter set on the global stage. Outwit, outplay, and outshine your competition with tactical abilities, precise gunplay, and adaptive teamwork.",
+    thumbnail: "https://i.pinimg.com/736x/5a/59/cb/5a59cbcd013100462fd70a73b67ce9cf.jpg",
+    videoId: "e_E9W2vsRbQ",
+    genre: "Tactical Shooter",
+    ageRating: "Teen" // Added age rating
   },
   {
-      title: "Game Title 2",
-      description: "DAFSF APSDF M[OJ].",
-      thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Sample_User_Icon.png/480px-Sample_User_Icon.png",
-      videoId: "dQw4w9WgXcQ"
+    title: "CS2",
+    description: "Counter-Strike 2, powered by Source 2, delivers a major technical upgrade. Expect realistic visuals, advanced networking, and enhanced community tools, modernizing the classic competitive shooter.",
+    thumbnail: "https://i.pinimg.com/736x/fc/8b/92/fc8b9209e84d5bd0d17ca199281666aa.jpg",
+    videoId: "c80dVYcL69E",
+    genre: "First-Person Shooter",
+    ageRating: "Mature" // Added age rating
   },
   {
-      title: "Game Title 3",
-      description: "Description of game 3.",
-      thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Sample_User_Icon.png/480px-Sample_User_Icon.png",
-      videoId: "dQw4w9WgXcQ"
+    title: "Delta Force",
+    description: "This iconic series returns free-to-play, offering tactical shooting across three modes: massive PvP battles, high-stakes extraction gameplay, and a revamped Black Hawk Down campaign. Dive into diverse, intense combat experiences.",
+    thumbnail: "https://i.pinimg.com/736x/a1/73/f2/a173f2b0e94d297c63a35cf06f269d65.jpg",
+    videoId: "4I_QrwFd__o",
+    genre: "Tactical Shooter",
+    ageRating: "Mature" // Added age rating
   },
   {
-      title: "Game Title 4",
-      description: "Description of game 4.",
-      thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Sample_User_Icon.png/480px-Sample_User_Icon.png",
-      videoId: "dQw4w9WgXcQ"
+    title: "Fortnite",
+    description: "Fortnite offers Battle Royale, Zero Build, live events, and millions of creator-made games. Race, parkour, survive—find your adventure. Age ratings ensure safe fun for everyone. Explore endless possibilities.",
+    thumbnail: "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
+    videoId: "dQw4w9WgXcQ",
+    genre: "Battle Royale",
+    ageRating: "Teen" // Added age rating
   }
 ];
-
 const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
 const closeButton = document.getElementById('close-button');
@@ -102,7 +109,7 @@ player = new YT.Player('player', {
   playerVars: {
       playersinline: 1,
       autoplay: 0, // Don't autoplay initially
-      controls: 0, // Show controls
+      controls: 1, // Show controls
       rel: 0, // Don't show related videos
   },
   events: {
