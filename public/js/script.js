@@ -103,8 +103,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 window.onYouTubeIframeAPIReady = function() { // Make it a global function
 player = new YT.Player('player', {
-  height: "100%", // Make player responsive
-  width: "100%",  // Make player responsive
+  height: 500, // Make player responsive
+  width: 900,  // Make player responsive
   videoId: '',  // Initialize without a video
   playerVars: {
       playersinline: 1,
@@ -113,8 +113,7 @@ player = new YT.Player('player', {
       rel: 0, // Don't show related videos
   },
   events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
+      'onReady': onPlayerReady
   }
 });
 };
