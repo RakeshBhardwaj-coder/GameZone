@@ -6,8 +6,9 @@ body.night-mode {
   color: #eee;
 }
 
-a .night-mode{
-  color: #eee;
+#menu a {
+  display: flex;
+  align-items:center;
 }
 
 
@@ -16,7 +17,7 @@ a .night-mode{
 #night-mode-button {
   cursor: pointer;
   padding: 0px;
-  background-color: #ccc;
+ 
   border-radius: 5px;
 }
 

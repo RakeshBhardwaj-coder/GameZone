@@ -1,22 +1,12 @@
    
 // day/night button
-    const nightModeBtn = document.getElementById('night-mode-button');
-    const body2 = document.body;
-    nightModeBtn.addEventListener('click',function(){
-      //  document.body.style.backgroundColor = "black"; 
-
-      body2.classList.toggle('night-mode');
-      if (body2.classList.contains('night-mode')) {
-          this.textContent = "Light Mode";
-      } else {
-          this.textContent = "Night Mode";
-      }
-   
-   
-});
+ 
 
 const checkbox = document.querySelector('.switch input'); // Select the checkbox
-const body = document.body; // Or a specific element you want to apply dark mode to
+const body = document.body;
+const aTag = document.getElementById('menu').querySelectorAll('a'); 
+
+ // Or a specific element you want to apply dark mode to
 
 checkbox.addEventListener('change', function() {
   body.classList.toggle('night-mode');
@@ -24,10 +14,21 @@ checkbox.addEventListener('change', function() {
     document.body.style.backgroundColor = "black"
     body.classList.add('dark-mode'); // Add dark mode class
     this.textContent = "Night Mode";
+    aTag.forEach(aTag => {
+      aTag.style.color = 'gray'; 
+    });
+
+    
   } else {
+    
     body.classList.remove('dark-mode'); // Remove dark mode class
     this.textContent = "Light Mode";
     document.body.style.backgroundColor = "white"
+    // aTag.forEach(aTag => {
+    //   aTag.style.color = 'white'; 
+    // }); 
+    
+  
 
   }
 });
@@ -37,7 +38,6 @@ checkbox.addEventListener('change', function() {
 //mobile mode slider start
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
