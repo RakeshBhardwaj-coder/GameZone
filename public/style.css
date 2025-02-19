@@ -11,10 +11,7 @@ body.night-mode {
   align-items:center;
 }
 
-#brand-logo{
-  margin-left: 50px;
-  padding: 1%;
-}
+
 
 
 #night-mode-button {
@@ -148,7 +145,6 @@ nav {
 
 
 .col-left {
-  margin-left: 1em;
   grid-area: left; /* Assign to the 'left' area defined in grid-template-areas */
   display: flex; /* Enable flexbox for centering */
     justify-content: left; /* Center horizontally */
@@ -273,7 +269,7 @@ nav {
       align-items: flex-start;
   }
 
-  /* .container{
+  .container{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -290,21 +286,5 @@ nav {
     height: 100%;
     object-fit: cover;
     object-position: center;
-  } */
-
-  /* The Game Contents */
-  
-  .game-container {
-    display: grid; /* Use grid for 3-column layout */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.game-image {
-  width: 50px;
-  height: 50px;
-}
-  /* The Game Contents End */
+  }
 }
