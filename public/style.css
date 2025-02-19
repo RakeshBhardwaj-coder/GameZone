@@ -359,13 +359,30 @@ border-radius: 5px; /* Rounded corners */
   padding: 20px;
   border-radius: 8px;
   max-width: 900px; /* Adjust as needed */
-  max-height: 500px;
+  max-height: 90vh; /* Use viewport height for responsiveness */
+  overflow: auto; /* Add scroll if content exceeds max-height */
 }
 
 #player {
-width: 500; /* Make the player responsive */
-height: 900; /* Adjust as needed */
+  width: 100%; /* Make the player responsive */
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 = 0.5625) */
+  position: relative;
 }
+#player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  #video-popup-content {
+    padding: 10px; /* Reduce padding for smaller screens */
+    max-height: 80vh; /* Adjust max height for mobile */
+  }
+}
+
 #close-button {
   color: #aaa;
 position: absolute;
