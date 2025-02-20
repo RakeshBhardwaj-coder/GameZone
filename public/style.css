@@ -1,4 +1,38 @@
+/* Search suggestion  */
+.search-bar {
+  position: relative; /* Needed for absolute positioning of suggestions */
+  display: inline-block; /* Or flex, depending on your layout */
+}
 
+#suggestions-box {
+  position: absolute;
+  top: 100%; /* Position below the search bar */
+  left: 0;
+  width: 100%; /* Match the width of the search bar */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none; /* Remove top border for seamless look */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  display: none; /* Initially hidden */
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+#suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#suggestions-list li {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee; /* Optional separator between suggestions */
+}
+
+#suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+/* Search suggestion End  */
 
 /* start of night btn */
 body.night-mode {
@@ -175,9 +209,8 @@ nav {
 /* Search Bar */
 .search-bar {
   display: flex;
-  flex-grow: 1;
-  margin: 0 20px;
-  position: relative; /* Add position relative for absolute positioning */
+  flex-grow: 1; /* Allow search bar to grow */
+  margin: 0 20px; /* Add margin */
 }
 
 .search-bar input {
@@ -186,12 +219,11 @@ nav {
   border: 1px solid #ccc;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
-  padding-right: 30px; /* Add padding for clear button */
 }
 
 .search-bar button {
   padding: 8px 12px;
-  background-color: #4CAF50;
+  background-color: #4CAF50; /* Example button color */
   color: white;
   border: none;
   border-top-right-radius: 50px;
@@ -201,18 +233,13 @@ nav {
 
 #suggestions-box {
   position: absolute;
-  top: 100%; /* Position below search bar */
-  left: 20px; /* Match search bar margin */
   background-color: white;
   border: 1px solid #ccc;
-  width: calc(100% - 40px); /* Adjust width to match search bar */
-  display: none;
+  width: 300px; /* Adjust as needed */
+  display: none; /* Hide by default */
   list-style: none;
   padding: 0;
   margin-top: 5px;
-  z-index: 10; /* Ensure it's above other elements */
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #suggestions-list li {
@@ -224,20 +251,7 @@ nav {
   background-color: #f0f0f0;
 }
 
-#search-clear-btn {
-  position: absolute;
-  right: 50px; /* Adjust as needed */
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 16px;
-}
 /* Search bar End */
-
-
 .nav-links {
   display: flex;
 }
