@@ -88,7 +88,7 @@ const gameData = [
     thumbnail: "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
     videoId: "dQw4w9WgXcQ",
     genre: "Battle Royale",
-    ageRating: "13" // Added age rating
+    ageRating: "19" // Added age rating
   },
   {
     title: "Fortnite",
@@ -96,13 +96,79 @@ const gameData = [
     thumbnail: "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
     videoId: "dQw4w9WgXcQ",
     genre: "Battle Royale",
-    ageRating: "18" // Added age rating
+    ageRating: "15" // Added age rating
   }
 ];
+const ageFilter = document.getElementById('ageFilter');
 const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
 const closeButton = document.getElementById('close-button');
 let player;
+
+
+function createGameCards(games) {
+    gameContainer.innerHTML = '';
+    games.forEach(game => { // Use the passed 'games' array
+        const gameCard = document.createElement('div');
+        gameCard.classList.add('game-card');
+
+        gameCard.innerHTML = `
+            <img src="${game.thumbnail}" alt="${game.title}">
+            <div class="game-card-content">
+                <h3>${game.title}</h3>
+                <p>${game.description}</p>
+            </div>
+        `;
+
+        const image = gameCard.querySelector('img');
+        image.addEventListener('click', () => {
+            openPopup(game.videoId);
+        });
+
+        gameContainer.appendChild(gameCard);
+    });
+}
+function filterGames(selectedAge) {
+  let filteredGames = gameData;
+  if (selectedAge !== 'all') {
+      const selectedAgeNum = parseInt(selectedAge, 10);
+      if (selectedAgeNum === 18) {
+          filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
+      } else {
+          filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
+      }
+  }
+
+  if (filteredGames.length === 0) {
+      // Display "No games available" message
+      createNoGamesMessage(); // Call a function to display the message
+  } else {
+      createGameCards(filteredGames); // Pass the filtered array to createGameCards
+  }
+}
+
+function createNoGamesMessage() {
+  const gameContainer = document.getElementById('gameContainer');
+  if (gameContainer) {
+      gameContainer.innerHTML = `
+          <div style="text-align: center; padding: 20px;">
+              <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2N0OHM1dGw5NHRwb3Bvemx5djhhMHJ3ajhncG42bDkxM3V6aTBiMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ch67rqHED7Ue8mKupV/giphy.gif" alt="No Games Available. Thank you!" style="max-width: 200px; margin-bottom: 10px;">
+              <p>No games available, Sorry!!!.</p>
+          </div>
+      `;
+  } else {
+      console.error("gameContainer element not found");
+  }
+}
+
+// Initial display of all games
+filterGames('all');
+
+// Event listener for the dropdown
+ageFilter.addEventListener('change', () => {
+    filterGames(ageFilter.value);
+});
+
 
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api"; // Corrected URL
@@ -165,40 +231,15 @@ window.addEventListener('blur', function() {
 });
 
 // Sort the gameData array by ageRating (ascending)
-gameData.sort((a, b) => {
-  const ageA = parseInt(a.ageRating);
-  const ageB = parseInt(b.ageRating);
+// gameData.sort((a, b) => {
+//   const ageA = parseInt(a.ageRating);
+//   const ageB = parseInt(b.ageRating);
 
-  if (isNaN(ageA)) return 1; // Put games with invalid age ratings at the end
-  if (isNaN(ageB)) return -1;
+//   if (isNaN(ageA)) return 1; // Put games with invalid age ratings at the end
+//   if (isNaN(ageB)) return -1;
 
-  return ageB - ageA;
-});
-
-function createGameCards(){
-  gameData.sort((a, b) => a.age - b.age); // Sort by age in ascending order
-  gameData.forEach(game => {
-  const gameCard = document.createElement('div');
-  gameCard.classList.add('game-card');
-
-  gameCard.innerHTML = `
-      <img src="${game.thumbnail}" alt="${game.title}">
-      <div class="game-card-content">
-          <h3>${game.title}</h3>
-          <p>${game.description}</p>
-      </div>
-  `;
- 
-
-  const image = gameCard.querySelector('img');  // Get the image element
-      image.addEventListener('click', () => {
-          openPopup(game.videoId);
-      });
-
-      gameContainer.appendChild(gameCard);
-  });
-
-}
+//   return ageB - ageA;
+// });
 function openPopup(videoId) {
   player.loadVideoById(videoId);
   videoPopup.style.display = 'flex'; // Use flex for centering
@@ -209,5 +250,5 @@ closeButton.addEventListener('click', () => {
   player.stopVideo();
 });
 
-createGameCards();
+//createGameCards();
 //Game Available End
