@@ -99,9 +99,6 @@ const gameData = [
     ageRating: "15" // Added age rating
   }
 ];
-
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('search-btn');
 const ageFilter = document.getElementById('ageFilter');
 const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
@@ -131,50 +128,24 @@ function createGameCards(games) {
         gameContainer.appendChild(gameCard);
     });
 }
-
-function filterGames(selectedAge, searchTerm = '') {
+function filterGames(selectedAge) {
   let filteredGames = gameData;
-
-  if (searchTerm) {
-      filteredGames = filteredGames.filter(game =>
-          game.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-  }
   if (selectedAge !== 'all') {
       const selectedAgeNum = parseInt(selectedAge, 10);
       if (selectedAgeNum === 18) {
-          filteredGames = filteredGames.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
+          filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
       } else {
-          filteredGames = filteredGames.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
+          filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
       }
   }
 
   if (filteredGames.length === 0) {
-      createNoGamesMessage();
+      // Display "No games available" message
+      createNoGamesMessage(); // Call a function to display the message
   } else {
-      createGameCards(filteredGames);
+      createGameCards(filteredGames); // Pass the filtered array to createGameCards
   }
 }
-
-// Event listener for search button click
-searchBtn.addEventListener('click', () => {
-  const searchTerm = searchInput.value;
-  filterGames(ageFilter.value, searchTerm);
-});
-
-// Event listener for search input enter key.
-searchInput.addEventListener('keydown', (event) => {
-  if (event.key === "Enter") {
-      const searchTerm = searchInput.value;
-      filterGames(ageFilter.value, searchTerm);
-  }
-});
-//Optional: Event listener for input changes (live search)
-searchInput.addEventListener('input', ()=>{
-  const searchTerm = searchInput.value;
-  filterGames(ageFilter.value, searchTerm);
-});
-
 
 function createNoGamesMessage() {
   const gameContainer = document.getElementById('gameContainer');
