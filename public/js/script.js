@@ -152,8 +152,8 @@ const gameData = [
     ageRating: "15" // Added age rating
   }
 ];
-const searchButton = document.getElementById('search-button'); // Add a search button in your HTML
 
+const searchButton = document.getElementById('search-btn'); 
 const ageFilter = document.getElementById('ageFilter');
 const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
@@ -201,6 +201,33 @@ function filterGames(selectedAge) {
       createGameCards(filteredGames); // Pass the filtered array to createGameCards
   }
 }
+
+// Search Functionality
+// Search Functionality
+function searchGames(searchTerm) {
+  if (!searchTerm) {
+      // If search term is empty, display all games or the currently filtered games
+      filterGames(document.getElementById('age-filter').value); // Assuming you have an age filter dropdown
+      return;
+  }
+
+  const lowerSearchTerm = searchTerm.toLowerCase();
+  const searchedGames = gameData.filter(game =>
+      game.title.toLowerCase().includes(lowerSearchTerm)
+  );
+
+  if (searchedGames.length === 0) {
+      createNoGamesMessage();
+  } else {
+      createGameCards(searchedGames); // Display only the matched games
+  }
+}
+
+// Event listener for the search button
+searchButton.addEventListener('click', () => {
+  const searchTerm = searchInput.value;
+  searchGames(searchTerm);
+});
 
 function createNoGamesMessage() {
   const gameContainer = document.getElementById('gameContainer');
