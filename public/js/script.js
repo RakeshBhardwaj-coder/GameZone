@@ -1,4 +1,65 @@
    
+//Search suggestion started
+const searchInput = document.getElementById('search-input');
+const suggestionsBox = document.getElementById('suggestions-box');
+const suggestionsList = document.getElementById('suggestions-list');
+
+// Replace with your actual data source (e.g., an array or fetch from an API)
+const allSuggestions = [
+    "CS2",
+    "Delta Force",
+    "Fortnight",
+    "Valorant",
+
+];
+
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase(); // Make the search case-insensitive
+
+    if (query) {
+        // Filter the suggestions based on the query
+        const filteredSuggestions = allSuggestions.filter(suggestion =>
+            suggestion.toLowerCase().startsWith(query)
+        );
+
+        suggestionsList.innerHTML = ''; // Clear previous suggestions
+
+        if (filteredSuggestions.length > 0) {
+            filteredSuggestions.forEach(suggestion => {
+                const li = document.createElement('li');
+                li.textContent = suggestion;
+                li.addEventListener('click', () => {
+                    searchInput.value = suggestion;
+                    suggestionsBox.style.display = 'none';
+                });
+                suggestionsList.appendChild(li);
+            });
+            suggestionsBox.style.display = 'block';
+        } else {
+            suggestionsBox.style.display = 'none'; // Hide if no matching suggestions
+        }
+    } else {
+        suggestionsBox.style.display = 'none'; // Hide if the input is empty
+    }
+});
+
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('.search-bar')) {
+        suggestionsBox.style.display = 'none';
+    }
+});
+
+searchInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        suggestionsBox.style.display = 'none';
+    }
+});
+
+document.getElementById('search-btn').addEventListener('click', () => {
+    suggestionsBox.style.display = 'none';
+});
+//Search suggestion End
+
 // day/night button
  
 
@@ -42,16 +103,8 @@ checkbox.addEventListener('change', function() {
         navLinks.classList.toggle('active');
     });
 
-    const searchButton = document.getElementById('search-btn');
 
-if (searchButton) { // Check if the element exists
-  searchButton.addEventListener('click', function() {
-    console.log('Button clicked!'); // This should print to the console
-    // ... your other code ...
-  });
-} else {
-  console.log("Search button element not found!"); // Check if the element exists
-}
+
 
 //mobile mode slider end
 
@@ -67,7 +120,7 @@ const gameData = [
     ageRating: "13" // Added age rating
   },
   {
-    title: "CS2",
+    title: "CS2: Counter Strike 2",
     description: "Counter-Strike 2, powered by Source 2, delivers a major technical upgrade. Expect realistic visuals, advanced networking, and enhanced community tools, modernizing the classic competitive shooter.",
     thumbnail: "https://i.pinimg.com/736x/fc/8b/92/fc8b9209e84d5bd0d17ca199281666aa.jpg",
     videoId: "c80dVYcL69E",
@@ -99,6 +152,8 @@ const gameData = [
     ageRating: "15" // Added age rating
   }
 ];
+const searchButton = document.getElementById('search-button'); // Add a search button in your HTML
+
 const ageFilter = document.getElementById('ageFilter');
 const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
