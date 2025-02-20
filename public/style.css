@@ -291,6 +291,11 @@ nav {
 
 
 /* Available Games */
+.center-filter {
+  width: 300px; /* Or any width you want */
+  margin: 0 auto;
+  text-align: center;
+}
 #availGames{
   text-align: center;
 }

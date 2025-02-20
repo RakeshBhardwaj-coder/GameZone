@@ -64,7 +64,7 @@ const gameData = [
     thumbnail: "https://i.pinimg.com/736x/5a/59/cb/5a59cbcd013100462fd70a73b67ce9cf.jpg",
     videoId: "e_E9W2vsRbQ",
     genre: "Tactical Shooter",
-    ageRating: "Teen" // Added age rating
+    ageRating: "13" // Added age rating
   },
   {
     title: "CS2",
@@ -72,7 +72,7 @@ const gameData = [
     thumbnail: "https://i.pinimg.com/736x/fc/8b/92/fc8b9209e84d5bd0d17ca199281666aa.jpg",
     videoId: "c80dVYcL69E",
     genre: "First-Person Shooter",
-    ageRating: "Mature" // Added age rating
+    ageRating: "17" // Added age rating
   },
   {
     title: "Delta Force",
@@ -80,7 +80,7 @@ const gameData = [
     thumbnail: "https://i.pinimg.com/736x/a1/73/f2/a173f2b0e94d297c63a35cf06f269d65.jpg",
     videoId: "4I_QrwFd__o",
     genre: "Tactical Shooter",
-    ageRating: "Mature" // Added age rating
+    ageRating: "17" // Added age rating
   },
   {
     title: "Fortnite",
@@ -88,7 +88,15 @@ const gameData = [
     thumbnail: "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
     videoId: "dQw4w9WgXcQ",
     genre: "Battle Royale",
-    ageRating: "Teen" // Added age rating
+    ageRating: "13" // Added age rating
+  },
+  {
+    title: "Fortnite",
+    description: "Fortnite offers Battle Royale, Zero Build, live events, and millions of creator-made games. Race, parkour, survive—find your adventure. Age ratings ensure safe fun for everyone. Explore endless possibilities.",
+    thumbnail: "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
+    videoId: "dQw4w9WgXcQ",
+    genre: "Battle Royale",
+    ageRating: "18" // Added age rating
   }
 ];
 const gameContainer = document.getElementById('gameContainer');
@@ -102,29 +110,73 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 window.onYouTubeIframeAPIReady = function() { // Make it a global function
-player = new YT.Player('player', {
-  height: 500, // Make player responsive
-  width: 900,  // Make player responsive
-  videoId: '',  // Initialize without a video
-  playerVars: {
+  player = new YT.Player('player', {
+    height: isMobile() ? window.innerWidth * (9 / 16) : 250, // Responsive height based on device
+    width: isMobile() ? window.innerWidth : 450, // Responsive width based on device
+    videoId: '', // Initialize without a video
+    playerVars: {
       playersinline: 1,
       autoplay: 0, // Don't autoplay initially
       controls: 1, // Show controls
       rel: 0, // Don't show related videos
-  },
-  events: {
-      'onReady': onPlayerReady
-  }
-});
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange,
+    }
+  });
 };
+
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 
 function onPlayerReady(event) {
   event.target.setVolume(50);
 }
 
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && isMobile()) {
+    // Fullscreen landscape on mobile when playing
+    var requestFullScreen = player.getIframe().requestFullscreen || player.getIframe().mozRequestFullScreen || player.getIframe().webkitRequestFullscreen;
+    if (requestFullScreen) {
+      requestFullScreen.call(player.getIframe());
+    }
+    screen.orientation.lock("landscape");
+  } else if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.CUED) {
+    if(isMobile()){
+      screen.orientation.unlock();
+    }
+  }
+}
+// Add event listeners for visibility changes
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden && isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+    player.pauseVideo();
+  }
+});
 
+// Add event listener for blur (window loses focus)
+window.addEventListener('blur', function() {
+    if(isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING){
+      player.pauseVideo();
+    }
+});
+
+// Sort the gameData array by ageRating (ascending)
+gameData.sort((a, b) => {
+  const ageA = parseInt(a.ageRating);
+  const ageB = parseInt(b.ageRating);
+
+  if (isNaN(ageA)) return 1; // Put games with invalid age ratings at the end
+  if (isNaN(ageB)) return -1;
+
+  return ageB - ageA;
+});
 
 function createGameCards(){
+  gameData.sort((a, b) => a.age - b.age); // Sort by age in ascending order
   gameData.forEach(game => {
   const gameCard = document.createElement('div');
   gameCard.classList.add('game-card');
