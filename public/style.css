@@ -4,78 +4,381 @@ body.night-mode {
   background-color: #121212;
   color: #eee;
 }
-
-/* ... (Your existing logo, center-text, menu, night-mode button styles) ... */
-
-nav {
-  display: flex; /* Switch to flexbox for mobile-first approach */
-  flex-direction: column; /* Stack elements vertically on mobile */
-  align-items: stretch; /* Stretch items to fill width */
+/* Logo */
+.col-left a img {
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
 }
 
-.col-left, .col-center, .col-right {
+.col-left a img:hover {
+  transform: scale(1.1); /* Slightly enlarge the logo on hover */
+  filter: brightness(1.2); /* Increase brightness on hover */
+  /* Or, use a different filter:
+     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+     filter: saturate(1.5);
+  */
+}
+/* Logo ends */
+
+.center-text{
+padding: 0;
+margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically (if needed) */
+    text-align: center; /* Center text within the elements */
+}
+
+/* menu */
+#menu a {
   display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  padding: 10px; /* Add some padding */
+  align-items:center;
 }
+
+.nav-links a {
+  text-decoration: none;
+  color: #333; /* Or your preferred text color */
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 5px; /* Optional: Rounded corners */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.nav-links a:hover {
+  background-color: #007bff; /* Or a color that matches your theme */
+  color: white;
+  transform: translateY(-3px); /* Slightly lift the link on hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.nav-links a:nth-child(3) { /* Target the "Registrations" link specifically */
+  background-color: #ffc107; /* Or a vibrant color for "Registrations" */
+  color: #333;
+  font-weight: bold; /* Make it stand out */
+}
+
+
+.nav-links a:nth-child(3) {
+  /* ... (Your existing "Registrations" link styles) ... */
+  position: relative; /* Needed for absolute positioning of the sparkle */
+  overflow: hidden; /* Hide the sparkle outside the button */
+}
+
+.nav-links a.registration-animation {
+  animation: magic-animation 1s ease-in-out forwards; /* Apply the magic animation */
+}
+
+@keyframes magic-animation {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: none;
+  }
+  50% {
+      transform: scale(1.3) rotate(180deg);
+      opacity: 0.7;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+      transform: scale(1);
+      opacity: 0;
+      box-shadow: none;
+  }
+}
+
+.nav-links a:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, white, transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-links a.registration-animation::before {
+  animation: sparkle 1s ease-in-out forwards;
+}
+
+@keyframes sparkle {
+  0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+  }
+  50% {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 1;
+  }
+  100% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+  }
+}
+/* Menu ends */
+
+#night-mode-button {
+  cursor: pointer;
+  padding: 0px;
+ 
+  border-radius: 5px;
+}
+
+
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 34px;
+  margin: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #73C0FC;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  left: 2px;
+  bottom: 2px;
+  z-index: 2;
+  background-color: #e8e8e8;
+  transition: .4s;
+}
+
+.sun svg {
+  position: absolute;
+  top: 6px;
+  left: 36px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+.moon svg {
+  fill: #73C0FC;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+/* .switch:hover */.sun svg {
+  animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+ 
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .switch:hover */.moon svg {
+  animation: tilt 5s linear infinite;
+}
+
+@keyframes tilt {
+ 
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.input:checked + .slider {
+  background-color: #183153;
+}
+
+.input:focus + .slider {
+  box-shadow: 0 0 1px #183153;
+}
+
+.input:checked + .slider:before {
+  transform: translateX(30px);
+}
+/* End of night button */
+nav {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Define three columns: left (1fr), center (2fr), right (1fr) */
+  grid-template-rows: auto 1fr; /* Two rows: auto for columns, 1fr for content (or auto if content height is known) */
+  grid-template-areas:
+    "left center right" /* Areas for the column headers */
+    "content content content"; /* Area for the content section spanning all columns */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+
 
 .col-left {
-  justify-content: flex-start; /* Align logo to the left */
+  grid-area: left; /* Assign to the 'left' area defined in grid-template-areas */
+  display: flex; /* Enable flexbox for centering */
+    justify-content: left; /* Center horizontally */
+    align-items: left; /* Center vertically */
+}
+
+.col-center {
+  grid-area: center; /* Assign to the 'center' area */
+  display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 .col-right {
-  justify-content: flex-end; /* Align right elements to the right */
+  grid-area: right; /* Assign to the 'right' area */
+  display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
+.content {
+  grid-area: content; /* Assign to the 'content' area spanning all columns */
+  background-color: #ffffff; /* White background for content */
+  padding: 30px;
+  border: 1px solid #ccc; /* Optional border for visual separation */
+}
+
+
+/* Search Bar */
 .search-bar {
+  position: relative; /* Needed for absolute positioning of suggestions */
+  display: inline-block; 
+
   display: flex;
-  width: 100%; /* Take full width on mobile */
-  margin: 10px 0; /* Add margin */
+  flex-grow: 1; /* Allow search bar to grow */
+  margin: 0 20px; /* Add margin */
 }
 
 .search-bar input {
   flex-grow: 1;
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 50px 0 0 50px; /* Rounded corners on left */
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
 .search-bar button {
-  padding: 10px 15px;
-  background-color: #4CAF50;
+  padding: 8px 12px;
+  background-color: #4CAF50; /* Example button color */
   color: white;
   border: none;
-  border-radius: 0 50px 50px 0; /* Rounded corners on right */
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
   cursor: pointer;
 }
 
 #suggestions-box {
-  /* ... (Your existing suggestions box styles) ... */
+  position: absolute;
+  top: 100%; /* Position below the search bar */
+  left: 0;
+  width: 100%; /* Match the width of the search bar */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none; /* Remove top border for seamless look */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  display: none; /* Initially hidden */
+  z-index: 10; /* Ensure it's above other elements */
 }
 
+#suggestions-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#suggestions-list li {
+ 
+  padding: 8px 12px;
+  cursor: pointer;
+  
+}
+
+#suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Search bar End */
 .nav-links {
-  display: none; /* Initially hide nav links on mobile */
-  flex-direction: column; /* Stack links vertically */
-  width: 100%; /* Take full width */
-}
-
-.nav-links.active {
-  display: flex; /* Show links when active class is applied */
+  display: flex;
 }
 
 .nav-links a {
-  padding: 15px;
-  text-align: center;
-  border-bottom: 1px solid #eee; /* Add separators */
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333; /* Example link color */
 }
 
-/* Hamburger Menu */
+/* Media query for smaller screens */
+@media (max-width: 768px) {  /* Adjust breakpoint as needed */
+  .search-bar {
+      flex-basis: 50%; /* Make search bar take full width */
+      margin: 10px 0; /* Add margin top/bottom */
+  }
+
+  .nav-links {
+      flex-basis: 100%; /* Make nav links take full width */
+      justify-content: center; /* Center the links */
+      margin-top: 10px;
+  }
+
+  .nav-links a {
+      padding: 10px; /* Adjust padding for smaller screens */
+      text-align: center; /* Center the text within the links */
+      flex-grow: 1; /* Distribute space evenly among links */
+  }
+
+  nav {
+      flex-direction: column; /* Stack the elements vertically */
+      align-items: flex-start; /* Align items to the left */
+  }
+}
+
+
+
+/* Optional: Hamburger menu */
 .hamburger {
-  display: block; /* Show hamburger on mobile */
+  display: none; /* Hidden by default on larger screens */
   cursor: pointer;
   padding: 10px;
-  align-self: flex-end; /* Align to the right */
 }
 
 .hamburger span {
@@ -86,33 +389,45 @@ nav {
   margin: 5px 0;
 }
 
-/* Media Query for Larger Screens */
-@media (min-width: 769px) {
-  nav {
-      flex-direction: row; /* Switch to row layout on larger screens */
+@media (max-width: 768px) {
+ .hamburger {
+      display: block;
   }
 
   .nav-links {
-      display: flex; /* Show links on larger screens */
-      flex-direction: row; /* Horizontal layout */
-      width: auto; /* Reset width */
+      display: none; /* Hide links by default on smaller screens */
+      flex-direction: column;
   }
 
-  .nav-links a {
-      border-bottom: none; /* Remove separators */
+  .nav-links.active { /* Show links when hamburger is clicked */
+      display: flex;
   }
 
-  .hamburger {
-      display: none; /* Hide hamburger on larger screens */
+  nav {
+      flex-direction: column;
+      align-items: flex-start;
   }
 
-  .search-bar {
-      width: auto; /* Reset width */
-      margin: 0 20px; /* Add margin */
+  .container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+
+  }
+  .box{
+    aspect-ratio: 2/1;
+    background-color: blue;
+    overflow: hidden;
+  }
+  .box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 }
 
-/* ...End of Nav bar completely ... */
 
 /* Available Games */
 .center-filter {
