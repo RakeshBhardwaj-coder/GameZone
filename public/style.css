@@ -4,14 +4,66 @@ body.night-mode {
   background-color: #121212;
   color: #eee;
 }
+/* Logo */
+.col-left a img {
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
+}
 
+.col-left a img:hover {
+  transform: scale(1.1); /* Slightly enlarge the logo on hover */
+  filter: brightness(1.2); /* Increase brightness on hover */
+  /* Or, use a different filter:
+     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+     filter: saturate(1.5);
+  */
+}
+/* Logo ends */
+
+.center-text{
+padding: 0;
+margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically (if needed) */
+    text-align: center; /* Center text within the elements */
+}
+
+/* menu */
 #menu a {
   display: flex;
   align-items:center;
 }
 
+.nav-links a {
+  text-decoration: none;
+  color: #333; /* Or your preferred text color */
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 5px; /* Optional: Rounded corners */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
 
+.nav-links a:hover {
+  background-color: #007bff; /* Or a color that matches your theme */
+  color: white;
+  transform: translateY(-3px); /* Slightly lift the link on hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
 
+.nav-links a:nth-child(3) { /* Target the "Registrations" link specifically */
+  background-color: #ffc107; /* Or a vibrant color for "Registrations" */
+  color: #333;
+  font-weight: bold; /* Make it stand out */
+}
+
+.nav-links a:nth-child(3):hover {
+  background-color: #ff9800; /* Darker shade on hover */
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+/* Menu ends */
 
 #night-mode-button {
   cursor: pointer;
