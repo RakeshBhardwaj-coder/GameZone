@@ -1,4 +1,7 @@
-   
+// nav bar
+
+// nav bar ends 
+
 //Search suggestion started
 const searchInput = document.getElementById('search-input');
 const suggestionsBox = document.getElementById('suggestions-box');
