@@ -5,158 +5,134 @@ body.night-mode {
   color: #eee;
 }
 /* Logo */
-.col-left{
-  display: flex; /* Make the anchor a flex container */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+nav {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+      "left center right"
+      "content content content";
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* Add padding for better spacing */
 }
+
+.col-left {
+  grid-area: left;
+  display: flex;
+  justify-content: left;
+  align-items: center; /* Center logo vertically */
+}
+
+.col-center {
+  grid-area: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-right {
+  grid-area: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .col-left a img {
   width: 120px;
   height: auto;
-  
   max-width: 100%;
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.col-left a img:hover{
+.col-left a img:hover {
   filter: drop-shadow(0 0 10px rgb(0, 195, 255));
   transform: scale(1.1);
 }
 
-
-/* Responsive styles (same as before) */
-@media (max-width: 768px) {
-  .col-left a img {
-      width: 80px;
-      
-  }
-  .col-left{
-    display: flex; /* Make the anchor a flex container */
-      justify-content: center; /* Center horizontally */
-      align-items: center; /* Center vertically */
-  }
-}
-
-@media (max-width: 480px) {
-  .col-left a img {
-      width: 60px;
-  }
-  .col-left{
-    display: flex; /* Make the anchor a flex container */
-      justify-content: center; /* Center horizontally */
-      align-items: center; /* Center vertically */
-  }
-}
-/* Logo ends */
-
-.center-text{
-padding: 0;
-margin: 0;
-    display: flex;
-    flex-direction: column; /* Stack the items vertically */
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically (if needed) */
-    text-align: center; /* Center text within the elements */
-}
-
-/* menu */
-#menu a {
+.search-bar {
+  position: relative;
   display: flex;
-  align-items:center;
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.search-bar button {
+  padding: 8px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  cursor: pointer;
+}
+
+#suggestions-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 10;
+}
+
+#suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#suggestions-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.nav-links {
+  display: flex;
 }
 
 .nav-links a {
+  padding: 8px 12px;
   text-decoration: none;
-  color: #333; /* Or your preferred text color */
-  padding: 10px 15px;
-  margin: 0 10px;
-  border-radius: 5px; /* Optional: Rounded corners */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
-}
-
-.nav-links a:hover {
-  background-color: #007bff; /* Or a color that matches your theme */
-  color: white;
-  transform: translateY(-3px); /* Slightly lift the link on hover */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-}
-
-.nav-links a:nth-child(3) { /* Target the "Registrations" link specifically */
-  background-color: #ffc107; /* Or a vibrant color for "Registrations" */
   color: #333;
-  font-weight: bold; /* Make it stand out */
 }
 
-
-.nav-links a:nth-child(3) {
-  /* ... (Your existing "Registrations" link styles) ... */
-  position: relative; /* Needed for absolute positioning of the sparkle */
-  overflow: hidden; /* Hide the sparkle outside the button */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
 }
 
-.nav-links a.registration-animation {
-  animation: magic-animation 1s ease-in-out forwards; /* Apply the magic animation */
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px 0;
 }
 
-@keyframes magic-animation {
-  0% {
-      transform: scale(1);
-      opacity: 1;
-      box-shadow: none;
-  }
-  50% {
-      transform: scale(1.3) rotate(180deg);
-      opacity: 0.7;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  }
-  100% {
-      transform: scale(1);
-      opacity: 0;
-      box-shadow: none;
-  }
-}
-
-.nav-links a:nth-child(3)::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(circle, white, transparent);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.nav-links a.registration-animation::before {
-  animation: sparkle 1s ease-in-out forwards;
-}
-
-@keyframes sparkle {
-  0% {
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 0;
-  }
-  50% {
-      transform: translate(-50%, -50%) scale(3);
-      opacity: 1;
-  }
-  100% {
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 0;
-  }
-}
-/* Menu ends */
-
+/* Night Mode Toggle */
 #night-mode-button {
   cursor: pointer;
-  padding: 0px;
- 
+  padding: 0;
   border-radius: 5px;
 }
-
 
 .switch {
   font-size: 17px;
@@ -217,44 +193,6 @@ margin: 0;
   height: 24px;
 }
 
-/* .switch:hover */.sun svg {
-  animation: rotate 15s linear infinite;
-}
-
-@keyframes rotate {
- 
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* .switch:hover */.moon svg {
-  animation: tilt 5s linear infinite;
-}
-
-@keyframes tilt {
- 
-  0% {
-    transform: rotate(0deg);
-  }
-
-  25% {
-    transform: rotate(-10deg);
-  }
-
-  75% {
-    transform: rotate(10deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
 .input:checked + .slider {
   background-color: #183153;
 }
@@ -266,247 +204,85 @@ margin: 0;
 .input:checked + .slider:before {
   transform: translateX(30px);
 }
-/* End of night button */
-nav {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr; /* Define three columns: left (1fr), center (2fr), right (1fr) */
-  grid-template-rows: auto 1fr; /* Two rows: auto for columns, 1fr for content (or auto if content height is known) */
-  grid-template-areas:
-    "left center right" /* Areas for the column headers */
-    "content content content"; /* Area for the content section spanning all columns */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-}
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav {
+      grid-template-columns: 1fr; /* Single column layout */
+      grid-template-rows: auto auto auto auto; /* Stack elements vertically */
+      grid-template-areas:
+          "left"
+          "center"
+          "right"
+          "content";
+      padding: 5px; /* Reduce padding for smaller screens */
+  }
 
+  .col-left, .col-center, .col-right {
+      justify-content: center; /* Center all elements */
+      align-items: center;
+      width: 100%; /* Take full width */
+  }
 
-.col-left {
-  grid-area: left; /* Assign to the 'left' area defined in grid-template-areas */
-  display: flex; /* Enable flexbox for centering */
-    justify-content: left; /* Center horizontally */
-    align-items: left; /* Center vertically */
-}
+  .col-left a img {
+      width: 80px; /* Adjust logo size */
+  }
 
-.col-center {
-  grid-area: center; /* Assign to the 'center' area */
-  display: flex; /* Enable flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-}
-
-.col-right {
-  grid-area: right; /* Assign to the 'right' area */
-  display: flex; /* Enable flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-}
-
-.content {
-  grid-area: content; /* Assign to the 'content' area spanning all columns */
-  background-color: #ffffff; /* White background for content */
-  padding: 30px;
-  border: 1px solid #ccc; /* Optional border for visual separation */
-}
-
-
-/* Search Bar */
-.search-bar {
-  position: relative; /* Needed for absolute positioning of suggestions */
-  display: inline-block; 
-
-  display: flex;
-  flex-grow: 1; /* Allow search bar to grow */
-  margin: 0 20px; /* Add margin */
-}
-
-.search-bar input {
-  flex-grow: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-}
-
-.search-bar button {
-  padding: 8px 12px;
-  background-color: #4CAF50; /* Example button color */
-  color: white;
-  border: none;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-  cursor: pointer;
-}
-
-#suggestions-box {
-  position: absolute;
-  top: 100%; /* Position below the search bar */
-  left: 0;
-  width: 100%; /* Match the width of the search bar */
-  background-color: white;
-  border: 1px solid #ccc;
-  border-top: none; /* Remove top border for seamless look */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
-  display: none; /* Initially hidden */
-  z-index: 10; /* Ensure it's above other elements */
-}
-
-#suggestions-list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-#suggestions-list li {
- 
-  padding: 8px 12px;
-  cursor: pointer;
-  
-}
-
-#suggestions-list li:hover {
-  background-color: #f0f0f0;
-}
-
-/* Search bar End */
-.nav-links {
-  display: flex;
-}
-
-.nav-links a {
-  padding: 8px 12px;
-  text-decoration: none;
-  color: #333; /* Example link color */
-}
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {  /* Adjust breakpoint as needed */
   .search-bar {
-      flex-basis: 50%; /* Make search bar take full width */
-      margin: 10px 0; /* Add margin top/bottom */
+      margin: 10px 0;
   }
 
   .nav-links {
-      flex-basis: 100%; /* Make nav links take full width */
-      justify-content: center; /* Center the links */
-      margin-top: 10px;
-  }
-
-  .nav-links a {
-      padding: 10px; /* Adjust padding for smaller screens */
-      text-align: center; /* Center the text within the links */
-      flex-grow: 1; /* Distribute space evenly among links */
-  }
-
-  nav {
-      flex-direction: column; /* Stack the elements vertically */
-      align-items: flex-start; /* Align items to the left */
-  }
-}
-
-
-
-/* Optional: Hamburger menu */
-.hamburger {
-  display: none; /* Hidden by default on larger screens */
-  cursor: pointer;
-  padding: 10px;
-}
-
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  margin: 5px 0;
-}
-
-@media (max-width: 768px) {
- .hamburger {
-      display: block;
-  }
-
-  .nav-links {
-      display: none; /* Hide links by default on smaller screens */
+      display: none; /* Hide links by default */
       flex-direction: column;
-  }
-
-  .nav-links.active { /* Show links when hamburger is clicked */
-      display: flex;
-  }
-
-  nav {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-
-  .container{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1em;
-
-  }
-  .box{
-    aspect-ratio: 2/1;
-    background-color: blue;
-    overflow: hidden;
-  }
-  .box img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-}
-
-/* Mobile Specific Styles */
-@media (max-width: 768px) {
-  /* ... (Your existing mobile styles) ... */
-
-  .nav-links {
-      /* ... (Your existing nav-links styles) ... */
-      position: absolute; /* Position absolutely */
-      top: 60px; /* Adjust top position as needed */
-      right: 0; /* Align to the right */
-      background-color: white; /* Add background color */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-      z-index: 10; /* Ensure it's above other elements */
-      border-top: 1px solid #eee; /* Add a top border */
+      width: 100%;
+      position: absolute;
+      top: 60px; /* Adjust as needed */
+      right: 0;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      border-top: 1px solid #eee;
   }
 
   .nav-links.active {
-      display: flex; /* Show links when active class is applied */
+      display: flex;
   }
 
   .nav-links a {
-      /* ... (Your existing nav-links a styles) ... */
-      padding: 15px 20px; /* Add some left/right padding */
+      padding: 15px 20px;
+      text-align: center;
   }
 
   .hamburger {
-      /* ... (Your existing hamburger styles) ... */
-      position: relative; /* Needed for transform */
-      transition: transform 0.3s ease; /* Add transition for animation */
+      display: block;
+      position: relative;
+      transition: transform 0.3s ease;
   }
 
   .hamburger.active {
-      transform: rotate(90deg); /* Rotate hamburger on click */
+      transform: rotate(90deg);
   }
 
   .hamburger span {
-      /* ... (Your existing hamburger span styles) ... */
-      transition: opacity 0.3s ease; /* Add opacity transition */
+      transition: opacity 0.3s ease;
   }
 
   .hamburger.active span:nth-child(1),
   .hamburger.active span:nth-child(3) {
-      opacity: 0; /* Hide top and bottom lines on click */
+      opacity: 0;
   }
 
   .hamburger.active span:nth-child(2) {
-      transform: rotate(45deg); /* Rotate middle line */
+      transform: rotate(45deg);
   }
 }
 
+@media (max-width: 480px) {
+  .col-left a img {
+      width: 60px; /* Further adjust logo size */
+  }
+}
 /* Available Games */
 .center-filter {
   width: 300px; /* Or any width you want */
