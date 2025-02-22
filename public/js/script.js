@@ -491,8 +491,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 window.onYouTubeIframeAPIReady = function() { // Make it a global function
   player = new YT.Player('player', {
-    height: isMobile() ? window.innerWidth * (9 / 16) : 250, // Responsive height based on device
-    width: isMobile() ? window.innerWidth : 450, // Responsive width based on device
+    height: isMobile() ? window.innerWidth * (9 / 16) : 230, // Responsive height based on device
+    width: isMobile() ? window.innerWidth : 400, // Responsive width based on device
     videoId: '', // Initialize without a video
     playerVars: {
       playersinline: 1,
