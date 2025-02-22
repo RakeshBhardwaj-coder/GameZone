@@ -5,17 +5,47 @@ body.night-mode {
   color: #eee;
 }
 /* Logo */
+.col-left{
+  display: flex; /* Make the anchor a flex container */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
 .col-left a img {
-  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
+  width: 120px;
+  height: auto;
+  
+  max-width: 100%;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.col-left a img:hover {
-  transform: scale(1.1); /* Slightly enlarge the logo on hover */
-  filter: brightness(1.2); /* Increase brightness on hover */
-  /* Or, use a different filter:
-     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
-     filter: saturate(1.5);
-  */
+.col-left a img:hover{
+  filter: drop-shadow(0 0 10px rgb(0, 195, 255));
+  transform: scale(1.1);
+}
+
+
+/* Responsive styles (same as before) */
+@media (max-width: 768px) {
+  .col-left a img {
+      width: 80px;
+      
+  }
+  .col-left{
+    display: flex; /* Make the anchor a flex container */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+  }
+}
+
+@media (max-width: 480px) {
+  .col-left a img {
+      width: 60px;
+  }
+  .col-left{
+    display: flex; /* Make the anchor a flex container */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+  }
 }
 /* Logo ends */
 
@@ -428,6 +458,54 @@ nav {
   }
 }
 
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+  /* ... (Your existing mobile styles) ... */
+
+  .nav-links {
+      /* ... (Your existing nav-links styles) ... */
+      position: absolute; /* Position absolutely */
+      top: 60px; /* Adjust top position as needed */
+      right: 0; /* Align to the right */
+      background-color: white; /* Add background color */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+      z-index: 10; /* Ensure it's above other elements */
+      border-top: 1px solid #eee; /* Add a top border */
+  }
+
+  .nav-links.active {
+      display: flex; /* Show links when active class is applied */
+  }
+
+  .nav-links a {
+      /* ... (Your existing nav-links a styles) ... */
+      padding: 15px 20px; /* Add some left/right padding */
+  }
+
+  .hamburger {
+      /* ... (Your existing hamburger styles) ... */
+      position: relative; /* Needed for transform */
+      transition: transform 0.3s ease; /* Add transition for animation */
+  }
+
+  .hamburger.active {
+      transform: rotate(90deg); /* Rotate hamburger on click */
+  }
+
+  .hamburger span {
+      /* ... (Your existing hamburger span styles) ... */
+      transition: opacity 0.3s ease; /* Add opacity transition */
+  }
+
+  .hamburger.active span:nth-child(1),
+  .hamburger.active span:nth-child(3) {
+      opacity: 0; /* Hide top and bottom lines on click */
+  }
+
+  .hamburger.active span:nth-child(2) {
+      transform: rotate(45deg); /* Rotate middle line */
+  }
+}
 
 /* Available Games */
 .center-filter {

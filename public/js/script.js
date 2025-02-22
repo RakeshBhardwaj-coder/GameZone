@@ -111,12 +111,13 @@ checkbox.addEventListener('change', function() {
 // day/night button End!
     
 //mobile mode slider start
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active'); // Toggle active class on hamburger
+    navLinks.classList.toggle('active');
+});
 
 
 
