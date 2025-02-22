@@ -60,9 +60,23 @@ document.getElementById('search-btn').addEventListener('click', () => {
 });
 //Search suggestion End
 
-// day/night button
- 
+// Registration button
 
+const registrationLink = document.getElementById("registration-link");
+
+registrationLink.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    registrationLink.classList.add("registration-animation");
+
+    setTimeout(function() {
+        window.open("https://docs.google.com/forms/d/e/1FAIpQLScOIY7SgAUQpdpZ16ZacbiFyq1VVk2evw9-KvgUFC_PdE76_Q/viewform?usp=sharing", "_blank");
+        registrationLink.classList.remove("registration-animation");
+    }, 1000); // Increased to 1000ms for a more elaborate animation
+});
+// Registration button End
+
+// day/night button
 const checkbox = document.querySelector('.switch input'); // Select the checkbox
 const body = document.body;
 const aTag = document.getElementById('menu').querySelectorAll('a'); 

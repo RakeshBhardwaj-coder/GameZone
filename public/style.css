@@ -63,6 +63,11 @@ margin: 0;
   transform: translateY(-3px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
+.nav-links a.registration-animation {
+  transform: scale(1.2); /* Example: Scale up the button */
+  opacity: 0.5; /* Example: Fade it slightly */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth animation */
+}
 /* Menu ends */
 
 #night-mode-button {
