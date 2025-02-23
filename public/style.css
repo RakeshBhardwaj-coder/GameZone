@@ -425,6 +425,7 @@ nav {
   color: #666; /* Lighter description color */
   line-height: 1.4; /* Improve readability */
 }
+
 #video-popup {
   position: fixed;
 top: 50%;

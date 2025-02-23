@@ -287,96 +287,96 @@ const gameData = [
 {
   title: "Dota 2",
   description: "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. And no matter if it's their 10th hour of play or 1,000th, there's always something new to discover. With regular updates that ensure a constant evolution of gameplay, features, and heroes, Dota 2 has taken on a life of its own.",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/1200x/49/ba/2b/49ba2b703c079704cf6586e0e9354026.jpg",
+  videoId: "-cSFPIwMEq4",
   genre: "MOBA, Strategy, Multiplayer",
   ageRating: "12" 
 },
 {
   title: "Overwatch® 2",
   description: "Overwatch 2 is a critically acclaimed, team-based shooter game set in an optimistic future with an evolving roster of heroes. Team up with friends and jump in today.",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/d0/5e/56/d05e561afd6e03768fd587ca66ebaabf.jpg",
+  videoId: "LGgqyer-qr4",
   genre: "Hero Shooter, Multiplayer, FPS",
   ageRating: "12" 
 },
 {
   title: "Once Human",
   description: "Once Human is a multiplayer open-world survival game set in a strange, post-apocalyptic future. Unite with friends to fight monstrous enemies, uncover secret plots, compete for resources, and build your own territory. Once, you were merely human. Now, you have the power to remake the world.",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/e1/72/a7/e172a7addc10db413978655407173228.jpg",
+  videoId: "XXpfbP9Ml_4",
   genre: "Multiplayer, Open World, Survival",
   ageRating: "18" 
 },
 {
   title: "Warframe",
   description: "Awaken as an unstoppable warrior and battle alongside your friends in this story-driven free-to-play online action game",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/6b/de/3d/6bde3dd1efb3a7846434161e76bdc27d.jpg",
+  videoId: "SsOgrkdLHD8",
   genre: "Action RPG, Action, Looter Shooter",
   ageRating: "18" 
 },
 {
   title: "War Thunder",
   description: "War Thunder is the most comprehensive free-to-play, cross-platform, MMO military game dedicated to aviation, armoured vehicles, and naval craft, from the early 20th century to the most advanced modern combat units. Join now and take part in major battles on land, in the air, and at sea.",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/c4/c1/02/c4c1028838c27c48dfdc47da5598ae13.jpg",
+  videoId: "pzgPXOw2plI",
   genre: "Simulation, VR",
   ageRating: "12" 
 },
 {
   title: "eFootball™",
   description: "The feverish football game with a worldwide total of 750 million downloads is waiting for you! Play eFootball™ with users around the world!",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
+  videoId: "BdyXsZMPjWo",
   genre: "Football, Sports",
   ageRating: "12" 
 },
 {
   title: "The First Descendant",
   description: "The First Descendant is a third-person looter shooter powered by Unreal Engine 5. Become a Descendant. Fight for the survival of humanity. Descendants have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. BE THE FIRST DESCENDANT!",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
+  videoId: "e15nHHJjpJg",
   genre: "Looter shooter, PvE",
   ageRating: "18" 
 },
 {
   title: "Star Trek Online",
   description: "In Star Trek Online, the Star Trek universe appears for the first time on a truly massive scale. Players take the captain's chair as they command their own starship and crew. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before.",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/de/48/f5/de48f56687249b7172c0fd025f8ab52a.jpg",
+  videoId: "8pzGjFCVhSE",
   genre: "Sci-fi,MMO, Space, Multiplayer",
   ageRating: "12" 
 },
 {
   title: "Asphalt Legends Unite",
   description: "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat of the road! Join forces with other players to speed through intense arcade races, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars!",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/4a/f1/bd/4af1bd26fa79c549274f0fa071e8a511.jpg",
+  videoId: "rH-eZd01NEQ",
   genre: "Racing",
-  ageRating: "12" 
+  ageRating: "10" 
 },
 {
   title: "Halo Infinite",
   description: "From one of gaming's most iconic sagas, Halo is bigger than ever. Featuring an expansive open-world campaign and a dynamic free to play multiplayer experience.",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/04/8a/55/048a5597754ea1e98b6790692a155264.jpg",
+  videoId: "rFh2i4AlPD4",
   genre: "FPS, Multiplayer, Singleplayer",
   ageRating: "16" 
 },
 {
   title: "Blood Strike",
   description: "Gather your friends and dive into the action-packed Battle Royale, Squad Fight, or Hot Zone like there's no tomorrow! Blood Strike offers a wide range of playable Strikers, each with a unique active and passive ability letting you deploy drones, shield walls and everything in between.",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/a5/97/1d/a5971d3d6fbb664c62fa6a9b6428ad06.jpg",
+  videoId: "V581-wZLzdU",
   genre: "Battle Royale, Shooter, Adventure, Multiplyer",
   ageRating: "12" 
 },
 {
   title: "Sky: Children of the Light",
   description: "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey. Explore a beautifully-animated kingdom across seven realms and create enriching memories with other players in this delightful puzzle-adventure game",
-  thumbnail: "",
-  videoId: "",
+  thumbnail: "https://i.pinimg.com/736x/38/cc/e0/38cce048d46431483a1dce47dea9b846.jpg",
+  videoId: "A3DNTfhUy0k",
   genre: "MMO, Multiplayer, Adventure",
   ageRating: "12" 
 },
@@ -399,6 +399,7 @@ function createGameCards(games) {
     games.forEach(game => { // Use the passed 'games' array
         const gameCard = document.createElement('div');
         gameCard.classList.add('game-card');
+        
 
         gameCard.innerHTML = `
             <img src="${game.thumbnail}" alt="${game.title}">
