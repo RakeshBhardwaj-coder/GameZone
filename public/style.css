@@ -75,18 +75,50 @@ nav {
   cursor: pointer;
 }
 
+/* Suggestion box */
+
 #suggestions-box {
   position: absolute;
-  top: 100%;
+  top: 105%; /* Slightly lower to avoid overlapping */
   left: 0;
-  width: 100%;
-  background-color: white;
-  border: 1px solid #ccc;
+  width: calc(100% - 2px); /* Adjust width to account for border */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0; /* Lighter border */
   border-top: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* More subtle shadow */
   display: none;
   z-index: 10;
+  border-radius: 4px; /* Rounded corners */
+  overflow: hidden; /* Prevent content overflow */
 }
+
+#suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#suggestions-list li {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+  font-size: 14px; /* Adjust font size for readability */
+  color: #333; /* Darker text */
+}
+
+#suggestions-list li:hover {
+  background-color: #f0f0f0; /* Light gray hover */
+}
+
+#suggestions-list li:active {
+  background-color: #e0e0e0; /* Slightly darker gray on click */
+}
+
+#suggestions-list li:last-child {
+  border-bottom: none; /* Remove border from last item */
+}
+
+/* Suggestion box End */
 
 #registration-link {
   text-decoration: none;
@@ -118,21 +150,6 @@ nav {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Adjust shadow on click */
 }
 
-
-#suggestions-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#suggestions-list li {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-#suggestions-list li:hover {
-  background-color: #f0f0f0;
-}
 
 .nav-links {
     display: flex;
@@ -271,7 +288,7 @@ nav {
   }
 
   .col-left a img {
-      width: 80px; /* Adjust logo size */
+      width: 150px; /* Adjust logo size */
   }
 
   .search-bar {
@@ -326,18 +343,40 @@ nav {
 
 @media (max-width: 480px) {
   .col-left a img {
-      width: 60px; /* Further adjust logo size */
+      width: 120px; /* Further adjust logo size */
   }
 }
+
+/* Imp Texts */
+.center-text {
+  text-align: center;
+  padding: 20px; /* Or whatever padding you prefer */
+}
+/* Imp Texts End   */
+
 /* Available Games */
-.center-filter {
-  width: 300px; /* Or any width you want */
-  margin: 0 auto;
+
+/* Filter panel */
+
+#availGames {
+  text-align: center;
+  margin-bottom: 20px; /* Add margin for bottom spacing */
+}
+
+.center-filter{
   text-align: center;
 }
-#availGames{
-  text-align: center;
+@media(max-width: 768px) {
+  .age-filter {
+      flex-direction: column; /* Stack label and select vertically */
+      align-items: center; /* Center items horizontally in column layout */
+      width: 95%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
 }
+/* Filter panel Ends */
+
 #gameContainer {
   display: flex;
   flex-wrap: wrap;
