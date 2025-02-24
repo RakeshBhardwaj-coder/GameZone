@@ -1,7 +1,6 @@
    
 //Search suggestion started
 const searchInput = document.getElementById('search-input');
-const clearButton = document.getElementById('clear-button');
 const suggestionsBox = document.getElementById('suggestions-box');
 const suggestionsList = document.getElementById('suggestions-list');
 
@@ -42,17 +41,7 @@ const allSuggestions = [
 
 searchInput.addEventListener('input', () => {
     const query = searchInput.value.trim().toLowerCase(); // Make the search case-insensitive
-    if (this.value) {
-      clearButton.style.display = 'block';
-    } else {
-      clearButton.style.display = 'none';
-    }
-    clearButton.addEventListener('click', function() {
-      searchInput.value = '';
-      searchInput.focus(); // Keep focus in the input
-      clearButton.style.display = 'none';
-    });
-    
+
     if (query) {
         // Filter the suggestions based on the query
         const filteredSuggestions = allSuggestions.filter(suggestion =>
@@ -200,7 +189,7 @@ const gameData = [
   },
   {
     title: "Delta Force",
-    description:"This iconic series returns, offering tactical shooting across three modes: massive PvP battles, high-stakes extraction gameplay, and a revamped Black Hawk Down campaign. Dive into diverse, intense combat experiences.",
+    description:"This iconic series returns free-to-play, offering tactical shooting across three modes: massive PvP battles, high-stakes extraction gameplay, and a revamped Black Hawk Down campaign. Dive into diverse, intense combat experiences.",
     thumbnail: "https://i.pinimg.com/736x/a1/73/f2/a173f2b0e94d297c63a35cf06f269d65.jpg",
     videoId: "4I_QrwFd__o",
     genre: "Tactical Shooter",
@@ -358,7 +347,7 @@ const gameData = [
 },
 {
   title: "War Thunder",
-  description: "War Thunder : The MMO military game dedicated to aviation, armoured vehicles, and naval craft, the most advanced modern combat units. Join now battles on land, in the air, and at sea. Action lovers!",
+  description: "War Thunder : The MMO military game dedicated to aviation, armoured vehicles, and naval craft, the most advanced modern combat units. Join now battles on land, in the air, and at sea. Action Lovers!",
   thumbnail: "https://i.pinimg.com/736x/c4/c1/02/c4c1028838c27c48dfdc47da5598ae13.jpg",
   videoId: "pzgPXOw2plI",
   genre: "Simulation, VR",
@@ -366,7 +355,7 @@ const gameData = [
 },
 {
   title: "eFootball™",
-  description: "eFootball™ : The football game with a worldwide total of 750 million downloads is waiting for you! Play eFootball™ with users around the world, Best for Sport lovers & under the top-10 list of steam DB.",
+  description: "The football game with a worldwide total of 750 million downloads is waiting for you! Play eFootball™ with users around the world, Best for Sport lovers & under the top-10 list of steam DB.",
   thumbnail: "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
   videoId: "BdyXsZMPjWo",
   genre: "Football, Sports",
@@ -374,7 +363,7 @@ const gameData = [
 },
 {
   title: "The First Descendant",
-  description: "A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses and be forst descendant. Action lovers!",
+  description: "A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
   thumbnail: "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
   videoId: "e15nHHJjpJg",
   genre: "Looter shooter, PvE",
@@ -382,7 +371,7 @@ const gameData = [
 },
 {
   title: "Star Trek Online",
-  description: "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space lovers!",
+  description: "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space Lovers!",
   thumbnail: "https://i.pinimg.com/736x/de/48/f5/de48f56687249b7172c0fd025f8ab52a.jpg",
   videoId: "8pzGjFCVhSE",
   genre: "Sci-fi,MMO, Space, Multiplayer",
@@ -390,7 +379,7 @@ const gameData = [
 },
 {
   title: "Asphalt Legends Unite",
-  description: "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat race, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars, Racing lovers!",
+  description: "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat race, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars, Racing Lovers!",
   thumbnail: "https://i.pinimg.com/736x/4a/f1/bd/4af1bd26fa79c549274f0fa071e8a511.jpg",
   videoId: "rH-eZd01NEQ",
   genre: "Racing",
@@ -398,7 +387,7 @@ const gameData = [
 },
 {
   title: "Halo Infinite",
-  description: "Halo:Experience the halo sci-fi Action game. Halo is bigger than ever. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the sci-fi Action story game lovers!",
+  description: "Experience the halo sci-fi Action game. Halo is bigger than ever. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the sci-fi Action story game Lovers!",
   thumbnail: "https://www.charlieintel.com/cdn-image/wp-content/uploads/2021/06/New-concept-art-leaked-for-Halo-Infinite.jpg?width=1200&quality=60&format=auto",
   videoId: "rFh2i4AlPD4",
   genre: "FPS, Multiplayer, Singleplayer",
@@ -414,7 +403,7 @@ const gameData = [
 },
 {
   title: "Sky: Children of the Light",
-  description: "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey, a beautifully-animated kingdom across seven realms and create enriching memories, Puzzle adventure lovers!",
+  description: "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey, a beautifully-animated kingdom across seven realms and create enriching memories, Puzzle adventure Lovers!",
   thumbnail: "https://i.pinimg.com/736x/38/cc/e0/38cce048d46431483a1dce47dea9b846.jpg",
   videoId: "A3DNTfhUy0k",
   genre: "MMO, Multiplayer, Adventure",
@@ -427,7 +416,6 @@ const gameData = [
 ];
 
 const searchButton = document.getElementById('search-btn'); 
-const clearSearchBtn = document.getElementById('clear-search-btn');
 const ageFilter = document.getElementById('age-filter');
 const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
@@ -492,9 +480,32 @@ function randomizeGames(games) {
 }
 
 // Search Functionality
+// Search Functionality
+function searchGames(searchTerm) {
+  if (!searchTerm) {
+      // If search term is empty, display all games or the currently filtered games
+      filterGames(document.getElementById('age-filter').value); // Assuming you have an age filter dropdown
+      return;
+  }
 
+  const lowerSearchTerm = searchTerm.toLowerCase();
+  const searchedGames = gameData.filter(game =>
+      game.title.toLowerCase().includes(lowerSearchTerm)
+  );
 
-//search Function end
+  if (searchedGames.length === 0) {
+      createNoGamesMessage();
+  } else {
+      createGameCards(searchedGames); // Display only the matched games
+  }
+}
+
+// Event listener for the search button
+searchButton.addEventListener('click', () => {
+  const searchTerm = searchInput.value;
+  searchGames(searchTerm);
+});
+
 function createNoGamesMessage() {
   const gameContainer = document.getElementById('gameContainer');
   if (gameContainer) {
