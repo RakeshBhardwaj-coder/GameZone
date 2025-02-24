@@ -252,6 +252,7 @@ nav {
 }
 
 .nav-links a {
+  margin-left: 20px;
     text-decoration: none;
     color: #000000;
     padding: 10px 15px;
@@ -270,6 +271,7 @@ nav {
 
 .hamburger {
   display: none;
+  flex-direction: column;
   cursor: pointer;
   padding: 10px;
 }
@@ -386,58 +388,66 @@ nav {
   }
 
   
-
-  .nav-links {
-      display: none; /* Hide links by default */
-      flex-direction: column;
-      width: 100%;
-      position: absolute;
-      top: 60px; /* Adjust as needed */
-      right: 0;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(255, 0, 0, 0.1);
-      z-index: 10;
-      border-top: 1px solid #eee;
-  }
-
-  .nav-links.active {
-      display: flex;
-  }
-
-  .nav-links a {
-      padding: 15px 20px;
-      text-align: center;
-  }
-
-  .hamburger {
-      display: block;
-      position: relative;
-      transition: transform 0.3s ease;
-  }
-
-  .hamburger.active {
-      transform: rotate(90deg);
-  }
-
-  .hamburger span {
-      transition: opacity 0.3s ease;
-  }
-
-  .hamburger.active span:nth-child(1),
-  .hamburger.active span:nth-child(3) {
-      opacity: 0;
-  }
-
-  .hamburger.active span:nth-child(2) {
-      transform: rotate(45deg);
-  }
-}
-
 @media (max-width: 480px) {
   .col-left a img {
       width: 120px; /* Further adjust logo size */
   }
 }
+
+  .nav-links {
+    display: none; /* Hide links by default */
+    flex-direction: column;
+    width: 220px;
+    padding: 15px;
+    position: absolute; /* Changed to absolute for proper positioning */
+    top: 210px;
+    right: auto; /* Remove the right alignment */
+    left: 50%; /* Position the left edge at the center */
+    transform: translateX(-50%); /* Center the menu precisely */
+    background-color: rgb(184, 184, 184);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Changed shadow to a more general color */
+    z-index: 10;
+    border-top: 1px solid #eee;
+    border-radius: 8px; /* Added border-radius for a smoother look */
+}
+  .nav-links.active {
+      display: flex;
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+}
+
+.hamburger {
+    display: flex; /* Show hamburger on mobile */
+  
+    cursor: pointer;
+}
+
+.hamburger span {
+  background-color: #1e88e5; /* Medium blue hamburger lines */
+  transition: all 0.3s ease;
+}
+
+
+.nav-links.active {
+    display: flex; /* Show menu when active class is present */
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(12px) rotate(65deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+    
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-14px) rotate(-65deg);}
+   
+  }
+
 
 /* Imp Texts */
 .center-text {
