@@ -19,6 +19,12 @@ body.night-mode {
   background-color: #121212;
   color: #eee;
 }
+
+body.night-mode .search-bar input {
+background-color: #88888885;
+border-color: #53ffaf8f;
+}
+
 body.night-mode .nav-links a {
   color: #ffffff;
 }
@@ -119,19 +125,39 @@ nav {
 
 .search-bar {
   position: relative;
-  display: flex;
+  width:300px
+  /*display: flex;
   flex-grow: 1;
-  margin: 0 20px;
+  margin: 0 20px;*/
 }
 
 .search-bar input {
-  flex-grow: 1;
+  /* flex-grow: 1;
   padding: 8px;
+  color: #000000;
   border: 1px solid #ccc;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+  background-color: rgb(255, 255, 255); */
+  width: 100%;
+  padding: 8px 30px 8px 10px; /* Space for clear button */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
+.clear-button {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #888;
+  display: none; /* Initially hidden */
+}
 .search-bar button {
   padding: 8px 12px;
   background-color: #4CAF50;
