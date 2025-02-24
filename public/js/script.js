@@ -149,6 +149,9 @@ hamburger.addEventListener('click', () => {
 
 //mobile mode slider end
 
+//adding welcome animation
+
+//welcome animation ends
 
 // Game Available 
 const gameData = [
@@ -413,7 +416,7 @@ const gameData = [
 ];
 
 const searchButton = document.getElementById('search-btn'); 
-const ageFilter = document.getElementById('ageFilter');
+const ageFilter = document.getElementById('age-filter');
 const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
 const closeButton = document.getElementById('close-button');

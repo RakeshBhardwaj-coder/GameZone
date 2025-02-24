@@ -1,3 +1,18 @@
+/* import font */
+
+
+/* Welcome-font */
+@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+
+/* about-font */
+
+/* font */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Raleway:wght@401&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* import font end*/ 
+/* */
+
 
 /* start of night btn */
 body.night-mode {
@@ -352,6 +367,21 @@ nav {
   text-align: center;
   padding: 20px; /* Or whatever padding you prefer */
 }
+#welcome-text{
+  font-family: "Sigmar", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  text-shadow: 0.1em 0.1em 0.2em gray;
+
+  
+  
+}
+#about-text{
+  font-family: 'about-font',sans-serif;
+  
+  
+}
 /* Imp Texts End   */
 
 /* Available Games */
@@ -384,7 +414,23 @@ nav {
   gap: 20px; /* Spacing between cards */
   padding: 20px;
 }
+/* game card fonts */
+.game-card h3 {
+  margin-top: 0;
+  font-size: 2.2em;
+  color: #333;
+}
 
+.game-card p {
+  font-size: 1.9em;
+  color: #666;
+  line-height: 1.4;
+  font-family: "Raleway", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+/*fonts end*/
 .game-card {
   width: 300px; /* Adjust as needed */
   border-radius: 8px;
