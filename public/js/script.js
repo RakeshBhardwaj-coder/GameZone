@@ -171,7 +171,7 @@ const gameData = [
   {
     title: "PUBG Battlegrounds",
     description:  "Play PUBG: BATTLEGROUNDS for free! Land on strategic locations, loot weapons and supplies, and survive to become the last team standing across various, diverse Battlegrounds in intense survival matches.",
-    thumbnail: "https://i.pinimg.com/736x/29/71/f0/2971f06b44b097ca00d2f3f88024cf73.jpg",
+    thumbnail: "https://i.pinimg.com/736x/36/80/1c/36801c4624e4c5e136624bc45c120cc3.jpg",
     videoId: "u1oqfdh4xBY",
     genre: "Shooter, Survival, Multiplayer",
     ageRating: "12" // Added age rating
@@ -452,7 +452,21 @@ function filterGames(selectedAge) {
       } else {
           filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
       }
+  } else {
+    // If "all" is selected, randomize the games
+    filteredGames = randomizeGames(gameData);
+}
+
+function randomizeGames(games) {
+  // Fisher-Yates shuffle algorithm
+  let shuffledGames = [...games]; // Create a copy to avoid modifying the original array
+  for (let i = shuffledGames.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledGames[i], shuffledGames[j]] = [shuffledGames[j], shuffledGames[i]];
   }
+  return shuffledGames;
+}
+
 
   if (filteredGames.length === 0) {
       // Display "No games available" message
