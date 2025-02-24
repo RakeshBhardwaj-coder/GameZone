@@ -1,6 +1,7 @@
    
 //Search suggestion started
 const searchInput = document.getElementById('search-input');
+const clearButton = document.getElementById('clear-button');
 const suggestionsBox = document.getElementById('suggestions-box');
 const suggestionsList = document.getElementById('suggestions-list');
 
@@ -40,6 +41,11 @@ const allSuggestions = [
 ];
 
 searchInput.addEventListener('input', () => {
+  if (this.value) {
+    clearButton.style.display = 'block';
+  } else {
+    clearButton.style.display = 'block';
+  }
     const query = searchInput.value.trim().toLowerCase(); // Make the search case-insensitive
 
     if (query) {
@@ -74,6 +80,35 @@ document.addEventListener('click', (event) => {
         suggestionsBox.style.display = 'none';
     }
 });
+
+clearButton.addEventListener('click', function() {
+  searchInput.value = '';
+  searchInput.focus(); // Keep focus in the input
+  clearButton.style.display = 'block';
+});
+
+//Optional: clear button also hides on focus out if the search input is empty.
+searchInput.addEventListener('focusout', function() {
+  if (!this.value) {
+    clearButton.style.display = 'none';
+  }
+});
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('.search-bar')) {
+        suggestionsBox.style.display = 'none';
+    }
+});
+
+searchInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        suggestionsBox.style.display = 'none';
+    }
+});
+
+document.getElementById('search-btn').addEventListener('click', () => {
+    suggestionsBox.style.display = 'none';
+});
+
 
 searchInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
@@ -479,7 +514,6 @@ function randomizeGames(games) {
   }
 }
 
-// Search Functionality
 // Search Functionality
 function searchGames(searchTerm) {
   if (!searchTerm) {
