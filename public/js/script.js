@@ -116,7 +116,7 @@ checkbox.addEventListener('change', function() {
     body.classList.add('dark-mode'); // Add dark mode class
     this.textContent = "Night Mode";
     aTag.forEach(aTag => {
-      aTag.style.color = 'gray'; 
+     // aTag.style.color = 'gray'; 
     });
 
     

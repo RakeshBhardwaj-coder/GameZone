@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
 
 /* about-font */
-
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Raleway:wght@401&family=Roboto:wght@417&display=swap');
 /* font */
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
@@ -19,6 +19,58 @@ body.night-mode {
   background-color: #121212;
   color: #eee;
 }
+body.night-mode .nav-links a {
+  color: #ffffff;
+}
+
+/*Registration button*/
+body.night-mode #registration-link {
+  color: #ddd; /* Lighter text color in night mode */
+  background: linear-gradient(135deg, #78b5f1, #50bfff); /* Darker gradient */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); /* Lighter shadow */
+}
+
+body.night-mode #registration-link:hover {
+  background: linear-gradient(135deg, #50bfff, #78b5f1); /* Reversed darker gradient */
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2); /* Lighter hover shadow */
+}
+
+body.night-mode #registration-link:focus,
+body.night-mode #registration-link:active {
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Lighter focus/active shadow */
+}
+/*Registration btn end*/
+
+/*game card in night mode*/
+
+body.night-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.night-mode .game-card-content {
+  background-color: #333;
+}
+
+body.night-mode .game-card h3,
+body.night-mode .game-card-content h3 {
+  color: #ddd;
+}
+
+body.night-mode .game-card p,
+body.night-mode .game-card-content p {
+  color: #bbb;
+}
+
+body.night-mode .game-card {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+body.night-mode .game-card:hover {
+  box-shadow: 0 0 15px 5px rgba(0, 247, 255, 0.459);
+}
+/*game card in night mode End*/
+
 /* Logo */
 nav {
   display: grid;
@@ -174,7 +226,7 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: #000000;
     padding: 10px 15px;
     margin: 0 10px;
     border-radius: 5px;
@@ -318,7 +370,7 @@ nav {
       top: 60px; /* Adjust as needed */
       right: 0;
       background-color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(255, 0, 0, 0.1);
       z-index: 10;
       border-top: 1px solid #eee;
   }
@@ -365,36 +417,57 @@ nav {
 /* Imp Texts */
 .center-text {
   text-align: center;
-  padding: 20px; /* Or whatever padding you prefer */
+  padding: 10px; /* Or whatever padding you prefer */
 }
 #welcome-text{
+  margin: 0;
+  margin-top: 5px;
   font-family: "Sigmar", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 50px;
-  text-shadow: 0.1em 0.1em 0.2em gray;
-
-  
+  font-size: 40px;
+  text-shadow: 0.1em 0.1em 0.2em rgba(128, 128, 128, 0.418);
   
 }
 #about-text{
-  font-family: 'about-font',sans-serif;
-  
-  
+  font-family: "Roboto", serif;
+  margin: 0;
+  margin-top: 10px;
+  font-optical-sizing: auto;
+  font-weight: 417;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;  
+    font-size: 22px;
 }
+
 /* Imp Texts End   */
 
 /* Available Games */
 
 /* Filter panel */
-
-#availGames {
+#available-text{
+ 
   text-align: center;
-  margin-bottom: 20px; /* Add margin for bottom spacing */
+  margin-bottom: 20px;
+  font-optical-sizing: auto;
+  font-weight: 417;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;  
+    font-size: 50px;
 }
+
 
 .center-filter{
   text-align: center;
+  
+}
+#age-filter-text{
+  font-size: large;
+}
+#age-filter{
+  font-size: large;
 }
 @media(max-width: 768px) {
   .age-filter {
