@@ -146,7 +146,7 @@ nav {
   text-shadow: 1px 1px rgb(255, 255, 255);
 
   color: #000000;
-  display: block; /* Initially hidden */
+  display: none; /* Initially hidden */
 }
 #search-btn{
   fill: white;
@@ -279,9 +279,10 @@ nav {
 .hamburger span {
   display: block;
   background: black;
-  width: 25px;
+  width: 30px;
   height: 3px;
-  margin: 5px 0;
+  margin: 4px 0;
+  border-radius: 2px; 
 }
 
 
@@ -444,7 +445,7 @@ nav {
 }
 
 .hamburger.active span:nth-child(3) {
-  transform: translateY(-14px) rotate(-65deg);}
+  transform: translateY(-11px) rotate(-65deg);}
    
   }
 

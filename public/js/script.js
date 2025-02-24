@@ -42,7 +42,7 @@ const allSuggestions = [
 
 searchInput.addEventListener('input', () => {
   if (this.value) {
-    clearButton.style.display = 'block';
+    clearButton.style.display = 'none';
   } else {
     clearButton.style.display = 'block';
   }
@@ -84,7 +84,7 @@ document.addEventListener('click', (event) => {
 clearButton.addEventListener('click', function() {
   searchInput.value = '';
   searchInput.focus(); // Keep focus in the input
-  clearButton.style.display = 'block';
+  clearButton.style.display = 'none';
 });
 
 //Optional: clear button also hides on focus out if the search input is empty.
