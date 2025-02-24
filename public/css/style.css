@@ -420,9 +420,16 @@ nav {
 }
 
 .hamburger {
-    display: flex; /* Show hamburger on mobile */
-  
-    cursor: pointer;
+  display: flex; /* Show hamburger on mobile */
+  cursor: pointer;
+  transition: opacity 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.hamburger:hover {
+  opacity: .7;
+  /* Or, you can add other hover effects like: */
+  /* transform: scale(1.1); /* Slightly enlarge on hover */
+  /* background-color: rgba(0, 0, 0, 0.1); /* Add a subtle background color */
 }
 
 .hamburger span {
