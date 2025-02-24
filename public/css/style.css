@@ -122,14 +122,16 @@ nav {
   position: relative;
   display: flex;
   flex-grow: 1;
-  margin: 0px 20px;
+  margin: 20px 20px;
 }
 
 .search-bar input {
+  font-size: 18px;
   flex-grow: 1;
-  padding: 8px 15px;
-  border: 1px solid #ccc;
+  padding: 15px 15px;
   font-family: cursive;
+  border-radius: 0px;
+  border-color: green;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
 }
@@ -137,18 +139,19 @@ nav {
 .clear-button {
   position: absolute;
   top: 50%;
-  right: 50px;
+  right: 60px;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 32px;
   text-shadow: 1px 1px rgb(255, 255, 255);
 
   color: #000000;
   display: none; /* Initially hidden */
 }
 #search-btn{
+  padding: 15px 15px;
   fill: white;
   border: green;
   background-color: green;

@@ -208,7 +208,7 @@ const gameData = [
     "videoId": "c80dVYcL69E",
     "genre": "First-Person Shooter",
     "ageRating": "17",
-    "trending": false
+    "trending": true
   },
   {
     "title": "PUBG Battlegrounds",
@@ -217,7 +217,7 @@ const gameData = [
     "videoId": "u1oqfdh4xBY",
     "genre": "Shooter, Survival, Multiplayer",
     "ageRating": "12",
-    "trending": false
+    "trending": true
   },
   {
     "title": "Shatterline",
@@ -235,7 +235,7 @@ const gameData = [
     "videoId": "4I_QrwFd__o",
     "genre": "Tactical Shooter",
     "ageRating": "17",
-    "trending": false
+    "trending": true
   },
   {
     "title": "Destiny 2",
@@ -316,7 +316,7 @@ const gameData = [
     "videoId": "UMJb_mkqynU",
     "genre": "Action",
     "ageRating": "12",
-    "trending": false
+    "trending": true
   },
   {
     "title": "Genshin Impact",
@@ -352,7 +352,7 @@ const gameData = [
     "videoId": "-b0veB7q9P4",
     "genre": "Action, Shooter, Multiplayer, Competitive",
     "ageRating": "12",
-    "trending": false
+    "trending": true
   },
 
 // From Steam Free games
@@ -372,7 +372,7 @@ const gameData = [
   "videoId": "-cSFPIwMEq4",
   "genre": "MOBA, Strategy, Multiplayer",
   "ageRating": "12",
-  "trending": false
+  "trending": true
 },
 {
   "title": "Overwatch® 2",
@@ -408,7 +408,7 @@ const gameData = [
   "videoId": "pzgPXOw2plI",
   "genre": "Simulation, VR",
   "ageRating": "12",
-  "trending": false
+  "trending": true
 },
 {
   "title": "eFootball™",
@@ -585,6 +585,35 @@ filterGames('all');
 ageFilter.addEventListener('change', () => {
     filterGames(ageFilter.value);
 });
+
+// trending button
+
+document.addEventListener('DOMContentLoaded', function() {
+  const trendingLink = document.getElementById("trending");
+  const availableText = document.getElementById("available-text");
+
+  trendingLink.addEventListener("click", function(event) {
+      event.preventDefault();
+      availableText.textContent = "Most Played Games";
+      showTrendingGames();
+  });
+
+  // Initial display of all games (or filtered games)
+  filterGames('all');
+});
+
+function showTrendingGames() {
+  const trendingGames = gameData.filter(game => game.trending === true);
+
+  if (trendingGames.length === 0) {
+      createNoGamesMessage();
+  } else {
+
+      createGameCards(trendingGames);
+  }
+}
+
+//trending btn end
 
 
 var tag = document.createElement('script');
