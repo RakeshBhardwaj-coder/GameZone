@@ -90,14 +90,13 @@ nav {
       "content content content";
   justify-content: center;
   align-items: center;
-  padding: 10px; 
+  padding: 10px; /* Add padding for better spacing */
 }
 
 .col-left {
-  margin-bottom: 10px;
   grid-area: left;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center; /* Center logo vertically */
 }
 
@@ -115,46 +114,18 @@ nav {
   align-items: center;
 }
 
-
-#logo {
-  position: absolute; /* Or relative, depending on layout */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#logo img {
-  position: absolute;
-  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Smooth transition */
-}
-
-#logo:hover {
-  transform: scale(1.05); /* Slightly enlarge the container on hover */
-}
-
-#gamezone-logo {
-  top: -15px;
-  z-index: 2;
-  width: 100%;
-  filter: drop-shadow(3px 3px 5px rgb(18, 82, 219));
-  filter: drop-shadow(3px 3px 5px rgba(24, 209, 255, 0.699)) brightness(1.1) saturate(1.2) hue-rotate(10deg);
-}
-
-#gamezone-logo:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-  filter: drop-shadow(5px 5px 8px rgba(24, 209, 255, 0.8)) brightness(1.2) saturate(1.3) hue-rotate(15deg); /*Change the shadow and color a bit*/
-}
-
-#gamepad-logo {
-  z-index: 1;
-  width: 128px;
+.col-left a img {
+  width: 120px;
   height: auto;
+  max-width: 100%;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-#gamepad-logo:hover {
-  transform: scale(1.05) rotate(5deg); /* Slightly enlarge and rotate on hover */
-  filter: brightness(1.2); /*Increase brightness on hover*/
+.col-left a img:hover {
+  filter: drop-shadow(0 0 10px rgb(15, 202, 155));
+  transform: scale(1.1);
 }
+
 /* Search bar */
 .search-bar {
   position: relative;
