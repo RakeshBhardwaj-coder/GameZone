@@ -571,7 +571,7 @@ body.night-mode #registration-link:hover {
   font-family: "Anton", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 52px;
+  font-size: 40px;
   text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
   
 }
@@ -601,13 +601,13 @@ body.night-mode #registration-link:hover {
  
   text-align: center;
   margin-bottom: 20px;
-  font-family: "Open Sans", serif;
+   font-family: "Open Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-variation-settings:
     "wdth" 100; 
-    font-size: 48px;
+    font-size: 50px;
 }
 
 

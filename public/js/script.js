@@ -204,8 +204,53 @@ navLinksAnchors.forEach(link => {
 
 //mobile mode slider end
 
-//adding welcome animation
+// welcome Box animation
+const centerText = document.querySelector('.center-text');
+    const sparkle = document.querySelector('.sparkle');
+    const trailPoints = [];
 
+    centerText.addEventListener('mouseenter', () => {
+      centerText.classList.add('hovered');
+      sparkle.style.opacity = '1';
+    });
+
+    centerText.addEventListener('mouseleave', () => {
+      centerText.classList.remove('hovered');
+      sparkle.style.opacity = '0';
+
+      trailPoints.forEach(point => point.remove());
+      trailPoints.length = 0;
+    });
+
+    centerText.addEventListener('mousemove', (e) => {
+      sparkle.style.left = e.clientX + 'px';
+      sparkle.style.top = e.clientY + 'px';
+
+      const trailPoint = document.createElement('div');
+      trailPoint.classList.add('trail');
+      trailPoint.style.left = e.clientX + 'px';
+      trailPoint.style.top = e.clientY + 'px';
+
+      const trailSize = 5;
+      trailPoint.style.width = trailSize + 'px';
+      trailPoint.style.height = trailSize + 'px';
+      document.body.appendChild(trailPoint);
+      trailPoints.push(trailPoint);
+
+      if (trailPoints.length > 20) {
+        const removedPoint = trailPoints.shift();
+        removedPoint.remove();
+      }
+
+      trailPoints.forEach((point, index) => {
+        const size = trailSize * (1 + index / 5);
+        point.style.width = Math.min(10, size) + 'px';
+        point.style.height = Math.min(10, size) + 'px';
+        point.style.opacity = 1 - index / 20;
+      });
+    });
+
+    sparkle.style.opacity = '0';
 //welcome animation ends
 
 // Game Available 
