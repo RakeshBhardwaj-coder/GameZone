@@ -541,28 +541,24 @@ body.night-mode #registration-link:hover {
   /* Mobile View End */
 
 /* Imp Texts */
+
 .center-text {
   text-align: center;
   padding : 30px 0px;
   margin: 0;
-}
-.center-text {
   background: linear-gradient(135deg, #56d8e1, #2ba6c1, #0179a7); /* Gradient background */
-  padding: 20px;
   text-align: center;
   color: white; /* Default text color on the banner */
   position: relative; /* For positioning the image */
   overflow: hidden; /* Hide overflowing image parts */
-  animation: AnimationName 2s ease infinite;
+  transition: background-color 0.3s ease;
   height: 100%; /*added height example*/
   width: 100%; /*added width example*/
+  box-sizing: border-box;
+  cursor: none;
 }
 
-@keyframes AnimationName {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+
 
 #welcome-text{
   color: rgb(255, 255, 255);
@@ -581,6 +577,7 @@ body.night-mode #registration-link:hover {
 
 }
 #about-text{
+  
   color: rgb(255, 255, 255);
   text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
   font-family: "Open Sans", serif;
@@ -590,6 +587,36 @@ body.night-mode #registration-link:hover {
   font-variation-settings:
     "wdth" 100;
   font-size: 18px;
+}
+.sparkle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.trail {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: linear-gradient(to right, #fdfdfd48, #00eeff);
+  transition: transform 0.05s ease, opacity 0.1s ease, width 0.05s ease, height 0.05s ease;
+}
+
+.cursor {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #04eeff;
+  border: 2px solid rgba(40, 205, 255, 0.993); /* added blue border */
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
 
 /* Imp Texts End   */
@@ -609,7 +636,6 @@ body.night-mode #registration-link:hover {
     "wdth" 100; 
     font-size: 50px;
 }
-
 
 .center-filter{
   text-align: center;
