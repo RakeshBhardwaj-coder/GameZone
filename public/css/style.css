@@ -2,10 +2,11 @@
 
 
 /* Welcome-font */
-@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 
 /* about-font */
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Raleway:wght@401&family=Roboto:wght@417&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 /* font */
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
@@ -542,28 +543,53 @@ body.night-mode #registration-link:hover {
 /* Imp Texts */
 .center-text {
   text-align: center;
-  padding: 10px; /* Or whatever padding you prefer */
+  padding : 30px 0px;
+  margin: 0;
 }
+.center-text {
+  background: linear-gradient(135deg, #56d8e1, #2ba6c1, #0179a7); /* Gradient background */
+  padding: 20px;
+  text-align: center;
+  color: white; /* Default text color on the banner */
+  position: relative; /* For positioning the image */
+  overflow: hidden; /* Hide overflowing image parts */
+  animation: AnimationName 2s ease infinite;
+  height: 100%; /*added height example*/
+  width: 100%; /*added width example*/
+}
+
+@keyframes AnimationName {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 #welcome-text{
+  color: rgb(255, 255, 255);
   margin: 0;
   margin-top: 5px;
-  font-family: "Sigmar", serif;
+  font-family: "Anton", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 40px;
-  text-shadow: 0.1em 0.1em 0.2em rgba(128, 128, 128, 0.418);
+  font-size: 52px;
+  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
   
 }
+
+#gamezone-text{
+  color :#38b6ff
+
+}
 #about-text{
-  font-family: "Roboto", serif;
-  margin: 0;
-  margin-top: 10px;
+  color: rgb(255, 255, 255);
+  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+  font-family: "Open Sans", serif;
   font-optical-sizing: auto;
-  font-weight: 417;
+  font-weight: 400;
   font-style: normal;
   font-variation-settings:
-    "wdth" 100;  
-    font-size: 22px;
+    "wdth" 100;
+  font-size: 18px;
 }
 
 /* Imp Texts End   */
@@ -575,12 +601,13 @@ body.night-mode #registration-link:hover {
  
   text-align: center;
   margin-bottom: 20px;
+  font-family: "Open Sans", serif;
   font-optical-sizing: auto;
-  font-weight: 417;
+  font-weight: 400;
   font-style: normal;
   font-variation-settings:
-    "wdth" 100;  
-    font-size: 50px;
+    "wdth" 100; 
+    font-size: 48px;
 }
 
 
