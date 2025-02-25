@@ -539,6 +539,7 @@ function filterGames(selectedAge) {
     filteredGames = randomizeGames(gameData);
 }
 
+
 function randomizeGames(games) {
   // Fisher-Yates shuffle algorithm
   let shuffledGames = [...games]; // Create a copy to avoid modifying the original array
@@ -603,27 +604,23 @@ filterGames('all');
 
 // Event listener for the dropdown
 ageFilter.addEventListener('change', () => {
+  const availableText = document.getElementById("available-text"); 
+
+  if(availableText.textContent == "Available Games"){
     filterGames(ageFilter.value);
+} else{
+  showTrendingGames();
+}
 });
 
 // trending button
 
 document.addEventListener('DOMContentLoaded', function() {
   const trendingLink = document.getElementById("trending");
-  const availableText = document.getElementById("available-text");
+  const availableText = document.getElementById("available-text"); 
+  const ageFilterText = document.getElementById("age-filter-text");
 
-  trendingLink.addEventListener("click", function(event) {
-      event.preventDefault();
-      availableText.textContent = "Most Played Games";
-      showTrendingGames();
-  });
-
-  // Initial display of all games (or filtered games)
-  filterGames('all');
-
-});
-
-//auto-scroll
+  //auto-scroll
 document.getElementById('trending').addEventListener('click', function(event) {
   event.preventDefault(); // Prevent the default anchor behavior
 
@@ -634,15 +631,48 @@ document.getElementById('trending').addEventListener('click', function(event) {
   }
 });
 
+
+  trendingLink.addEventListener("click", function(event) {
+      event.preventDefault();
+      availableText.textContent = "Most Played Games";
+      ageFilterText.textContent = "Filter by Age on Trendings"
+
+      showTrendingGames();
+  });
+
+});
+
+
 function showTrendingGames() {
+  const ageFilter = document.getElementById('age-filter');
   const trendingGames = gameData.filter(game => game.trending === true);
+  getTrendingAndAgeFilteredGames(ageFilter.value,trendingGames);
 
-  if (trendingGames.length === 0) {
-      createNoGamesMessage();
-  } else {
+}
 
-      createGameCards(trendingGames);
+
+function getTrendingAndAgeFilteredGames(selectedAge,trendingGames) {
+  let trendingGameList = trendingGames; // Start with the full gameData
+
+
+  if (selectedAge !== 'all') {
+    const selectedAgeNum = parseInt(selectedAge, 10);
+    if (selectedAgeNum === 18) {
+      trendingGameList = trendingGameList.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
+    } else {
+      trendingGameList = trendingGameList.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
+    }
   }
+
+  // else {
+  //   filteredGames = randomizeGames(filteredGames);
+  // }
+if(trendingGameList.length == 0){
+  createNoGamesMessage();
+
+}else{
+createGameCards(trendingGameList); // for trending
+}
 }
 
 //trending btn end
@@ -653,10 +683,12 @@ tag.src = "https://www.youtube.com/iframe_api"; // Corrected URL
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-window.onYouTubeIframeAPIReady = function() { // Make it a global function
+window.onYouTubeIframeAPIReady = function() { 
+ 
+  let mobileAspect = .6;
   player = new YT.Player('player', {
-    height: isMobile() ? window.innerWidth * (9 / 16) : 230, // Responsive height based on device
-    width: isMobile() ? window.innerWidth : 400, // Responsive width based on device
+    height: isMobile() ? window.innerWidth * mobileAspect : 480, // Responsive height based on device
+    width: isMobile() ? window.innerWidth * mobileAspect : 854, // Responsive width based on device
     videoId: '', // Initialize without a video
     playerVars: {
       playersinline: 1,
@@ -666,10 +698,20 @@ window.onYouTubeIframeAPIReady = function() { // Make it a global function
     },
     events: {
       'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange,
+      //'onStateChange': onPlayerStateChange,
     }
   });
+   // Add resize listener
+   window.addEventListener('resize', onWindowResize);
 };
+// function onWindowResize() {
+//   if (player) {
+//     player.setSize(
+//       isMobile() ? window.innerWidth : 80 ,
+//       isMobile() ? window.innerWidth * (9 / 16) : 90
+//     );
+//   }
+// }
 
 function isMobile() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -728,5 +770,4 @@ closeButton.addEventListener('click', () => {
   player.stopVideo();
 });
 
-//createGameCards();
 //Game Available End

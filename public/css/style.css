@@ -377,6 +377,7 @@ nav {
 
 /* Mobiel View - Responsive Styles */
 @media (max-width: 768px) {
+
   .col-left a img {
     width: 120px; /* Further adjust logo size */
 }
@@ -422,7 +423,7 @@ body.night-mode #registration-link:hover {
     width: 220px;
     padding: 15px;
     position: absolute; /* Changed to absolute for proper positioning */
-    top: 270px;
+    top: 280px;
     right: auto; /* Remove the right alignment */
     left: 50%; /* Position the left edge at the center */
     transform: translateX(-50%); /* Center the menu precisely */
@@ -495,9 +496,29 @@ body.night-mode #registration-link:hover {
   }
 
   @media (max-width: 480px) {
+
     .col-left a img {
         width: 120px; /* Further adjust logo size */
     }
+
+    
+.nav-links {
+  display: none; /* Hide links by default */
+  flex-direction: column;
+  width: 220px;
+  padding: 15px;
+  position: absolute; /* Changed to absolute for proper positioning */
+  top: 260px;
+  right: auto; /* Remove the right alignment */
+  left: 50%; /* Position the left edge at the center */
+  transform: translateX(-50%); /* Center the menu precisely */
+  background-color: rgb(184, 184, 184);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Changed shadow to a more general color */
+  z-index: 10;
+  border-top: 1px solid #eee;
+  border-radius: 8px; /* Added border-radius for a smoother look */
+}
+
     body.night-mode #menu a{
       color: rgb(0, 0, 0);
       font-weight: 550;
