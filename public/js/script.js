@@ -539,15 +539,26 @@ function filterGames(selectedAge) {
     filteredGames = randomizeGames(gameData);
 }
 
+function isRefreshed(){
+  if (typeof window !== 'undefined' && typeof window.performance !== 'undefined' && typeof window.performance.navigation !== 'undefined') {
+    return window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD;
+}
+return false; // Default to false if performance API is not available
+}
 
 function randomizeGames(games) {
   // Fisher-Yates shuffle algorithm
+  if(isRefreshed){
   let shuffledGames = [...games]; // Create a copy to avoid modifying the original array
   for (let i = shuffledGames.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledGames[i], shuffledGames[j]] = [shuffledGames[j], shuffledGames[i]];
   }
   return shuffledGames;
+}
+  else{
+    return games;
+  }
 }
 
 
