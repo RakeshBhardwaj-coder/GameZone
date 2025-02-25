@@ -13,7 +13,9 @@
 /* import font end*/ 
 /* */
 
-
+body{
+  cursor: url('../icon/mouse-cursor.png'), auto;
+}
 /* start of night btn */
 body.night-mode {
   background-color: #002f4e;
