@@ -23,6 +23,12 @@ body.night-mode .nav-links a {
   color: #ff0000;
 }
 
+/* nav link menu */
+body.night-mode #menu a{
+  color:rgb(255, 255, 255)
+}
+/* nav link menu end */
+
 /*Registration button*/
 body.night-mode #registration-link {
   color: #ddd; /* Lighter text color in night mode */
@@ -420,6 +426,8 @@ nav {
 
   .nav-links a {
     margin: 10px 0;
+    color: red;
+    
 }
 
 .hamburger {
