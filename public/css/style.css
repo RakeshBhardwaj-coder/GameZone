@@ -247,6 +247,7 @@ nav {
 
 #menu a {
   color: rgb(0, 0, 0);
+  font-weight: 550;
 }
 #menu a:hover {
   background-color: #007bff;
@@ -374,8 +375,25 @@ nav {
   transform: translateX(30px);
 }
 
-/* Responsive Styles */
+/* Mobiel View - Responsive Styles */
 @media (max-width: 768px) {
+  .col-left a img {
+    width: 120px; /* Further adjust logo size */
+}
+body.night-mode #menu a{
+  color: rgb(0, 0, 0);
+  font-weight: 550;
+}
+body.night-mode #registration-link{
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
+  background: linear-gradient(135deg, #2980b9, #3498db); 
+}
+body.night-mode #registration-link:hover {
+  color: rgb(255, 255, 255);
+  transform: translateY(-5px); /* Lift the button slightly on hover */
+  box-shadow: 0 8px 20px rgba(180, 180, 180, 0.4); /* Increase shadow on hover */
+  background: linear-gradient(135deg, #2980b9, #3498db); /* Reverse the gradient on hover */
+}
   nav {
       grid-template-columns: 1fr; /* Single column layout */
       grid-template-rows: auto auto auto auto; /* Stack elements vertically */
@@ -386,7 +404,7 @@ nav {
           "content";
       padding: 5px; /* Reduce padding for smaller screens */
   }
-
+  
   .col-left, .col-center, .col-right {
       justify-content: center; /* Center all elements */
       align-items: center;
@@ -397,12 +415,6 @@ nav {
       width: 150px; /* Adjust logo size */
   }
 
-  
-@media (max-width: 480px) {
-  .col-left a img {
-      width: 120px; /* Further adjust logo size */
-  }
-}
 
   .nav-links {
     display: none; /* Hide links by default */
@@ -464,9 +476,45 @@ nav {
 
 .hamburger.active span:nth-child(3) {
   transform: translateY(-11px) rotate(-65deg);}
+
+
+
+ 
+  
+
+    .age-filter {
+        flex-direction: column; /* Stack label and select vertically */
+        align-items: center; /* Center items horizontally in column layout */
+        width: 95%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+  
+ 
    
   }
 
+  @media (max-width: 480px) {
+    .col-left a img {
+        width: 120px; /* Further adjust logo size */
+    }
+    body.night-mode #menu a{
+      color: rgb(0, 0, 0);
+      font-weight: 550;
+    }
+    body.night-mode #registration-link{
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
+      background: linear-gradient(135deg, #2980b9, #3498db); 
+    }
+    body.night-mode #registration-link:hover {
+      color: rgb(255, 255, 255);
+      transform: translateY(-5px); /* Lift the button slightly on hover */
+      box-shadow: 0 8px 20px rgba(180, 180, 180, 0.4); /* Increase shadow on hover */
+      background: linear-gradient(135deg, #2980b9, #3498db); /* Reverse the gradient on hover */
+    }
+  }
+
+  /* Mobile View End */
 
 /* Imp Texts */
 .center-text {
@@ -523,15 +571,7 @@ nav {
 #age-filter{
   font-size: large;
 }
-@media(max-width: 768px) {
-  .age-filter {
-      flex-direction: column; /* Stack label and select vertically */
-      align-items: center; /* Center items horizontally in column layout */
-      width: 95%;
-      margin-top: 20px;
-      margin-bottom: 20px;
-  }
-}
+  
 /* Filter panel Ends */
 
 #gameContainer {
