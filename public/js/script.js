@@ -206,51 +206,89 @@ navLinksAnchors.forEach(link => {
 
 // welcome Box animation
 const centerText = document.querySelector('.center-text');
-    const sparkle = document.querySelector('.sparkle');
-    const trailPoints = [];
+const sparkle = document.querySelector('.sparkle');
+const trailPoints = [];
+const cursor = document.querySelector('.cursor');
+let isInside = false;
 
-    centerText.addEventListener('mouseenter', () => {
-      centerText.classList.add('hovered');
-      sparkle.style.opacity = '1';
-    });
+function handlePointerEnter() {
+    centerText.classList.add('hovered');
+    sparkle.style.opacity = '1';
+    cursor.style.display = 'block';
+    isInside = true;
+}
 
-    centerText.addEventListener('mouseleave', () => {
-      centerText.classList.remove('hovered');
-      sparkle.style.opacity = '0';
+function handlePointerLeave() {
+    centerText.classList.remove('hovered');
+    sparkle.style.opacity = '0';
+    cursor.style.display = 'none';
+    isInside = false;
 
-      trailPoints.forEach(point => point.remove());
-      trailPoints.length = 0;
-    });
+    trailPoints.forEach(point => point.remove());
+    trailPoints.length = 0;
+}
 
-    centerText.addEventListener('mousemove', (e) => {
-      sparkle.style.left = e.clientX + 'px';
-      sparkle.style.top = e.clientY + 'px';
+function handlePointerMove(e) {
+    let clientX, clientY;
+    if (e.touches) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+    }
 
-      const trailPoint = document.createElement('div');
-      trailPoint.classList.add('trail');
-      trailPoint.style.left = e.clientX + 'px';
-      trailPoint.style.top = e.clientY + 'px';
+    const rect = centerText.getBoundingClientRect();
 
-      const trailSize = 5;
-      trailPoint.style.width = trailSize + 'px';
-      trailPoint.style.height = trailSize + 'px';
-      document.body.appendChild(trailPoint);
-      trailPoints.push(trailPoint);
+    if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) {
+        handlePointerLeave();
+        return;
+    }
 
-      if (trailPoints.length > 20) {
+    if (!isInside) {
+        handlePointerEnter();
+    }
+
+    sparkle.style.left = clientX + 'px';
+    sparkle.style.top = clientY + 'px';
+    cursor.style.left = clientX + 'px';
+    cursor.style.top = clientY + 'px';
+
+    const trailPoint = document.createElement('div');
+    trailPoint.classList.add('trail');
+    trailPoint.style.left = clientX + 'px';
+    trailPoint.style.top = clientY + 'px';
+
+    const trailSize = 5;
+    trailPoint.style.width = trailSize + 'px';
+    trailPoint.style.height = trailSize + 'px';
+    document.body.appendChild(trailPoint);
+    trailPoints.push(trailPoint);
+
+    if (trailPoints.length > 20) {
         const removedPoint = trailPoints.shift();
         removedPoint.remove();
-      }
+    }
 
-      trailPoints.forEach((point, index) => {
+    trailPoints.forEach((point, index) => {
         const size = trailSize * (1 + index / 5);
         point.style.width = Math.min(10, size) + 'px';
         point.style.height = Math.min(10, size) + 'px';
         point.style.opacity = 1 - index / 20;
-      });
     });
+}
 
-    sparkle.style.opacity = '0';
+centerText.addEventListener('mouseenter', handlePointerEnter);
+centerText.addEventListener('touchstart', handlePointerEnter);
+
+centerText.addEventListener('mouseleave', handlePointerLeave);
+centerText.addEventListener('touchend', handlePointerLeave);
+centerText.addEventListener('touchcancel', handlePointerLeave);
+
+centerText.addEventListener('mousemove', handlePointerMove);
+centerText.addEventListener('touchmove', handlePointerMove);
+
+sparkle.style.opacity = '0';
 //welcome animation ends
 
 // Game Available 
