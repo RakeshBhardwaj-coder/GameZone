@@ -75,6 +75,17 @@ searchInput.addEventListener('input', () => {
     }
 });
 
+//auto-scroll by searchbar
+document.getElementById('search-btn').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent the default anchor behavior
+
+  const imageElement = document.getElementById('gameContainer');
+
+  if (imageElement) {
+    imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
+  }
+});
+
 document.addEventListener('click', (event) => {
     if (!event.target.closest('.search-bar')) {
         suggestionsBox.style.display = 'none';
@@ -609,6 +620,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initial display of all games (or filtered games)
   filterGames('all');
+
+});
+
+//auto-scroll
+document.getElementById('trending').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent the default anchor behavior
+
+  const imageElement = document.getElementById('gameContainer');
+
+  if (imageElement) {
+    imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
+  }
 });
 
 function showTrendingGames() {
