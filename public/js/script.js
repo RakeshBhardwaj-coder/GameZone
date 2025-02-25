@@ -174,12 +174,21 @@ checkbox.addEventListener('change', function() {
 //mobile mode slider start
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
+const navLinksAnchors = document.querySelectorAll('.nav-links a');
 
 hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active'); // Toggle active class on hamburger
+    hamburger.classList.toggle('active');
     navLinks.classList.toggle('active');
 });
 
+navLinksAnchors.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+});
 
 
 //mobile mode slider end
