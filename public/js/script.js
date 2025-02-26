@@ -1,14 +1,39 @@
 // Logo Effect
 
+
 const gamezoneLogo = document.querySelector('#gamezone-logo img');
 const gamepadLogo = document.getElementById('gamepad-logo');
+let isRotated = false; // Track the rotation state
 
+// Function to apply the rotation
+function rotateGamepad(rotate) {
+  gamepadLogo.style.transform = rotate ? 'rotate(10deg)' : 'rotate(0deg)';
+}
+
+// Mouse enter event
 gamezoneLogo.addEventListener('mouseenter', () => {
-    gamepadLogo.style.transform = 'rotate(10deg)';
+  rotateGamepad(true);
 });
 
+// Mouse leave event
 gamezoneLogo.addEventListener('mouseleave', () => {
-    gamepadLogo.style.transform = 'rotate(0deg)';
+  if (!isRotated) { // Prevent resetting if it's currently "clicked"
+    rotateGamepad(false);
+  }
+});
+
+// Click/Touch event
+gamezoneLogo.addEventListener('click', () => {
+  isRotated = !isRotated; // Toggle rotation state
+  rotateGamepad(isRotated);
+});
+
+// Touch event (for mobile)
+gamezoneLogo.addEventListener('touchstart', (event) => {
+    event.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
+    isRotated = !isRotated;
+    rotateGamepad(isRotated);
+
 });
 // Logo effect end
 //Search suggestion started
