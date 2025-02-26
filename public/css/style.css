@@ -86,53 +86,46 @@ nav {
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto 1fr;
   grid-template-areas:
-    "left center right"
-    "content content content";
+      "left center right"
+      "content content content";
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 10px; /* Add padding for better spacing */
 }
 
-.logo {
+.col-left {
   grid-area: left;
-  position: relative; /* Make the logo container positioned */
   display: flex;
+  justify-content: left;
+  align-items: center; /* Center logo vertically */
+}
+
+.col-center {
+  grid-area: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.logo img {
+.col-right {
+  grid-area: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-left a img {
   width: 120px;
   height: auto;
   max-width: 100%;
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.logo a img:hover {
+.col-left a img:hover {
   filter: drop-shadow(0 0 10px rgb(15, 202, 155));
   transform: scale(1.1);
 }
-#gamepad-logo {
-  z-index: 0;
-  width: 150px;
-  height: auto;
-  position: relative; /* Make the gamepad logo container the positioning context */
-  display: inline-block; /* Allows inline centering */
-}
 
-#gamezone-logo {
-  z-index: 2;
-  width: 120px;
-  top: px;
-  left: 50px;
-  filter: drop-shadow(3px 3px 5px rgba(24, 209, 255, 0.699)) brightness(1.1) saturate(1.2) hue-rotate(10deg);
-  
-  /* Position the Gamezone logo */
-  position: absolute;
-  top: 0; /* Align to the top of the gamepad */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Adjust for center alignment */
-}
-/* logo end */
 /* Search bar */
 .search-bar {
   position: relative;
@@ -388,7 +381,7 @@ nav {
 /* Mobiel View - Responsive Styles */
 @media (max-width: 768px) {
 
-  .logo a img {
+  .col-left a img {
     width: 120px; /* Further adjust logo size */
 }
 body.night-mode #menu a{
@@ -416,12 +409,15 @@ body.night-mode #registration-link:hover {
       padding: 5px; /* Reduce padding for smaller screens */
   }
   
-  .logo, .col-center, .col-right {
+  .col-left, .col-center, .col-right {
       justify-content: center; /* Center all elements */
       align-items: center;
       width: 100%; /* Take full width */
   }
 
+  .col-left a img {
+      width: 150px; /* Adjust logo size */
+  }
 
 
   .nav-links {
@@ -504,7 +500,7 @@ body.night-mode #registration-link:hover {
 
   @media (max-width: 480px) {
 
-    .logo a img {
+    .col-left a img {
         width: 120px; /* Further adjust logo size */
     }
 
