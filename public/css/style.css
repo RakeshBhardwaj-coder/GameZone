@@ -129,12 +129,9 @@ nav {
 #gamepad-logo {
   position: absolute;
   transition: transform 0.3s ease-in-out;
-  top: 5px;
 }
 #gamezone-logo {
   position: relative;
-  top: -5px;
-  left: 0px;
 
 }
 #gamezone-logo:hover #gamepad-logo {
