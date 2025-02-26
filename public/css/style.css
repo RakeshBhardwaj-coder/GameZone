@@ -521,6 +521,42 @@ body.night-mode #registration-link:hover {
  
    
   }
+  
+  @media (max-width: 1034px) {
+
+
+    nav {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto auto;
+      grid-template-areas:
+          "left"
+          "center"
+          "right"
+          "content";
+      padding: 5px;
+      align-items: stretch;
+  }
+  
+
+  .col-left {
+      display: flex; /* Ensure flexbox is used */
+      justify-content: center;
+      align-items: center;
+      width: 100%; /* Explicitly set width */
+      min-width: 100px;
+  }
+
+  .col-center, .col-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+  }
+
+  .col-left img {
+      width: 120px;
+  }
+  }
 
   @media (max-width: 480px) {
 
@@ -560,6 +596,12 @@ body.night-mode #registration-link:hover {
       box-shadow: 0 8px 20px rgba(180, 180, 180, 0.4); /* Increase shadow on hover */
       background: linear-gradient(135deg, #2980b9, #3498db); /* Reverse the gradient on hover */
     }
+  }
+
+  
+  @media (max-width: 200px) {
+
+    
   }
 
   /* Mobile View End */
