@@ -99,15 +99,7 @@ nav {
   justify-content: left;
   align-items: center; 
   position: absolute;
-  padding-left: 10px;
-  height: 100px;
 }
-.col-left img {
-  max-width: 120px; /* Use max-width for responsiveness */
-  height: auto; /* Maintain aspect ratio */
-  margin-right: 10px;
-}
-
 
 .col-center {
   grid-area: center;
@@ -142,6 +134,7 @@ nav {
   position: relative;
   top: -5px;
   left: 0px;
+/* transition: 50% 50%; */
 }
 
 /* Search bar */
@@ -415,6 +408,39 @@ body.night-mode #registration-link:hover {
   background: linear-gradient(135deg, #2980b9, #3498db); /* Reverse the gradient on hover */
 }
 
+/* logo */
+@media (max-width: 768px) {
+  nav {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto auto;
+      grid-template-areas:
+          "left"
+          "center"
+          "right"
+          "content";
+      padding: 5px;
+      align-items: stretch;
+  }
+  
+
+  .col-left {
+      display: flex; /* Ensure flexbox is used */
+      justify-content: center;
+      align-items: center;
+      width: 100%; /* Explicitly set width */
+      min-width: 100px;
+  }
+
+  .col-center, .col-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+  }
+
+  .col-left img {
+      width: 120px;
+  }
 }
   /* logo end */
 
@@ -498,8 +524,8 @@ body.night-mode #registration-link:hover {
 
   @media (max-width: 480px) {
 
-    .col-left img {
-        max-width: 60px; /* Further adjust logo size */
+    .col-left a img {
+        width: 120px; /* Further adjust logo size */
     }
 
     
