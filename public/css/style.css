@@ -409,7 +409,7 @@ body.night-mode #registration-link:hover {
 }
 
 /* logo */
-@media (max-width: 768px) {
+
   nav {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto auto auto;
@@ -441,7 +441,7 @@ body.night-mode #registration-link:hover {
   .col-left img {
       width: 120px;
   }
-}
+
   /* logo end */
 
   .nav-links {
@@ -831,7 +831,6 @@ footer .copyright:hover {
   transition: color 0.3s ease;
 }
 
-/* Optional: Add social media icons */
 footer .social-icons {
   margin-top: 20px;
 }
