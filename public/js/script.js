@@ -1,41 +1,48 @@
 // Logo Effect
-
-
 const gamezoneLogo = document.querySelector('#gamezone-logo img');
 const gamepadLogo = document.getElementById('gamepad-logo');
-let isRotated = false; // Track the rotation state
+const logoLink = document.querySelector('.col-left a');
 
-// Function to apply the rotation
+let isRotated = false;
+const animationDuration = 200;
+
 function rotateGamepad(rotate) {
-  gamepadLogo.style.transform = rotate ? 'rotate(10deg)' : 'rotate(0deg)';
+    let rotation = rotate ? '10deg' : '0deg';
+    gamepadLogo.style.transition = `transform ${animationDuration / 1000}s ease`;
+    gamepadLogo.style.transform = `rotate(${rotation})`;
 }
 
-// Mouse enter event
-gamezoneLogo.addEventListener('mouseenter', () => {
-  rotateGamepad(true);
-});
-
-// Mouse leave event
-gamezoneLogo.addEventListener('mouseleave', () => {
-  if (!isRotated) { // Prevent resetting if it's currently "clicked"
-    rotateGamepad(false);
-  }
-});
-
-// Click/Touch event
-gamezoneLogo.addEventListener('click', () => {
-  isRotated = !isRotated; // Toggle rotation state
-  rotateGamepad(isRotated);
-});
-
-// Touch event (for mobile)
-gamezoneLogo.addEventListener('touchstart', (event) => {
-    event.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
+function handleLogoInteraction() {
     isRotated = !isRotated;
     rotateGamepad(isRotated);
+}
 
+gamezoneLogo.addEventListener('mouseenter', () => {
+    if (!isRotated) {
+        rotateGamepad(true);
+    }
+});
+
+gamezoneLogo.addEventListener('mouseleave', () => {
+    if (isRotated === false) {
+        rotateGamepad(false);
+    }
+});
+
+gamezoneLogo.addEventListener('click', (event) => {
+    handleLogoInteraction();
+    window.location.href = logoLink.getAttribute('href');
+});
+
+gamezoneLogo.addEventListener('touchstart', (event) => {
+    event.preventDefault();
+    handleLogoInteraction();
+    setTimeout(() => {
+        window.location.href = logoLink.getAttribute('href');
+    }, animationDuration);
 });
 // Logo effect end
+
 //Search suggestion started
 const searchInput = document.getElementById('search-input');
 const clearButton = document.getElementById('clear-button');
