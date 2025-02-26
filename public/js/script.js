@@ -1,4 +1,16 @@
-   
+// Logo Effect
+
+const gamezoneLogo = document.querySelector('#gamezone-logo img');
+const gamepadLogo = document.getElementById('gamepad-logo');
+
+gamezoneLogo.addEventListener('mouseenter', () => {
+    gamepadLogo.style.transform = 'rotate(10deg)';
+});
+
+gamezoneLogo.addEventListener('mouseleave', () => {
+    gamepadLogo.style.transform = 'rotate(0deg)';
+});
+// Logo effect end
 //Search suggestion started
 const searchInput = document.getElementById('search-input');
 const clearButton = document.getElementById('clear-button');

@@ -128,13 +128,17 @@ nav {
  }
 #gamepad-logo {
   position: absolute;
+  transition: transform 0.3s ease-in-out;
   top: 5px;
 }
 #gamezone-logo {
   position: relative;
   top: -5px;
   left: 0px;
-/* transition: 50% 50%; */
+
+}
+#gamezone-logo:hover #gamepad-logo {
+  transform: rotate(10deg);
 }
 
 /* Search bar */
