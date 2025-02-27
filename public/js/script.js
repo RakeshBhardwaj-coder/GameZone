@@ -617,7 +617,7 @@ const gameData = [
 {
   "title": "Star Trek Online",
   "description": "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space Lovers!",
-  "thumbnail": "https://i.pinimg.com/736x/de/48/f5/de48f56687249b7172c0fd025f8ab52a.jpg",
+  "thumbnail": "https://imgs.search.brave.com/LOmpJznhOCOM_eSP2rUi7JaJvttJc5MRKAfUJdd6yxM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5hcGkucGxheXN0/YXRpb24uY29tL3Z1/bGNhbi9pbWcvY2Zu/LzExMzA3dGdlOW44/SWIzRW9Hc2RHZnNC/ZWg0a3pGdW1rNG84/LXVhbFdIejlBSjk2/NFl3UUY4QnJGWFh6/bkdITEVRZV9wVFhC/aHZpTDc4cVVYQzRz/VmtaRDBKZjBwSy1z/cy5wbmc",
   "videoId": "8pzGjFCVhSE",
   "genre": "Sci-fi,MMO, Space, Multiplayer",
   "ageRating": "12",
