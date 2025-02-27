@@ -15,6 +15,7 @@
 /* */
 
 body{
+  user-select: none;
   cursor: url('../icon/mouse-cursor.png'), auto;
 }
 

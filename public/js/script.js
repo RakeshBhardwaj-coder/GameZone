@@ -417,7 +417,7 @@ const gameData = [
   },
   {
     "title": "Delta Force",
-    "description": "This iconic series returns free-to-play, offering tactical shooting across three modes: massive PvP battles, high-stakes extraction gameplay, and a revamped Black Hawk Down campaign. Dive into diverse, intense combat experiences.",
+    "description": "Delta force : tactical shooting across three modes: massive PvP battles, high-stakes extraction gameplay, and a revamped Black Hawk Down campaign. Dive into diverse, intense combat experiences.",
     "thumbnail": "https://i.pinimg.com/736x/a1/73/f2/a173f2b0e94d297c63a35cf06f269d65.jpg",
     "videoId": "4I_QrwFd__o",
     "genre": "Tactical Shooter",
@@ -427,7 +427,7 @@ const gameData = [
   {
     "title": "Destiny 2",
     "description": "Destiny 2 : the mysteries of the solar system and experience responsive first-person shooter combat you and your friends love to play together join them anytime, anywhere, to fight for humanity.",
-    "thumbnail": "https://i.pinimg.com/736x/37/04/8c/37048c17cb9fb0d5618c473891fd68cb.jpg",
+    "thumbnail": "https://imgs.search.brave.com/qF1Rca7xoYUYRqaKpjKPO8iTALvPazJNDcZV4MieUZo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuaWdkYi5jb20v/aWdkYi9pbWFnZS91/cGxvYWQvdF9jb3Zl/cl9iaWcvY28xbjZ4/LnBuZw",
     "videoId": "dZrxWFrd1zQ",
     "genre": "Adventure,Shooter,Action",
     "ageRating": "16",
@@ -435,7 +435,7 @@ const gameData = [
   },
   {
     "title": "Fortnite: All Editions",
-    "description": "Fortnite offers Battle Royale, Zero Build, live events, and millions of creator-made games. Race, parkour, survive—find your adventure. Age ratings ensure safe fun for everyone.",
+    "description": "Fortnite offers Battle Royale, Zero Build, live events, and millions of creator-made games. Race, parkour, survive—find your adventure. Available:- Fortnite, Fortnite OG, Fortnite Blastic,  Fortnite Festival, Fortnite Reload.",
     "thumbnail": "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
     "videoId": "dQw4w9WgXcQ",
     "genre": "Battle Royale",
@@ -599,7 +599,7 @@ const gameData = [
 },
 {
   "title": "eFootball™",
-  "description": "The football game with a worldwide total of 750 million downloads is waiting for you! Play eFootball™ with users around the world, Best for Sport lovers & under the top-10 list of steam DB.",
+  "description": "eFootball : A worldwide total of 750 million downloads is waiting for you! to Play eFootball™ with users around the world and get the experience like real game. Best for Sport lovers & under the top-10 list of steam DB.",
   "thumbnail": "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
   "videoId": "BdyXsZMPjWo",
   "genre": "Football, Sports",
@@ -607,7 +607,7 @@ const gameData = [
   "trending": false
 }, {
   "title": "The First Descendant",
-  "description": "A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
+  "description": "The First Descendant : A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
   "thumbnail": "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
   "videoId": "e15nHHJjpJg",
   "genre": "Looter shooter, PvE",
@@ -634,7 +634,7 @@ const gameData = [
 },
 {
   "title": "Halo Infinite",
-  "description": "Experience the halo sci-fi Action game. Halo is bigger than ever. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the sci-fi Action story game Lovers!",
+  "description": "Experience the halo sci-fi Action game with epic story that engage you to this game. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the <br>sci-fi Action story game Lovers!",
   "thumbnail": "https://www.charlieintel.com/cdn-image/wp-content/uploads/2021/06/New-concept-art-leaked-for-Halo-Infinite.jpg?width=1200&quality=60&format=auto",
   "videoId": "rFh2i4AlPD4",
   "genre": "FPS, Multiplayer, Singleplayer",
@@ -669,7 +669,7 @@ const closeButton = document.getElementById('close-button');
 let player;
 const toggleViewButton = document.getElementById('toggleView');
 
-let currentView = 'grid'; // Default view (start with grid)
+let currentView = 'detail'; // Default view (start with grid)
 
 function createGameCards(games) {
     gameContainer.innerHTML = '';
@@ -700,11 +700,11 @@ function toggleView() {
   const viewIcon = document.getElementById('viewIcon');
   if (currentView === 'grid') {
     currentView = 'detail';
-    viewIcon.src = '/public/icon/i3.png'; // Replace with your detail view icon
+    viewIcon.src = '/public/icon/detail-view.png'; // Replace with your detail view icon
     viewIcon.alt = 'Detail View';
   } else {
     currentView = 'grid';
-    viewIcon.src = '/public/icon/grid-view2.png'; // Replace with your grid view icon
+    viewIcon.src = '/public/icon/grid-view.png'; // Replace with your grid view icon
     viewIcon.alt = 'Grid View';
   }
     const gameCards = document.querySelectorAll('.game-card');
