@@ -678,6 +678,7 @@ function createGameCards(games) {
         gameCard.classList.add('game-card');
         gameCard.classList.add(`${currentView}-view`); // Initial view
 
+        
         gameCard.innerHTML = `
             <img src="${game.thumbnail}" alt="${game.title}">
             <div class="game-card-content">
@@ -698,10 +699,10 @@ function createGameCards(games) {
 function toggleView() {
     if (currentView === 'grid') {
         currentView = 'detail';
-        toggleViewButton.textContent = 'Grid View';
+        toggleViewButton.textContent = 'Detail View';
     } else {
         currentView = 'grid';
-        toggleViewButton.textContent = 'Detail View';
+        toggleViewButton.textContent = 'Grid View';
     }
 
     const gameCards = document.querySelectorAll('.game-card');
