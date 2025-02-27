@@ -932,6 +932,34 @@ body.night-mode #registration-link:hover {
   line-height: 1.4; /* Improve readability */
 }
 
+/* Grid View Specific Styles */
+.game-card.grid-view {
+  width: 150px; /* Half width for grid view */
+}
+
+.game-card.grid-view img {
+  height: 150px; /* Adjusted height for grid view */
+  border-radius: 8px; /* Round all corners in grid view */
+}
+
+.game-card.grid-view .game-card-content {
+  display: none; /* Hide content in grid view */
+}
+
+/* Detail View Specific Styles */
+.game-card.detail-view {
+  width: 300px;
+}
+.game-card.detail-view img{
+  height: 400px;
+  border-radius: 8px 8px 0 0;
+}
+.game-card.detail-view .game-card-content{
+  display: block;
+}
+/* view end */
+
+
 #video-popup {
   position: fixed;
 top: 50%;
