@@ -1,1 +1,3 @@
+User-agent: *
+  Disallow:
   Sitemap: https://www.playgamezonegames.web.app/sitemap.xml
