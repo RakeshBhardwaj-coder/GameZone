@@ -713,6 +713,7 @@ body.night-mode #registration-link:hover {
         font-size: small;
     }
 
+
     /* Game Container Adjustments */
     #gameContainer {
         padding: 10px;
@@ -867,6 +868,59 @@ body.night-mode #registration-link:hover {
 }
   
 /* Filter panel Ends */
+
+
+#view-icon-text {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 60px; /* Add some space between label and button */
+}
+
+#viewIcon {
+  width: 32px; /* Consistent image size */
+  height: 32px; /* Consistent image size */
+  display: block; /* Ensure no extra spacing */
+}
+
+#viewControls {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  margin: 0px auto; /* Add more margin for better spacing */
+}
+
+#toggleView {
+  margin-left: 10px;
+
+  background: #ffffff; /* Light background */
+  border: 0px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 4px 8px; /* Padding for button */
+  cursor: pointer;
+  display: flex; /* Use flex to center the image */
+  align-items: center;
+  justify-content: center;
+}
+
+#toggleView:hover {
+  background: #e0e0e0; /* Slightly darker on hover */
+}
+
+
+/* Style for the filter section */
+.center-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  margin: 20px auto; /* Add more margin for better spacing */
+}
+
+.center-filter label,
+.center-filter select {
+  margin: 5px; /* Add some margin around labels and select */
+}
+    /* View grid end */
 
 #gameContainer {
   display: flex;

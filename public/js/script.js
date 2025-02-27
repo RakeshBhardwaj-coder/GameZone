@@ -697,14 +697,16 @@ function createGameCards(games) {
 }
 
 function toggleView() {
-    if (currentView === 'grid') {
-        currentView = 'detail';
-        toggleViewButton.textContent = 'Detail View';
-    } else {
-        currentView = 'grid';
-        toggleViewButton.textContent = 'Grid View';
-    }
-
+  const viewIcon = document.getElementById('viewIcon');
+  if (currentView === 'grid') {
+    currentView = 'detail';
+    viewIcon.src = '/public/icon/detail-view2.png'; // Replace with your detail view icon
+    viewIcon.alt = 'Detail View';
+  } else {
+    currentView = 'grid';
+    viewIcon.src = '/public/icon/grid-view2.png'; // Replace with your grid view icon
+    viewIcon.alt = 'Grid View';
+  }
     const gameCards = document.querySelectorAll('.game-card');
 
     gameCards.forEach(card => {
