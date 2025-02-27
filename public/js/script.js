@@ -700,11 +700,11 @@ function toggleView() {
   const viewIcon = document.getElementById('viewIcon');
   if (currentView === 'grid') {
     currentView = 'detail';
-    viewIcon.src = '/icon/detail-view.png'; // Replace with your detail view icon
+    viewIcon.src = '../icon/detail-view.png'; // Replace with your detail view icon
     viewIcon.alt = 'Detail View';
   } else {
     currentView = 'grid';
-    viewIcon.src = '/icon/grid-view.png'; // Replace with your grid view icon
+    viewIcon.src = '../icon/grid-view.png'; // Replace with your grid view icon
     viewIcon.alt = 'Grid View';
   }
     const gameCards = document.querySelectorAll('.game-card');
