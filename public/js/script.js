@@ -667,17 +667,16 @@ const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
 const closeButton = document.getElementById('close-button');
 let player;
-const detailViewButton = document.getElementById('detailView');
-const gridViewButton = document.getElementById('gridView');
+const toggleViewButton = document.getElementById('toggleView');
 
-let currentView = 'detail'; // Default view
+let currentView = 'grid'; // Default view (start with grid)
 
 function createGameCards(games) {
     gameContainer.innerHTML = '';
     games.forEach(game => {
         const gameCard = document.createElement('div');
         gameCard.classList.add('game-card');
-        gameCard.classList.add('detail-view'); // Initial view
+        gameCard.classList.add(`${currentView}-view`); // Initial view
 
         gameCard.innerHTML = `
             <img src="${game.thumbnail}" alt="${game.title}">
@@ -696,23 +695,26 @@ function createGameCards(games) {
     });
 }
 
-function switchView(view) {
-    currentView = view;
+function toggleView() {
+    if (currentView === 'grid') {
+        currentView = 'detail';
+        toggleViewButton.textContent = 'Grid View';
+    } else {
+        currentView = 'grid';
+        toggleViewButton.textContent = 'Detail View';
+    }
+
     const gameCards = document.querySelectorAll('.game-card');
 
     gameCards.forEach(card => {
         card.classList.remove('detail-view', 'grid-view');
-        card.classList.add(`${view}-view`);
+        card.classList.add(`${currentView}-view`);
     });
 }
 
-detailViewButton.addEventListener('click', () => {
-    switchView('detail');
-});
+toggleViewButton.addEventListener('click', toggleView);
 
-gridViewButton.addEventListener('click', () => {
-    switchView('grid');
-});
+
 
 
 function filterGames(selectedAge) {
