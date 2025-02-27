@@ -43,6 +43,46 @@ gamezoneLogo.addEventListener('touchstart', (event) => {
 });
 // Logo effect end
 
+// scroll-up button 
+// Scroll-up button
+function topFunction() {
+  const scrollToTop = () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+      window.requestAnimationFrame(scrollToTop);
+      window.scrollTo(0, c - c / 8); // Adjust the divisor for speed
+    }
+  };
+  scrollToTop();
+}
+
+// Scroll-up button
+
+function pageUpBtn() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+window.addEventListener('scroll', () => {
+  const pageUpButton = document.getElementById('pageUpButton');
+  if (window.scrollY > 300) { // Show after scrolling 300px
+    pageUpButton.classList.remove('hidden');
+    pageUpButton.classList.add('visible');
+  } else {
+    pageUpButton.classList.remove('visible');
+    pageUpButton.classList.add('hidden');
+  }
+});
+
+// Ensure the button is initially hidden
+document.addEventListener('DOMContentLoaded', () => {
+  const pageUpButton = document.getElementById('pageUpButton');
+  pageUpButton.classList.add('hidden');
+});
+// scroll-up button end
+
 //Search suggestion started
 const searchInput = document.getElementById('search-input');
 const clearButton = document.getElementById('clear-button');
