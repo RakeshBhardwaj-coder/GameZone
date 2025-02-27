@@ -912,12 +912,6 @@ body.night-mode #registration-link:hover {
   display: block; /* Prevent image from creating extra space */
   border-radius: 8px 8px 0 0; /* Rounded top corners */
 }
-/* change grid-view */
-.changed-view {
-  width: 50%;
-  height: 200px;
-}
-/* change grid-view end */
 
 .game-card-content {
   padding: 15px;
