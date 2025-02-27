@@ -689,9 +689,18 @@ function createGameCards(games) {
             openPopup(game.videoId);
         });
 
+        const changeViewButton = gameCard.querySelector('.changeView');
+        const gameCardImage = gameCard.querySelector('img');
+
+        changeViewButton.addEventListener('click', function() {
+            gameCardImage.classList.toggle('changed-view');
+        });
+
+
         gameContainer.appendChild(gameCard);
     });
 }
+
 function filterGames(selectedAge) {
   let filteredGames = gameData;
   if (selectedAge !== 'all') {
