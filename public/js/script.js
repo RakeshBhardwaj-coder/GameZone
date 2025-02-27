@@ -670,28 +670,47 @@ let player;
 
 
 function createGameCards(games) {
-    gameContainer.innerHTML = '';
-    games.forEach(game => { // Use the passed 'games' array
-        const gameCard = document.createElement('div');
-        gameCard.classList.add('game-card');
-        
+  const gameContainer = document.getElementById('gameContainer');
+  gameContainer.innerHTML = '';
 
-        gameCard.innerHTML = `
-            <img src="${game.thumbnail}" alt="${game.title}">
-            <div class="game-card-content">
-                <h3>${game.title}</h3>
-                <p>${game.description}</p>
-            </div>
-        `;
+  const isGridView = gameContainer.dataset.gridView === 'true'; // Get grid view state from data attribute
 
-        const image = gameCard.querySelector('img');
-        image.addEventListener('click', () => {
-            openPopup(game.videoId);
-        });
+  games.forEach(game => {
+      const gameCard = document.createElement('div');
+      gameCard.classList.add('game-card');
 
-        gameContainer.appendChild(gameCard);
-    });
+      if (isGridView) {
+          gameCard.classList.add('grid-view');
+      }
+
+      gameCard.innerHTML = `
+          <img src="${game.thumbnail}" alt="${game.title}">
+          <div class="game-card-content">
+              <h3>${game.title}</h3>
+          </div>
+      `;
+
+      const image = gameCard.querySelector('img');
+      image.addEventListener('click', () => {
+          openPopup(game.videoId);
+      });
+
+      gameContainer.appendChild(gameCard);
+  });
 }
+
+// grid view
+const toggleGridViewButton = document.getElementById('toggleGridViewButton');
+
+toggleGridViewButton.addEventListener('click', () => {
+    const currentGridView = gameContainer.dataset.gridView === 'true';
+    gameContainer.dataset.gridView = !currentGridView; // Toggle the data attribute
+    createGameCards(yourGamesArray); // Re-render the cards
+});
+
+// Initial call to create cards
+createGameCards(yourGamesArray); // Replace yourGamesArray with your games data
+// grid view end
 function filterGames(selectedAge) {
   let filteredGames = gameData;
   if (selectedAge !== 'all') {
