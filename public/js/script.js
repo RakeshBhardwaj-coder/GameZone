@@ -700,7 +700,7 @@ function toggleView() {
   const viewIcon = document.getElementById('viewIcon');
   if (currentView === 'grid') {
     currentView = 'detail';
-    viewIcon.src = '/public/icon/detail-view2.png'; // Replace with your detail view icon
+    viewIcon.src = '/public/icon/i3.png'; // Replace with your detail view icon
     viewIcon.alt = 'Detail View';
   } else {
     currentView = 'grid';
