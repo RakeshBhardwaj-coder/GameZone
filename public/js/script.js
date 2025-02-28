@@ -1,16 +1,45 @@
 // music
 var myAudio = document.getElementById("myAudio");
-var isMuted = false;
+var muteButton = document.getElementById("muteBtn");
 
-function muteMusic() {
-  if (isMuted) {
+const videoOnMute = document.getElementById('gameContainer');
+const videoCloseUnMute = document.getElementById('close-button');
+var isGlobalMuted = true;
+
+function toggleMute() {
+  if (isGlobalMuted) {
     myAudio.muted = false;
-    isMuted = false;
-  } else {
+    isGlobalMuted = false;
+    muteButton.textContent = "Mute"; // Change button text to "Mute"
+  }
+   else if(!isGlobalMuted) {
     myAudio.muted = true;
+    isGlobalMuted = true;
+    muteButton.textContent = "Unmute"; // Change button text to "Unmute"
+  }
+  if(isGlobalMuted){
     isMuted = true;
+  }else{
+   isMuted = false;
   }
 }
+
+videoOnMute.addEventListener('click', () => {
+
+  
+    myAudio.muted = true;
+    muteButton.textContent = "Unmute";
+  
+});
+
+videoCloseUnMute.addEventListener('click', () => {
+if(!isGlobalMuted){
+  myAudio.muted = false;
+  muteButton.textContent = "Mute";
+}
+});
+muteButton.textContent = "Mute";
+
 // music end
 
 // Logo Effect
