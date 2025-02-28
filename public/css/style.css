@@ -883,8 +883,8 @@ body.night-mode #registration-link:hover {
   display: block; /* Ensure no extra spacing */
 }
 #gridIcon{
-  width: 32px; /* Consistent image size */
-  height: 32px; /* Consistent image size */
+  width: 24px; /* Consistent image size */
+  height: 24px; /* Consistent image size */
   display: block; /* Ensure no extra spacing */
 }
 #viewControls {

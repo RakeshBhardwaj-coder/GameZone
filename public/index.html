@@ -22,7 +22,12 @@
 <button class="pageup-btn hidden" id="pageUpButton" onclick="pageUpBtn()">
   <img src="icon/up-scroller.png" alt="Scroll to Top">
 </button>
-  
+  <!-- Music  -->
+
+  <audio id="myAudio" autoplay loop>
+    <source src="/public/audio/background_music.wav" type="audio/mp3">
+  </audio>
+  <!-- Music End -->
   <!-- header started  -->
   <nav>
     
@@ -93,6 +98,8 @@
             <input type="checkbox" class="input">
             <span class="slider"></span>
           </label>
+
+          <button onclick="muteMusic()"> mute</button>
       </div>
     </div>
            <!-- Menu Bar hamburger End --> 

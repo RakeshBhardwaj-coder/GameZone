@@ -1,3 +1,18 @@
+// music
+var myAudio = document.getElementById("myAudio");
+var isMuted = false;
+
+function muteMusic() {
+  if (isMuted) {
+    myAudio.muted = false;
+    isMuted = false;
+  } else {
+    myAudio.muted = true;
+    isMuted = true;
+  }
+}
+// music end
+
 // Logo Effect
 const gamezoneLogo = document.querySelector('#gamezone-logo img');
 const gamepadLogo = document.getElementById('gamepad-logo');
