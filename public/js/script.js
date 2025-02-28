@@ -732,9 +732,9 @@ function createGameCards(games) {
         gameCard.classList.add('game-card');
         gameCard.classList.add(`${currentView}-view`); // Initial view
 
-        
         gameCard.innerHTML = `
             <img src="${game.thumbnail}" alt="${game.title}">
+            <span class="game-title-overlay">${game.title}</span> 
             <div class="game-card-content">
                 <h3>${game.title}</h3>
                 <p>${game.description}</p>
@@ -745,6 +745,22 @@ function createGameCards(games) {
         image.addEventListener('click', () => {
             openPopup(game.videoId);
         });
+
+        // Touch event listeners
+        gameCard.addEventListener('touchstart', () => {
+          if (currentView === 'grid') { // Apply only in grid view
+              gameCard.classList.add('hover-effect');
+          }
+      });
+
+      gameCard.addEventListener('touchend', () => {
+          gameCard.classList.remove('hover-effect');
+      });
+
+      gameCard.addEventListener('touchcancel', () => {
+          gameCard.classList.remove('hover-effect');
+      });
+
 
         gameContainer.appendChild(gameCard);
     });
