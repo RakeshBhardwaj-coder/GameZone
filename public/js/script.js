@@ -697,17 +697,17 @@ function createGameCards(games) {
 }
 
 function toggleView() {
-  const viewIcon = document.getElementById('viewIcon');
+  const detailIcon = document.getElementById('detailIcon');
   const gridIcon = document.getElementById('gridIcon');
 
   if (currentView === 'grid') {
     currentView = 'detail';
-    viewIcon.style.display = 'inline';
+    detailIcon.style.display = 'inline';
       gridIcon.style.display = 'none';
 
   } else {
     currentView = 'grid';
-    viewIcon.style.display = 'none';
+    detailIcon.style.display = 'none';
       gridIcon.style.display = 'inline';
   }
     const gameCards = document.querySelectorAll('.game-card');

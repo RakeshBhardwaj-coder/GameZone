@@ -877,9 +877,9 @@ body.night-mode #registration-link:hover {
   margin-left: 60px; /* Add some space between label and button */
 }
 
-#viewIcon {
-  width: 32px; /* Consistent image size */
-  height: 32px; /* Consistent image size */
+#detailIcon {
+  width: 24px; /* Consistent image size */
+  height: 24px; /* Consistent image size */
   display: block; /* Ensure no extra spacing */
 }
 #gridIcon{
