@@ -1033,11 +1033,11 @@ body.night-mode #registration-link:hover {
 
 /* Grid View Specific Styles */
 .game-card.grid-view {
-  width: 150px; /* Half width for grid view */
+  width: 300px; /* Half width for grid view */
 }
 
 .game-card.grid-view img {
-  height: 150px; /* Adjusted height for grid view */
+  height: 400px; /* Adjusted height for grid view */
   border-radius: 8px; /* Round all corners in grid view */
 }
 

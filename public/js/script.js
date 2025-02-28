@@ -723,7 +723,7 @@ const closeButton = document.getElementById('close-button');
 let player;
 const toggleViewButton = document.getElementById('toggleView');
 
-let currentView = 'detail'; // Default view (start with grid)
+let currentView = 'detail'; 
 
 function createGameCards(games) {
     gameContainer.innerHTML = '';
