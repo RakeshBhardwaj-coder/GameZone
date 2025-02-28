@@ -977,20 +977,12 @@ window.onYouTubeIframeAPIReady = function() {
     },
     events: {
       'onReady': onPlayerReady,
-      //'onStateChange': onPlayerStateChange,
+      'onStateChange': onPlayerStateChange,
     }
   });
    // Add resize listener
    window.addEventListener('resize', onWindowResize);
 };
-// function onWindowResize() {
-//   if (player) {
-//     player.setSize(
-//       isMobile() ? window.innerWidth : 80 ,
-//       isMobile() ? window.innerWidth * (9 / 16) : 90
-//     );
-//   }
-// }
 
 function isMobile() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -1029,17 +1021,9 @@ window.addEventListener('blur', function() {
     }
 });
 
-// Sort the gameData array by ageRating (ascending)
-// gameData.sort((a, b) => {
-//   const ageA = parseInt(a.ageRating);
-//   const ageB = parseInt(b.ageRating);
 
-//   if (isNaN(ageA)) return 1; // Put games with invalid age ratings at the end
-//   if (isNaN(ageB)) return -1;
-
-//   return ageB - ageA;
-// });
 function openPopup(videoId) {
+  // console.log("openPopup called with videoId:", videoId);
   player.loadVideoById(videoId);
   videoPopup.style.display = 'flex'; // Use flex for centering
 }
