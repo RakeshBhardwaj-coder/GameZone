@@ -1,44 +1,52 @@
 // music
 var myAudio = document.getElementById("myAudio");
 var muteButton = document.getElementById("muteBtn");
+const muteIcon = document.getElementById("muteIcon");
+const unmuteIcon = document.getElementById("unmuteIcon");
 
 const videoOnMute = document.getElementById('gameContainer');
 const videoCloseUnMute = document.getElementById('close-button');
 var isGlobalMuted = true;
 
 function toggleMute() {
-  if (isGlobalMuted) {
-    myAudio.muted = false;
-    isGlobalMuted = false;
-    muteButton.textContent = "Mute"; // Change button text to "Mute"
-  }
-   else if(!isGlobalMuted) {
-    myAudio.muted = true;
-    isGlobalMuted = true;
-    muteButton.textContent = "Unmute"; // Change button text to "Unmute"
-  }
-  if(isGlobalMuted){
-    isMuted = true;
-  }else{
-   isMuted = false;
-  }
-}
+  isGlobalMuted = !isGlobalMuted; // Toggle the boolean value
 
-videoOnMute.addEventListener('click', () => {
+  // Update button text or perform other actions based on isGlobalMuted
+  const muteButton = document.getElementById('muteBtn'); // Assuming you have a button with id="muteButton"
+
+  if (muteButton) { // Ensure the button exists
+    if (isGlobalMuted) {
+      myAudio.pause();
+
+      muteIcon.style.display = "none";
+      unmuteIcon.style.display = "inline"; // Or any text indicating it's muted
+    } else {
+  myAudio.play();
+  muteIcon.style.display = "inline";
+  unmuteIcon.style.display = "none"; // Or any text indicating it's unmuted
+    }
+  }
+  }
+
+
+
+// 
+
+// videoOnMute.addEventListener('click', () => {
 
   
-    myAudio.muted = true;
-    muteButton.textContent = "Unmute";
+//     myAudio.muted = true;
+//     muteButton.textContent = "Unmute";
   
-});
+// });
 
-videoCloseUnMute.addEventListener('click', () => {
-if(!isGlobalMuted){
-  myAudio.muted = false;
-  muteButton.textContent = "Mute";
-}
-});
-muteButton.textContent = "Mute";
+// videoCloseUnMute.addEventListener('click', () => {
+// if(!isGlobalMuted){
+//   myAudio.muted = false;
+//   muteButton.textContent = "Mute";
+// }
+// });
+
 
 // music end
 
