@@ -491,7 +491,7 @@ const gameData = [
     "title": "Fortnite: All Editions",
     "description": "Fortnite offers Battle Royale, Zero Build, live events, and millions of creator-made games. Race, parkour, survive—find your adventure. Available:- Fortnite, Fortnite OG, Fortnite Blastic,  Fortnite Festival, Fortnite Reload.",
     "thumbnail": "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
-    "videoId": "dQw4w9WgXcQ",
+    "videoId": "KCxZ4njtiuw",
     "genre": "Battle Royale",
     "ageRating": "17",
     "trending": false

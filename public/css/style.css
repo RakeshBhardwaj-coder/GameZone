@@ -21,7 +21,7 @@ body{
 /* Mute/Unmute */
 #muteBtn{
   border: 0px;
-  background-color: white;
+  background: none;
 }
 #muteIcon{
   width: 24px; 
@@ -81,7 +81,6 @@ body{
 /* start of night btn */
 body.night-mode #muteBtn{
   border: 0px;
-  background-color: rgb(0, 0, 0);
 }
 body.night-mode  #muteBtn img{
   filter: invert(100%);
@@ -475,7 +474,9 @@ nav {
 @media (max-width: 768px) {
 
  
-
+ body.night-mode #muteBtn img{
+  filter: invert(0%);
+}
 body.night-mode #menu a{
   color: rgb(0, 0, 0);
   font-weight: 550;
@@ -608,7 +609,10 @@ body.night-mode #registration-link:hover {
   }
   
   @media (max-width: 1034px) {
-
+ 
+    body.night-mode #muteBtn img{
+      filter: invert(0%);
+    }
 
     nav {
       grid-template-columns: 1fr;
@@ -644,7 +648,10 @@ body.night-mode #registration-link:hover {
   }
 
   @media (max-width: 480px) {
-
+ 
+    body.night-mode #muteBtn img{
+      filter: invert(0%);
+    }
     .col-left a img {
         width: 120px; /* Further adjust logo size */
     }
@@ -687,6 +694,10 @@ body.night-mode #registration-link:hover {
 
   @media (max-width: 300px) and (min-width: 150px) {
 
+     
+ body.night-mode #muteBtn img{
+  filter: invert(0%);
+}
     /* Search Bar Adjustments */
     .search-bar {
         margin: 10px 5px;
