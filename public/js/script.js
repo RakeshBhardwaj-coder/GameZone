@@ -6,7 +6,7 @@ const unmuteIcon = document.getElementById("unmuteIcon");
 
 const videoOnMute = document.getElementById('gameContainer');
 const videoCloseUnMute = document.getElementById('close-button');
-var isGlobalMuted = true;
+var isGlobalMuted = false;
 
 function toggleMute() {
   isGlobalMuted = !isGlobalMuted; // Toggle the boolean value
@@ -16,14 +16,14 @@ function toggleMute() {
 
   if (muteButton) { // Ensure the button exists
     if (isGlobalMuted) {
-      myAudio.pause();
+      myAudio.play();
 
-      muteIcon.style.display = "inline";
-      unmuteIcon.style.display = "none"; // Or any text indicating it's muted
+      muteIcon.style.display = "none";
+      unmuteIcon.style.display = "inline"; // Or any text indicating it's muted
     } else {
-  myAudio.play();
-  muteIcon.style.display = "none";
-  unmuteIcon.style.display = "inline"; // Or any text indicating it's unmuted
+  myAudio.pause();
+  muteIcon.style.display = "inline";
+  unmuteIcon.style.display = "none"; // Or any text indicating it's unmuted
     }
   }
   }
@@ -32,20 +32,22 @@ function toggleMute() {
 
 // 
 
-// videoOnMute.addEventListener('click', () => {
+videoOnMute.addEventListener('click', () => {
 
-  
-//     myAudio.muted = true;
-//     muteButton.textContent = "Unmute";
-  
-// });
+    myAudio.pause();
 
-// videoCloseUnMute.addEventListener('click', () => {
-// if(!isGlobalMuted){
-//   myAudio.muted = false;
-//   muteButton.textContent = "Mute";
-// }
-// });
+    muteIcon.style.display = "inline";
+    unmuteIcon.style.display = "none";
+  
+});
+
+videoCloseUnMute.addEventListener('click', () => {
+if(isGlobalMuted){
+  myAudio.play();
+  muteIcon.style.display = "none";
+  unmuteIcon.style.display = "inline";
+}
+});
 
 
 // music end
