@@ -1193,10 +1193,10 @@ footer .social-icons a:hover {
 }
 
 /* Optional: Add a background image or pattern */
-footer {
+/* footer { */
   /* Example: Add a subtle pattern */
   /* background-image: url('img/footer-pattern.png'); */
   /* background-repeat: repeat; */
   /* background-size: 100px; */
-}
+/* } */
 /* Footer Ends */
