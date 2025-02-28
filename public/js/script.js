@@ -18,12 +18,12 @@ function toggleMute() {
     if (isGlobalMuted) {
       myAudio.pause();
 
-      muteIcon.style.display = "none";
-      unmuteIcon.style.display = "inline"; // Or any text indicating it's muted
+      muteIcon.style.display = "inline";
+      unmuteIcon.style.display = "none"; // Or any text indicating it's muted
     } else {
   myAudio.play();
-  muteIcon.style.display = "inline";
-  unmuteIcon.style.display = "none"; // Or any text indicating it's unmuted
+  muteIcon.style.display = "none";
+  unmuteIcon.style.display = "inline"; // Or any text indicating it's unmuted
     }
   }
   }
