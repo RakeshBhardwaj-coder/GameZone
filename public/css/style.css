@@ -810,7 +810,11 @@ body.night-mode #registration-link:hover {
     max-width: calc(149px - (375px - 100vw) / 2);
   }
 }
-
+@media (max-width: 300px) {
+  .game-card.grid-view {
+    max-width: calc(90px - (300px - 100vw) * (60/105));
+  }
+}
 
 /* 2x2 design */
   /* Mobile View End */
