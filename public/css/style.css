@@ -800,6 +800,18 @@ body.night-mode #registration-link:hover {
         padding: 8px 16px;
     }
 }
+
+
+/* 2x2 design */
+
+@media (max-width: 375px) {
+  .game-card.grid-view {
+    max-width: calc(149px - (375px - 100vw) / 2);
+  }
+}
+
+
+/* 2x2 design */
   /* Mobile View End */
 
 /* Imp Texts */
