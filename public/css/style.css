@@ -804,6 +804,7 @@ body.night-mode #registration-link:hover {
 
 /* 2x2 design */
 
+/* 375px to 301px */
 @media (max-width: 375px) {
   .game-card.grid-view {
     max-width: calc(149px - (375px - 100vw) / 2);
