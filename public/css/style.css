@@ -692,7 +692,7 @@ body.night-mode #registration-link:hover {
     }
   }
 
-  @media (max-width: 375px) and (min-width: 150px) {
+  @media (max-width: 300px) and (min-width: 150px) {
 
      
  body.night-mode #muteBtn img{
@@ -760,19 +760,19 @@ body.night-mode #registration-link:hover {
 
     /* Game Container Adjustments */
     #gameContainer {
-        padding: 0px;
-        margin: 0px 0px;
-        gap: 0px;
+        padding: 10px;
+        margin: 0px 20px;
+        gap: 10px;
     }
 
     .game-card {
         width: 100%; /* Use 100% width */
-        max-width: 100px;
+        max-width: 250px; /* Optional: set a max-width */
+        margin: 0 auto; /* Center the cards */
     }
 
     .game-card img {
-      max-width: 100%;
-      height: 200px;
+        height: 150px;
     }
 
     .game-card h3 {
@@ -800,11 +800,6 @@ body.night-mode #registration-link:hover {
         padding: 8px 16px;
     }
 }
-
-/* 2x2 design */
-
-/* 2x2 design end */
-
   /* Mobile View End */
 
 /* Imp Texts */
