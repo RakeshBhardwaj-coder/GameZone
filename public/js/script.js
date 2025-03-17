@@ -272,18 +272,18 @@ document.getElementById('search-btn').addEventListener('click', () => {
 
 // Registration button
 
-const registrationLink = document.getElementById("registration-link");
+// const registrationLink = document.getElementById("registration-link");
 
-registrationLink.addEventListener("click", function(event) {
-    event.preventDefault();
+// registrationLink.addEventListener("click", function(event) {
+//     event.preventDefault();
 
-    registrationLink.classList.add("registration-animation");
+//     registrationLink.classList.add("registration-animation");
 
-    setTimeout(function() {
-        window.open("https://docs.google.com/forms/d/e/1FAIpQLScOIY7SgAUQpdpZ16ZacbiFyq1VVk2evw9-KvgUFC_PdE76_Q/viewform?usp=sharing", "_blank");
-        registrationLink.classList.remove("registration-animation");
-    }, 1000); // Increased to 1000ms for a more elaborate animation
-});
+//     setTimeout(function() {
+//         window.open("https://docs.google.com/forms/d/e/1FAIpQLScOIY7SgAUQpdpZ16ZacbiFyq1VVk2evw9-KvgUFC_PdE76_Q/viewform?usp=sharing", "_blank");
+//         registrationLink.classList.remove("registration-animation");
+//     }, 1000); // Increased to 1000ms for a more elaborate animation
+// });
 // Registration button End
 
 // day/night button
