@@ -429,34 +429,6 @@ centerText.addEventListener('touchmove', handlePointerMove);
 sparkle.style.opacity = '0';
 //welcome animation ends
 
-// Register page 
-document.getElementById('registration-link').addEventListener('click', function() {
-  fetch('register.html')
-      .then(response => response.text())
-      .then(html => {
-          document.getElementById('registerPage').innerHTML = html;
-          document.getElementById('allGamesPage').style.display = 'none';
-          document.getElementById('registerPage').style.display = 'block';
-
-          // Back button functionality inside index.html
-          document.getElementById('backButton').addEventListener('click', function() {
-              document.getElementById('allGamesPage').style.display = 'block';
-              document.getElementById('registerPage').style.display = 'none';
-          });
-      })
-      .catch(error => {
-          console.error('Error loading page:', error);
-          document.getElementById('registerPage').innerHTML = "<p>Error loading content.</p>";
-          document.getElementById('registerPage').style.display = 'block';
-      });
-});
- // Home Link Functionality
- document.getElementById('home').addEventListener('click', function() {
-  document.getElementById('allGamesPage').style.display = 'block';
-  document.getElementById('registerPage').style.display = 'none';
-});
-// Register page ends
-
 // Game Available 
 
 const gameData = [
