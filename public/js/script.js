@@ -431,6 +431,10 @@ sparkle.style.opacity = '0';
 
 // Register Page
 document.getElementById('registration-link').addEventListener('click', function() {
+  window.scrollBy({
+    top: 300,
+    behavior: 'smooth'
+});
   fetch('registerPage/register.html')
       .then(response => response.text())
       .then(html => {
@@ -452,10 +456,8 @@ document.getElementById('registration-link').addEventListener('click', function(
 });
  // Home Link Functionality
  document.getElementById('home').addEventListener('click', function() {
-//   window.scrollTo({
-//     top:150,
-//     behavior: 'smooth' // Smooth scrolling
-// });
+  //this will back to filter normal
+  filterGames('all');
   document.getElementById('allGamesPage').style.display = 'block';
   document.getElementById('registerPage').style.display = 'none';
 
@@ -931,7 +933,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const availableText = document.getElementById("available-text"); 
   const ageFilterText = document.getElementById("age-filter-text");
 
-  //auto-scroll
+//auto-scroll
 document.getElementById('trending').addEventListener('click', function(event) {
   event.preventDefault(); // Prevent the default anchor behavior
 
