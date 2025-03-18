@@ -430,7 +430,7 @@ sparkle.style.opacity = '0';
 //welcome animation ends
 
 // Register Page
-document.getElementById('registrationButton').addEventListener('click', function() {
+document.getElementById('registration-link').addEventListener('click', function() {
   fetch('registerPage/register.html')
       .then(response => response.text())
       .then(html => {
