@@ -126,37 +126,47 @@
   <div class="sparkle"></div>
   <div class="cursor"></div>
 
+  <!-- Register Page -->
+  <div id="registerPage" class="registerPage" style="display: none;">
+  </div>
+  <!-- Register Page End -->
+
+
   <!-- Available Games -->
-  <h1 id="available-text">Available Games</h1>
-  <div class="center-filter">
-    <label for="age-filter" id="age-filter-text">Filter by Age Rating:</label>
-    <select id="age-filter">
-      <option value="all">All games</option>
-      <option value="18">18+</option>
-      <option value="16">16+</option>
-      <option value="12">Child</option>
-    </select>
+  <div id="allGamesPage" class="allGamesPage">
+    <button id="registrationButton">Load External Content</button>
+    <h1 id="available-text">Available Games</h1>
+    <div class="center-filter">
+      <label for="age-filter" id="age-filter-text">Filter by Age Rating:</label>
+      <select id="age-filter">
+        <option value="all">All games</option>
+        <option value="18">18+</option>
+        <option value="16">16+</option>
+        <option value="12">Child</option>
+      </select>
 
-  </div>
-
-  <div id="viewControls">
-    <label for="toggleView" id="view-icon-text">View:</label>
-    <button id="toggleView">
-      <img id="detailIcon" src="icon/detail-view.png" alt="Detail View">
-      <img id="gridIcon" src="icon/grid-view.png" alt="Grid View" style="display: none;">
-    </button>
-  </div>
-  <div id="top">
-  </div>
-
-
-  <div id="gameContainer" class="game-container"></div>
-
-  <div id="video-popup">
-    <div id="video-popup-content">
-      <div id="player"></div>
-      <button id="close-button">×</button>
     </div>
+
+    <div id="viewControls">
+      <label for="toggleView" id="view-icon-text">View:</label>
+      <button id="toggleView">
+        <img id="detailIcon" src="icon/detail-view.png" alt="Detail View">
+        <img id="gridIcon" src="icon/grid-view.png" alt="Grid View" style="display: none;">
+      </button>
+    </div>
+    <div id="top">
+    </div>
+
+
+    <div id="gameContainer" class="game-container"></div>
+
+    <div id="video-popup">
+      <div id="video-popup-content">
+        <div id="player"></div>
+        <button id="close-button">×</button>
+      </div>
+    </div>
+
   </div>
   <!-- Available Games End-->
 
@@ -270,13 +280,7 @@
     </div>
   </footer><!-- End  Footer -->
 
-  <div id="allGamesPage" class="allGamesPage">
-    <p>This is the initial content.</p>
-    <button id="registrationButton">Load External Content</button>
-</div>
 
-<div id="registerPage" class="registerPage" style="display: none;">
-</div>
 
   <script src="js/script.js">
 
