@@ -901,6 +901,164 @@ body.night-mode #registration-link:hover {
 
 /* Imp Texts End   */
 
+/* Register Page Styles */
+.centerCards {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: flex-start; /* Align to the top */
+  align-items: center;
+}
+
+.plans-title {
+  text-align: center;
+  margin-top: 20px; /* Add some space at the top */
+  font-size: 2em; /* Adjust size as needed */
+  color: #333;
+}
+
+.gameCards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px; /* Space between title and plans */
+}
+
+.plan {
+  width: 90%;
+  max-width: 300px;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan:hover, .plan.hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.plan::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(252, 234, 187, 0.8), rgba(248, 181, 0, 0.8));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  clip-path: circle(0% at 50% 50%);
+}
+
+.plan:hover::before, .plan.hover::before {
+  opacity: 1;
+  clip-path: circle(150% at 50% 50%);
+}
+
+.bronze {
+  background-color: #cd7f32;
+  color: white;
+}
+
+.silver {
+  background-color: #d1d1d1;
+  color: #333;
+}
+
+.gold {
+  background-color: #ffd700;
+  color: #333;
+}
+
+.birthday {
+  background-color: #fceabb;
+  color: #333;
+}
+
+.plan h2 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.plan p {
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.plan p.price {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.register-button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #45a049;
+}
+
+.gold p.physical-cards {
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.price-details {
+  font-size: 0.8em;
+  display: block;
+}
+
+.birthday h2 {
+  font-size: 1.5em;
+  position: relative;
+  padding-top: 20px;
+}
+
+.birthday h2::before {
+  content: "Birthday special";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8b500;
+  color: white;
+  padding: 5px 0;
+  font-size: 0.8em;
+  border-radius: 5px 5px 0 0;
+}
+
+.birthday .register-button {
+  background-color: #6495ED;
+}
+
+.birthday .register-button:hover {
+  background-color: #4682B4;
+}
+
+.birthday .play-all {
+  font-weight: bold;
+  margin-top: 20px;
+}
+/* Register Page Styles End */
+
 /* Available Games */
 
 /* Filter panel */
