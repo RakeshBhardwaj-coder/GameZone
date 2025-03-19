@@ -432,7 +432,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
     top: 300,
     behavior: 'smooth'
   });
-  fetch('registerPage/register.html')
+  fetch('registerPage/plans.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('registerPage').innerHTML = data;
