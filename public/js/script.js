@@ -473,13 +473,13 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
               document.getElementById('open-payment-page-btn').addEventListener('click', function (event) {
                 event.preventDefault(); // Prevent default form submission
   
-                document.getElementById('reg-form-container').style.display = 'none'; // Hide registration form
+                document.getElementById('registration-form').style.display = 'none'; // Hide registration form
                 document.getElementById('paymentForm').style.display = 'block'; // Show payment form
   
               });
-              document.getElementById('homePage').addEventListener('click', function () {
+              document.getElementById('pay-to-reg-form-btn').addEventListener('click', function () {
                 document.getElementById('paymentForm').style.display = 'none';
-                document.getElementById('reg-form-container').style.display = 'block';
+                document.getElementById('registration-form').style.display = 'block';
               });
   
               document.getElementById('planSelection').addEventListener('change', function () {
