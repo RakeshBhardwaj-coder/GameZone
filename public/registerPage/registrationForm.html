@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      
+
+        #registration-form, .payment-form, .payment-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        #registration-form label, .payment-form label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        #registration-form input,
+        #registration-form select,
+        .payment-form input,
+        .payment-form select {
+            width: calc(100% - 16px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        #registration-form input:focus,
+        .payment-form input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        #registration-form button, .payment-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #registration-form button:hover, .payment-form button:hover {
+            background-color: #45a049;
+        }
+
+        .payment-form {
+            display: none;
+        }
+
+        .payment-card {
+            display: none;
+            width: 90%;
+            max-width: 280px;
+            height: auto;
+            text-align: center;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .payment-card img {
+            max-width: 90%;
+            margin-bottom: 15px;
+        }
+
+        .payment-card p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .payment-form h2, #registration-form h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .payment-form p {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .payment-form img {
+            display: block;
+            margin: 20px auto;
+            max-width: 80%;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #planDetails p{
+            margin: 0;
+            padding: 0;
+            color: #007bff;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .upi-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .upi-link {
+            display: block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="registraionFormPage">
+    <div id="registration-form">
+        <h1>Registration</h1>
+        <form id="registrationForm">
+            <label for="firstName">First Name:</label><br>
+            <input type="text" id="firstName" name="firstName"><br>
+
+            <label for="lastName">Last Name:</label><br>
+            <input type="text" id="lastName" name="lastName"><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+
+            <label for="confirmPassword">Confirm Password:</label><br>
+            <input type="password" id="confirmPassword" name="confirmPassword"><br>
+
+            <label for="dateOfBirth">Date of Birth:</label><br>
+            <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
+
+            <label for="gender">Gender:</label><br>
+            <select id="gender" name="gender">
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br>
+
+             <label for="gender">Choose your plan:</label><br>
+            <select id="planSelection">
+                <option value="">Select your plan</option>
+                <option value="bronze">Bronze (250 Rs)</option>
+                <option value="silver">Silver (300 Rs)</option>
+                <option value="gold">Gold (400 Rs)</option>
+                <option value="birthdayspecial">Birthday Special (100 Rs)</option>
+            </select>
+            <button type="submit">Next</button>
+            
+        </form>
+    </div>
+
+    <div class="payment-form" id="paymentForm">
+        <h1>Payment Method</h1>
+        <h3>Selected</h3>
+        
+        <h2 id="paymentAmount"></h2>
+
+        <div id="planDetails">
+                <p id="validity">Validity: </p>
+                <p id ="gameplay">Total Gameplay:</p>
+                <p id="package" >Package </p>
+                <p id="cost" >0 Minutes/Card</p>
+                <p id="accessories" >Gamepad, Keyboard, and Mouse</p>
+                <p id="steering" >Steering Wheel: ₹10/session</p>
+                <p id="extra" ></p>
+        </div>
+
+        <p>Please scan the QR code to complete your payment.</p>
+        <img src="img/payment_QR_code.jpeg" alt="QR Code">
+        <div class="upi-container">
+            <h2>or</h2>
+            <h3>click below to redirect to your app</h3>
+            <a href="upi://pay?pa=gamezone@jio&pn=GameZone&mc=0000&mode=02&purpose=00" class="upi-link">Pay via UPI Apps</a>
+        </div>
+        <button type="button" id="homePage">go to Homepage</button>
+    </div>
+</div>
+    <script>
+        // document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        //     event.preventDefault();
+        //     document.getElementById('registration-form').style.display = 'none';
+        //     document.getElementById('paymentForm').style.display = 'block';
+        // });
+    
+        // document.getElementById('homePage').addEventListener('click', function() {
+        //     document.getElementById('paymentForm').style.display = 'none';
+        //     document.getElementById('registration-form').style.display = 'block';
+        // });
+
+        // document.getElementById('planSelection').addEventListener('change', function() {
+        //     let selectedPlan = this.value;
+        //     let paymentAmountDisplay = document.getElementById('paymentAmount');
+        //     let validity = document.getElementById('validity');
+        //     let gameplay = document.getElementById('gameplay');
+        //     let package = document.getElementById('package');
+        //     let cost = document.getElementById('cost');
+        //     let accessories = document.getElementById('accessories');
+        //     let steering = document.getElementById('steering');
+
+        //     let extra = document.getElementById('extra');
+        //     if (selectedPlan === 'bronze') {
+        //         paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
+        //         validity.textContent = 'Validity: 10 Days';
+        //         gameplay.textContent = 'Total Gameplay: 5 Hours';
+        //         package.textContent = 'Package (10 Card) for ₹150';
+        //         cost.textContent = '30 Minutes/vCard';
+        //         accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+        //         steering.textContent = 'Steering Wheel: ₹10/session';
+
+        //         extra.textContent = '';
+        //     } else if (selectedPlan === 'silver') {
+        //         paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
+        //         validity.textContent = 'Validity: 15 Days';
+        //         gameplay.textContent = 'Total Gameplay: 8 Hours';
+        //         package.textContent = 'Package (10 Card) for ₹300';
+        //         cost.textContent = '45 Minutes/vCard';
+        //         accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+        //         steering.textContent = '';
+                
+        //         extra.textContent = 'Steering Wheel: ₹10/session';
+        //     } else if (selectedPlan === 'gold') {
+        //         paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
+        //         validity.textContent = 'Validity: Forever';
+        //         gameplay.textContent = 'Total Gameplay: 8 Hours';
+        //         package.textContent = 'Package (10 Card) for ₹400';
+        //         cost.textContent = '45 Minutes/vCard';
+        //         accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+        //         steering.textContent = 'Steering Wheel: ₹10/session';
+                
+        //         extra.textContent = 'Physical card will be provided';
+        //     } else if (selectedPlan === 'birthdayspecial') {
+        //         paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
+        //         validity.textContent = 'Validity: 1 Day';
+        //         gameplay.textContent = 'Total Gameplay: 15-20 Minute';
+        //         package.textContent = 'Package (5 Card) for ₹50';
+        //         cost.textContent = '15-20 Minutes/Card';
+        //         accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+        //         steering.textContent = 'Steering Wheel: ₹10/session';
+               
+        //         extra.textContent = 'Physica or virtual card';
+        //     } else {
+        //         paymentAmountDisplay.textContent = '';     }
+        // });
+
+      
+    </script>
+
+</body>
+</html>

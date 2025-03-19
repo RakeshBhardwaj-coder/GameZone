@@ -33,6 +33,18 @@ body{
 }
 /* Mute/Unmute end */
 
+/* Centered container for other Pages */
+.centeredContainer {
+ 
+  min-height: 80vh;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+/* Centered Container for other pages End */
+
 /* page scroller */
 .pageup-btn {
   position: fixed;

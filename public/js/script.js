@@ -113,10 +113,7 @@ function topFunction() {
 // Scroll-up button
 
 function pageUpBtn() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
+ 
 }
 
 window.addEventListener('scroll', () => {
@@ -437,16 +434,26 @@ document.getElementById('registration-link').addEventListener('click', function(
 });
   fetch('registerPage/register.html')
       .then(response => response.text())
-      .then(html => {
-          document.getElementById('registerPage').innerHTML = html;
+      .then(data => {
+          document.getElementById('registerPage').innerHTML = data;
           document.getElementById('allGamesPage').style.display = 'none';
           document.getElementById('registerPage').style.display = 'block';
 
           // Back button functionality inside index.html
           document.getElementById('backButton').addEventListener('click', function() {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
               document.getElementById('allGamesPage').style.display = 'block';
               document.getElementById('registerPage').style.display = 'none';
           });
+       //Register Button
+        //   document.getElementById('register-button').addEventListener('click', function() {
+        //     document.getElementById('allGamesPage').style.display = 'block';
+        //     document.getElementById('registerPage').style.display = 'none';
+        // });
+
       })
       .catch(error => {
           console.error('Error loading page:', error);
@@ -463,6 +470,8 @@ document.getElementById('registration-link').addEventListener('click', function(
 
 });
 // RegisterPage End
+
+
 // Game Available 
 
 const gameData = [
