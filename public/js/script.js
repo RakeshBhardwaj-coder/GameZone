@@ -582,10 +582,18 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
       document.getElementById('home').addEventListener('click', function () {
         document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+        document.getElementById('place-for-plans').style.display = 'none';
+
         document.getElementById('all-games-place').style.display = 'block';
         filterGames('all');
       });
 
+      document.getElementById('top-10-games').addEventListener('click', function () {
+        document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+        document.getElementById('place-for-plans').style.display = 'none';
+        document.getElementById('all-games-place').style.display = 'block';
+        showTrendingGames();
+      });
       // Registering Form page end 
 
     })
@@ -1078,11 +1086,10 @@ ageFilter.addEventListener('change', () => {
 
 document.addEventListener('DOMContentLoaded', function () {
   const  top10GamesBtn = document.getElementById(" top-10-games");
-  const availableText = document.getElementById("available-text");
-  const ageFilterText = document.getElementById("age-filter-text");
+
 
   //auto-scroll
-  document.getElementById(' top-10-games').addEventListener('click', function (event) {
+  document.getElementById('top-10-games').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent the default anchor behavior
 
     const imageElement = document.getElementById('gameContainer');
@@ -1095,8 +1102,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
    top10GamesBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    availableText.textContent = "Most Played Games";
-    ageFilterText.textContent = "Filter by Age on Trendings"
+   
 
     showTrendingGames();
   });
@@ -1105,6 +1111,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function showTrendingGames() {
+  const availableText = document.getElementById("available-text");
+  const ageFilterText = document.getElementById("age-filter-text");
+   availableText.textContent = "Most Played Games";
+    ageFilterText.textContent = "Filter by Age on Trendings"
   const ageFilter = document.getElementById('age-filter');
   const trendingGames = gameData.filter(game => game.trending === true);
   getTrendingAndAgeFilteredGames(ageFilter.value, trendingGames);
