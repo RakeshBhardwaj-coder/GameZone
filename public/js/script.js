@@ -435,9 +435,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
   fetch('registerPage/plans.html')
     .then(response => response.text())
     .then(data => {
-      document.getElementById('registerPage').innerHTML = data;
+      document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
       document.getElementById('allGamesPage').style.display = 'none';
-      document.getElementById('registerPage').style.display = 'block';
+      document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
 
       // Back button functionality inside index.html
       document.getElementById('backButton').addEventListener('click', function () {
@@ -446,7 +446,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
           behavior: 'smooth'
         });
         document.getElementById('allGamesPage').style.display = 'block';
-        document.getElementById('registerPage').style.display = 'none';
+        document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
       });
 
       // Registering Form page
@@ -461,9 +461,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
           fetch('registerPage/registration-and-payment-form.html')
             .then(response => response.text())
             .then(data => {
-              document.getElementById('registerPage').innerHTML = data;
+              document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
               document.getElementById('allGamesPage').style.display = 'none';
-              document.getElementById('registerPage').style.display = 'block'; // Show the registration page
+              document.getElementById('place-for-reg-and-pay-form').style.display = 'block'; // Show the registration page
   
   
   
@@ -547,7 +547,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
      
 
       document.getElementById('home').addEventListener('click', function () {
-        document.getElementById('registerPage').style.display = 'none';
+        document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
         document.getElementById('allGamesPage').style.display = 'block';
         filterGames('all');
       });
@@ -557,8 +557,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
     })
     .catch(error => {
       console.error('Error loading page:', error);
-      document.getElementById('registerPage').innerHTML = "<p>Error loading content.</p>";
-      document.getElementById('registerPage').style.display = 'block';
+      document.getElementById('place-for-reg-and-pay-form').innerHTML = "<p>Error loading content.</p>";
+      document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
     });
 });
 // Home Link Functionality
@@ -566,7 +566,7 @@ document.getElementById('home').addEventListener('click', function () {
   //this will back to filter normal
   filterGames('all');
   document.getElementById('allGamesPage').style.display = 'block';
-  document.getElementById('registerPage').style.display = 'none';
+  document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
 
 });
 // RegisterPage End
