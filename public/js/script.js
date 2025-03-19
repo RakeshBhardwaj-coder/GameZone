@@ -484,7 +484,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
   
               document.getElementById('planSelection').addEventListener('change', function () {
                 let selectedPlan = this.value;
-                let paymentAmountDisplay = document.getElementById('paymentAmount');
+                let paymentAmountDisplay = document.getElementById('pay-amout-show');
                 let validity = document.getElementById('validity');
                 let gameplay = document.getElementById('gameplay');
                 let package = document.getElementById('package');
