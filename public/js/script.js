@@ -458,7 +458,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             top: 300,
             behavior: 'smooth'
           });
-          fetch('registerPage/registration-form.html')
+          fetch('registerPage/registration-and-payment-form.html')
             .then(response => response.text())
             .then(data => {
               document.getElementById('registerPage').innerHTML = data;
