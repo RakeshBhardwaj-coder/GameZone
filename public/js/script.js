@@ -269,7 +269,7 @@ document.getElementById('search-btn').addEventListener('click', () => {
 
 // Registration button
 
-// const registrationLink = document.getElementById("registration-link");
+// const registrationLink = document.getElementById("registrationBtn");
 
 // registrationLink.addEventListener("click", function(event) {
 //     event.preventDefault();
@@ -427,7 +427,7 @@ sparkle.style.opacity = '0';
 //welcome animation ends
 
 // Register Page
-document.getElementById('registration-link').addEventListener('click', function () {
+document.getElementById('registrationBtn').addEventListener('click', function () {
   window.scrollBy({
     top: 300,
     behavior: 'smooth'

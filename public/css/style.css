@@ -123,19 +123,19 @@ body.night-mode #menu a{
 /* nav link menu end */
 
 /*Registration button*/
-body.night-mode #registration-link {
+body.night-mode #registrationBtn {
   color: #ddd; /* Lighter text color in night mode */
   background: linear-gradient(135deg, #78b5f1, #50bfff); /* Darker gradient */
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); /* Lighter shadow */
 }
 
-body.night-mode #registration-link:hover {
+body.night-mode #registrationBtn:hover {
   background: linear-gradient(135deg, #50bfff, #78b5f1); /* Reversed darker gradient */
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2); /* Lighter hover shadow */
 }
 
-body.night-mode #registration-link:focus,
-body.night-mode #registration-link:active {
+body.night-mode #registrationBtn:focus,
+body.night-mode #registrationBtn:active {
   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Lighter focus/active shadow */
 }
 /*Registration btn end*/
@@ -322,7 +322,7 @@ nav {
 /* Suggestion box End */
 
 
-#registration-link {
+#registrationBtn {
   text-decoration: none;
   color: white; /* Change text color to white for better contrast */
   padding: 12px 25px; /* Increase padding for a larger button */
@@ -335,19 +335,19 @@ nav {
   font-size: 1.1em; /* Increase font size */
 }
 
-#registration-link:hover {
+#registrationBtn:hover {
   transform: translateY(-5px); /* Lift the button slightly on hover */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
   background: linear-gradient(135deg, #2980b9, #3498db); /* Reverse the gradient on hover */
 }
 
 /* Optional: Add a subtle animation on focus (when clicked) */
-#registration-link:focus {
+#registrationBtn:focus {
   outline: none; /* Remove default focus outline */
   transform: scale(0.95); /* Slightly scale down on click */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Adjust shadow on click */
 }
-#registration-link:active {
+#registrationBtn:active {
   transform: scale(0.95); /* Slightly scale down on click */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Adjust shadow on click */
 }
@@ -493,11 +493,11 @@ body.night-mode #menu a{
   color: rgb(0, 0, 0);
   font-weight: 550;
 }
-body.night-mode #registration-link{
+body.night-mode #registrationBtn{
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
   background: linear-gradient(135deg, #2980b9, #3498db); 
 }
-body.night-mode #registration-link:hover {
+body.night-mode #registrationBtn:hover {
   color: rgb(255, 255, 255);
   transform: translateY(-5px); /* Lift the button slightly on hover */
   box-shadow: 0 8px 20px rgba(180, 180, 180, 0.4); /* Increase shadow on hover */
@@ -692,11 +692,11 @@ body.night-mode #registration-link:hover {
       color: rgb(0, 0, 0);
       font-weight: 550;
     }
-    body.night-mode #registration-link{
+    body.night-mode #registrationBtn{
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
       background: linear-gradient(135deg, #2980b9, #3498db); 
     }
-    body.night-mode #registration-link:hover {
+    body.night-mode #registrationBtn:hover {
       color: rgb(255, 255, 255);
       transform: translateY(-5px); /* Lift the button slightly on hover */
       box-shadow: 0 8px 20px rgba(180, 180, 180, 0.4); /* Increase shadow on hover */
