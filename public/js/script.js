@@ -470,7 +470,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
               //   Add event listener for form submission
               //   This code is running in index.html but it's from the RegisterForm content
   
-              document.getElementById('registrationForm').addEventListener('submit', function (event) {
+              document.getElementById('open-payment-page-btn').addEventListener('click', function (event) {
                 event.preventDefault(); // Prevent default form submission
   
                 document.getElementById('reg-form-container').style.display = 'none'; // Hide registration form
