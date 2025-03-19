@@ -1013,7 +1013,7 @@ body.night-mode #registration-link:hover {
   font-size: 1.2em;
 }
 
-.register-button {
+#register-button {
   display: inline-block;
   background-color: #4CAF50;
   color: white;
@@ -1024,7 +1024,7 @@ body.night-mode #registration-link:hover {
   transition: background-color 0.3s ease;
 }
 
-.register-button:hover {
+#register-button:hover {
   background-color: #45a049;
 }
 
@@ -1057,11 +1057,11 @@ body.night-mode #registration-link:hover {
   border-radius: 5px 5px 0 0;
 }
 
-.birthday .register-button {
+.birthday #register-button {
   background-color: #6495ED;
 }
 
-.birthday .register-button:hover {
+.birthday #register-button:hover {
   background-color: #4682B4;
 }
 
