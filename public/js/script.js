@@ -1084,29 +1084,33 @@ ageFilter.addEventListener('change', () => {
 
 // trending button
 
-document.addEventListener('DOMContentLoaded', function () {
-  const  top10GamesBtn = document.getElementById(" top-10-games");
+// document.addEventListener('DOMContentLoaded', function () {
+//   const  top10GamesBtn = document.getElementById(" top-10-games");
 
 
-  //auto-scroll
-  document.getElementById('top-10-games').addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent the default anchor behavior
+//   //auto-scroll
+// //   top10GamesBtn.addEventListener('click', function (event) {
+// //     event.preventDefault(); // Prevent the default anchor behavior
 
-    const imageElement = document.getElementById('gameContainer');
+// //     const imageElement = document.getElementById('gameContainer');
 
-    if (imageElement) {
-      imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
-    }
-  });
+// //     // if (imageElement) {
+// //     //   imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
+// //     // }
+// //   showTrendingGames();
+
+// //   });
 
 
-   top10GamesBtn.addEventListener("click", function (event) {
-    event.preventDefault();
+// //   //  top10GamesBtn.addEventListener("click", function (event) {
+// //   //   event.preventDefault();
    
 
-    showTrendingGames();
-  });
+// //   // });
 
+// // });
+document.getElementById('top-10-games').addEventListener('click', function () {
+  showTrendingGames();
 });
 
 
