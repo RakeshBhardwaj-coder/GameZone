@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Registration Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      
-
-        #registration-form, .payment-form, .payment-card {
+        #registration-form,
+        .payment-form,
+        .payment-card {
             background-color: white;
             padding: 20px;
             border-radius: 12px;
@@ -16,7 +17,8 @@
             box-sizing: border-box;
         }
 
-        #registration-form label, .payment-form label {
+        #registration-form label,
+        .payment-form label {
             font-weight: 600;
             color: #333;
             margin-bottom: 5px;
@@ -42,7 +44,8 @@
             outline: none;
         }
 
-        #registration-form button, .payment-form button {
+        #registration-form button,
+        .payment-form button {
             background-color: #4CAF50;
             color: white;
             padding: 15px 15px;
@@ -54,7 +57,8 @@
             transition: background-color 0.3s ease;
         }
 
-        #registration-form button:hover, .payment-form button:hover {
+        #registration-form button:hover,
+        .payment-form button:hover {
             background-color: #45a049;
         }
 
@@ -84,7 +88,8 @@
             color: #555;
         }
 
-        .payment-form h2, #registration-form h2 {
+        .payment-form h2,
+        #registration-form h2 {
             text-align: center;
             margin-bottom: 25px;
             color: #333;
@@ -105,13 +110,14 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .selected-plan-details-show p{
+        .selected-plan-details-show p {
             margin: 0;
             padding: 0;
             color: #007bff;
             font-weight: 600;
             font-family: 'Courier New', Courier, monospace;
         }
+
         .upi-container {
             text-align: center;
             margin-top: 20px;
@@ -134,6 +140,17 @@
             text-align: center;
         }
 
+        #reg-to-plans-btn {
+            margin: 5px;
+            min-width: 50px;
+
+        }
+
+        #open-payment-page-btn {
+            margin: 5px;
+            min-width: 100px;
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 1em;
@@ -141,79 +158,85 @@
         }
     </style>
 </head>
+
 <body>
-<div id="reg-and-payment-page">
+    <div id="reg-and-payment-page">
 
-    <div id="registration-form">
-        <h1>Registration</h1>
-        <form>
-            <label for="firstName">First Name:</label><br>
-            <input type="text" id="firstName" name="firstName"><br>
+        <div id="registration-form">
+            <h1>Registration</h1>
+            <form>
+                <label for="firstName">First Name:</label><br>
+                <input type="text" id="firstName" name="firstName"><br>
 
-            <label for="lastName">Last Name:</label><br>
-            <input type="text" id="lastName" name="lastName"><br>
+                <label for="lastName">Last Name:</label><br>
+                <input type="text" id="lastName" name="lastName"><br>
 
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
 
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password"><br>
 
-            <label for="confirmPassword">Confirm Password:</label><br>
-            <input type="password" id="confirmPassword" name="confirmPassword"><br>
+                <label for="confirmPassword">Confirm Password:</label><br>
+                <input type="password" id="confirmPassword" name="confirmPassword"><br>
 
-            <label for="dateOfBirth">Date of Birth:</label><br>
-            <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
+                <label for="dateOfBirth">Date of Birth:</label><br>
+                <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
 
-            <label for="gender">Gender:</label><br>
-            <select id="gender" name="gender">
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select><br>
+                <label for="gender">Gender:</label><br>
+                <select id="gender" name="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
 
-             <label for="gender">Choose your plan:</label><br>
-            
-             <select id="planSelection">
-                <option value="">Select your plan</option>
-                <option value="bronze">Bronze (250 Rs)</option>
-                <option value="silver">Silver (300 Rs)</option>
-                <option value="gold">Gold (400 Rs)</option>
-                <option value="birthdayspecial">Birthday Special (100 Rs)</option>
-            </select>
-            <button id="open-payment-page-btn">Next</button>
-            
-        </form>
-    </div>
+                <label for="gender">Choose your plan:</label><br>
 
-    <div class="payment-form" id="paymentForm">
-        <h1>Payment Method</h1>
-        <h3>Selected</h3>
-        
-        <h2 id="pay-amount-show"></h2>
+                <select id="planSelection">
+                    <option value="">Select your plan</option>
+                    <option value="bronze">Bronze (250 Rs)</option>
+                    <option value="silver">Silver (300 Rs)</option>
+                    <option value="gold">Gold (400 Rs)</option>
+                    <option value="birthdayspecial">Birthday Special (100 Rs)</option>
+                </select>
+                <button id="open-payment-page-btn">Next</button>
+                <button id="reg-to-plans-btn">Back</button>
 
-        <div class="selected-plan-details-show">
+            </form>
+
+        </div>
+
+
+        <div class="payment-form" id="paymentForm">
+            <h1>Payment Method</h1>
+            <h3>Selected</h3>
+
+            <h2 id="pay-amount-show"></h2>
+
+            <div class="selected-plan-details-show">
                 <p id="validity">Validity: </p>
-                <p id ="gameplay">Total Gameplay:</p>
-                <p id="package" >Package </p>
-                <p id="cost" >0 Minutes/Card</p>
-                <p id="accessories" >Gamepad, Keyboard, and Mouse</p>
-                <p id="steering" >Steering Wheel: ₹10/session</p>
-                <p id="extra" ></p>
-        </div>
+                <p id="gameplay">Total Gameplay:</p>
+                <p id="package">Package </p>
+                <p id="cost">0 Minutes/Card</p>
+                <p id="accessories">Gamepad, Keyboard, and Mouse</p>
+                <p id="steering">Steering Wheel: ₹10/session</p>
+                <p id="extra"></p>
+            </div>
 
-        <p>Please scan the QR code to complete your payment.</p>
-        <img src="img/payment_QR_code.jpeg" alt="QR Code">
-        <div class="upi-container">
-            <h2>or</h2>
-            <h3>click below to redirect to your app</h3>
-            <a href="upi://pay?pa=gamezone@jio&pn=GameZone&mc=0000&mode=02&purpose=00" class="upi-link">Pay via UPI Apps</a>
+            <p>Please scan the QR code to complete your payment.</p>
+            <img src="img/payment_QR_code.jpeg" alt="QR Code">
+            <div class="upi-container">
+                <h2>or</h2>
+                <h3>click below to redirect to your app</h3>
+                <a href="upi://pay?pa=gamezone@jio&pn=GameZone&mc=0000&mode=02&purpose=00" class="upi-link">Pay via UPI
+                    Apps</a>
+            </div>
+            <button id="payment-to-reg-form-btn">go to Registraion Page</button>
         </div>
-        <button id="payment-to-reg-form-btn">go to Registraion Page</button>
     </div>
-</div>
-   
+
 
 </body>
+
 </html>

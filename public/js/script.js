@@ -435,9 +435,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
   fetch('registerPage/plans.html')
     .then(response => response.text())
     .then(data => {
-      document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
+      document.getElementById('place-for-plans').innerHTML = data;
       document.getElementById('all-games-place').style.display = 'none';
-      document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
+      document.getElementById('place-for-plans').style.display = 'block';
 
       // Back button functionality inside index.html
       document.getElementById('plans-to-home-btn').addEventListener('click', function () {
@@ -446,7 +446,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
           behavior: 'smooth'
         });
         document.getElementById('all-games-place').style.display = 'block';
-        document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+        document.getElementById('place-for-plans').style.display = 'none';
       });
 
       // Registering Form page
@@ -463,10 +463,17 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             .then(data => {
               document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
               document.getElementById('all-games-place').style.display = 'none';
-              document.getElementById('place-for-reg-and-pay-form').style.display = 'block'; // Show the registration page
+              document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
+              document.getElementById('place-for-plans').style.display = 'none';
+               // Show the registration page
   
   
-  
+              document.getElementById('reg-to-plans-btn').addEventListener("click",function(event){
+                event.preventDefault();
+                document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+                document.getElementById('place-for-plans').style.display = 'block';
+
+              });
               //   Add event listener for form submission
               //   This code is running in index.html but it's from the RegisterForm content
   
@@ -477,6 +484,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 document.getElementById('paymentForm').style.display = 'block'; // Show payment form
   
               });
+             
               document.getElementById('payment-to-reg-form-btn').addEventListener('click', function () {
                 document.getElementById('paymentForm').style.display = 'none';
                 document.getElementById('registration-form').style.display = 'block';
