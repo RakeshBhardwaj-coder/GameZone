@@ -600,9 +600,12 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 // Home Link Functionality
 document.getElementById('home').addEventListener('click', function () {
   //this will back to filter normal
+  // choos
   filterGames('all');
   document.getElementById('all-games-place').style.display = 'block';
   document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+  document.getElementById('place-for-plans').style.display = 'none';
+
 
 });
 // RegisterPage End
@@ -1074,12 +1077,12 @@ ageFilter.addEventListener('change', () => {
 // trending button
 
 document.addEventListener('DOMContentLoaded', function () {
-  const trendingLink = document.getElementById("trending");
+  const  top10GamesBtn = document.getElementById(" top-10-games");
   const availableText = document.getElementById("available-text");
   const ageFilterText = document.getElementById("age-filter-text");
 
   //auto-scroll
-  document.getElementById('trending').addEventListener('click', function (event) {
+  document.getElementById(' top-10-games').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent the default anchor behavior
 
     const imageElement = document.getElementById('gameContainer');
@@ -1090,7 +1093,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  trendingLink.addEventListener("click", function (event) {
+   top10GamesBtn.addEventListener("click", function (event) {
     event.preventDefault();
     availableText.textContent = "Most Played Games";
     ageFilterText.textContent = "Filter by Age on Trendings"
