@@ -440,7 +440,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
       document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
 
       // Back button functionality inside index.html
-      document.getElementById('backButton').addEventListener('click', function () {
+      document.getElementById('plans-to-home-btn').addEventListener('click', function () {
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
@@ -477,7 +477,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 document.getElementById('paymentForm').style.display = 'block'; // Show payment form
   
               });
-              document.getElementById('pay-to-reg-form-btn').addEventListener('click', function () {
+              document.getElementById('payment-to-reg-form-btn').addEventListener('click', function () {
                 document.getElementById('paymentForm').style.display = 'none';
                 document.getElementById('registration-form').style.display = 'block';
               });
