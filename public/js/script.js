@@ -21,12 +21,12 @@ function toggleMute() {
       muteIcon.style.display = "none";
       unmuteIcon.style.display = "inline"; // Or any text indicating it's muted
     } else {
-  myAudio.pause();
-  muteIcon.style.display = "inline";
-  unmuteIcon.style.display = "none"; // Or any text indicating it's unmuted
+      myAudio.pause();
+      muteIcon.style.display = "inline";
+      unmuteIcon.style.display = "none"; // Or any text indicating it's unmuted
     }
   }
-  }
+}
 
 
 
@@ -34,19 +34,19 @@ function toggleMute() {
 
 videoOnMute.addEventListener('click', () => {
 
-    myAudio.pause();
+  myAudio.pause();
 
-    muteIcon.style.display = "inline";
-    unmuteIcon.style.display = "none";
-  
+  muteIcon.style.display = "inline";
+  unmuteIcon.style.display = "none";
+
 });
 
 videoCloseUnMute.addEventListener('click', () => {
-if(isGlobalMuted){
-  myAudio.play();
-  muteIcon.style.display = "none";
-  unmuteIcon.style.display = "inline";
-}
+  if (isGlobalMuted) {
+    myAudio.play();
+    muteIcon.style.display = "none";
+    unmuteIcon.style.display = "inline";
+  }
 });
 
 
@@ -61,39 +61,39 @@ let isRotated = false;
 const animationDuration = 200;
 
 function rotateGamepad(rotate) {
-    let rotation = rotate ? '10deg' : '0deg';
-    gamepadLogo.style.transition = `transform ${animationDuration / 1000}s ease`;
-    gamepadLogo.style.transform = `rotate(${rotation})`;
+  let rotation = rotate ? '10deg' : '0deg';
+  gamepadLogo.style.transition = `transform ${animationDuration / 1000}s ease`;
+  gamepadLogo.style.transform = `rotate(${rotation})`;
 }
 
 function handleLogoInteraction() {
-    isRotated = !isRotated;
-    rotateGamepad(isRotated);
+  isRotated = !isRotated;
+  rotateGamepad(isRotated);
 }
 
 gamezoneLogo.addEventListener('mouseenter', () => {
-    if (!isRotated) {
-        rotateGamepad(true);
-    }
+  if (!isRotated) {
+    rotateGamepad(true);
+  }
 });
 
 gamezoneLogo.addEventListener('mouseleave', () => {
-    if (isRotated === false) {
-        rotateGamepad(false);
-    }
+  if (isRotated === false) {
+    rotateGamepad(false);
+  }
 });
 
 gamezoneLogo.addEventListener('click', (event) => {
-    handleLogoInteraction();
-    window.location.href = logoLink.getAttribute('href');
+  handleLogoInteraction();
+  window.location.href = logoLink.getAttribute('href');
 });
 
 gamezoneLogo.addEventListener('touchstart', (event) => {
-    event.preventDefault();
-    handleLogoInteraction();
-    setTimeout(() => {
-        window.location.href = logoLink.getAttribute('href');
-    }, animationDuration);
+  event.preventDefault();
+  handleLogoInteraction();
+  setTimeout(() => {
+    window.location.href = logoLink.getAttribute('href');
+  }, animationDuration);
 });
 // Logo effect end
 
@@ -113,7 +113,7 @@ function topFunction() {
 // Scroll-up button
 
 function pageUpBtn() {
- 
+
 }
 
 window.addEventListener('scroll', () => {
@@ -142,37 +142,37 @@ const suggestionsList = document.getElementById('suggestions-list');
 
 // Replace with your actual data source (e.g., an array or fetch from an API)
 const allSuggestions = [
-"Valorant",
-"CS2: Counter Strike 2",
-"PUBG Battlegrounds",
-"Shatterline",
-"Delta Force",
-"Destiny 2",
-"Fortnite",
-"Asphalt 8",
-"Metalstorm",
-"Dauntless",
-"Paladins",
-"Rocket Racing",
-"Rocket League",
-"Apex Legends",
-"Genshin Impact",
-"World War Z: Aftermath",
-"Fall Guys",
-"Marvel Rivals",
-"Call of Duty®: Warzone™",
-"Dota 2",
-"Overwatch® 2",
-"Once Human",
-"Warframe",
-"War Thunder",
-"eFootball™",
-"The First Descendant",
-"Star Trek Online",
-"Asphalt Legends Unite",
-"Halo Infinite",
-"Blood Strike",
-"Sky: Children of the Light"
+  "Valorant",
+  "CS2: Counter Strike 2",
+  "PUBG Battlegrounds",
+  "Shatterline",
+  "Delta Force",
+  "Destiny 2",
+  "Fortnite",
+  "Asphalt 8",
+  "Metalstorm",
+  "Dauntless",
+  "Paladins",
+  "Rocket Racing",
+  "Rocket League",
+  "Apex Legends",
+  "Genshin Impact",
+  "World War Z: Aftermath",
+  "Fall Guys",
+  "Marvel Rivals",
+  "Call of Duty®: Warzone™",
+  "Dota 2",
+  "Overwatch® 2",
+  "Once Human",
+  "Warframe",
+  "War Thunder",
+  "eFootball™",
+  "The First Descendant",
+  "Star Trek Online",
+  "Asphalt Legends Unite",
+  "Halo Infinite",
+  "Blood Strike",
+  "Sky: Children of the Light"
 ];
 
 searchInput.addEventListener('input', () => {
@@ -181,37 +181,37 @@ searchInput.addEventListener('input', () => {
   } else {
     clearButton.style.display = 'block';
   }
-    const query = searchInput.value.trim().toLowerCase(); // Make the search case-insensitive
+  const query = searchInput.value.trim().toLowerCase(); // Make the search case-insensitive
 
-    if (query) {
-        // Filter the suggestions based on the query
-        const filteredSuggestions = allSuggestions.filter(suggestion =>
-            suggestion.toLowerCase().startsWith(query)
-        );
+  if (query) {
+    // Filter the suggestions based on the query
+    const filteredSuggestions = allSuggestions.filter(suggestion =>
+      suggestion.toLowerCase().startsWith(query)
+    );
 
-        suggestionsList.innerHTML = ''; // Clear previous suggestions
+    suggestionsList.innerHTML = ''; // Clear previous suggestions
 
-        if (filteredSuggestions.length > 0) {
-            filteredSuggestions.forEach(suggestion => {
-                const li = document.createElement('li');
-                li.textContent = suggestion;
-                li.addEventListener('click', () => {
-                    searchInput.value = suggestion;
-                    suggestionsBox.style.display = 'none';
-                });
-                suggestionsList.appendChild(li);
-            });
-            suggestionsBox.style.display = 'block';
-        } else {
-            suggestionsBox.style.display = 'none'; // Hide if no matching suggestions
-        }
+    if (filteredSuggestions.length > 0) {
+      filteredSuggestions.forEach(suggestion => {
+        const li = document.createElement('li');
+        li.textContent = suggestion;
+        li.addEventListener('click', () => {
+          searchInput.value = suggestion;
+          suggestionsBox.style.display = 'none';
+        });
+        suggestionsList.appendChild(li);
+      });
+      suggestionsBox.style.display = 'block';
     } else {
-        suggestionsBox.style.display = 'none'; // Hide if the input is empty
+      suggestionsBox.style.display = 'none'; // Hide if no matching suggestions
     }
+  } else {
+    suggestionsBox.style.display = 'none'; // Hide if the input is empty
+  }
 });
 
 //auto-scroll by searchbar
-document.getElementById('search-btn').addEventListener('click', function(event) {
+document.getElementById('search-btn').addEventListener('click', function (event) {
   event.preventDefault(); // Prevent the default anchor behavior
 
   const imageElement = document.getElementById('gameContainer');
@@ -222,48 +222,48 @@ document.getElementById('search-btn').addEventListener('click', function(event) 
 });
 
 document.addEventListener('click', (event) => {
-    if (!event.target.closest('.search-bar')) {
-        suggestionsBox.style.display = 'none';
-    }
+  if (!event.target.closest('.search-bar')) {
+    suggestionsBox.style.display = 'none';
+  }
 });
 
-clearButton.addEventListener('click', function() {
+clearButton.addEventListener('click', function () {
   searchInput.value = '';
   searchInput.focus(); // Keep focus in the input
   clearButton.style.display = 'none';
 });
 
 //Optional: clear button also hides on focus out if the search input is empty.
-searchInput.addEventListener('focusout', function() {
+searchInput.addEventListener('focusout', function () {
   if (!this.value) {
     clearButton.style.display = 'none';
   }
 });
 document.addEventListener('click', (event) => {
-    if (!event.target.closest('.search-bar')) {
-        suggestionsBox.style.display = 'none';
-    }
+  if (!event.target.closest('.search-bar')) {
+    suggestionsBox.style.display = 'none';
+  }
 });
 
 searchInput.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        suggestionsBox.style.display = 'none';
-    }
+  if (event.key === 'Enter') {
+    suggestionsBox.style.display = 'none';
+  }
 });
 
 document.getElementById('search-btn').addEventListener('click', () => {
-    suggestionsBox.style.display = 'none';
+  suggestionsBox.style.display = 'none';
 });
 
 
 searchInput.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        suggestionsBox.style.display = 'none';
-    }
+  if (event.key === 'Enter') {
+    suggestionsBox.style.display = 'none';
+  }
 });
 
 document.getElementById('search-btn').addEventListener('click', () => {
-    suggestionsBox.style.display = 'none';
+  suggestionsBox.style.display = 'none';
 });
 //Search suggestion End
 
@@ -286,54 +286,54 @@ document.getElementById('search-btn').addEventListener('click', () => {
 // day/night button
 const checkbox = document.querySelector('.switch input'); // Select the checkbox
 const body = document.body;
-const aTag = document.getElementById('menu').querySelectorAll('a'); 
+const aTag = document.getElementById('menu').querySelectorAll('a');
 
- // Or a specific element you want to apply dark mode to
+// Or a specific element you want to apply dark mode to
 
-checkbox.addEventListener('change', function() {
+checkbox.addEventListener('change', function () {
   body.classList.toggle('night-mode');
   if (this.checked) {
     document.body.style.backgroundColor = "black"
     body.classList.add('dark-mode'); // Add dark mode class
     this.textContent = "Night Mode";
     aTag.forEach(aTag => {
-     // aTag.style.color = 'gray'; 
+      // aTag.style.color = 'gray'; 
     });
 
-    
+
   } else {
-    
+
     body.classList.remove('dark-mode'); // Remove dark mode class
     this.textContent = "Light Mode";
     document.body.style.backgroundColor = "white"
     // aTag.forEach(aTag => {
     //   aTag.style.color = 'white'; 
     // }); 
-    
-  
+
+
 
   }
 });
 
 // day/night button End!
-    
+
 //mobile mode slider start
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const navLinksAnchors = document.querySelectorAll('.nav-links a');
 
 hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
 });
 
 navLinksAnchors.forEach(link => {
-    link.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-        }
-    });
+  link.addEventListener('click', () => {
+    if (navLinks.classList.contains('active')) {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
+  });
 });
 
 
@@ -347,70 +347,70 @@ const cursor = document.querySelector('.cursor');
 let isInside = false;
 
 function handlePointerEnter() {
-    centerText.classList.add('hovered');
-    sparkle.style.opacity = '1';
-    cursor.style.display = 'block';
-    isInside = true;
+  centerText.classList.add('hovered');
+  sparkle.style.opacity = '1';
+  cursor.style.display = 'block';
+  isInside = true;
 }
 
 function handlePointerLeave() {
-    centerText.classList.remove('hovered');
-    sparkle.style.opacity = '0';
-    cursor.style.display = 'none';
-    isInside = false;
+  centerText.classList.remove('hovered');
+  sparkle.style.opacity = '0';
+  cursor.style.display = 'none';
+  isInside = false;
 
-    trailPoints.forEach(point => point.remove());
-    trailPoints.length = 0;
+  trailPoints.forEach(point => point.remove());
+  trailPoints.length = 0;
 }
 
 function handlePointerMove(e) {
-    let clientX, clientY;
-    if (e.touches) {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-    } else {
-        clientX = e.clientX;
-        clientY = e.clientY;
-    }
+  let clientX, clientY;
+  if (e.touches) {
+    clientX = e.touches[0].clientX;
+    clientY = e.touches[0].clientY;
+  } else {
+    clientX = e.clientX;
+    clientY = e.clientY;
+  }
 
-    const rect = centerText.getBoundingClientRect();
+  const rect = centerText.getBoundingClientRect();
 
-    if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) {
-        handlePointerLeave();
-        return;
-    }
+  if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) {
+    handlePointerLeave();
+    return;
+  }
 
-    if (!isInside) {
-        handlePointerEnter();
-    }
+  if (!isInside) {
+    handlePointerEnter();
+  }
 
-    sparkle.style.left = clientX + 'px';
-    sparkle.style.top = clientY + 'px';
-    cursor.style.left = clientX + 'px';
-    cursor.style.top = clientY + 'px';
+  sparkle.style.left = clientX + 'px';
+  sparkle.style.top = clientY + 'px';
+  cursor.style.left = clientX + 'px';
+  cursor.style.top = clientY + 'px';
 
-    const trailPoint = document.createElement('div');
-    trailPoint.classList.add('trail');
-    trailPoint.style.left = clientX + 'px';
-    trailPoint.style.top = clientY + 'px';
+  const trailPoint = document.createElement('div');
+  trailPoint.classList.add('trail');
+  trailPoint.style.left = clientX + 'px';
+  trailPoint.style.top = clientY + 'px';
 
-    const trailSize = 5;
-    trailPoint.style.width = trailSize + 'px';
-    trailPoint.style.height = trailSize + 'px';
-    document.body.appendChild(trailPoint);
-    trailPoints.push(trailPoint);
+  const trailSize = 5;
+  trailPoint.style.width = trailSize + 'px';
+  trailPoint.style.height = trailSize + 'px';
+  document.body.appendChild(trailPoint);
+  trailPoints.push(trailPoint);
 
-    if (trailPoints.length > 20) {
-        const removedPoint = trailPoints.shift();
-        removedPoint.remove();
-    }
+  if (trailPoints.length > 20) {
+    const removedPoint = trailPoints.shift();
+    removedPoint.remove();
+  }
 
-    trailPoints.forEach((point, index) => {
-        const size = trailSize * (1 + index / 5);
-        point.style.width = Math.min(10, size) + 'px';
-        point.style.height = Math.min(10, size) + 'px';
-        point.style.opacity = 1 - index / 20;
-    });
+  trailPoints.forEach((point, index) => {
+    const size = trailSize * (1 + index / 5);
+    point.style.width = Math.min(10, size) + 'px';
+    point.style.height = Math.min(10, size) + 'px';
+    point.style.opacity = 1 - index / 20;
+  });
 }
 
 centerText.addEventListener('mouseenter', handlePointerEnter);
@@ -427,137 +427,142 @@ sparkle.style.opacity = '0';
 //welcome animation ends
 
 // Register Page
-document.getElementById('registration-link').addEventListener('click', function() {
+document.getElementById('registration-link').addEventListener('click', function () {
   window.scrollBy({
     top: 300,
     behavior: 'smooth'
-});
-  fetch('registerPage/register.html')
-      .then(response => response.text())
-      .then(data => {
-          document.getElementById('registerPage').innerHTML = data;
-          document.getElementById('allGamesPage').style.display = 'none';
-          document.getElementById('registerPage').style.display = 'block';
-
-          // Back button functionality inside index.html
-          document.getElementById('backButton').addEventListener('click', function() {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
-              document.getElementById('allGamesPage').style.display = 'block';
-              document.getElementById('registerPage').style.display = 'none';
-          });
-       
-// Registering Form page
-document.getElementById('register-button').addEventListener('click', function(event) {
-  event.preventDefault();
-window.scrollBy({
-  top: 300,
-  behavior: 'smooth'
-});
-fetch('registerPage/registrationForm.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('registerPage').innerHTML = data;
-    document.getElementById('allGamesPage').style.display = 'none';
-    document.getElementById('registerPage').style.display = 'block'; // Show the registration page
-
-  
-
-  //   Add event listener for form submission
-  //   This code is running in index.html but it's from the RegisterForm content
-    
-  document.getElementById('registrationForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent default form submission
-
-      document.getElementById('registration-form').style.display = 'none'; // Hide registration form
-      document.getElementById('paymentForm').style.display = 'block'; // Show payment form
-      
-    });
-    document.getElementById('homePage').addEventListener('click', function() {
-          document.getElementById('paymentForm').style.display = 'none';
-          document.getElementById('registration-form').style.display = 'block';
-      });
-
-      document.getElementById('planSelection').addEventListener('change', function() {
-          let selectedPlan = this.value;
-          let paymentAmountDisplay = document.getElementById('paymentAmount');
-          let validity = document.getElementById('validity');
-          let gameplay = document.getElementById('gameplay');
-          let package = document.getElementById('package');
-          let cost = document.getElementById('cost');
-          let accessories = document.getElementById('accessories');
-          let steering = document.getElementById('steering');
-
-          let extra = document.getElementById('extra');
-          if (selectedPlan === 'bronze') {
-              paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
-              validity.textContent = 'Validity: 10 Days';
-              gameplay.textContent = 'Total Gameplay: 5 Hours';
-              package.textContent = 'Package (10 Card) for ₹150';
-              cost.textContent = '30 Minutes/vCard';
-              accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-              steering.textContent = 'Steering Wheel: ₹10/session';
-
-              extra.textContent = '';
-          } else if (selectedPlan === 'silver') {
-              paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
-              validity.textContent = 'Validity: 15 Days';
-              gameplay.textContent = 'Total Gameplay: 8 Hours';
-              package.textContent = 'Package (10 Card) for ₹300';
-              cost.textContent = '45 Minutes/vCard';
-              accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-              steering.textContent = '';
-              
-              extra.textContent = 'Steering Wheel: ₹10/session';
-          } else if (selectedPlan === 'gold') {
-              paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
-              validity.textContent = 'Validity: Forever';
-              gameplay.textContent = 'Total Gameplay: 8 Hours';
-              package.textContent = 'Package (10 Card) for ₹400';
-              cost.textContent = '45 Minutes/vCard';
-              accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-              steering.textContent = 'Steering Wheel: ₹10/session';
-              
-              extra.textContent = 'Physical card will be provided';
-          } else if (selectedPlan === 'birthdayspecial') {
-              paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
-              validity.textContent = 'Validity: 1 Day';
-              gameplay.textContent = 'Total Gameplay: 15-20 Minute';
-              package.textContent = 'Package (5 Card) for ₹50';
-              cost.textContent = '15-20 Minutes/Card';
-              accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-              steering.textContent = 'Steering Wheel: ₹10/session';
-             
-              extra.textContent = 'Physica or virtual card';
-          } else {
-              paymentAmountDisplay.textContent = '';     }
-      });
-
-  //   This code is running in index.html but it's from the RegisterForm content End 
-
-
   });
-});
+  fetch('registerPage/register.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('registerPage').innerHTML = data;
+      document.getElementById('allGamesPage').style.display = 'none';
+      document.getElementById('registerPage').style.display = 'block';
 
-      document.getElementById('home').addEventListener('click', function() {
-          document.getElementById('registerPage').style.display = 'none';
-          document.getElementById('allGamesPage').style.display = 'block';
-          filterGames('all');
+      // Back button functionality inside index.html
+      document.getElementById('backButton').addEventListener('click', function () {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        document.getElementById('allGamesPage').style.display = 'block';
+        document.getElementById('registerPage').style.display = 'none';
       });
 
-// Registering Form page end 
-
-      })
-      .catch(error => {
-          console.error('Error loading page:', error);
-          document.getElementById('registerPage').innerHTML = "<p>Error loading content.</p>";
-          document.getElementById('registerPage').style.display = 'block';
+      // Registering Form page
+      const registerButtons = document.querySelectorAll('.register-button');
+      registerButtons.forEach(button => {
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+          window.scrollBy({
+            top: 300,
+            behavior: 'smooth'
+          });
+          fetch('registerPage/registrationForm.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('registerPage').innerHTML = data;
+              document.getElementById('allGamesPage').style.display = 'none';
+              document.getElementById('registerPage').style.display = 'block'; // Show the registration page
+  
+  
+  
+              //   Add event listener for form submission
+              //   This code is running in index.html but it's from the RegisterForm content
+  
+              document.getElementById('registrationForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+  
+                document.getElementById('registration-form').style.display = 'none'; // Hide registration form
+                document.getElementById('paymentForm').style.display = 'block'; // Show payment form
+  
+              });
+              document.getElementById('homePage').addEventListener('click', function () {
+                document.getElementById('paymentForm').style.display = 'none';
+                document.getElementById('registration-form').style.display = 'block';
+              });
+  
+              document.getElementById('planSelection').addEventListener('change', function () {
+                let selectedPlan = this.value;
+                let paymentAmountDisplay = document.getElementById('paymentAmount');
+                let validity = document.getElementById('validity');
+                let gameplay = document.getElementById('gameplay');
+                let package = document.getElementById('package');
+                let cost = document.getElementById('cost');
+                let accessories = document.getElementById('accessories');
+                let steering = document.getElementById('steering');
+  
+                let extra = document.getElementById('extra');
+                if (selectedPlan === 'bronze') {
+                  paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
+                  validity.textContent = 'Validity: 10 Days';
+                  gameplay.textContent = 'Total Gameplay: 5 Hours';
+                  package.textContent = 'Package (10 Card) for ₹150';
+                  cost.textContent = '30 Minutes/vCard';
+                  accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                  steering.textContent = 'Steering Wheel: ₹10/session';
+  
+                  extra.textContent = '';
+                } else if (selectedPlan === 'silver') {
+                  paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
+                  validity.textContent = 'Validity: 15 Days';
+                  gameplay.textContent = 'Total Gameplay: 8 Hours';
+                  package.textContent = 'Package (10 Card) for ₹300';
+                  cost.textContent = '45 Minutes/vCard';
+                  accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                  steering.textContent = '';
+  
+                  extra.textContent = 'Steering Wheel: ₹10/session';
+                } else if (selectedPlan === 'gold') {
+                  paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
+                  validity.textContent = 'Validity: Forever';
+                  gameplay.textContent = 'Total Gameplay: 8 Hours';
+                  package.textContent = 'Package (10 Card) for ₹400';
+                  cost.textContent = '45 Minutes/vCard';
+                  accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                  steering.textContent = 'Steering Wheel: ₹10/session';
+  
+                  extra.textContent = 'Physical card will be provided';
+                } else if (selectedPlan === 'birthdayspecial') {
+                  paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
+                  validity.textContent = 'Validity: 1 Day';
+                  gameplay.textContent = 'Total Gameplay: 15-20 Minute';
+                  package.textContent = 'Package (5 Card) for ₹50';
+                  cost.textContent = '15-20 Minutes/Card';
+                  accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                  steering.textContent = 'Steering Wheel: ₹10/session';
+  
+                  extra.textContent = 'Physica or virtual card';
+                } else {
+                  paymentAmountDisplay.textContent = '';
+                }
+              });
+  
+              //   This code is running in index.html but it's from the RegisterForm content End 
+  
+  
+            });
+        });
       });
+     
+
+      document.getElementById('home').addEventListener('click', function () {
+        document.getElementById('registerPage').style.display = 'none';
+        document.getElementById('allGamesPage').style.display = 'block';
+        filterGames('all');
+      });
+
+      // Registering Form page end 
+
+    })
+    .catch(error => {
+      console.error('Error loading page:', error);
+      document.getElementById('registerPage').innerHTML = "<p>Error loading content.</p>";
+      document.getElementById('registerPage').style.display = 'block';
+    });
 });
- // Home Link Functionality
- document.getElementById('home').addEventListener('click', function() {
+// Home Link Functionality
+document.getElementById('home').addEventListener('click', function () {
   //this will back to filter normal
   filterGames('all');
   document.getElementById('allGamesPage').style.display = 'block';
@@ -734,126 +739,126 @@ const gameData = [
     "trending": true
   },
 
-// From Steam Free games
-{
-  "title": "Call of Duty®: Warzone™",
-  "description": "Welcome to Call of Duty®: Warzone™, the massive combat arena. Experience thrilling modes & new gameplay with different maps and tournaments, Get the best experience of war zone, best for action lovers!",
-  "thumbnail": "https://i.pinimg.com/736x/ec/63/30/ec63301f24e5456516c9cd2754b53166.jpg",
-  "videoId": "0E44DClsX5Q",
-  "genre": "FPS, Multiplayer, Competitive, Battle Royale",
-  "ageRating": "18",
-  "trending": false
-},
-{
-  "title": "Dota 2",
-  "description": "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. there's always something new to discover, this is Action lovers game & this is under top 10 list of Steam DB.",
-  "thumbnail": "https://i.redd.it/rjxu8q8u1ga91.jpg",
-  "videoId": "-cSFPIwMEq4",
-  "genre": "MOBA, Strategy, Multiplayer",
-  "ageRating": "12",
-  "trending": true
-},
-{
-  "title": "Overwatch® 2",
-  "description": "Overwatch 2: this is a critically acclaimed, team-based shooter game set in an optimistic future with an evolving roster of heroes. Team up with friends and jump in today, play the game like heroes does!",
-  "thumbnail": "https://i.pinimg.com/736x/d0/5e/56/d05e561afd6e03768fd587ca66ebaabf.jpg",
-  "videoId": "LGgqyer-qr4",
-  "genre": "Hero Shooter, Multiplayer, FPS",
-  "ageRating": "12",
-  "trending": false
-},
-{
-  "title": "Once Human",
-  "description": "A multiplayer open-world survival game, post-apocalyptic future. Unite with friends to fight monstrous enemies, uncover secret plots, compete for resources, and build your own territory. Once.",
-  "thumbnail": "https://i.pinimg.com/736x/e1/72/a7/e172a7addc10db413978655407173228.jpg",
-  "videoId": "XXpfbP9Ml_4",
-  "genre": "Multiplayer, Open World, Survival",
-  "ageRating": "18",
-  "trending": false
-},
-{
-  "title": "Warframe",
-  "description": "Warframe: Awaken as an unstoppable warrior and battle alongside your friends, online action game, craft a loadout of devastating weaponry and define your playstyle to become an unstoppable force.",
-  "thumbnail": "https://i.pinimg.com/736x/6b/de/3d/6bde3dd1efb3a7846434161e76bdc27d.jpg",
-  "videoId": "SsOgrkdLHD8",
-  "genre": "Action RPG, Action, Looter Shooter",
-  "ageRating": "18",
-  "trending": false
-},
-{
-  "title": "War Thunder",
-  "description": "War Thunder: The MMO military game dedicated to aviation, armoured vehicles, and naval craft, the most advanced modern combat units. Join now battles on land, in the air, and at sea. Action Lovers!",
-  "thumbnail": "https://i.pinimg.com/736x/c4/c1/02/c4c1028838c27c48dfdc47da5598ae13.jpg",
-  "videoId": "pzgPXOw2plI",
-  "genre": "Simulation, VR",
-  "ageRating": "12",
-  "trending": true
-},
-{
-  "title": "eFootball™",
-  "description": "eFootball : A worldwide total of 750 million downloads is waiting for you! to Play eFootball™ with users around the world and get the experience like real game. Best for Sport lovers & under the top-10 list of steam DB.",
-  "thumbnail": "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
-  "videoId": "BdyXsZMPjWo",
-  "genre": "Football, Sports",
-  "ageRating": "12",
-  "trending": false
-}, {
-  "title": "The First Descendant",
-  "description": "The First Descendant : A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
-  "thumbnail": "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
-  "videoId": "e15nHHJjpJg",
-  "genre": "Looter shooter, PvE",
-  "ageRating": "18",
-  "trending": false
-},
-{
-  "title": "Star Trek Online",
-  "description": "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space Lovers!",
-  "thumbnail": "https://imgs.search.brave.com/LOmpJznhOCOM_eSP2rUi7JaJvttJc5MRKAfUJdd6yxM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5hcGkucGxheXN0/YXRpb24uY29tL3Z1/bGNhbi9pbWcvY2Zu/LzExMzA3dGdlOW44/SWIzRW9Hc2RHZnNC/ZWg0a3pGdW1rNG84/LXVhbFdIejlBSjk2/NFl3UUY4QnJGWFh6/bkdITEVRZV9wVFhC/aHZpTDc4cVVYQzRz/VmtaRDBKZjBwSy1z/cy5wbmc",
-  "videoId": "8pzGjFCVhSE",
-  "genre": "Sci-fi,MMO, Space, Multiplayer",
-  "ageRating": "12",
-  "trending": false
-},
-{
-  "title": "Asphalt Legends Unite",
-  "description": "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat race, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars, Racing Lovers!",
-  "thumbnail": "https://i.pinimg.com/736x/4a/f1/bd/4af1bd26fa79c549274f0fa071e8a511.jpg",
-  "videoId": "rH-eZd01NEQ",
-  "genre": "Racing",
-  "ageRating": "10",
-  "trending": false
-},
-{
-  "title": "Halo Infinite",
-  "description": "Experience the halo sci-fi Action game with epic story that engage you to this game. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the <br>sci-fi Action story game Lovers!",
-  "thumbnail": "https://www.charlieintel.com/cdn-image/wp-content/uploads/2021/06/New-concept-art-leaked-for-Halo-Infinite.jpg?width=1200&quality=60&format=auto",
-  "videoId": "rFh2i4AlPD4",
-  "genre": "FPS, Multiplayer, Singleplayer",
-  "ageRating": "16",
-  "trending": false
-},
-{
-  "title": "Blood Strike",
-  "description": "Battle Royale, Squad Fight, or Hot Zone, Blood Strike offers a wide range of playable Strikers, unique active and passive ability letting you deploy drones, shield walls and everything in between.",
-  "thumbnail": "https://i.pinimg.com/736x/a5/97/1d/a5971d3d6fbb664c62fa6a9b6428ad06.jpg",
-  "videoId": "V581-wZLzdU",
-  "genre": "Battle Royale, Shooter, Adventure, Multiplyer",
-  "ageRating": "12",
-  "trending": false
-},
-{
-  "title": "Sky: Children of the Light",
-  "description": "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey, a beautifully-animated kingdom across seven realms and create enriching memories, Puzzle adventure Lovers!",
-  "thumbnail": "https://i.pinimg.com/736x/38/cc/e0/38cce048d46431483a1dce47dea9b846.jpg",
-  "videoId": "A3DNTfhUy0k",
-  "genre": "MMO, Multiplayer, Adventure",
-  "ageRating": "12",
-  "trending": false
-},
+  // From Steam Free games
+  {
+    "title": "Call of Duty®: Warzone™",
+    "description": "Welcome to Call of Duty®: Warzone™, the massive combat arena. Experience thrilling modes & new gameplay with different maps and tournaments, Get the best experience of war zone, best for action lovers!",
+    "thumbnail": "https://i.pinimg.com/736x/ec/63/30/ec63301f24e5456516c9cd2754b53166.jpg",
+    "videoId": "0E44DClsX5Q",
+    "genre": "FPS, Multiplayer, Competitive, Battle Royale",
+    "ageRating": "18",
+    "trending": false
+  },
+  {
+    "title": "Dota 2",
+    "description": "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. there's always something new to discover, this is Action lovers game & this is under top 10 list of Steam DB.",
+    "thumbnail": "https://i.redd.it/rjxu8q8u1ga91.jpg",
+    "videoId": "-cSFPIwMEq4",
+    "genre": "MOBA, Strategy, Multiplayer",
+    "ageRating": "12",
+    "trending": true
+  },
+  {
+    "title": "Overwatch® 2",
+    "description": "Overwatch 2: this is a critically acclaimed, team-based shooter game set in an optimistic future with an evolving roster of heroes. Team up with friends and jump in today, play the game like heroes does!",
+    "thumbnail": "https://i.pinimg.com/736x/d0/5e/56/d05e561afd6e03768fd587ca66ebaabf.jpg",
+    "videoId": "LGgqyer-qr4",
+    "genre": "Hero Shooter, Multiplayer, FPS",
+    "ageRating": "12",
+    "trending": false
+  },
+  {
+    "title": "Once Human",
+    "description": "A multiplayer open-world survival game, post-apocalyptic future. Unite with friends to fight monstrous enemies, uncover secret plots, compete for resources, and build your own territory. Once.",
+    "thumbnail": "https://i.pinimg.com/736x/e1/72/a7/e172a7addc10db413978655407173228.jpg",
+    "videoId": "XXpfbP9Ml_4",
+    "genre": "Multiplayer, Open World, Survival",
+    "ageRating": "18",
+    "trending": false
+  },
+  {
+    "title": "Warframe",
+    "description": "Warframe: Awaken as an unstoppable warrior and battle alongside your friends, online action game, craft a loadout of devastating weaponry and define your playstyle to become an unstoppable force.",
+    "thumbnail": "https://i.pinimg.com/736x/6b/de/3d/6bde3dd1efb3a7846434161e76bdc27d.jpg",
+    "videoId": "SsOgrkdLHD8",
+    "genre": "Action RPG, Action, Looter Shooter",
+    "ageRating": "18",
+    "trending": false
+  },
+  {
+    "title": "War Thunder",
+    "description": "War Thunder: The MMO military game dedicated to aviation, armoured vehicles, and naval craft, the most advanced modern combat units. Join now battles on land, in the air, and at sea. Action Lovers!",
+    "thumbnail": "https://i.pinimg.com/736x/c4/c1/02/c4c1028838c27c48dfdc47da5598ae13.jpg",
+    "videoId": "pzgPXOw2plI",
+    "genre": "Simulation, VR",
+    "ageRating": "12",
+    "trending": true
+  },
+  {
+    "title": "eFootball™",
+    "description": "eFootball : A worldwide total of 750 million downloads is waiting for you! to Play eFootball™ with users around the world and get the experience like real game. Best for Sport lovers & under the top-10 list of steam DB.",
+    "thumbnail": "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
+    "videoId": "BdyXsZMPjWo",
+    "genre": "Football, Sports",
+    "ageRating": "12",
+    "trending": false
+  }, {
+    "title": "The First Descendant",
+    "description": "The First Descendant : A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
+    "thumbnail": "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
+    "videoId": "e15nHHJjpJg",
+    "genre": "Looter shooter, PvE",
+    "ageRating": "18",
+    "trending": false
+  },
+  {
+    "title": "Star Trek Online",
+    "description": "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space Lovers!",
+    "thumbnail": "https://imgs.search.brave.com/LOmpJznhOCOM_eSP2rUi7JaJvttJc5MRKAfUJdd6yxM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5hcGkucGxheXN0/YXRpb24uY29tL3Z1/bGNhbi9pbWcvY2Zu/LzExMzA3dGdlOW44/SWIzRW9Hc2RHZnNC/ZWg0a3pGdW1rNG84/LXVhbFdIejlBSjk2/NFl3UUY4QnJGWFh6/bkdITEVRZV9wVFhC/aHZpTDc4cVVYQzRz/VmtaRDBKZjBwSy1z/cy5wbmc",
+    "videoId": "8pzGjFCVhSE",
+    "genre": "Sci-fi,MMO, Space, Multiplayer",
+    "ageRating": "12",
+    "trending": false
+  },
+  {
+    "title": "Asphalt Legends Unite",
+    "description": "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat race, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars, Racing Lovers!",
+    "thumbnail": "https://i.pinimg.com/736x/4a/f1/bd/4af1bd26fa79c549274f0fa071e8a511.jpg",
+    "videoId": "rH-eZd01NEQ",
+    "genre": "Racing",
+    "ageRating": "10",
+    "trending": false
+  },
+  {
+    "title": "Halo Infinite",
+    "description": "Experience the halo sci-fi Action game with epic story that engage you to this game. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the <br>sci-fi Action story game Lovers!",
+    "thumbnail": "https://www.charlieintel.com/cdn-image/wp-content/uploads/2021/06/New-concept-art-leaked-for-Halo-Infinite.jpg?width=1200&quality=60&format=auto",
+    "videoId": "rFh2i4AlPD4",
+    "genre": "FPS, Multiplayer, Singleplayer",
+    "ageRating": "16",
+    "trending": false
+  },
+  {
+    "title": "Blood Strike",
+    "description": "Battle Royale, Squad Fight, or Hot Zone, Blood Strike offers a wide range of playable Strikers, unique active and passive ability letting you deploy drones, shield walls and everything in between.",
+    "thumbnail": "https://i.pinimg.com/736x/a5/97/1d/a5971d3d6fbb664c62fa6a9b6428ad06.jpg",
+    "videoId": "V581-wZLzdU",
+    "genre": "Battle Royale, Shooter, Adventure, Multiplyer",
+    "ageRating": "12",
+    "trending": false
+  },
+  {
+    "title": "Sky: Children of the Light",
+    "description": "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey, a beautifully-animated kingdom across seven realms and create enriching memories, Puzzle adventure Lovers!",
+    "thumbnail": "https://i.pinimg.com/736x/38/cc/e0/38cce048d46431483a1dce47dea9b846.jpg",
+    "videoId": "A3DNTfhUy0k",
+    "genre": "MMO, Multiplayer, Adventure",
+    "ageRating": "12",
+    "trending": false
+  },
 ];
 
-const searchButton = document.getElementById('search-btn'); 
+const searchButton = document.getElementById('search-btn');
 const ageFilter = document.getElementById('age-filter');
 const gameContainer = document.getElementById('gameContainer');
 const videoPopup = document.getElementById('video-popup');
@@ -861,16 +866,16 @@ const closeButton = document.getElementById('close-button');
 let player;
 const toggleViewButton = document.getElementById('toggleView');
 
-let currentView = 'detail'; 
+let currentView = 'detail';
 
 function createGameCards(games) {
-    gameContainer.innerHTML = '';
-    games.forEach(game => {
-        const gameCard = document.createElement('div');
-        gameCard.classList.add('game-card');
-        gameCard.classList.add(`${currentView}-view`); // Initial view
+  gameContainer.innerHTML = '';
+  games.forEach(game => {
+    const gameCard = document.createElement('div');
+    gameCard.classList.add('game-card');
+    gameCard.classList.add(`${currentView}-view`); // Initial view
 
-        gameCard.innerHTML = `
+    gameCard.innerHTML = `
             <img src="${game.thumbnail}" alt="${game.title}">
             <span class="game-title-overlay">${game.title}</span> 
             <div class="game-card-content">
@@ -879,29 +884,29 @@ function createGameCards(games) {
             </div>
         `;
 
-        const image = gameCard.querySelector('img');
-        image.addEventListener('click', () => {
-            openPopup(game.videoId);
-        });
-
-        // Touch event listeners
-        gameCard.addEventListener('touchstart', () => {
-          if (currentView === 'grid') { // Apply only in grid view
-              gameCard.classList.add('hover-effect');
-          }
-      });
-
-      gameCard.addEventListener('touchend', () => {
-          gameCard.classList.remove('hover-effect');
-      });
-
-      gameCard.addEventListener('touchcancel', () => {
-          gameCard.classList.remove('hover-effect');
-      });
-
-
-        gameContainer.appendChild(gameCard);
+    const image = gameCard.querySelector('img');
+    image.addEventListener('click', () => {
+      openPopup(game.videoId);
     });
+
+    // Touch event listeners
+    gameCard.addEventListener('touchstart', () => {
+      if (currentView === 'grid') { // Apply only in grid view
+        gameCard.classList.add('hover-effect');
+      }
+    });
+
+    gameCard.addEventListener('touchend', () => {
+      gameCard.classList.remove('hover-effect');
+    });
+
+    gameCard.addEventListener('touchcancel', () => {
+      gameCard.classList.remove('hover-effect');
+    });
+
+
+    gameContainer.appendChild(gameCard);
+  });
 }
 
 function toggleView() {
@@ -911,19 +916,19 @@ function toggleView() {
   if (currentView === 'grid') {
     currentView = 'detail';
     detailIcon.style.display = 'inline';
-      gridIcon.style.display = 'none';
+    gridIcon.style.display = 'none';
 
   } else {
     currentView = 'grid';
     detailIcon.style.display = 'none';
-      gridIcon.style.display = 'inline';
+    gridIcon.style.display = 'inline';
   }
-    const gameCards = document.querySelectorAll('.game-card');
+  const gameCards = document.querySelectorAll('.game-card');
 
-    gameCards.forEach(card => {
-        card.classList.remove('detail-view', 'grid-view');
-        card.classList.add(`${currentView}-view`);
-    });
+  gameCards.forEach(card => {
+    card.classList.remove('detail-view', 'grid-view');
+    card.classList.add(`${currentView}-view`);
+  });
 }
 
 toggleViewButton.addEventListener('click', toggleView);
@@ -934,65 +939,65 @@ toggleViewButton.addEventListener('click', toggleView);
 function filterGames(selectedAge) {
   let filteredGames = gameData;
   if (selectedAge !== 'all') {
-      const selectedAgeNum = parseInt(selectedAge, 10);
-      if (selectedAgeNum === 18) {
-          filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
-      } else {
-          filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
-      }
+    const selectedAgeNum = parseInt(selectedAge, 10);
+    if (selectedAgeNum === 18) {
+      filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
+    } else {
+      filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
+    }
   } else {
     // If "all" is selected, randomize the games
     filteredGames = randomizeGames(gameData);
-}
-
-function isRefreshed(){
-  if (typeof window !== 'undefined' && typeof window.performance !== 'undefined' && typeof window.performance.navigation !== 'undefined') {
-    return window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD;
-}
-return false; // Default to false if performance API is not available
-}
-
-function randomizeGames(games) {
-  // Fisher-Yates shuffle algorithm
-  if(isRefreshed){
-  let shuffledGames = [...games]; // Create a copy to avoid modifying the original array
-  for (let i = shuffledGames.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledGames[i], shuffledGames[j]] = [shuffledGames[j], shuffledGames[i]];
   }
-  return shuffledGames;
-}
-  else{
-    return games;
+
+  function isRefreshed() {
+    if (typeof window !== 'undefined' && typeof window.performance !== 'undefined' && typeof window.performance.navigation !== 'undefined') {
+      return window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD;
+    }
+    return false; // Default to false if performance API is not available
   }
-}
+
+  function randomizeGames(games) {
+    // Fisher-Yates shuffle algorithm
+    if (isRefreshed) {
+      let shuffledGames = [...games]; // Create a copy to avoid modifying the original array
+      for (let i = shuffledGames.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledGames[i], shuffledGames[j]] = [shuffledGames[j], shuffledGames[i]];
+      }
+      return shuffledGames;
+    }
+    else {
+      return games;
+    }
+  }
 
 
   if (filteredGames.length === 0) {
-      // Display "No games available" message
-      createNoGamesMessage(); // Call a function to display the message
+    // Display "No games available" message
+    createNoGamesMessage(); // Call a function to display the message
   } else {
-      createGameCards(filteredGames); // Pass the filtered array to createGameCards
+    createGameCards(filteredGames); // Pass the filtered array to createGameCards
   }
 }
 
 // Search Functionality
 function searchGames(searchTerm) {
   if (!searchTerm) {
-      // If search term is empty, display all games or the currently filtered games
-      filterGames(document.getElementById('age-filter').value); // Assuming you have an age filter dropdown
-      return;
+    // If search term is empty, display all games or the currently filtered games
+    filterGames(document.getElementById('age-filter').value); // Assuming you have an age filter dropdown
+    return;
   }
 
   const lowerSearchTerm = searchTerm.toLowerCase();
   const searchedGames = gameData.filter(game =>
-      game.title.toLowerCase().includes(lowerSearchTerm)
+    game.title.toLowerCase().includes(lowerSearchTerm)
   );
 
   if (searchedGames.length === 0) {
-      createNoGamesMessage();
+    createNoGamesMessage();
   } else {
-      createGameCards(searchedGames); // Display only the matched games
+    createGameCards(searchedGames); // Display only the matched games
   }
 }
 
@@ -1005,14 +1010,14 @@ searchButton.addEventListener('click', () => {
 function createNoGamesMessage() {
   const gameContainer = document.getElementById('gameContainer');
   if (gameContainer) {
-      gameContainer.innerHTML = `
+    gameContainer.innerHTML = `
           <div style="text-align: center; padding: 20px;">
               <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2N0OHM1dGw5NHRwb3Bvemx5djhhMHJ3ajhncG42bDkxM3V6aTBiMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ch67rqHED7Ue8mKupV/giphy.gif" alt="No Games Available. Thank you!" style="max-width: 200px; margin-bottom: 10px;">
               <p>No games available, Sorry!!!.</p>
           </div>
       `;
   } else {
-      console.error("gameContainer element not found");
+    console.error("gameContainer element not found");
   }
 }
 
@@ -1021,40 +1026,40 @@ filterGames('all');
 
 // Event listener for the dropdown
 ageFilter.addEventListener('change', () => {
-  const availableText = document.getElementById("available-text"); 
+  const availableText = document.getElementById("available-text");
 
-  if(availableText.textContent == "Available Games"){
+  if (availableText.textContent == "Available Games") {
     filterGames(ageFilter.value);
-} else{
-  showTrendingGames();
-}
+  } else {
+    showTrendingGames();
+  }
 });
 
 // trending button
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const trendingLink = document.getElementById("trending");
-  const availableText = document.getElementById("available-text"); 
+  const availableText = document.getElementById("available-text");
   const ageFilterText = document.getElementById("age-filter-text");
 
-//auto-scroll
-document.getElementById('trending').addEventListener('click', function(event) {
-  event.preventDefault(); // Prevent the default anchor behavior
+  //auto-scroll
+  document.getElementById('trending').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent the default anchor behavior
 
-  const imageElement = document.getElementById('gameContainer');
+    const imageElement = document.getElementById('gameContainer');
 
-  if (imageElement) {
-    imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
-  }
-});
+    if (imageElement) {
+      imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
+    }
+  });
 
 
-  trendingLink.addEventListener("click", function(event) {
-      event.preventDefault();
-      availableText.textContent = "Most Played Games";
-      ageFilterText.textContent = "Filter by Age on Trendings"
+  trendingLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    availableText.textContent = "Most Played Games";
+    ageFilterText.textContent = "Filter by Age on Trendings"
 
-      showTrendingGames();
+    showTrendingGames();
   });
 
 });
@@ -1063,12 +1068,12 @@ document.getElementById('trending').addEventListener('click', function(event) {
 function showTrendingGames() {
   const ageFilter = document.getElementById('age-filter');
   const trendingGames = gameData.filter(game => game.trending === true);
-  getTrendingAndAgeFilteredGames(ageFilter.value,trendingGames);
+  getTrendingAndAgeFilteredGames(ageFilter.value, trendingGames);
 
 }
 
 
-function getTrendingAndAgeFilteredGames(selectedAge,trendingGames) {
+function getTrendingAndAgeFilteredGames(selectedAge, trendingGames) {
   let trendingGameList = trendingGames; // Start with the full gameData
 
 
@@ -1084,12 +1089,12 @@ function getTrendingAndAgeFilteredGames(selectedAge,trendingGames) {
   // else {
   //   filteredGames = randomizeGames(filteredGames);
   // }
-if(trendingGameList.length == 0){
-  createNoGamesMessage();
+  if (trendingGameList.length == 0) {
+    createNoGamesMessage();
 
-}else{
-createGameCards(trendingGameList); // for trending
-}
+  } else {
+    createGameCards(trendingGameList); // for trending
+  }
 }
 
 //trending btn end
@@ -1100,8 +1105,8 @@ tag.src = "https://www.youtube.com/iframe_api"; // Corrected URL
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-window.onYouTubeIframeAPIReady = function() { 
- 
+window.onYouTubeIframeAPIReady = function () {
+
   let mobileAspect = .6;
   player = new YT.Player('player', {
     height: isMobile() ? window.innerWidth * mobileAspect : 480, // Responsive height based on device
@@ -1118,8 +1123,8 @@ window.onYouTubeIframeAPIReady = function() {
       'onStateChange': onPlayerStateChange,
     }
   });
-   // Add resize listener
-   window.addEventListener('resize', onWindowResize);
+  // Add resize listener
+  window.addEventListener('resize', onWindowResize);
 };
 
 function isMobile() {
@@ -1140,23 +1145,23 @@ function onPlayerStateChange(event) {
     }
     screen.orientation.lock("landscape");
   } else if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.CUED) {
-    if(isMobile()){
+    if (isMobile()) {
       screen.orientation.unlock();
     }
   }
 }
 // Add event listeners for visibility changes
-document.addEventListener('visibilitychange', function() {
+document.addEventListener('visibilitychange', function () {
   if (document.hidden && isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING) {
     player.pauseVideo();
   }
 });
 
 // Add event listener for blur (window loses focus)
-window.addEventListener('blur', function() {
-    if(isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING){
-      player.pauseVideo();
-    }
+window.addEventListener('blur', function () {
+  if (isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+    player.pauseVideo();
+  }
 });
 
 
