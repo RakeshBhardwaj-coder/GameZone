@@ -450,7 +450,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
       });
 
       // Registering Form page
-      const registerButtons = document.querySelectorAll('.register-button');
+      const registerButtons = document.querySelectorAll('.open-reg-form-btn');
       registerButtons.forEach(button => {
         button.addEventListener('click', function (event) {
           event.preventDefault();
