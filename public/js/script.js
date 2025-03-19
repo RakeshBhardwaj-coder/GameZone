@@ -435,7 +435,10 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
   fetch('registerPage/plans.html')
     .then(response => response.text())
     .then(data => {
+
       document.getElementById('place-for-plans').innerHTML = data;
+
+      
       document.getElementById('all-games-place').style.display = 'none';
       document.getElementById('place-for-plans').style.display = 'block';
 
@@ -455,10 +458,26 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
       registerButtons.forEach(button => {
         button.addEventListener('click', function (event) {
-         event.preventDefault();
+          event.preventDefault();
+
+          const planElement = this.closest('.plan');
+          if (planElement) {
+            selectedPlan = planElement.getAttribute('data-plan-value');
+            console.log("Selected plan:", selectedPlan);
+
+            window.scrollBy({
+                top: 300,
+                behavior: 'smooth'
+            });
+
+        } else {
+            console.error("Plan element not found.");
+        }
+          console.log("Button clicked!",document.getElementById("plan").getAttribute("data-plan-value"));
+        
 
          selectedPlan = this.getAttribute('data-plan-value');
-
+         console.log("Selected plan:", selectedPlan);
           window.scrollBy({
             top: 300,
             behavior: 'smooth'
