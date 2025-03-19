@@ -465,19 +465,12 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             selectedPlan = planElement.getAttribute('data-plan-value');
             console.log("Selected plan:", selectedPlan);
 
-            window.scrollBy({
-                top: 300,
-                behavior: 'smooth'
-            });
-
-        } else {
+         } else {
             console.error("Plan element not found.");
         }
-          console.log("Button clicked!",document.getElementById("plan").getAttribute("data-plan-value"));
         
 
-         selectedPlan = this.getAttribute('data-plan-value');
-         console.log("Selected plan:", selectedPlan);
+        //  console.log("Selected plan:", selectedPlan);
           window.scrollBy({
             top: 300,
             behavior: 'smooth'
@@ -491,7 +484,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
               document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
 
               //getting plans in registratoin page from plans.html
-              document.getElementById('planSelection').value = 'silver';
+              document.getElementById('planSelection').value = selectedPlan;
              // Show the registration page
 
               document.getElementById('all-games-place').style.display = 'none';
