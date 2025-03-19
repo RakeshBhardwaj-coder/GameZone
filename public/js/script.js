@@ -451,25 +451,38 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
       // Registering Form page
       const registerButtons = document.querySelectorAll('.open-reg-form-btn');
+      let selectedPlan = null;
+
       registerButtons.forEach(button => {
         button.addEventListener('click', function (event) {
-          event.preventDefault();
+         event.preventDefault();
+
+         selectedPlan = this.getAttribute('data-plan-value');
+
           window.scrollBy({
             top: 300,
             behavior: 'smooth'
           });
+
+          
           fetch('registerPage/registration-and-payment-form.html')
             .then(response => response.text())
             .then(data => {
+
               document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
+
+              //getting plans in registratoin page from plans.html
+              document.getElementById('planSelection').value = 'silver';
+             // Show the registration page
+
               document.getElementById('all-games-place').style.display = 'none';
               document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
               document.getElementById('place-for-plans').style.display = 'none';
+
               
-               // Show the registration page
-  
-  
-              document.getElementById('reg-to-plans-btn').addEventListener("click",function(event){
+
+
+              document.getElementById('reg-to-plans-btn').addEventListener("click", function (event) {
                 event.preventDefault();
                 document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
                 document.getElementById('place-for-plans').style.display = 'block';
@@ -477,20 +490,20 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
               });
               //   Add event listener for form submission
               //   This code is running in index.html but it's from the RegisterForm content
-  
+
               document.getElementById('open-payment-page-btn').addEventListener('click', function (event) {
                 event.preventDefault(); // Prevent default form submission
-  
+
                 document.getElementById('registration-form').style.display = 'none'; // Hide registration form
                 document.getElementById('paymentForm').style.display = 'block'; // Show payment form
-  
+
               });
-             
+
               document.getElementById('payment-to-reg-form-btn').addEventListener('click', function () {
                 document.getElementById('paymentForm').style.display = 'none';
                 document.getElementById('registration-form').style.display = 'block';
               });
-  
+
               document.getElementById('planSelection').addEventListener('change', function () {
                 let selectedPlan = this.value;
                 let paymentAmountDisplay = document.getElementById('pay-amount-show');
@@ -500,7 +513,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 let cost = document.getElementById('cost');
                 let accessories = document.getElementById('accessories');
                 let steering = document.getElementById('steering');
-  
+
                 let extra = document.getElementById('extra');
                 if (selectedPlan === 'bronze') {
                   paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
@@ -510,7 +523,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   cost.textContent = '30 Minutes/vCard';
                   accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                   steering.textContent = 'Steering Wheel: ₹10/session';
-  
+
                   extra.textContent = '';
                 } else if (selectedPlan === 'silver') {
                   paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
@@ -520,7 +533,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   cost.textContent = '45 Minutes/vCard';
                   accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                   steering.textContent = '';
-  
+
                   extra.textContent = 'Steering Wheel: ₹10/session';
                 } else if (selectedPlan === 'gold') {
                   paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
@@ -530,7 +543,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   cost.textContent = '45 Minutes/vCard';
                   accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                   steering.textContent = 'Steering Wheel: ₹10/session';
-  
+
                   extra.textContent = 'Physical card will be provided';
                 } else if (selectedPlan === 'birthdayspecial') {
                   paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
@@ -540,20 +553,20 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   cost.textContent = '15-20 Minutes/Card';
                   accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                   steering.textContent = 'Steering Wheel: ₹10/session';
-  
+
                   extra.textContent = 'Physica or virtual card';
                 } else {
                   paymentAmountDisplay.textContent = '';
                 }
               });
-  
+
               //   This code is running in index.html but it's from the RegisterForm content End 
-  
-  
+
+
             });
         });
       });
-     
+
 
       document.getElementById('home').addEventListener('click', function () {
         document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
