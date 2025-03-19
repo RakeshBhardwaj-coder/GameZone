@@ -465,6 +465,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
               document.getElementById('all-games-place').style.display = 'none';
               document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
               document.getElementById('place-for-plans').style.display = 'none';
+              
                // Show the registration page
   
   
@@ -569,6 +570,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
       document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
     });
 });
+
+
 // Home Link Functionality
 document.getElementById('home').addEventListener('click', function () {
   //this will back to filter normal

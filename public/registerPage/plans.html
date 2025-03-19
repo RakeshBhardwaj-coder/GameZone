@@ -213,7 +213,7 @@
     <div class="centerCards" >
         <div class="plans-title">The Plans</div>
         <div class="gameCards">
-            <div class="plan bronze">
+            <div class="plan bronze" data-plan-value="bronze" data-plan-price="250">
                 <h2>Bronze</h2>
                 <p>Validity: 10 Days</p>
                 <p>Total Gameplay: 5 Hours</p>
@@ -223,7 +223,7 @@
                 <p>Steering Wheel: ₹10/session</p>
                 <a class="open-reg-form-btn">Click here for register</a>
             </div>
-            <div class="plan silver">
+            <div class="plan silver" data-plan-value="silver" data-plan-price="300">
                 <h2>Silver</h2>
                 <p>Validity: 15 Days</p>
                 <p>Total Gameplay: 8 Hours</p>
@@ -233,7 +233,7 @@
                 <p>Steering Wheel: ₹10/session</p>
                 <a class="open-reg-form-btn">Click here for register</a>
             </div>
-            <div class="plan gold">
+            <div class="plan gold" data-plan-value="gold" data-plan-price="400">
                 <h2>Gold</h2>
                 <p>Validity: Forever</p>
                 <p>Total Gameplay: 8 Hours</p>
@@ -244,7 +244,7 @@
                 <p class="physical-cards">Physical cards will be provided</p>
                 <a class="open-reg-form-btn">Click here for register</a>
             </div>
-            <div class="plan birthday">
+            <div class="plan birthday" data-plan-value="birthdayspecial" data-plan-price="100">
                 <h2></h2>
                 <p>Validity: 1 day</p>
                 <p>Total Gameplay: 15-20 Minute</p>
@@ -276,6 +276,43 @@
                 });
             });
         });
+
+// // dynamic sending data to reg-form
+//         document.addEventListener('DOMContentLoaded', function() {
+//         const planCards = document.querySelectorAll('.plan');
+//         let selectedPlan = null;
+//         let selectedPlanPrice = null;
+
+//         planCards.forEach(planCard => {
+//             planCard.addEventListener('click', function() {
+//                 selectedPlan = this.getAttribute('data-plan-value');
+//                 selectedPlanPrice = this.getAttribute('data-plan-price');
+//                 loadRegistrationForm(); // Load the registration form after selecting a plan
+//             });
+//         });
+
+//         function loadRegistrationForm() {
+//             window.scrollBy({
+//                 top: 300,
+//                 behavior: 'smooth'
+//             });
+//             fetch('registerPage/registration-and-payment-form.html')
+//                 .then(response => response.text())
+//                 .then(data => {
+//                     document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
+//                     document.getElementById('all-games-place').style.display = 'none';
+//                     document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
+//                     document.getElementById('place-for-plans').style.display = 'none';
+//                     // Now, set the selected plan in the registration form
+//                     document.getElementById('planSelection').value = selectedPlan;
+//                     //Now set the price
+//                     document.getElementById('planPrice').value = selectedPlanPrice;
+//                 });
+//         }
+//     });
+
+// // dynamic sending data to reg-form end
+
     </script>
 </body>
 
