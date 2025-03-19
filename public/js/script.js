@@ -436,7 +436,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
     .then(response => response.text())
     .then(data => {
       document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
-      document.getElementById('allGamesPage').style.display = 'none';
+      document.getElementById('all-games-place').style.display = 'none';
       document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
 
       // Back button functionality inside index.html
@@ -445,7 +445,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
           top: 0,
           behavior: 'smooth'
         });
-        document.getElementById('allGamesPage').style.display = 'block';
+        document.getElementById('all-games-place').style.display = 'block';
         document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
       });
 
@@ -462,7 +462,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             .then(response => response.text())
             .then(data => {
               document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
-              document.getElementById('allGamesPage').style.display = 'none';
+              document.getElementById('all-games-place').style.display = 'none';
               document.getElementById('place-for-reg-and-pay-form').style.display = 'block'; // Show the registration page
   
   
@@ -484,7 +484,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
   
               document.getElementById('planSelection').addEventListener('change', function () {
                 let selectedPlan = this.value;
-                let paymentAmountDisplay = document.getElementById('pay-amout-show');
+                let paymentAmountDisplay = document.getElementById('pay-amount-show');
                 let validity = document.getElementById('validity');
                 let gameplay = document.getElementById('gameplay');
                 let package = document.getElementById('package');
@@ -548,7 +548,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
       document.getElementById('home').addEventListener('click', function () {
         document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-        document.getElementById('allGamesPage').style.display = 'block';
+        document.getElementById('all-games-place').style.display = 'block';
         filterGames('all');
       });
 
@@ -565,7 +565,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 document.getElementById('home').addEventListener('click', function () {
   //this will back to filter normal
   filterGames('all');
-  document.getElementById('allGamesPage').style.display = 'block';
+  document.getElementById('all-games-place').style.display = 'block';
   document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
 
 });
