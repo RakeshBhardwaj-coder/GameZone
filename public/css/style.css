@@ -24,6 +24,10 @@ body{
   border: 0px;
   background: none;
 }
+#muteBtn img{
+  filter: invert(50%);
+
+}
 #muteIcon{
   width: 24px; 
   height: 24px;
@@ -34,6 +38,52 @@ body{
 }
 /* Mute/Unmute end */
 
+/* profile icon */
+.profile-container {
+  position: relative; /* Needed for absolute positioning of profile-name */
+  display: inline-flex; /* Use inline-flex for better alignment */
+  align-items: center; /* Vertically align icon and name */
+  flex-direction: column; /* Stack icon and name vertically */
+  margin-left: 10px; /* Add some space between mute button and profile icon */
+}
+
+.profile-icon {
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes it a circle */
+  overflow: hidden;
+}
+
+.profile-icon img { /* Corrected selector for img tag */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.profile-name {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap; /* Prevent text wrapping */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease;
+  position: absolute; /* Position relative to profile-container */
+  bottom: 110%; /* Place above the icon */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+}
+.profile-container:hover .profile-name {
+  opacity: 1; /* Show name on hover */
+}
+/* profile icon end */
 /* Centered container for other Pages */
 .centeredContainer {
  
@@ -96,8 +146,8 @@ body{
 body.night-mode #muteBtn{
   border: 0px;
 }
-body.night-mode  #muteBtn img{
-  filter: invert(100%);
+body.night-mode  #muteBtn img {
+  filter: invert(50%);
 }
 /* notworking xx++++++++++*/
 body.night-mode #toggleView{
@@ -144,6 +194,9 @@ body.night-mode #registrationBtn:hover {
 body.night-mode #registrationBtn:focus,
 body.night-mode #registrationBtn:active {
   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Lighter focus/active shadow */
+}
+body.night-mode .profile-icon {
+  filter: invert(100%);
 }
 /*Registration btn end*/
 
@@ -494,7 +547,7 @@ nav {
 
  
  body.night-mode #muteBtn img{
-  filter: invert(0%);
+  filter: invert(50%);
 }
 body.night-mode #menu a{
   color: rgb(0, 0, 0);
@@ -630,7 +683,7 @@ body.night-mode #registrationBtn:hover {
   @media (max-width: 1034px) {
  
     body.night-mode #muteBtn img{
-      filter: invert(0%);
+      filter: invert(50%);
     }
 
     nav {
@@ -669,7 +722,7 @@ body.night-mode #registrationBtn:hover {
   @media (max-width: 480px) {
  
     body.night-mode #muteBtn img{
-      filter: invert(0%);
+      filter: invert(50%);
     }
     .col-left a img {
         width: 120px; /* Further adjust logo size */
@@ -715,7 +768,7 @@ body.night-mode #registrationBtn:hover {
 
      
  body.night-mode #muteBtn img{
-  filter: invert(0%);
+  filter: invert(50%);
 }
     /* Search Bar Adjustments */
     .search-bar {
