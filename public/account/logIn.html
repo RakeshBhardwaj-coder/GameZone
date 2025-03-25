@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="forgot-password-container">
-        <h2>Forgot Password</h2>
-        <form id="forgotPasswordForm">
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <button type="submit">Reset Password</button>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
             </div>
         </form>
-        <p><a href="login.html">Back to Login</a></p>
+        <p><a href="forgotPassword.html">Forgot Password?</a></p>
+        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-        import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
@@ -38,24 +43,26 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        const forgotPasswordForm = document.getElementById("forgotPasswordForm");
+        const loginForm = document.getElementById("loginForm");
 
-        forgotPasswordForm.addEventListener("submit", (event) => {
+        loginForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
             const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
 
-            sendPasswordResetEmail(auth, email)
-                .then(() => {
-                    alert("Password reset email sent. Check your inbox.");
-                    // Optionally, redirect to a confirmation page
-                    window.location.href = "login.html"; // Redirect to login page
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log("User logged in:", user);
+                    // Redirect to a dashboard or home page after successful login
+                    window.location.href = "dashboard.html"; // Replace with your desired page
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.error("Forgot password error:", errorCode, errorMessage);
-                    alert("Failed to send reset email: " + errorMessage);
+                    console.error("Login error:", errorCode, errorMessage);
+                    alert("Login failed: " + errorMessage);
                 });
         });
     </script>
