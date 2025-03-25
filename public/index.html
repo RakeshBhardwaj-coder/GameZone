@@ -122,6 +122,7 @@
           
         </div>
         <div class="profile-name">User</div>
+        <div class="logout-option">Logout</div>
       </div>
     </div>
     <!-- Menu Bar hamburger End -->
@@ -295,12 +296,50 @@
     </div>
   </footer><!-- End  Footer -->
 
-
+<script></script>
 
   <script src="js/script.js">
 
   </script>
+<script type="module">
+  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 
+  // Your Firebase configuration
+  const firebaseConfig = {
+            apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
+            authDomain: "playgamezonegames.firebaseapp.com",
+            projectId: "playgamezonegames",
+            storageBucket: "playgamezonegames.firebasestorage.app",
+            messagingSenderId: "168604180866",
+            appId: "1:168604180866:web:4b4dfedfa115ec1e352f9b",
+            measurementId: "G-NS89D5N201"
+        };
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Get the logout button element
+  const logoutButton = document.querySelector('.logout-option');
+
+  // Add event listener to the logout button
+  logoutButton.addEventListener('click', () => {
+      signOut(auth)
+          .then(() => {
+              // Sign-out successful.
+              console.log('User signed out.');
+              logoutButton.style.display = 'none';
+              window.location.href = "index.html"; // Redirect to login page or any other page
+          })
+          .catch((error) => {
+              // An error happened.
+              console.error('Sign out error:', error);
+              alert('Failed to sign out.');
+          });
+  });
+</script>
 </body>
 
 

@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="signup-container">
         <h2>Sign Up</h2>
         <form id="signupForm">
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="username">Username</label>
+                <input type="username" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
             </div>
-
             <div class="form-group">
-                <label for="password">Password:</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-            </div>
-
             <div class="form-group">
                 <button type="submit">Sign Up</button>
             </div>
         </form>
-        <p>Already have an account? <a href="login.html">login</a></p>
+        <p><a href="forgotPassword.html">Forgot Password?</a></p>
+        <p>Don't have an account? <a href="login.html">Login</a></p>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
@@ -50,8 +46,8 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
         const signupForm = document.getElementById("signupForm");
 
@@ -60,18 +56,29 @@
 
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
-
-            if (password !== confirmPassword) {
-                alert("Passwords do not match.");
-                return;
-            }
+            const username = document.getElementById("username").value;
 
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log("User signed up:", user);
-                    window.location.href = "login.html";
+                    console.log("User created:", user);
+
+                    sendEmailVerification(user)
+                        .then(() => {
+                            alert("Verification email sent. Please check your inbox.");
+                            updateProfile(user, {displayName: username})
+                            .then(()=>{
+                                console.log("username updated")
+                            })
+                            .catch((error)=>{
+                                console.error("username update failed:",error);
+                            })
+                            // You can redirect the user to a verification pending page here.
+                        })
+                        .catch((error) => {
+                            console.error("Verification email error:", error);
+                            alert("Failed to send verification email.");
+                        });
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -80,7 +87,24 @@
                     alert("Signup failed: " + errorMessage);
                 });
         });
+
+        auth.onAuthStateChanged((user) => {
+            if (user && user.emailVerified) {
+                // Email is verified, save user data to Firestore.
+                const username = document.getElementById("username").value;
+                setDoc(doc(db, "users", user.uid), {
+                    username: username,
+                    email: user.email,
+                    uid: user.uid
+                }).then(() => {
+                    console.log("User data saved to Firestore.");
+                    window.location.href = "../index.html"; // Redirect after saving data.
+                }).catch((error) => {
+                    console.error("Firestore error:", error);
+                    alert("Error saving user data.");
+                });
+            }
+        });
     </script>
 </body>
-
 </html>
