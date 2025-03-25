@@ -76,8 +76,8 @@ body{
   opacity: 0; /* Initially hidden */
   transition: opacity 0.3s ease;
   position: absolute; /* Position relative to profile-container */
-  top: 90%; /* Place above the icon */
-  left: 50%; /* Center horizontally */
+  top: -90%; /* Place above the icon */
+  left: -30%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
 }
 .logout-option {
@@ -90,8 +90,8 @@ body{
   opacity: 0;
   transition: opacity 0.3s ease;
   position: absolute;
-  top: 180%; /* Place below the icon */
-  left: 50%;
+  top: -90%; /* Place below the icon */
+  left: 160%;
   transform: translateX(-50%);
   cursor: pointer; /* Add cursor pointer */
 }
