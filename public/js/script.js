@@ -426,12 +426,13 @@ centerText.addEventListener('touchmove', handlePointerMove);
 sparkle.style.opacity = '0';
 //welcome animation ends
 
-// Register Page
+
 document.getElementById('registrationBtn').addEventListener('click', function () {
   window.scrollBy({
     top: 300,
     behavior: 'smooth'
   });
+  // Register Page
   fetch('registerPage/plans.html')
     .then(response => response.text())
     .then(data => {
@@ -605,6 +606,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 });
 
 
+
 // Home Link Functionality
 document.getElementById('home').addEventListener('click', function () {
   //this will back to filter normal
@@ -618,6 +620,16 @@ document.getElementById('home').addEventListener('click', function () {
 });
 // RegisterPage End
 
+// user-login page
+document.getElementById('registrationBtn').addEventListener('click', function () {
+  window.scrollBy({
+    top: 300,
+    behavior: 'smooth'
+  });
+
+});
+
+// user login page end
 
 // Game Available 
 

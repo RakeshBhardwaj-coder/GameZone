@@ -39,34 +39,34 @@ body{
 /* Mute/Unmute end */
 
 /* profile icon */
-.profile-container {
-  position: relative; /* Needed for absolute positioning of profile-name */
+.user-options-contariner {
+  position: relative; /* Needed for absolute positioning of user-name */
   display: inline-flex; /* Use inline-flex for better alignment */
   align-items: center; /* Vertically align icon and name */
   flex-direction: column; /* Stack icon and name vertically */
   margin-left: 10px; /* Add some space between mute button and profile icon */
 }
 
-.profile-icon {
+.user-icon {
   width: 30px; /* Adjust size as needed */
   height: 30px; /* Adjust size as needed */
   border-radius: 50%; /* Makes it a circle */
   overflow: hidden;
 }
 
-.profile-icon img { /* Corrected selector for img tag */
+.user-icon img { /* Corrected selector for img tag */
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.profile-icon:hover {
+.user-icon:hover {
   transform: scale(1.1); /* Slightly enlarge on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
   cursor: pointer; /* Change cursor to pointer */
 }
 
-.profile-name {
+.user-name {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 5px 10px;
@@ -75,7 +75,7 @@ body{
   white-space: nowrap; /* Prevent text wrapping */
   opacity: 0; /* Initially hidden */
   transition: opacity 0.3s ease;
-  position: absolute; /* Position relative to profile-container */
+  position: absolute; /* Position relative to user-options-contariner */
   top: -90%; /* Place above the icon */
   left: -30%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
@@ -98,12 +98,12 @@ body{
 .logout-option:hover{
   scale: 1.1;
 }
-.profile-container:hover .profile-name {
+.user-options-contariner:hover .user-name {
   opacity: 1; /* Show name on hover */
 }
 
 
-.profile-container:hover .logout-option {
+.user-options-contariner:hover .logout-option {
   opacity: 1;
   /* see later  */
 }
@@ -219,7 +219,7 @@ body.night-mode #registrationBtn:focus,
 body.night-mode #registrationBtn:active {
   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Lighter focus/active shadow */
 }
-body.night-mode .profile-icon {
+body.night-mode .user-icon {
   filter: invert(100%);
 }
 /*Registration btn end*/

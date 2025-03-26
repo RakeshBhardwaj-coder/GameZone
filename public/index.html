@@ -114,14 +114,14 @@
         </button>
 
       </div>
-      <div class="profile-container">
-        <div class="profile-icon" >
+      <div class="user-options-contariner">
+        <div class="user-icon" >
           <a href="account/signUp.html"> <img src="icon/user.png
             "  alt="Profile Picture">
               </a>
           
         </div>
-        <div class="profile-name">User</div>
+        <div class="user-name">User</div>
         <div class="logout-option">Logout</div>
       </div>
     </div>
@@ -150,7 +150,10 @@
     </div>
     <!-- Register Page End -->
 
-
+    <!-- user login -->
+    <div id="place-for-user-login" class="place-for-user-login" style="display: none;">
+    </div>
+<!-- user login end -->
     <!-- Available Games -->
     <div id="all-games-place" class="all-games-place">
       <h1 id="available-text">Available Games</h1>
@@ -321,7 +324,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const profileNameElement = document.querySelector('.profile-name');
+const profileNameElement = document.querySelector('.user-name');
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
