@@ -439,7 +439,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
       document.getElementById('place-for-plans').innerHTML = data;
 
-      
+
       document.getElementById('all-games-place').style.display = 'none';
       document.getElementById('place-for-plans').style.display = 'block';
 
@@ -466,18 +466,18 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             selectedPlan = planElement.getAttribute('data-plan-value');
             console.log("Selected plan:", selectedPlan);
 
-         } else {
+          } else {
             console.error("Plan element not found.");
-        }
-        
+          }
 
-        //  console.log("Selected plan:", selectedPlan);
+
+          //  console.log("Selected plan:", selectedPlan);
           window.scrollBy({
             top: 300,
             behavior: 'smooth'
           });
 
-          
+
           fetch('registerPage/registration-and-payment-form.html')
             .then(response => response.text())
             .then(data => {
@@ -486,13 +486,13 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
               //getting plans in registratoin page from plans.html
               document.getElementById('planSelection').value = selectedPlan;
-             // Show the registration page
+              // Show the registration page
 
               document.getElementById('all-games-place').style.display = 'none';
               document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
               document.getElementById('place-for-plans').style.display = 'none';
 
-              
+
 
 
               document.getElementById('reg-to-plans-btn').addEventListener("click", function (event) {
@@ -607,346 +607,367 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
 // user-login page
 document.getElementById('userBtn').addEventListener('click', function (event) {
-    window.scrollBy({
-      top: 300,
-      behavior: 'smooth'
-    });
-   event.preventDefault();
-    fetch('account/signup.html')
-              .then(response => response.text())
-              .then(data => {
-                document.getElementById('place-for-user-login').innerHTML = data;
-                document.getElementById('all-games-place').style.display = 'none';
-                document.getElementById('place-for-user-login').style.display = 'block';
-          
-              });
-  
+  window.scrollBy({
+    top: 300,
+    behavior: 'smooth'
   });
-  
+  event.preventDefault();
+  fetch('account/signup.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('place-for-user-login').innerHTML = data;
+      document.getElementById('all-games-place').style.display = 'none';
+      document.getElementById('place-for-user-login').style.display = 'block';
+
+
+      // Login Page 
+      document.getElementById('login-Page-Btn').addEventListener('click', function (event) {
+        window.scrollBy({
+          top: 300,
+          behavior: 'smooth'
+        });
+        event.preventDefault();
+        fetch('account/login.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('place-for-user-login').innerHTML = data;
+            document.getElementById('all-games-place').style.display = 'none';
+            document.getElementById('place-for-user-login').style.display = 'block';
+    
+          });
+        });
+      // login page end
+
+    });
+ 
+
+
+  });
+
 
   // user login page end
 
-// Home Link Functionality
-document.getElementById('home').addEventListener('click', function () {
-  //this will back to filter normal
-  // choos
-  filterGames('all');
-  document.getElementById('all-games-place').style.display = 'block';
-  document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-  document.getElementById('place-for-plans').style.display = 'none';
-  document.getElementById('place-for-user-login').style.display = 'none';
+  // Home Link Functionality
+  document.getElementById('home').addEventListener('click', function () {
+    //this will back to filter normal
+    // choos
+    filterGames('all');
+    document.getElementById('all-games-place').style.display = 'block';
+    document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+    document.getElementById('place-for-plans').style.display = 'none';
+    document.getElementById('place-for-user-login').style.display = 'none';
 
 
 
-});
-// RegisterPage End
+  });
+  // RegisterPage End
 
 
 
-// Game Available 
+  // Game Available 
 
-const gameData = [
+  const gameData = [
 
-  {
-    "title": "Valorant",
-    "description": "VALORANT is a 5v5 tactical shooter. Character-based combat, a global stage. Use varied abilities, precise gunplay, and adaptive teamwork to outwit foes and fully dominate the competition.",
-    "thumbnail": "https://i.pinimg.com/736x/5a/59/cb/5a59cbcd013100462fd70a73b67ce9cf.jpg",
-    "videoId": "e_E9W2vsRbQ",
-    "genre": "Tactical Shooter",
-    "ageRating": "13",
-    "trending": true
-  },
-  {
-    "title": "CS2: Counter Strike 2",
-    "description": "Counter-Strike 2, powered by Source 2, delivers a major technical upgrade. Expect realistic visuals, advanced networking, and enhanced community tools, modernizing the classic competitive shooter experience.",
-    "thumbnail": "https://i.pinimg.com/736x/fc/8b/92/fc8b9209e84d5bd0d17ca199281666aa.jpg",
-    "videoId": "c80dVYcL69E",
-    "genre": "First-Person Shooter",
-    "ageRating": "17",
-    "trending": true
-  },
-  {
-    "title": "PUBG Battlegrounds",
-    "description": "Play PUBG: BATTLEGROUNDS for free! Land on strategic locations, loot weapons and supplies, and survive to become the last team standing across various, diverse Battlegrounds in intense survival matches.",
-    "thumbnail": "https://i.pinimg.com/736x/36/80/1c/36801c4624e4c5e136624bc45c120cc3.jpg",
-    "videoId": "u1oqfdh4xBY",
-    "genre": "Shooter, Survival, Multiplayer",
-    "ageRating": "12",
-    "trending": true
-  },
-  {
-    "title": "Shatterline",
-    "description": "Get ready for the apocalypse! Shatterline is an intense FPS with roguelike co-op PVE and PVP modes. Pick a unique operator, customize your look and weapons, and combat the alien plague that threatens humanity.",
-    "thumbnail": "https://i.pinimg.com/736x/1b/f9/c0/1bf9c01eefcb1089f762d7b89feba79a.jpg",
-    "videoId": "mlFiQJpndqg",
-    "genre": "Shooter, First Person, Multiplayer, Competitive",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Delta Force",
-    "description": "Delta force : tactical shooting across three modes: massive PvP battles, high-stakes extraction gameplay, and a revamped Black Hawk Down campaign. Dive into diverse, intense combat experiences.",
-    "thumbnail": "https://i.pinimg.com/736x/a1/73/f2/a173f2b0e94d297c63a35cf06f269d65.jpg",
-    "videoId": "4I_QrwFd__o",
-    "genre": "Tactical Shooter",
-    "ageRating": "17",
-    "trending": true
-  },
-  {
-    "title": "Destiny 2",
-    "description": "Destiny 2 : the mysteries of the solar system and experience responsive first-person shooter combat you and your friends love to play together join them anytime, anywhere, to fight for humanity.",
-    "thumbnail": "https://imgs.search.brave.com/qF1Rca7xoYUYRqaKpjKPO8iTALvPazJNDcZV4MieUZo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuaWdkYi5jb20v/aWdkYi9pbWFnZS91/cGxvYWQvdF9jb3Zl/cl9iaWcvY28xbjZ4/LnBuZw",
-    "videoId": "dZrxWFrd1zQ",
-    "genre": "Adventure,Shooter,Action",
-    "ageRating": "16",
-    "trending": false
-  },
-  {
-    "title": "Fortnite: All Editions",
-    "description": "Fortnite offers Battle Royale, Zero Build, live events, and millions of creator-made games. Race, parkour, survive—find your adventure. Available:- Fortnite, Fortnite OG, Fortnite Blastic,  Fortnite Festival, Fortnite Reload.",
-    "thumbnail": "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
-    "videoId": "KCxZ4njtiuw",
-    "genre": "Battle Royale",
-    "ageRating": "17",
-    "trending": false
-  },
-  {
-    "title": "Asphalt 8 - Car Racing Game",
-    "description": "Experience multiplayer races with fast cars and motorcycles. Explore stunning scenarios and landscapes, ranging from the scorching Nevada Desert to the bustling streets of Tokyo, in high-octane racing action.",
-    "thumbnail": "https://i.pinimg.com/736x/ea/dd/b3/eaddb3ad14f395368963eb85f72d3b6f.jpg",
-    "videoId": "jpSGZsgga_I",
-    "genre": "Racing",
-    "ageRating": "7",
-    "trending": false
-  },
-  {
-    "title": "Metalstorm",
-    "description": "The ultimate team-based multiplayer air combat experience! A truly free-to-play game. Engage in live 5v5 air combat with friends against real players around the world, piloting powerful warplanes.",
-    "thumbnail": "https://play-lh.googleusercontent.com/JQNrDSNI-XKf_fFJgtfoZ8v0p2MmC8tgsDdr7tta2kvF7S5yOHr9kmcLBVoW4rQIAgg=w526-h296-rw",
-    "videoId": "xVG5lSfbciM",
-    "genre": "Action, Multiplayer",
-    "ageRating": "3",
-    "trending": false
-  },
-  {
-    "title": "Dauntless",
-    "description": "Dauntless: Become a Slayer and protect the Shattered Isles from formidable Behemoths in the ultimate free-to-slay monster-hunting co-op action game. Team up and take down massive creatures.",
-    "thumbnail": "https://i.pinimg.com/736x/80/62/89/8062898629299f947bfa0a65b01553be.jpg",
-    "videoId": "A95pYf5fyG8",
-    "genre": "Action, RPG, Multiplayer",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Paladins",
-    "description": "The Paladins: The fantasy team-based shooter sensation. Wield guns and magic as a legendary Champion of the Realm, customizing your core set of abilities to play exactly how you want to play.",
-    "thumbnail": "https://i.pinimg.com/736x/7a/d1/93/7ad1937ab56c633c83cafb0bf33d6ac8.jpg",
-    "videoId": "g4WHiMVq1-8",
-    "genre": "Shooter, Competitive, Multiplayer",
-    "ageRating": "16",
-    "trending": false
-  },
-  {
-    "title": "Rocket Racing",
-    "description": "Rocket Racing: a high-speed arcade racer. Drift, fly, and boost through dynamic tracks with friends in this supersonic, get a great experience of racing with rocket racing this is for everyone.",
-    "thumbnail": "https://4kwallpapers.com/images/walls/thumbs_3t/21079.jpg",
-    "videoId": "NIhbK4-ZdKA",
-    "genre": "Racing",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Rocket League",
-    "description": "Rocket League: car soccer chaos! Drive, fly, score. Physics-based mayhem, easy to learn, hard to master. Intense matches, endless car customization. play with your friends and enjoy rocket league",
-    "thumbnail": "https://i.pinimg.com/736x/df/53/67/df536730950101114c8834a575d362ac.jpg",
-    "videoId": "SgSX3gOrj60",
-    "genre": "Racing",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Apex Legends",
-    "description": "Apex Legends: Hero shooter where legendary characters with powerful abilities team up to battle for fame & fortune on the fringes of the Frontier. this under the top10 list in Steam DB. play it now!",
-    "thumbnail": "https://myhotposters.com/cdn/shop/products/mL4368_1024x1024.jpg?v=1589304033",
-    "videoId": "UMJb_mkqynU",
-    "genre": "Action",
-    "ageRating": "12",
-    "trending": true
-  },
-  {
-    "title": "Genshin Impact",
-    "description": "Explore Teyvat, find your sibling. Team up with diverse characters, master elemental powers, and uncover the mysteries of this vibrant, open world. most beautiful graphics loved it if you love anime!",
-    "thumbnail": "https://i.pinimg.com/736x/f7/b5/3e/f7b53e11d0f66157b0153d6a815de990.jpg",
-    "videoId": "HLUY1nICQRY",
-    "genre": "Open World",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "World War Z: Aftermath",
-    "description": "Zombie survival. Battle massive hordes in new, global locations. Intense story episodes, upgraded gameplay, and visceral action for 15 million players, Survival game for with epic story try at once!",
-    "thumbnail": "https://i.pinimg.com/736x/39/7d/c4/397dc4777e4190bd6b2459e414565614.jpg",
-    "videoId": "EYQk3eDa-V8",
-    "genre": "Survival",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "Fall Guys",
-    "description": "Fall Guys: the most playable multiplayer game of YouTube, play this fun Game, Stumble through wacky obstacle courses, compete with friends, or create your own wild levels. Multiplayer mayhem!",
-    "thumbnail": "https://i.pinimg.com/736x/63/6b/6f/636b6fb101da5efa2e69fa197114c47c.jpg",
-    "videoId": "Wj3dUvGLjNQ",
-    "genre": "Multiplayer, Competitive",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Marvel Rivals",
-    "description": "Marvel Rivals: Team-based superhero shooter. squads, combine powers for unique skills, and battle in dynamic, destructible arenas. The best game under top 10 list in Steam DB, Play Now! everyone Loving it!",
-    "thumbnail": "https://i.pinimg.com/736x/1b/fc/50/1bfc50dddefe8eb95d3c8634f114313c.jpg",
-    "videoId": "-b0veB7q9P4",
-    "genre": "Action, Shooter, Multiplayer, Competitive",
-    "ageRating": "12",
-    "trending": true
-  },
+    {
+      "title": "Valorant",
+      "description": "VALORANT is a 5v5 tactical shooter. Character-based combat, a global stage. Use varied abilities, precise gunplay, and adaptive teamwork to outwit foes and fully dominate the competition.",
+      "thumbnail": "https://i.pinimg.com/736x/5a/59/cb/5a59cbcd013100462fd70a73b67ce9cf.jpg",
+      "videoId": "e_E9W2vsRbQ",
+      "genre": "Tactical Shooter",
+      "ageRating": "13",
+      "trending": true
+    },
+    {
+      "title": "CS2: Counter Strike 2",
+      "description": "Counter-Strike 2, powered by Source 2, delivers a major technical upgrade. Expect realistic visuals, advanced networking, and enhanced community tools, modernizing the classic competitive shooter experience.",
+      "thumbnail": "https://i.pinimg.com/736x/fc/8b/92/fc8b9209e84d5bd0d17ca199281666aa.jpg",
+      "videoId": "c80dVYcL69E",
+      "genre": "First-Person Shooter",
+      "ageRating": "17",
+      "trending": true
+    },
+    {
+      "title": "PUBG Battlegrounds",
+      "description": "Play PUBG: BATTLEGROUNDS for free! Land on strategic locations, loot weapons and supplies, and survive to become the last team standing across various, diverse Battlegrounds in intense survival matches.",
+      "thumbnail": "https://i.pinimg.com/736x/36/80/1c/36801c4624e4c5e136624bc45c120cc3.jpg",
+      "videoId": "u1oqfdh4xBY",
+      "genre": "Shooter, Survival, Multiplayer",
+      "ageRating": "12",
+      "trending": true
+    },
+    {
+      "title": "Shatterline",
+      "description": "Get ready for the apocalypse! Shatterline is an intense FPS with roguelike co-op PVE and PVP modes. Pick a unique operator, customize your look and weapons, and combat the alien plague that threatens humanity.",
+      "thumbnail": "https://i.pinimg.com/736x/1b/f9/c0/1bf9c01eefcb1089f762d7b89feba79a.jpg",
+      "videoId": "mlFiQJpndqg",
+      "genre": "Shooter, First Person, Multiplayer, Competitive",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "Delta Force",
+      "description": "Delta force : tactical shooting across three modes: massive PvP battles, high-stakes extraction gameplay, and a revamped Black Hawk Down campaign. Dive into diverse, intense combat experiences.",
+      "thumbnail": "https://i.pinimg.com/736x/a1/73/f2/a173f2b0e94d297c63a35cf06f269d65.jpg",
+      "videoId": "4I_QrwFd__o",
+      "genre": "Tactical Shooter",
+      "ageRating": "17",
+      "trending": true
+    },
+    {
+      "title": "Destiny 2",
+      "description": "Destiny 2 : the mysteries of the solar system and experience responsive first-person shooter combat you and your friends love to play together join them anytime, anywhere, to fight for humanity.",
+      "thumbnail": "https://imgs.search.brave.com/qF1Rca7xoYUYRqaKpjKPO8iTALvPazJNDcZV4MieUZo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuaWdkYi5jb20v/aWdkYi9pbWFnZS91/cGxvYWQvdF9jb3Zl/cl9iaWcvY28xbjZ4/LnBuZw",
+      "videoId": "dZrxWFrd1zQ",
+      "genre": "Adventure,Shooter,Action",
+      "ageRating": "16",
+      "trending": false
+    },
+    {
+      "title": "Fortnite: All Editions",
+      "description": "Fortnite offers Battle Royale, Zero Build, live events, and millions of creator-made games. Race, parkour, survive—find your adventure. Available:- Fortnite, Fortnite OG, Fortnite Blastic,  Fortnite Festival, Fortnite Reload.",
+      "thumbnail": "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
+      "videoId": "KCxZ4njtiuw",
+      "genre": "Battle Royale",
+      "ageRating": "17",
+      "trending": false
+    },
+    {
+      "title": "Asphalt 8 - Car Racing Game",
+      "description": "Experience multiplayer races with fast cars and motorcycles. Explore stunning scenarios and landscapes, ranging from the scorching Nevada Desert to the bustling streets of Tokyo, in high-octane racing action.",
+      "thumbnail": "https://i.pinimg.com/736x/ea/dd/b3/eaddb3ad14f395368963eb85f72d3b6f.jpg",
+      "videoId": "jpSGZsgga_I",
+      "genre": "Racing",
+      "ageRating": "7",
+      "trending": false
+    },
+    {
+      "title": "Metalstorm",
+      "description": "The ultimate team-based multiplayer air combat experience! A truly free-to-play game. Engage in live 5v5 air combat with friends against real players around the world, piloting powerful warplanes.",
+      "thumbnail": "https://play-lh.googleusercontent.com/JQNrDSNI-XKf_fFJgtfoZ8v0p2MmC8tgsDdr7tta2kvF7S5yOHr9kmcLBVoW4rQIAgg=w526-h296-rw",
+      "videoId": "xVG5lSfbciM",
+      "genre": "Action, Multiplayer",
+      "ageRating": "3",
+      "trending": false
+    },
+    {
+      "title": "Dauntless",
+      "description": "Dauntless: Become a Slayer and protect the Shattered Isles from formidable Behemoths in the ultimate free-to-slay monster-hunting co-op action game. Team up and take down massive creatures.",
+      "thumbnail": "https://i.pinimg.com/736x/80/62/89/8062898629299f947bfa0a65b01553be.jpg",
+      "videoId": "A95pYf5fyG8",
+      "genre": "Action, RPG, Multiplayer",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "Paladins",
+      "description": "The Paladins: The fantasy team-based shooter sensation. Wield guns and magic as a legendary Champion of the Realm, customizing your core set of abilities to play exactly how you want to play.",
+      "thumbnail": "https://i.pinimg.com/736x/7a/d1/93/7ad1937ab56c633c83cafb0bf33d6ac8.jpg",
+      "videoId": "g4WHiMVq1-8",
+      "genre": "Shooter, Competitive, Multiplayer",
+      "ageRating": "16",
+      "trending": false
+    },
+    {
+      "title": "Rocket Racing",
+      "description": "Rocket Racing: a high-speed arcade racer. Drift, fly, and boost through dynamic tracks with friends in this supersonic, get a great experience of racing with rocket racing this is for everyone.",
+      "thumbnail": "https://4kwallpapers.com/images/walls/thumbs_3t/21079.jpg",
+      "videoId": "NIhbK4-ZdKA",
+      "genre": "Racing",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "Rocket League",
+      "description": "Rocket League: car soccer chaos! Drive, fly, score. Physics-based mayhem, easy to learn, hard to master. Intense matches, endless car customization. play with your friends and enjoy rocket league",
+      "thumbnail": "https://i.pinimg.com/736x/df/53/67/df536730950101114c8834a575d362ac.jpg",
+      "videoId": "SgSX3gOrj60",
+      "genre": "Racing",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "Apex Legends",
+      "description": "Apex Legends: Hero shooter where legendary characters with powerful abilities team up to battle for fame & fortune on the fringes of the Frontier. this under the top10 list in Steam DB. play it now!",
+      "thumbnail": "https://myhotposters.com/cdn/shop/products/mL4368_1024x1024.jpg?v=1589304033",
+      "videoId": "UMJb_mkqynU",
+      "genre": "Action",
+      "ageRating": "12",
+      "trending": true
+    },
+    {
+      "title": "Genshin Impact",
+      "description": "Explore Teyvat, find your sibling. Team up with diverse characters, master elemental powers, and uncover the mysteries of this vibrant, open world. most beautiful graphics loved it if you love anime!",
+      "thumbnail": "https://i.pinimg.com/736x/f7/b5/3e/f7b53e11d0f66157b0153d6a815de990.jpg",
+      "videoId": "HLUY1nICQRY",
+      "genre": "Open World",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "World War Z: Aftermath",
+      "description": "Zombie survival. Battle massive hordes in new, global locations. Intense story episodes, upgraded gameplay, and visceral action for 15 million players, Survival game for with epic story try at once!",
+      "thumbnail": "https://i.pinimg.com/736x/39/7d/c4/397dc4777e4190bd6b2459e414565614.jpg",
+      "videoId": "EYQk3eDa-V8",
+      "genre": "Survival",
+      "ageRating": "18",
+      "trending": false
+    },
+    {
+      "title": "Fall Guys",
+      "description": "Fall Guys: the most playable multiplayer game of YouTube, play this fun Game, Stumble through wacky obstacle courses, compete with friends, or create your own wild levels. Multiplayer mayhem!",
+      "thumbnail": "https://i.pinimg.com/736x/63/6b/6f/636b6fb101da5efa2e69fa197114c47c.jpg",
+      "videoId": "Wj3dUvGLjNQ",
+      "genre": "Multiplayer, Competitive",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "Marvel Rivals",
+      "description": "Marvel Rivals: Team-based superhero shooter. squads, combine powers for unique skills, and battle in dynamic, destructible arenas. The best game under top 10 list in Steam DB, Play Now! everyone Loving it!",
+      "thumbnail": "https://i.pinimg.com/736x/1b/fc/50/1bfc50dddefe8eb95d3c8634f114313c.jpg",
+      "videoId": "-b0veB7q9P4",
+      "genre": "Action, Shooter, Multiplayer, Competitive",
+      "ageRating": "12",
+      "trending": true
+    },
 
-  // From Steam Free games
-  {
-    "title": "Call of Duty®: Warzone™",
-    "description": "Welcome to Call of Duty®: Warzone™, the massive combat arena. Experience thrilling modes & new gameplay with different maps and tournaments, Get the best experience of war zone, best for action lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/ec/63/30/ec63301f24e5456516c9cd2754b53166.jpg",
-    "videoId": "0E44DClsX5Q",
-    "genre": "FPS, Multiplayer, Competitive, Battle Royale",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "Dota 2",
-    "description": "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. there's always something new to discover, this is Action lovers game & this is under top 10 list of Steam DB.",
-    "thumbnail": "https://i.redd.it/rjxu8q8u1ga91.jpg",
-    "videoId": "-cSFPIwMEq4",
-    "genre": "MOBA, Strategy, Multiplayer",
-    "ageRating": "12",
-    "trending": true
-  },
-  {
-    "title": "Overwatch® 2",
-    "description": "Overwatch 2: this is a critically acclaimed, team-based shooter game set in an optimistic future with an evolving roster of heroes. Team up with friends and jump in today, play the game like heroes does!",
-    "thumbnail": "https://i.pinimg.com/736x/d0/5e/56/d05e561afd6e03768fd587ca66ebaabf.jpg",
-    "videoId": "LGgqyer-qr4",
-    "genre": "Hero Shooter, Multiplayer, FPS",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Once Human",
-    "description": "A multiplayer open-world survival game, post-apocalyptic future. Unite with friends to fight monstrous enemies, uncover secret plots, compete for resources, and build your own territory. Once.",
-    "thumbnail": "https://i.pinimg.com/736x/e1/72/a7/e172a7addc10db413978655407173228.jpg",
-    "videoId": "XXpfbP9Ml_4",
-    "genre": "Multiplayer, Open World, Survival",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "Warframe",
-    "description": "Warframe: Awaken as an unstoppable warrior and battle alongside your friends, online action game, craft a loadout of devastating weaponry and define your playstyle to become an unstoppable force.",
-    "thumbnail": "https://i.pinimg.com/736x/6b/de/3d/6bde3dd1efb3a7846434161e76bdc27d.jpg",
-    "videoId": "SsOgrkdLHD8",
-    "genre": "Action RPG, Action, Looter Shooter",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "War Thunder",
-    "description": "War Thunder: The MMO military game dedicated to aviation, armoured vehicles, and naval craft, the most advanced modern combat units. Join now battles on land, in the air, and at sea. Action Lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/c4/c1/02/c4c1028838c27c48dfdc47da5598ae13.jpg",
-    "videoId": "pzgPXOw2plI",
-    "genre": "Simulation, VR",
-    "ageRating": "12",
-    "trending": true
-  },
-  {
-    "title": "eFootball™",
-    "description": "eFootball : A worldwide total of 750 million downloads is waiting for you! to Play eFootball™ with users around the world and get the experience like real game. Best for Sport lovers & under the top-10 list of steam DB.",
-    "thumbnail": "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
-    "videoId": "BdyXsZMPjWo",
-    "genre": "Football, Sports",
-    "ageRating": "12",
-    "trending": false
-  }, {
-    "title": "The First Descendant",
-    "description": "The First Descendant : A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
-    "videoId": "e15nHHJjpJg",
-    "genre": "Looter shooter, PvE",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "Star Trek Online",
-    "description": "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space Lovers!",
-    "thumbnail": "https://imgs.search.brave.com/LOmpJznhOCOM_eSP2rUi7JaJvttJc5MRKAfUJdd6yxM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5hcGkucGxheXN0/YXRpb24uY29tL3Z1/bGNhbi9pbWcvY2Zu/LzExMzA3dGdlOW44/SWIzRW9Hc2RHZnNC/ZWg0a3pGdW1rNG84/LXVhbFdIejlBSjk2/NFl3UUY4QnJGWFh6/bkdITEVRZV9wVFhC/aHZpTDc4cVVYQzRz/VmtaRDBKZjBwSy1z/cy5wbmc",
-    "videoId": "8pzGjFCVhSE",
-    "genre": "Sci-fi,MMO, Space, Multiplayer",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Asphalt Legends Unite",
-    "description": "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat race, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars, Racing Lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/4a/f1/bd/4af1bd26fa79c549274f0fa071e8a511.jpg",
-    "videoId": "rH-eZd01NEQ",
-    "genre": "Racing",
-    "ageRating": "10",
-    "trending": false
-  },
-  {
-    "title": "Halo Infinite",
-    "description": "Experience the halo sci-fi Action game with epic story that engage you to this game. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the <br>sci-fi Action story game Lovers!",
-    "thumbnail": "https://www.charlieintel.com/cdn-image/wp-content/uploads/2021/06/New-concept-art-leaked-for-Halo-Infinite.jpg?width=1200&quality=60&format=auto",
-    "videoId": "rFh2i4AlPD4",
-    "genre": "FPS, Multiplayer, Singleplayer",
-    "ageRating": "16",
-    "trending": false
-  },
-  {
-    "title": "Blood Strike",
-    "description": "Battle Royale, Squad Fight, or Hot Zone, Blood Strike offers a wide range of playable Strikers, unique active and passive ability letting you deploy drones, shield walls and everything in between.",
-    "thumbnail": "https://i.pinimg.com/736x/a5/97/1d/a5971d3d6fbb664c62fa6a9b6428ad06.jpg",
-    "videoId": "V581-wZLzdU",
-    "genre": "Battle Royale, Shooter, Adventure, Multiplyer",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Sky: Children of the Light",
-    "description": "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey, a beautifully-animated kingdom across seven realms and create enriching memories, Puzzle adventure Lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/38/cc/e0/38cce048d46431483a1dce47dea9b846.jpg",
-    "videoId": "A3DNTfhUy0k",
-    "genre": "MMO, Multiplayer, Adventure",
-    "ageRating": "12",
-    "trending": false
-  },
-];
+    // From Steam Free games
+    {
+      "title": "Call of Duty®: Warzone™",
+      "description": "Welcome to Call of Duty®: Warzone™, the massive combat arena. Experience thrilling modes & new gameplay with different maps and tournaments, Get the best experience of war zone, best for action lovers!",
+      "thumbnail": "https://i.pinimg.com/736x/ec/63/30/ec63301f24e5456516c9cd2754b53166.jpg",
+      "videoId": "0E44DClsX5Q",
+      "genre": "FPS, Multiplayer, Competitive, Battle Royale",
+      "ageRating": "18",
+      "trending": false
+    },
+    {
+      "title": "Dota 2",
+      "description": "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. there's always something new to discover, this is Action lovers game & this is under top 10 list of Steam DB.",
+      "thumbnail": "https://i.redd.it/rjxu8q8u1ga91.jpg",
+      "videoId": "-cSFPIwMEq4",
+      "genre": "MOBA, Strategy, Multiplayer",
+      "ageRating": "12",
+      "trending": true
+    },
+    {
+      "title": "Overwatch® 2",
+      "description": "Overwatch 2: this is a critically acclaimed, team-based shooter game set in an optimistic future with an evolving roster of heroes. Team up with friends and jump in today, play the game like heroes does!",
+      "thumbnail": "https://i.pinimg.com/736x/d0/5e/56/d05e561afd6e03768fd587ca66ebaabf.jpg",
+      "videoId": "LGgqyer-qr4",
+      "genre": "Hero Shooter, Multiplayer, FPS",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "Once Human",
+      "description": "A multiplayer open-world survival game, post-apocalyptic future. Unite with friends to fight monstrous enemies, uncover secret plots, compete for resources, and build your own territory. Once.",
+      "thumbnail": "https://i.pinimg.com/736x/e1/72/a7/e172a7addc10db413978655407173228.jpg",
+      "videoId": "XXpfbP9Ml_4",
+      "genre": "Multiplayer, Open World, Survival",
+      "ageRating": "18",
+      "trending": false
+    },
+    {
+      "title": "Warframe",
+      "description": "Warframe: Awaken as an unstoppable warrior and battle alongside your friends, online action game, craft a loadout of devastating weaponry and define your playstyle to become an unstoppable force.",
+      "thumbnail": "https://i.pinimg.com/736x/6b/de/3d/6bde3dd1efb3a7846434161e76bdc27d.jpg",
+      "videoId": "SsOgrkdLHD8",
+      "genre": "Action RPG, Action, Looter Shooter",
+      "ageRating": "18",
+      "trending": false
+    },
+    {
+      "title": "War Thunder",
+      "description": "War Thunder: The MMO military game dedicated to aviation, armoured vehicles, and naval craft, the most advanced modern combat units. Join now battles on land, in the air, and at sea. Action Lovers!",
+      "thumbnail": "https://i.pinimg.com/736x/c4/c1/02/c4c1028838c27c48dfdc47da5598ae13.jpg",
+      "videoId": "pzgPXOw2plI",
+      "genre": "Simulation, VR",
+      "ageRating": "12",
+      "trending": true
+    },
+    {
+      "title": "eFootball™",
+      "description": "eFootball : A worldwide total of 750 million downloads is waiting for you! to Play eFootball™ with users around the world and get the experience like real game. Best for Sport lovers & under the top-10 list of steam DB.",
+      "thumbnail": "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
+      "videoId": "BdyXsZMPjWo",
+      "genre": "Football, Sports",
+      "ageRating": "12",
+      "trending": false
+    }, {
+      "title": "The First Descendant",
+      "description": "The First Descendant : A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
+      "thumbnail": "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
+      "videoId": "e15nHHJjpJg",
+      "genre": "Looter shooter, PvE",
+      "ageRating": "18",
+      "trending": false
+    },
+    {
+      "title": "Star Trek Online",
+      "description": "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space Lovers!",
+      "thumbnail": "https://imgs.search.brave.com/LOmpJznhOCOM_eSP2rUi7JaJvttJc5MRKAfUJdd6yxM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5hcGkucGxheXN0/YXRpb24uY29tL3Z1/bGNhbi9pbWcvY2Zu/LzExMzA3dGdlOW44/SWIzRW9Hc2RHZnNC/ZWg0a3pGdW1rNG84/LXVhbFdIejlBSjk2/NFl3UUY4QnJGWFh6/bkdITEVRZV9wVFhC/aHZpTDc4cVVYQzRz/VmtaRDBKZjBwSy1z/cy5wbmc",
+      "videoId": "8pzGjFCVhSE",
+      "genre": "Sci-fi,MMO, Space, Multiplayer",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "Asphalt Legends Unite",
+      "description": "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat race, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars, Racing Lovers!",
+      "thumbnail": "https://i.pinimg.com/736x/4a/f1/bd/4af1bd26fa79c549274f0fa071e8a511.jpg",
+      "videoId": "rH-eZd01NEQ",
+      "genre": "Racing",
+      "ageRating": "10",
+      "trending": false
+    },
+    {
+      "title": "Halo Infinite",
+      "description": "Experience the halo sci-fi Action game with epic story that engage you to this game. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the <br>sci-fi Action story game Lovers!",
+      "thumbnail": "https://www.charlieintel.com/cdn-image/wp-content/uploads/2021/06/New-concept-art-leaked-for-Halo-Infinite.jpg?width=1200&quality=60&format=auto",
+      "videoId": "rFh2i4AlPD4",
+      "genre": "FPS, Multiplayer, Singleplayer",
+      "ageRating": "16",
+      "trending": false
+    },
+    {
+      "title": "Blood Strike",
+      "description": "Battle Royale, Squad Fight, or Hot Zone, Blood Strike offers a wide range of playable Strikers, unique active and passive ability letting you deploy drones, shield walls and everything in between.",
+      "thumbnail": "https://i.pinimg.com/736x/a5/97/1d/a5971d3d6fbb664c62fa6a9b6428ad06.jpg",
+      "videoId": "V581-wZLzdU",
+      "genre": "Battle Royale, Shooter, Adventure, Multiplyer",
+      "ageRating": "12",
+      "trending": false
+    },
+    {
+      "title": "Sky: Children of the Light",
+      "description": "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey, a beautifully-animated kingdom across seven realms and create enriching memories, Puzzle adventure Lovers!",
+      "thumbnail": "https://i.pinimg.com/736x/38/cc/e0/38cce048d46431483a1dce47dea9b846.jpg",
+      "videoId": "A3DNTfhUy0k",
+      "genre": "MMO, Multiplayer, Adventure",
+      "ageRating": "12",
+      "trending": false
+    },
+  ];
 
-const searchButton = document.getElementById('search-btn');
-const ageFilter = document.getElementById('age-filter');
-const gameContainer = document.getElementById('gameContainer');
-const videoPopup = document.getElementById('video-popup');
-const closeButton = document.getElementById('close-button');
-let player;
-const toggleViewButton = document.getElementById('toggleView');
+  const searchButton = document.getElementById('search-btn');
+  const ageFilter = document.getElementById('age-filter');
+  const gameContainer = document.getElementById('gameContainer');
+  const videoPopup = document.getElementById('video-popup');
+  const closeButton = document.getElementById('close-button');
+  let player;
+  const toggleViewButton = document.getElementById('toggleView');
 
-let currentView = 'detail';
+  let currentView = 'detail';
 
-function createGameCards(games) {
-  gameContainer.innerHTML = '';
-  games.forEach(game => {
-    const gameCard = document.createElement('div');
-    gameCard.classList.add('game-card');
-    gameCard.classList.add(`${currentView}-view`); // Initial view
+  function createGameCards(games) {
+    gameContainer.innerHTML = '';
+    games.forEach(game => {
+      const gameCard = document.createElement('div');
+      gameCard.classList.add('game-card');
+      gameCard.classList.add(`${currentView}-view`); // Initial view
 
-    gameCard.innerHTML = `
+      gameCard.innerHTML = `
             <img src="${game.thumbnail}" alt="${game.title}">
             <span class="game-title-overlay">${game.title}</span> 
             <div class="game-card-content">
@@ -955,302 +976,302 @@ function createGameCards(games) {
             </div>
         `;
 
-    const image = gameCard.querySelector('img');
-    image.addEventListener('click', () => {
-      openPopup(game.videoId);
+      const image = gameCard.querySelector('img');
+      image.addEventListener('click', () => {
+        openPopup(game.videoId);
+      });
+
+      // Touch event listeners
+      gameCard.addEventListener('touchstart', () => {
+        if (currentView === 'grid') { // Apply only in grid view
+          gameCard.classList.add('hover-effect');
+        }
+      });
+
+      gameCard.addEventListener('touchend', () => {
+        gameCard.classList.remove('hover-effect');
+      });
+
+      gameCard.addEventListener('touchcancel', () => {
+        gameCard.classList.remove('hover-effect');
+      });
+
+
+      gameContainer.appendChild(gameCard);
     });
-
-    // Touch event listeners
-    gameCard.addEventListener('touchstart', () => {
-      if (currentView === 'grid') { // Apply only in grid view
-        gameCard.classList.add('hover-effect');
-      }
-    });
-
-    gameCard.addEventListener('touchend', () => {
-      gameCard.classList.remove('hover-effect');
-    });
-
-    gameCard.addEventListener('touchcancel', () => {
-      gameCard.classList.remove('hover-effect');
-    });
-
-
-    gameContainer.appendChild(gameCard);
-  });
-}
-
-function toggleView() {
-  const detailIcon = document.getElementById('detailIcon');
-  const gridIcon = document.getElementById('gridIcon');
-
-  if (currentView === 'grid') {
-    currentView = 'detail';
-    detailIcon.style.display = 'inline';
-    gridIcon.style.display = 'none';
-
-  } else {
-    currentView = 'grid';
-    detailIcon.style.display = 'none';
-    gridIcon.style.display = 'inline';
   }
-  const gameCards = document.querySelectorAll('.game-card');
 
-  gameCards.forEach(card => {
-    card.classList.remove('detail-view', 'grid-view');
-    card.classList.add(`${currentView}-view`);
-  });
-}
+  function toggleView() {
+    const detailIcon = document.getElementById('detailIcon');
+    const gridIcon = document.getElementById('gridIcon');
 
-toggleViewButton.addEventListener('click', toggleView);
+    if (currentView === 'grid') {
+      currentView = 'detail';
+      detailIcon.style.display = 'inline';
+      gridIcon.style.display = 'none';
 
-
-
-
-function filterGames(selectedAge) {
-  let filteredGames = gameData;
-  if (selectedAge !== 'all') {
-    const selectedAgeNum = parseInt(selectedAge, 10);
-    if (selectedAgeNum === 18) {
-      filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
     } else {
-      filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
+      currentView = 'grid';
+      detailIcon.style.display = 'none';
+      gridIcon.style.display = 'inline';
     }
-  } else {
-    // If "all" is selected, randomize the games
-    filteredGames = randomizeGames(gameData);
+    const gameCards = document.querySelectorAll('.game-card');
+
+    gameCards.forEach(card => {
+      card.classList.remove('detail-view', 'grid-view');
+      card.classList.add(`${currentView}-view`);
+    });
   }
 
-  function isRefreshed() {
-    if (typeof window !== 'undefined' && typeof window.performance !== 'undefined' && typeof window.performance.navigation !== 'undefined') {
-      return window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD;
-    }
-    return false; // Default to false if performance API is not available
-  }
+  toggleViewButton.addEventListener('click', toggleView);
 
-  function randomizeGames(games) {
-    // Fisher-Yates shuffle algorithm
-    if (isRefreshed) {
-      let shuffledGames = [...games]; // Create a copy to avoid modifying the original array
-      for (let i = shuffledGames.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledGames[i], shuffledGames[j]] = [shuffledGames[j], shuffledGames[i]];
+
+
+
+  function filterGames(selectedAge) {
+    let filteredGames = gameData;
+    if (selectedAge !== 'all') {
+      const selectedAgeNum = parseInt(selectedAge, 10);
+      if (selectedAgeNum === 18) {
+        filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
+      } else {
+        filteredGames = gameData.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
       }
-      return shuffledGames;
+    } else {
+      // If "all" is selected, randomize the games
+      filteredGames = randomizeGames(gameData);
     }
-    else {
-      return games;
+
+    function isRefreshed() {
+      if (typeof window !== 'undefined' && typeof window.performance !== 'undefined' && typeof window.performance.navigation !== 'undefined') {
+        return window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD;
+      }
+      return false; // Default to false if performance API is not available
+    }
+
+    function randomizeGames(games) {
+      // Fisher-Yates shuffle algorithm
+      if (isRefreshed) {
+        let shuffledGames = [...games]; // Create a copy to avoid modifying the original array
+        for (let i = shuffledGames.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledGames[i], shuffledGames[j]] = [shuffledGames[j], shuffledGames[i]];
+        }
+        return shuffledGames;
+      }
+      else {
+        return games;
+      }
+    }
+
+
+    if (filteredGames.length === 0) {
+      // Display "No games available" message
+      createNoGamesMessage(); // Call a function to display the message
+    } else {
+      createGameCards(filteredGames); // Pass the filtered array to createGameCards
     }
   }
 
+  // Search Functionality
+  function searchGames(searchTerm) {
+    if (!searchTerm) {
+      // If search term is empty, display all games or the currently filtered games
+      filterGames(document.getElementById('age-filter').value); // Assuming you have an age filter dropdown
+      return;
+    }
 
-  if (filteredGames.length === 0) {
-    // Display "No games available" message
-    createNoGamesMessage(); // Call a function to display the message
-  } else {
-    createGameCards(filteredGames); // Pass the filtered array to createGameCards
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    const searchedGames = gameData.filter(game =>
+      game.title.toLowerCase().includes(lowerSearchTerm)
+    );
+
+    if (searchedGames.length === 0) {
+      createNoGamesMessage();
+    } else {
+      createGameCards(searchedGames); // Display only the matched games
+    }
   }
-}
 
-// Search Functionality
-function searchGames(searchTerm) {
-  if (!searchTerm) {
-    // If search term is empty, display all games or the currently filtered games
-    filterGames(document.getElementById('age-filter').value); // Assuming you have an age filter dropdown
-    return;
-  }
+  // Event listener for the search button
+  searchButton.addEventListener('click', () => {
+    const searchTerm = searchInput.value;
+    searchGames(searchTerm);
+  });
 
-  const lowerSearchTerm = searchTerm.toLowerCase();
-  const searchedGames = gameData.filter(game =>
-    game.title.toLowerCase().includes(lowerSearchTerm)
-  );
-
-  if (searchedGames.length === 0) {
-    createNoGamesMessage();
-  } else {
-    createGameCards(searchedGames); // Display only the matched games
-  }
-}
-
-// Event listener for the search button
-searchButton.addEventListener('click', () => {
-  const searchTerm = searchInput.value;
-  searchGames(searchTerm);
-});
-
-function createNoGamesMessage() {
-  const gameContainer = document.getElementById('gameContainer');
-  if (gameContainer) {
-    gameContainer.innerHTML = `
+  function createNoGamesMessage() {
+    const gameContainer = document.getElementById('gameContainer');
+    if (gameContainer) {
+      gameContainer.innerHTML = `
           <div style="text-align: center; padding: 20px;">
               <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2N0OHM1dGw5NHRwb3Bvemx5djhhMHJ3ajhncG42bDkxM3V6aTBiMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ch67rqHED7Ue8mKupV/giphy.gif" alt="No Games Available. Thank you!" style="max-width: 200px; margin-bottom: 10px;">
               <p>No games available, Sorry!!!.</p>
           </div>
       `;
-  } else {
-    console.error("gameContainer element not found");
-  }
-}
-
-// Initial display of all games
-filterGames('all');
-
-// Event listener for the dropdown
-ageFilter.addEventListener('change', () => {
-  const availableText = document.getElementById("available-text");
-
-  if (availableText.textContent == "Available Games") {
-    filterGames(ageFilter.value);
-  } else {
-    showTrendingGames();
-  }
-});
-
-// trending button
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   const  top10GamesBtn = document.getElementById(" top-10-games");
-
-
-//   //auto-scroll
-// //   top10GamesBtn.addEventListener('click', function (event) {
-// //     event.preventDefault(); // Prevent the default anchor behavior
-
-// //     const imageElement = document.getElementById('gameContainer');
-
-// //     // if (imageElement) {
-// //     //   imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
-// //     // }
-// //   showTrendingGames();
-
-// //   });
-
-
-// //   //  top10GamesBtn.addEventListener("click", function (event) {
-// //   //   event.preventDefault();
-   
-
-// //   // });
-
-// // });
-document.getElementById('top-10-games').addEventListener('click', function () {
-  showTrendingGames();
-});
-
-
-function showTrendingGames() {
-  const availableText = document.getElementById("available-text");
-  const ageFilterText = document.getElementById("age-filter-text");
-   availableText.textContent = "Most Played Games";
-    ageFilterText.textContent = "Filter by Age on Trendings"
-  const ageFilter = document.getElementById('age-filter');
-  const trendingGames = gameData.filter(game => game.trending === true);
-  getTrendingAndAgeFilteredGames(ageFilter.value, trendingGames);
-
-}
-
-
-function getTrendingAndAgeFilteredGames(selectedAge, trendingGames) {
-  let trendingGameList = trendingGames; // Start with the full gameData
-
-
-  if (selectedAge !== 'all') {
-    const selectedAgeNum = parseInt(selectedAge, 10);
-    if (selectedAgeNum === 18) {
-      trendingGameList = trendingGameList.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
     } else {
-      trendingGameList = trendingGameList.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
+      console.error("gameContainer element not found");
     }
   }
 
-  // else {
-  //   filteredGames = randomizeGames(filteredGames);
-  // }
-  if (trendingGameList.length == 0) {
-    createNoGamesMessage();
+  // Initial display of all games
+  filterGames('all');
 
-  } else {
-    createGameCards(trendingGameList); // for trending
-  }
-}
+  // Event listener for the dropdown
+  ageFilter.addEventListener('change', () => {
+    const availableText = document.getElementById("available-text");
 
-//trending btn end
-
-
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api"; // Corrected URL
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-window.onYouTubeIframeAPIReady = function () {
-
-  let mobileAspect = .6;
-  player = new YT.Player('player', {
-    height: isMobile() ? window.innerWidth * mobileAspect : 480, // Responsive height based on device
-    width: isMobile() ? window.innerWidth * mobileAspect : 854, // Responsive width based on device
-    videoId: '', // Initialize without a video
-    playerVars: {
-      playersinline: 1,
-      autoplay: 0, // Don't autoplay initially
-      controls: 1, // Show controls
-      rel: 0, // Don't show related videos
-    },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange,
+    if (availableText.textContent == "Available Games") {
+      filterGames(ageFilter.value);
+    } else {
+      showTrendingGames();
     }
   });
-  // Add resize listener
-  window.addEventListener('resize', onWindowResize);
-};
 
-function isMobile() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
+  // trending button
+
+  // document.addEventListener('DOMContentLoaded', function () {
+  //   const  top10GamesBtn = document.getElementById(" top-10-games");
 
 
-function onPlayerReady(event) {
-  event.target.setVolume(50);
-}
+  //   //auto-scroll
+  // //   top10GamesBtn.addEventListener('click', function (event) {
+  // //     event.preventDefault(); // Prevent the default anchor behavior
 
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && isMobile()) {
-    // Fullscreen landscape on mobile when playing
-    var requestFullScreen = player.getIframe().requestFullscreen || player.getIframe().mozRequestFullScreen || player.getIframe().webkitRequestFullscreen;
-    if (requestFullScreen) {
-      requestFullScreen.call(player.getIframe());
+  // //     const imageElement = document.getElementById('gameContainer');
+
+  // //     // if (imageElement) {
+  // //     //   imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
+  // //     // }
+  // //   showTrendingGames();
+
+  // //   });
+
+
+  // //   //  top10GamesBtn.addEventListener("click", function (event) {
+  // //   //   event.preventDefault();
+
+
+  // //   // });
+
+  // // });
+  document.getElementById('top-10-games').addEventListener('click', function () {
+    showTrendingGames();
+  });
+
+
+  function showTrendingGames() {
+    const availableText = document.getElementById("available-text");
+    const ageFilterText = document.getElementById("age-filter-text");
+    availableText.textContent = "Most Played Games";
+    ageFilterText.textContent = "Filter by Age on Trendings"
+    const ageFilter = document.getElementById('age-filter');
+    const trendingGames = gameData.filter(game => game.trending === true);
+    getTrendingAndAgeFilteredGames(ageFilter.value, trendingGames);
+
+  }
+
+
+  function getTrendingAndAgeFilteredGames(selectedAge, trendingGames) {
+    let trendingGameList = trendingGames; // Start with the full gameData
+
+
+    if (selectedAge !== 'all') {
+      const selectedAgeNum = parseInt(selectedAge, 10);
+      if (selectedAgeNum === 18) {
+        trendingGameList = trendingGameList.filter(game => parseInt(game.ageRating, 10) >= selectedAgeNum);
+      } else {
+        trendingGameList = trendingGameList.filter(game => parseInt(game.ageRating, 10) <= selectedAgeNum);
+      }
     }
-    screen.orientation.lock("landscape");
-  } else if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.CUED) {
-    if (isMobile()) {
-      screen.orientation.unlock();
+
+    // else {
+    //   filteredGames = randomizeGames(filteredGames);
+    // }
+    if (trendingGameList.length == 0) {
+      createNoGamesMessage();
+
+    } else {
+      createGameCards(trendingGameList); // for trending
     }
   }
-}
-// Add event listeners for visibility changes
-document.addEventListener('visibilitychange', function () {
-  if (document.hidden && isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-    player.pauseVideo();
+
+  //trending btn end
+
+
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api"; // Corrected URL
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  window.onYouTubeIframeAPIReady = function () {
+
+    let mobileAspect = .6;
+    player = new YT.Player('player', {
+      height: isMobile() ? window.innerWidth * mobileAspect : 480, // Responsive height based on device
+      width: isMobile() ? window.innerWidth * mobileAspect : 854, // Responsive width based on device
+      videoId: '', // Initialize without a video
+      playerVars: {
+        playersinline: 1,
+        autoplay: 0, // Don't autoplay initially
+        controls: 1, // Show controls
+        rel: 0, // Don't show related videos
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange,
+      }
+    });
+    // Add resize listener
+    window.addEventListener('resize', onWindowResize);
+  };
+
+  function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
-});
 
-// Add event listener for blur (window loses focus)
-window.addEventListener('blur', function () {
-  if (isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-    player.pauseVideo();
+
+  function onPlayerReady(event) {
+    event.target.setVolume(50);
   }
-});
+
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && isMobile()) {
+      // Fullscreen landscape on mobile when playing
+      var requestFullScreen = player.getIframe().requestFullscreen || player.getIframe().mozRequestFullScreen || player.getIframe().webkitRequestFullscreen;
+      if (requestFullScreen) {
+        requestFullScreen.call(player.getIframe());
+      }
+      screen.orientation.lock("landscape");
+    } else if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.CUED) {
+      if (isMobile()) {
+        screen.orientation.unlock();
+      }
+    }
+  }
+  // Add event listeners for visibility changes
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden && isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+      player.pauseVideo();
+    }
+  });
+
+  // Add event listener for blur (window loses focus)
+  window.addEventListener('blur', function () {
+    if (isMobile() && player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+      player.pauseVideo();
+    }
+  });
 
 
-function openPopup(videoId) {
-  // console.log("openPopup called with videoId:", videoId);
-  player.loadVideoById(videoId);
-  videoPopup.style.display = 'flex'; // Use flex for centering
-}
+  function openPopup(videoId) {
+    // console.log("openPopup called with videoId:", videoId);
+    player.loadVideoById(videoId);
+    videoPopup.style.display = 'flex'; // Use flex for centering
+  }
 
-closeButton.addEventListener('click', () => {
-  videoPopup.style.display = 'none';
-  player.stopVideo();
-});
+  closeButton.addEventListener('click', () => {
+    videoPopup.style.display = 'none';
+    player.stopVideo();
+  });
 
 //Game Available End
