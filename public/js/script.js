@@ -1,3 +1,20 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
+  authDomain: "playgamezonegames.firebaseapp.com",
+  projectId: "playgamezonegames",
+  storageBucket: "playgamezonegames.firebasestorage.app",
+  messagingSenderId: "168604180866",
+  appId: "1:168604180866:web:4b4dfedfa115ec1e352f9b",
+  measurementId: "G-NS89D5N201"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
 // music
 var myAudio = document.getElementById("myAudio");
 var muteButton = document.getElementById("muteBtn");
@@ -522,7 +539,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 let paymentAmountDisplay = document.getElementById('pay-amount-show');
                 let validity = document.getElementById('validity');
                 let gameplay = document.getElementById('gameplay');
-                let package = document.getElementById('package');
+                let gamePackage = document.getElementById('package');
                 let cost = document.getElementById('cost');
                 let accessories = document.getElementById('accessories');
                 let steering = document.getElementById('steering');
@@ -532,7 +549,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
                   validity.textContent = 'Validity: 10 Days';
                   gameplay.textContent = 'Total Gameplay: 5 Hours';
-                  package.textContent = 'Package (10 Card) for ₹150';
+                  gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
                   cost.textContent = '30 Minutes/vCard';
                   accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                   steering.textContent = 'Steering Wheel: ₹10/session';
@@ -542,7 +559,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
                   validity.textContent = 'Validity: 15 Days';
                   gameplay.textContent = 'Total Gameplay: 8 Hours';
-                  package.textContent = 'Package (10 Card) for ₹300';
+                  gamePackage.textContent = 'gamePackage (10 Card) for ₹300';
                   cost.textContent = '45 Minutes/vCard';
                   accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                   steering.textContent = '';
@@ -552,7 +569,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
                   validity.textContent = 'Validity: Forever';
                   gameplay.textContent = 'Total Gameplay: 8 Hours';
-                  package.textContent = 'Package (10 Card) for ₹400';
+                  gamePackage.textContent = 'gamePackage (10 Card) for ₹400';
                   cost.textContent = '45 Minutes/vCard';
                   accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                   steering.textContent = 'Steering Wheel: ₹10/session';
@@ -562,7 +579,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
                   validity.textContent = 'Validity: 1 Day';
                   gameplay.textContent = 'Total Gameplay: 15-20 Minute';
-                  package.textContent = 'Package (5 Card) for ₹50';
+                  gamePackage.textContent = 'gamePackage (5 Card) for ₹50';
                   cost.textContent = '15-20 Minutes/Card';
                   accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                   steering.textContent = 'Steering Wheel: ₹10/session';
@@ -712,11 +729,74 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       });
       // login page end
 
+
+      // script for signup page button 
+      // const signupForm = document.getElementById("signupForm");
+
+      // signupForm.addEventListener("submit", (event) => {
+      //     event.preventDefault();
+
+      //     const email = document.getElementById("email").value;
+      //     const password = document.getElementById("password").value;
+      //     const username = document.getElementById("username").value;
+
+      //     createUserWithEmailAndPassword(auth, email, password)
+      //         .then((userCredential) => {
+      //             const user = userCredential.user;
+      //             console.log("User created:", user);
+
+      //             sendEmailVerification(user)
+      //                 .then(() => {
+      //                     alert("Verification email sent. Please check your inbox.");
+      //                     updateProfile(user, {displayName: username})
+      //                     .then(()=>{
+      //                         console.log("username updated")
+      //                     })
+      //                     .catch((error)=>{
+      //                         console.error("username update failed:",error);
+      //                     })
+      //                     // You can redirect the user to a verification pending page here.
+      //                 })
+      //                 .catch((error) => {
+      //                     console.error("Verification email error:", error);
+      //                     alert("Failed to send verification email.");
+      //                 });
+      //         })
+      //         .catch((error) => {
+      //             const errorCode = error.code;
+      //             const errorMessage = error.message;
+      //             console.error("Signup error:", errorCode, errorMessage);
+      //             alert("Signup failed: " + errorMessage);
+      //         });
+      // });
+
+      // auth.onAuthStateChanged((user) => {
+      //     if (user && user.emailVerified) {
+      //         // Email is verified, save user data to Firestore.
+      //         const username = document.getElementById("username").value;
+      //         setDoc(doc(db, "users", user.uid), {
+      //             username: username,
+      //             email: user.email,
+      //             uid: user.uid
+      //         }).then(() => {
+      //             console.log("User data saved to Firestore.");
+      //             window.location.href = "../index.html"; // Redirect after saving data.
+      //         }).catch((error) => {
+      //             console.error("Firestore error:", error);
+      //             alert("Error saving user data.");
+      //         });
+      //     }
+      // });
+      // script for signup page button end
+
+
     });
 
 
 
 });
+
+
 
 
 // user login page end
