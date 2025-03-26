@@ -605,7 +605,26 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
     });
 });
 
+// user-login page
+document.getElementById('userBtn').addEventListener('click', function (event) {
+    window.scrollBy({
+      top: 300,
+      behavior: 'smooth'
+    });
+   event.preventDefault();
+    fetch('account/signup.html')
+              .then(response => response.text())
+              .then(data => {
+                document.getElementById('place-for-user-login').innerHTML = data;
+                document.getElementById('all-games-place').style.display = 'none';
+                document.getElementById('place-for-user-login').style.display = 'block';
+          
+              });
+  
+  });
+  
 
+  // user login page end
 
 // Home Link Functionality
 document.getElementById('home').addEventListener('click', function () {
@@ -615,21 +634,14 @@ document.getElementById('home').addEventListener('click', function () {
   document.getElementById('all-games-place').style.display = 'block';
   document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
   document.getElementById('place-for-plans').style.display = 'none';
+  document.getElementById('place-for-user-login').style.display = 'none';
+
 
 
 });
 // RegisterPage End
 
-// user-login page
-document.getElementById('registrationBtn').addEventListener('click', function () {
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });
 
-});
-
-// user login page end
 
 // Game Available 
 
