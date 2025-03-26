@@ -1,5 +1,9 @@
+// start point / top 
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+// import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
@@ -622,7 +626,27 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
     });
 });
 
+// logout btn
+document.getElementById('logoutOption').addEventListener('click', function (event) {
+  event.preventDefault();
+  signOut(auth)
+    .then(() => {
+      // User signed out successfully!
+      console.log("you're signed out!!!");
+      // Optionally, redirect the user to the login page or update the UI
+      window.location.href = "index.html"; // Example: Redirect to login page
+    })
+    .catch((error) => {
+      // An error happened.
+      console.error("Logout error:", error);
+      alert("Failed to sign out.");
+    });
+
+});
+// logout btn end
+
 // user-login page
+
 document.getElementById('userBtn').addEventListener('click', function (event) {
   window.scrollBy({
     top: 300,
@@ -637,8 +661,6 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       document.getElementById('all-games-place').style.display = 'none';
       document.getElementById('place-for-user-signup').style.display = 'block';
 
-      // document.getElementById('place-for-user-login').style.display = 'none';
-      // document.getElementById('place-for-user-forgot').style.display = 'none';
 
       // handle forgot button in signupPage
       document.getElementById('forgotpass-page-btn').addEventListener('click', function (event) {
@@ -708,11 +730,11 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                   document.getElementById('place-for-user-forgotPassword').style.display = 'block';
 
 
-            // handle back to login page in forgot page by signup page
-            document.getElementById('loginPageBtn').addEventListener('click', function () {
-              document.getElementById('place-for-user-login').style.display = 'block';
-              document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-            });
+                  // handle back to login page in forgot page by signup page
+                  document.getElementById('loginPageBtn').addEventListener('click', function () {
+                    document.getElementById('place-for-user-login').style.display = 'block';
+                    document.getElementById('place-for-user-forgotPassword').style.display = 'none';
+                  });
                 });
 
             });
@@ -725,68 +747,102 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
               document.getElementById('place-for-user-signup').style.display = 'block';
             });
             // back to signup page end
+
+
+            // script for login
+            const loginForm = document.getElementById("loginForm");
+
+            loginForm.addEventListener("submit", (event) => {
+              event.preventDefault();
+              const email = document.getElementById("email").value;
+              const password = document.getElementById("password").value;
+
+              signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                  const user = userCredential.user;
+                  console.log("User logged in:", user);
+                  alert("Login Successfully!!!");
+
+                  // Redirect to a dashboard or home page after successful login
+                  window.location.href = "index.html"; // Replace with your desired page
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.error("Login error:", errorCode, errorMessage);
+                  alert("Login failed: " + errorMessage);
+                });
+            });
+            // script for login end
+
           });
+
+
+
+
       });
       // login page end
 
 
       // script for signup page button 
-      // const signupForm = document.getElementById("signupForm");
+      const signupForm = document.getElementById("signupForm");
 
-      // signupForm.addEventListener("submit", (event) => {
-      //     event.preventDefault();
+      signupForm.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-      //     const email = document.getElementById("email").value;
-      //     const password = document.getElementById("password").value;
-      //     const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const username = document.getElementById("username").value;
 
-      //     createUserWithEmailAndPassword(auth, email, password)
-      //         .then((userCredential) => {
-      //             const user = userCredential.user;
-      //             console.log("User created:", user);
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("User created:", user);
 
-      //             sendEmailVerification(user)
-      //                 .then(() => {
-      //                     alert("Verification email sent. Please check your inbox.");
-      //                     updateProfile(user, {displayName: username})
-      //                     .then(()=>{
-      //                         console.log("username updated")
-      //                     })
-      //                     .catch((error)=>{
-      //                         console.error("username update failed:",error);
-      //                     })
-      //                     // You can redirect the user to a verification pending page here.
-      //                 })
-      //                 .catch((error) => {
-      //                     console.error("Verification email error:", error);
-      //                     alert("Failed to send verification email.");
-      //                 });
-      //         })
-      //         .catch((error) => {
-      //             const errorCode = error.code;
-      //             const errorMessage = error.message;
-      //             console.error("Signup error:", errorCode, errorMessage);
-      //             alert("Signup failed: " + errorMessage);
-      //         });
-      // });
+            sendEmailVerification(user)
+              .then(() => {
+                alert("Verification email sent. Please check your inbox.");
+                updateProfile(user, { displayName: username })
+                  .then(() => {
+                    console.log("username updated")
+                  })
+                  .catch((error) => {
+                    console.error("username update failed:", error);
+                  })
+                // You can redirect the user to a verification pending page here.
+              })
+              .catch((error) => {
+                console.error("Verification email error:", error);
+                alert("Failed to send verification email.");
+              });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Signup error:", errorCode, errorMessage);
+            alert("Signup failed: " + errorMessage);
+          });
+      });
 
-      // auth.onAuthStateChanged((user) => {
-      //     if (user && user.emailVerified) {
-      //         // Email is verified, save user data to Firestore.
-      //         const username = document.getElementById("username").value;
-      //         setDoc(doc(db, "users", user.uid), {
-      //             username: username,
-      //             email: user.email,
-      //             uid: user.uid
-      //         }).then(() => {
-      //             console.log("User data saved to Firestore.");
-      //             window.location.href = "../index.html"; // Redirect after saving data.
-      //         }).catch((error) => {
-      //             console.error("Firestore error:", error);
-      //             alert("Error saving user data.");
-      //         });
-      //     }
-      // });
+      auth.onAuthStateChanged((user) => {
+        if (user && user.emailVerified) {
+          // Email is verified, save user data to Firestore.
+          const username = document.getElementById("username").value;
+          setDoc(doc(db, "users", user.uid), {
+            username: username,
+            email: user.email,
+            uid: user.uid
+          }).then(() => {
+            console.log("User data saved to Firestore.");
+            alert("already login!!!.");
+
+            window.location.href = "index.html"; // Redirect after saving data.
+          }).catch((error) => {
+            console.error("Firestore error:", error);
+            alert("Error saving user data.");
+          });
+        }
+      });
       // script for signup page button end
 
 
