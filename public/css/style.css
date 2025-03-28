@@ -252,6 +252,20 @@ input {
     outline: none; /* Remove default focus outline */
     color: #0056b3; /* Darker color on focus */
 }
+#resetPassBtn{
+
+ width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#resetPassBtn:hover {
+  background-color: #45a049;
+}
 /* a{
 text-decoration: none;
 } */
