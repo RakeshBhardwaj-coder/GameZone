@@ -137,6 +137,13 @@ body{
     }
   }
   /* loading bar end */
+  #alert-text{
+    text-align: center;
+            margin-top: 20px;
+            font-family: "Open Sans", serif;
+            color: #1456ac; /* Red for errors */
+            font-weight: bold;
+  }
 .signup-container, .login-container, .forgot-container {
   background-color: white;
   padding: 20px;

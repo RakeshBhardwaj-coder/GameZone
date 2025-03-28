@@ -825,16 +825,16 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             console.error("Signup error:", errorCode, errorMessage);
       
             if (errorCode === "auth/email-already-in-use") {
-              alertText.textContent = "Email is already registered.";
+              alertText.innerHTML = "Email is already registered!<br>go to Login page, <br>or<br> please check email, if not verified!";
               // Check if the user is verified
               auth.fetchSignInMethodsForEmail(email).then((signInMethods) => {
                 if (signInMethods.length > 0) {
                   auth.getUserByEmail(email).then((userRecord) => {
                     if (userRecord.emailVerified) {
-                      alertText.textContent =
+                      alertText.innerHTML =
                         "Email is already registered and verified. Please proceed to login.";
                     } else {
-                      alertText.textContent =
+                      alertText.innerHTML =
                         "Email is already registered but not verified. Please verify your email. We've sent a new verification link.";
                       auth.sendSignInLinkToEmail(email, {
                         url: "YOUR_REDIRECT_URL", // Replace with your actual redirect URL
@@ -851,7 +851,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                 }
               });
             } else {
-              alertText.textContent = "Signup failed: " + errorMessage;
+              alertText.innerHTML = "Signup failed: " + errorMessage;
             }
           })
           .finally(() => {
@@ -865,13 +865,13 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         if (user) {
           if (user.emailVerified) {
             console.log("Email verified!");
-            alertText.textContent = "Email Verified! You can now proceed.";
+            alertText.innerHTML = "Email Verified! You can now proceed.";
             // Example:
             // saveUserDataToFirestore(user); // Function to save data to Firestore
             // window.location.href = "dashboard.html"; // Redirect to dashboard
           } else {
             console.log("Email is not verified. Please verify!");
-            alertText.textContent = "Please verify your email to continue.";
+            alertText.innerHTML = "Please verify your email to continue.";
           }
         }
       });
