@@ -663,7 +663,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
 
       // handle forgot button in signupPage
-      document.getElementById('forgotPageBtn').addEventListener('click', function (event) {
+      document.getElementById('forgotpass-page-btn').addEventListener('click', function (event) {
         event.preventDefault();
         fetch('account/forgotPassword.html')
           .then(response => response.text())
@@ -741,7 +741,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
 
             // back to signup Page
-            document.getElementById('signupBtn').addEventListener('click', function () {
+            document.getElementById('switchPageBtn').addEventListener('click', function () {
 
               document.getElementById('place-for-user-login').style.display = 'none';
               document.getElementById('place-for-user-signup').style.display = 'block';
