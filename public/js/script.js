@@ -786,18 +786,11 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
       // script for signup page button 
       const signupForm = document.getElementById("signupForm");
-      const signupButton = document.getElementById("signUpBtn"); 
-      const loadingBar = document.querySelector(".loadingBar"); 
-      const signupContainer = document.querySelector(".signup-container"); 
-      const test = document.getElementById("test"); 
+      const signupButton = document.getElementById("signUpBtn");
+      const loadingBar = document.querySelector(".loadingBar");
+      const signupContainer = document.querySelector(".signup-container");
+      const alertText = document.getElementById("alert-text");
       
-      test.addEventListener("click", (event) => {
-        event.preventDefault();
-        signupContainer.style.display = "none";
-        loadingBar.style.display = "block";
-
-        console.log("ok");
-      });
       signupForm.addEventListener("submit", (event) => {
         event.preventDefault();
       
@@ -806,65 +799,98 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         const username = document.getElementById("username").value;
       
         // Show loading indicator
-        signupButton.disabled = true; // Disable button
+        signupContainer.style.display = "none";
         loadingBar.style.display = "block";
+        alertText.textContent = "";
       
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
             console.log("User created:", user);
       
-            return sendEmailVerification(user);
+            return sendEmailVerification(user); // Send verification email
           })
           .then(() => {
-            alert("Verification email sent. Please check your inbox.");
+            alertText.textContent =
+              "Verification email sent. Please check your inbox!";
             return updateProfile(auth.currentUser, { displayName: username });
           })
           .then(() => {
             console.log("Username updated");
-            // You can redirect the user to a verification pending page here.
+            // You can redirect to a "verify email" page or show a message.
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.error("Signup error:", errorCode, errorMessage);
-            alert("Signup failed: " + errorMessage);
+      
+            if (errorCode === "auth/email-already-in-use") {
+              alertText.textContent = "Email is already registered.";
+              // Check if the user is verified
+              auth.fetchSignInMethodsForEmail(email).then((signInMethods) => {
+                if (signInMethods.length > 0) {
+                  auth.getUserByEmail(email).then((userRecord) => {
+                    if (userRecord.emailVerified) {
+                      alertText.textContent =
+                        "Email is already registered and verified. Please proceed to login.";
+                    } else {
+                      alertText.textContent =
+                        "Email is already registered but not verified. Please verify your email. We've sent a new verification link.";
+                      auth.sendSignInLinkToEmail(email, {
+                        url: "YOUR_REDIRECT_URL", // Replace with your actual redirect URL
+                        handleCodeInApp: true, // This is true when your app will handle the action code.
+                      }).then(() => {
+                        console.log("Verification link sent");
+                      }).catch((err) => {
+                        console.log("Error sending verification link", err);
+                      });
+                    }
+                  }).catch((err) => {
+                    console.log("Error getting user", err);
+                  });
+                }
+              });
+            } else {
+              alertText.textContent = "Signup failed: " + errorMessage;
+            }
           })
           .finally(() => {
-            // Hide loading indicator and re-enable button (runs regardless of success/failure)
-            signupButton.disabled = false;
+            signupContainer.style.display = "block";
             loadingBar.style.display = "none";
           });
       });
-
+      
+      // Assuming 'auth' is your Firebase Auth instance
       onAuthStateChanged(auth, (user) => {
-        if (user && user.emailVerified) {
-          // Email is verified, save user data to Firestore.
-          const username = document.getElementById("username").value;
-      
-          // Show loading indicator while saving data
-          loadingBar.style.display = "block";
-      
-          setDoc(doc(db, "users", user.uid), {
-            username: username,
-            email: user.email,
-            uid: user.uid,
-          })
-            .then(() => {
-              console.log("User data saved to Firestore.");
-              alert("already login!!!.");
-              window.location.href = "index.html"; // Redirect after saving data.
-            })
-            .catch((error) => {
-              console.error("Firestore error:", error);
-              alert("Error saving user data.");
-            })
-            .finally(() => {
-              // Hide loading indicator after saving (or error)
-              loadingBar.style.display = "none";
-            });
+        if (user) {
+          if (user.emailVerified) {
+            console.log("Email verified!");
+            alertText.textContent = "Email Verified! You can now proceed.";
+            // Example:
+            // saveUserDataToFirestore(user); // Function to save data to Firestore
+            // window.location.href = "dashboard.html"; // Redirect to dashboard
+          } else {
+            console.log("Email is not verified. Please verify!");
+            alertText.textContent = "Please verify your email to continue.";
+          }
         }
       });
+      
+      // // (Optional) Function to save user data to Firestore
+      // async function saveUserDataToFirestore(user) {
+      //   try {
+      //     const username = document.getElementById("username").value;
+      //     await setDoc(doc(db, "users", user.uid), {
+      //       username: username,
+      //       email: user.email,
+      //       uid: user.uid,
+      //     });
+      //     console.log("User data saved to Firestore.");
+      //   } catch (error) {
+      //     console.error("Error saving user data:", error);
+      //     alertText.textContent = "Error saving user data.";
+      //   }
+      // }
       // script for signup page button end
 
 
