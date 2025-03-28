@@ -118,7 +118,25 @@ body{
   margin: 0;
   background-color: #f4f4f4;
 }
+  /* loading bar  */
 
+  .loadingBar {
+    font-size: 80px;
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+    display: none; 
+  }
+
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  /* loading bar end */
 .signup-container, .login-container, .forgot-container {
   background-color: white;
   padding: 20px;
@@ -906,6 +924,9 @@ body.night-mode #registrationBtn:hover {
         border: 1px solid rgba(40, 205, 255, 0.993);
     }
 
+  
+
+    
     /* Available Text & Filters Adjustments */
     #available-text {
         font-size: 30px;

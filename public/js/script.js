@@ -786,61 +786,83 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
       // script for signup page button 
       const signupForm = document.getElementById("signupForm");
+      const signupButton = document.getElementById("signUpBtn"); 
+      const loadingBar = document.querySelector(".loadingBar"); 
+      const signupContainer = document.querySelector(".signup-container"); 
+      const test = document.getElementById("test"); 
+      
+      test.addEventListener("click", (event) => {
+        event.preventDefault();
+        signupContainer.style.display = "none";
+        loadingBar.style.display = "block";
 
+        console.log("ok");
+      });
       signupForm.addEventListener("submit", (event) => {
         event.preventDefault();
-
+      
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
         const username = document.getElementById("username").value;
-
+      
+        // Show loading indicator
+        signupButton.disabled = true; // Disable button
+        loadingBar.style.display = "block";
+      
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
             console.log("User created:", user);
-
-            sendEmailVerification(user)
-              .then(() => {
-                alert("Verification email sent. Please check your inbox.");
-                updateProfile(user, { displayName: username })
-                  .then(() => {
-                    console.log("username updated")
-                  })
-                  .catch((error) => {
-                    console.error("username update failed:", error);
-                  })
-                // You can redirect the user to a verification pending page here.
-              })
-              .catch((error) => {
-                console.error("Verification email error:", error);
-                alert("Failed to send verification email.");
-              });
+      
+            return sendEmailVerification(user);
+          })
+          .then(() => {
+            alert("Verification email sent. Please check your inbox.");
+            return updateProfile(auth.currentUser, { displayName: username });
+          })
+          .then(() => {
+            console.log("Username updated");
+            // You can redirect the user to a verification pending page here.
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.error("Signup error:", errorCode, errorMessage);
             alert("Signup failed: " + errorMessage);
+          })
+          .finally(() => {
+            // Hide loading indicator and re-enable button (runs regardless of success/failure)
+            signupButton.disabled = false;
+            loadingBar.style.display = "none";
           });
       });
 
-      auth.onAuthStateChanged((user) => {
+      onAuthStateChanged(auth, (user) => {
         if (user && user.emailVerified) {
           // Email is verified, save user data to Firestore.
           const username = document.getElementById("username").value;
+      
+          // Show loading indicator while saving data
+          loadingBar.style.display = "block";
+      
           setDoc(doc(db, "users", user.uid), {
             username: username,
             email: user.email,
-            uid: user.uid
-          }).then(() => {
-            console.log("User data saved to Firestore.");
-            alert("already login!!!.");
-
-            window.location.href = "index.html"; // Redirect after saving data.
-          }).catch((error) => {
-            console.error("Firestore error:", error);
-            alert("Error saving user data.");
-          });
+            uid: user.uid,
+          })
+            .then(() => {
+              console.log("User data saved to Firestore.");
+              alert("already login!!!.");
+              window.location.href = "index.html"; // Redirect after saving data.
+            })
+            .catch((error) => {
+              console.error("Firestore error:", error);
+              alert("Error saving user data.");
+            })
+            .finally(() => {
+              // Hide loading indicator after saving (or error)
+              loadingBar.style.display = "none";
+            });
         }
       });
       // script for signup page button end
