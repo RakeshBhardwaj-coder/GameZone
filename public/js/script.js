@@ -3,7 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 // import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile,signInWithEmailAndPassword , signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
@@ -648,6 +648,7 @@ document.getElementById('logoutOption').addEventListener('click', function (even
 // user-login page
 
 document.getElementById('userBtn').addEventListener('click', function (event) {
+
   window.scrollBy({
     top: 300,
     behavior: 'smooth'
@@ -660,6 +661,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       document.getElementById('place-for-user-signup').innerHTML = data;
       document.getElementById('all-games-place').style.display = 'none';
       document.getElementById('place-for-user-signup').style.display = 'block';
+  document.getElementById('place-for-user-login').style.display = 'none';
+
 
 
       // handle forgot button in signupPage
@@ -934,6 +937,7 @@ document.getElementById('home').addEventListener('click', function () {
   document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
   document.getElementById('place-for-plans').style.display = 'none';
   document.getElementById('place-for-user-login').style.display = 'none';
+  document.getElementById('place-for-user-signup').style.display = 'none';
 
 
 
@@ -1433,6 +1437,8 @@ ageFilter.addEventListener('change', () => {
 
 // // });
 document.getElementById('top-10-games').addEventListener('click', function () {
+  document.getElementById('place-for-user-login').style.display = 'none';
+  document.getElementById('place-for-user-signup').style.display = 'none';
   showTrendingGames();
 });
 
