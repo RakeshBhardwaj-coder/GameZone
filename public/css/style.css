@@ -39,7 +39,7 @@ body{
 /* Mute/Unmute end */
 
 /* profile icon */
-.userOptionsContainer {
+.userProfileContainer {
   position: relative; /* Needed for absolute positioning of user-name */
   display: inline-flex; /* Use inline-flex for better alignment */
   align-items: center; /* Vertically align icon and name */
@@ -75,7 +75,7 @@ body{
   white-space: nowrap; /* Prevent text wrapping */
   opacity: 0; /* Initially hidden */
   transition: opacity 0.3s ease;
-  position: absolute; /* Position relative to userOptionsContainer */
+  position: absolute; /* Position relative to userProfileContainer */
   top: -90%; /* Place above the icon */
   left: -30%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
@@ -98,19 +98,19 @@ body{
 .logout-option:hover{
   scale: 1.1;
 }
-.userOptionsContainer:hover .user-name {
+.userProfileContainer:hover .user-name {
   opacity: 1; /* Show name on hover */
 }
 
 
-.userOptionsContainer:hover .logout-option {
+.userProfileContainer:hover .logout-option {
   opacity: 1;
   /* see later  */
 }
 
 /* Signup/login/forgetpassword Page */
 /* style.css */
-.userOptionsContainer {
+.userProfileContainer {
   font-family: sans-serif;
   display: flex;
   justify-content: center;
