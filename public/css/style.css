@@ -40,15 +40,18 @@ body{
 
 /* profile icon */
 .userOptionsContainer {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  font-family: sans-serif;
+  position: relative; /* Needed for absolute positioning of user-name */
+  display: inline-flex; /* Use inline-flex for better alignment */
+  align-items: center; /* Vertically align icon and name */
+  flex-direction: column; /* Stack icon and name vertically */
+  margin-left: 10px; /* Add some space between mute button and profile icon */
 }
 
 .userBtn {
-  cursor: pointer;
-  position: relative;
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes it a circle */
+  overflow: hidden;
 }
 
 .userBtn img { /* Corrected selector for img tag */
@@ -63,55 +66,58 @@ body{
   cursor: pointer; /* Change cursor to pointer */
 }
 
-
-.user-details {
-  position: absolute;
-  top: 50px; /* Adjust as needed */
-  right: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 15px;
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  z-index: 1000;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
 .user-name {
-  margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap; /* Prevent text wrapping */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease;
+  position: absolute; /* Position relative to userOptionsContainer */
+  top: -90%; /* Place above the icon */
+  left: -30%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
 }
 .logout-option {
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  text-align: left;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: -90%; /* Place below the icon */
+  left: 160%;
+  transform: translateX(-50%);
+  cursor: pointer; /* Add cursor pointer */
 }
 .logout-option:hover{
-  background-color: #f0f0f0;
+  scale: 1.1;
+}
+.userOptionsContainer:hover .user-name {
+  opacity: 1; /* Show name on hover */
 }
 
-.userBtn:hover + .user-details,
-.user-details:hover {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
+
+.userOptionsContainer:hover .logout-option {
+  opacity: 1;
+  /* see later  */
 }
 
-@media (max-width: 600px) {
-  .user-name {
-      display: none; /* Hide username on small screens */
-  }
-  .user-details {
-      right: -10px;
-  }
+/* Signup/login/forgetpassword Page */
+/* style.css */
+.userOptionsContainer {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #f4f4f4;
 }
-/* profile icon end */
   /* loading bar  */
 
   .loadingBar {
