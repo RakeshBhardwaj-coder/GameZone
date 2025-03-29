@@ -73,6 +73,40 @@ videoCloseUnMute.addEventListener('click', () => {
 
 // music end
 
+// user profile details design
+// document.addEventListener("DOMContentLoaded", function () {
+//   const userProfileContainers = document.querySelectorAll(".userProfileContainer");
+
+//   userProfileContainers.forEach((container) => {
+//     const userOptions = container.querySelector(".user-options");
+
+//     function adjustPosition() {
+//       const rect = container.getBoundingClientRect();
+//       const optionsRect = userOptions.getBoundingClientRect();
+//       const viewportWidth = window.innerWidth;
+
+//       // Check if the dropdown overflows the right edge
+//       if (optionsRect.right > viewportWidth) {
+//         userOptions.style.left = "auto";
+//         userOptions.style.right = "0"; // Align to the right edge of the container
+//       } else {
+//         userOptions.style.left = "0"; // Align to the left edge of the container
+//         userOptions.style.right = "auto";
+//       }
+//     }
+
+//     // Initial position adjustment
+//     adjustPosition();
+
+//     // Adjust position on window resize
+//     window.addEventListener("resize", adjustPosition);
+
+//     // Adjust position when the user-options is toggled.
+//     container.addEventListener('mouseover', adjustPosition);
+//   });
+// });
+// user profile details design end
+
 // Logo Effect
 const gamezoneLogo = document.querySelector('#gamezone-logo img');
 const gamepadLogo = document.getElementById('gamepad-logo');
@@ -131,11 +165,7 @@ function topFunction() {
   scrollToTop();
 }
 
-// Scroll-up button
 
-function pageUpBtn() {
-
-}
 
 window.addEventListener('scroll', () => {
   const pageUpButton = document.getElementById('pageUpButton');

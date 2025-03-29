@@ -64,12 +64,14 @@ body{
   z-index: 1;
   border-radius: 5px;
   top: 100%;
-  left: 20%;
+  /* Removed left: 20%; to allow dynamic positioning */
   margin-top: 2px;
   padding: 5px 0;
   opacity: 0;
   transition: opacity 0.3s ease;
   visibility: hidden;
+  right: 10px;
+  top: 30px; /* Allow right positioning */
 }
 
 .userProfileContainer:hover .user-options {
@@ -96,6 +98,7 @@ body{
   border-bottom: 1px solid #eee;
   padding-bottom: 5px;
 }
+
 .user-email {
   font-weight: bold;
   font-size: small;
