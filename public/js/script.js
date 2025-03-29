@@ -779,13 +779,9 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                         console.error("Login error:", errorCode, errorMessage);
             
                         // Handle specific error codes for better user feedback
-                        if (errorCode === "auth/user-not-found") {
-                            alertText.textContent = "User not found. Please check your email or register.";
-                        } else if (errorCode === "auth/wrong-password") {
-                            alertText.textContent = "Incorrect password. Please try again.";
-                        } else if (errorCode === "auth/invalid-email"){
-                            alertText.textContent = "Invalid email format.";
-                        }
+                        if (errorCode === "auth/invalid-credential") {
+                            alertText.innerHTML = "Incorrect Email or password.<br> Please try again!";
+                        } 
                         else {
                             alertText.textContent = "Login failed: " + errorMessage; // General error message
                         }
