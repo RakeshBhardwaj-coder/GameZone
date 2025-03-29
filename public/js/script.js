@@ -585,7 +585,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   //   This code is running in index.html but it's from the RegisterForm content End 
 
                   // script for registration and Payment form
-                  
+
                   // script for registration and Payment form end
     
     
@@ -895,9 +895,9 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
           if (user.emailVerified) {
             console.log("Email verified!");
             alertText.innerHTML = "Email Verified! You can now proceed.";
-            // Example:
-            // saveUserDataToFirestore(user); // Function to save data to Firestore
-            // window.location.href = "dashboard.html"; // Redirect to dashboard
+            // signup & saved to firestore
+            saveUserDataToFirestore(user); // Function to save data to Firestore
+            window.location.href = "index.html"; // Redirect to dashboard
           } else {
             console.log("Email is not verified. Please verify!");
             alertText.innerHTML = "Please verify your email to continue.";
@@ -905,21 +905,21 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         }
       });
       
-      // // (Optional) Function to save user data to Firestore
-      // async function saveUserDataToFirestore(user) {
-      //   try {
-      //     const username = document.getElementById("username").value;
-      //     await setDoc(doc(db, "users", user.uid), {
-      //       username: username,
-      //       email: user.email,
-      //       uid: user.uid,
-      //     });
-      //     console.log("User data saved to Firestore.");
-      //   } catch (error) {
-      //     console.error("Error saving user data:", error);
-      //     alertText.textContent = "Error saving user data.";
-      //   }
-      // }
+      // (Optional) Function to save user data to Firestore
+      async function saveUserDataToFirestore(user) {
+        try {
+          const username = document.getElementById("username").value;
+          await setDoc(doc(db, "users", user.uid), {
+            username: username,
+            email: user.email,
+            uid: user.uid,
+          });
+          console.log("User data saved to Firestore.");
+        } catch (error) {
+          console.error("Error saving user data:", error);
+          alertText.textContent = "Error saving user data.";
+        }
+      }
       // script for signup page button end
 
 
