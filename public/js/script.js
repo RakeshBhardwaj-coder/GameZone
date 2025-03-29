@@ -583,6 +583,10 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   });
     
                   //   This code is running in index.html but it's from the RegisterForm content End 
+
+                  // script for registration and Payment form
+                  
+                  // script for registration and Payment form end
     
     
                 });
