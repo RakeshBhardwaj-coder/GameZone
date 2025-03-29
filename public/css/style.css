@@ -144,7 +144,7 @@ body{
             color: #1456ac; /* Red for errors */
             font-weight: bold;
   }
-.signup-container, .login-container, .forgot-container {
+.signup-container, .login-container, .forgot-password-container {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -265,6 +265,29 @@ input {
 
 #resetPassBtn:hover {
   background-color: #45a049;
+}
+
+
+#backPageBtn {
+  display: block;
+  text-align: center;
+  background: none; /* Transparent background */
+  border: none; /* No border */
+  color: #007bff; /* Link color */
+  text-decoration: underline; /* Underline to indicate a link */
+  cursor: pointer; /* Pointer cursor on hover */
+  padding: 0; /* Remove default padding */
+  font-size: 1em; /* Inherit font size or adjust */
+  font-family: inherit; /* Inherit font family */
+}
+
+#backPageBtn:hover {
+  color: #0056b3; /* Darker color on hover */
+}
+
+#backPageBtn:focus {
+  outline: none; /* Remove default focus outline */
+  color: #0056b3; /* Darker color on focus */
 }
 /* a{
 text-decoration: none;

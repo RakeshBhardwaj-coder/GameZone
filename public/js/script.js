@@ -674,7 +674,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
             // handle backto-signup Page in forgot page to signup page
             // back to signup page 
-            document.getElementById('loginPageBtn').addEventListener('click', function () {
+            document.getElementById('backPageBtn').addEventListener('click', function () {
               document.getElementById('place-for-user-signup').style.display = 'block';
               document.getElementById('place-for-user-forgotPassword').style.display = 'none';
               // event.preventDefault();
@@ -731,7 +731,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
 
                   // handle back to login page in forgot page by signup page
-                  document.getElementById('loginPageBtn').addEventListener('click', function () {
+                  document.getElementById('backPageBtn').addEventListener('click', function () {
                     document.getElementById('place-for-user-login').style.display = 'block';
                     document.getElementById('place-for-user-forgotPassword').style.display = 'none';
                   });
