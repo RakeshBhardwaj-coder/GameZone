@@ -625,7 +625,14 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
       document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
     });
 });
-
+// user options 
+document.getElementById('logoutOption').addEventListener('click', function() {
+  alert('Logout clicked'); // Replace with your logout logic
+});
+document.getElementById('profileOption').addEventListener('click', function() {
+  alert('Profile clicked'); // Replace with your profile logic
+});
+// user Options end
 // logout btn
 document.getElementById('logoutOption').addEventListener('click', function (event) {
   event.preventDefault();
