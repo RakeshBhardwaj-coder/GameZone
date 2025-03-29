@@ -115,7 +115,7 @@
 
       </div>
       <div class="userProfileContainer">
-        <div class="userBtn" id="userBtn" >
+        <div class="userBtn"  >
           
             <img src="icon/user.png
             "  alt="Profile Picture">
@@ -124,8 +124,11 @@
         </div>
         <div class="user-options">
           <div class="user-name">User</div>
-          <a href="#">Profile</a>
-          <a href="#">Settings</a>
+          <div class="user-email">example@gmail.com</div>
+
+          <a id="userBtn">SignUp/Login</a>
+
+          <a href="#">Your Profile</a>
           <a class="logout-option" id="logoutOption">Logout</a>
         </div>
       </div>
@@ -336,16 +339,18 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const profileNameElement = document.querySelector('.user-name');
+const userName = document.querySelector('.user-name');
+const userEmail = document.querySelector('.user-email');
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
         const uid = user.uid;
+        userEmail.textContent = user.email;
 
         // Option 1: Get username from user.displayName (if you updated it)
         const usernameFromProfile = user.displayName;
         if (usernameFromProfile) {
-            profileNameElement.textContent = usernameFromProfile;
+            userName.textContent = usernameFromProfile;
         } else {
             // Option 2: Get username from Firestore if displayName is null
             const userDocRef = doc(db, "users", uid);
@@ -353,18 +358,19 @@ onAuthStateChanged(auth, (user) => {
                 .then((docSnap) => {
                     if (docSnap.exists()) {
                         const usernameFromFirestore = docSnap.data().username;
-                        profileNameElement.textContent = usernameFromFirestore;
+                        userName.textContent = usernameFromFirestore;
                     } else {
-                        profileNameElement.textContent = "User"; // Default if not found
+                        userName.textContent = "User"; // Default if not found
                     }
                 })
                 .catch((error) => {
                     console.error("Error getting document:", error);
-                    profileNameElement.textContent = "User"; // Default on error
+                    userName.textContent = "User"; // Default on error
                 });
         }
     } else {
-        profileNameElement.textContent = "User"; // Default if no user is signed in
+        userName.textContent = "User";
+        userEmail.textContent="example@gmail.com" // Default if no user is signed in
     }
 });
 </script>

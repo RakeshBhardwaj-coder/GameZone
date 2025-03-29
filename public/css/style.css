@@ -96,6 +96,14 @@ body{
   border-bottom: 1px solid #eee;
   padding-bottom: 5px;
 }
+.user-email {
+  font-weight: bold;
+  font-size: small;
+  margin: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
 /* user profile end */
 
   /* loading bar  */

@@ -3,7 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 // import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile,signInWithEmailAndPassword , signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, onAuthStateChanged,signInWithEmailAndPassword , signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
@@ -617,6 +617,11 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
         showTrendingGames();
       });
       // Registering Form page end 
+
+      // Script for Registering in firestore
+
+      // Script for Registering in firestore end
+
 
     })
     .catch(error => {
