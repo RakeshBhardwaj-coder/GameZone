@@ -892,7 +892,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error("Verification error:", errorCode, errorMessage);
-                alertText.innerHTML = "Error during verification process: " + errorMessage;
+                alertText.innerHTML = "Please Provide Valid Email Address!" ;
             })
             .finally(() => {
                 signupContainer.style.display = "block";
