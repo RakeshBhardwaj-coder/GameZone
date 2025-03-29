@@ -587,9 +587,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
                   //   This code is running in index.html but it's from the RegisterForm content End 
 
-                  // script for registration and Payment form
-
-                  // script for registration and Payment form end
+               
 
 
                 });
@@ -626,6 +624,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             }
 
 
+            const loadingBar = document.querySelector(".loadingBar");
             document.getElementById('registration-form').style.display = 'none'; // Hide registration form
             document.getElementById('paymentForm').style.display = 'none';
             loadingBar.style.display = "block"; // Show loadingbar form
@@ -647,6 +646,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 gender: gender,
                 plan: plan,
               });
+              const loadingBar = document.querySelector(".loadingBar");
               console.log("Additional user data added to Firestore.");
               document.getElementById('registration-form').style.display = 'none'; // Hide registration form
               document.getElementById('paymentForm').style.display = 'block';
