@@ -449,188 +449,204 @@ sparkle.style.opacity = '0';
 
 
 document.getElementById('registrationBtn').addEventListener('click', function () {
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth'
-  });
-  // Register Page
-  fetch('registerPage/plans.html')
-    .then(response => response.text())
-    .then(data => {
-
-      document.getElementById('place-for-plans').innerHTML = data;
-
-
-      document.getElementById('all-games-place').style.display = 'none';
-      document.getElementById('place-for-plans').style.display = 'block';
-
-      // Back button functionality inside index.html
-      document.getElementById('plans-to-home-btn').addEventListener('click', function () {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-        document.getElementById('all-games-place').style.display = 'block';
-        document.getElementById('place-for-plans').style.display = 'none';
+  onAuthStateChanged(auth,(user)=>{
+    if(user){
+      window.scrollBy({
+        top: 300,
+        behavior: 'smooth'
       });
-
-      // Registering Form page
-      const registerButtons = document.querySelectorAll('.open-reg-form-btn');
-      let selectedPlan = null;
-
-      registerButtons.forEach(button => {
-        button.addEventListener('click', function (event) {
-          event.preventDefault();
-
-          const planElement = this.closest('.plan');
-          if (planElement) {
-            selectedPlan = planElement.getAttribute('data-plan-value');
-            console.log("Selected plan:", selectedPlan);
-
-          } else {
-            console.error("Plan element not found.");
-          }
-
-
-          //  console.log("Selected plan:", selectedPlan);
-          window.scrollBy({
-            top: 300,
-            behavior: 'smooth'
-          });
-
-
-          fetch('registerPage/registration-and-payment-form.html')
-            .then(response => response.text())
-            .then(data => {
-
-              document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
-
-              //getting plans in registratoin page from plans.html
-              document.getElementById('planSelection').value = selectedPlan;
-              // Show the registration page
-
-              document.getElementById('all-games-place').style.display = 'none';
-              document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
-              document.getElementById('place-for-plans').style.display = 'none';
-
-
-
-
-              document.getElementById('reg-to-plans-btn').addEventListener("click", function (event) {
-                event.preventDefault();
-                document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-                document.getElementById('place-for-plans').style.display = 'block';
-
-              });
-              //   Add event listener for form submission
-              //   This code is running in index.html but it's from the RegisterForm content
-
-              document.getElementById('open-payment-page-btn').addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-                document.getElementById('registration-form').style.display = 'none'; // Hide registration form
-                document.getElementById('paymentForm').style.display = 'block'; // Show payment form
-
-              });
-
-              document.getElementById('payment-to-reg-form-btn').addEventListener('click', function () {
-                document.getElementById('paymentForm').style.display = 'none';
-                document.getElementById('registration-form').style.display = 'block';
-              });
-
-              document.getElementById('planSelection').addEventListener('change', function () {
-                let selectedPlan = this.value;
-                let paymentAmountDisplay = document.getElementById('pay-amount-show');
-                let validity = document.getElementById('validity');
-                let gameplay = document.getElementById('gameplay');
-                let gamePackage = document.getElementById('package');
-                let cost = document.getElementById('cost');
-                let accessories = document.getElementById('accessories');
-                let steering = document.getElementById('steering');
-
-                let extra = document.getElementById('extra');
-                if (selectedPlan === 'bronze') {
-                  paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
-                  validity.textContent = 'Validity: 10 Days';
-                  gameplay.textContent = 'Total Gameplay: 5 Hours';
-                  gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
-                  cost.textContent = '30 Minutes/vCard';
-                  accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-                  steering.textContent = 'Steering Wheel: ₹10/session';
-
-                  extra.textContent = '';
-                } else if (selectedPlan === 'silver') {
-                  paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
-                  validity.textContent = 'Validity: 15 Days';
-                  gameplay.textContent = 'Total Gameplay: 8 Hours';
-                  gamePackage.textContent = 'gamePackage (10 Card) for ₹300';
-                  cost.textContent = '45 Minutes/vCard';
-                  accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-                  steering.textContent = '';
-
-                  extra.textContent = 'Steering Wheel: ₹10/session';
-                } else if (selectedPlan === 'gold') {
-                  paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
-                  validity.textContent = 'Validity: Forever';
-                  gameplay.textContent = 'Total Gameplay: 8 Hours';
-                  gamePackage.textContent = 'gamePackage (10 Card) for ₹400';
-                  cost.textContent = '45 Minutes/vCard';
-                  accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-                  steering.textContent = 'Steering Wheel: ₹10/session';
-
-                  extra.textContent = 'Physical card will be provided';
-                } else if (selectedPlan === 'birthdayspecial') {
-                  paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
-                  validity.textContent = 'Validity: 1 Day';
-                  gameplay.textContent = 'Total Gameplay: 15-20 Minute';
-                  gamePackage.textContent = 'gamePackage (5 Card) for ₹50';
-                  cost.textContent = '15-20 Minutes/Card';
-                  accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-                  steering.textContent = 'Steering Wheel: ₹10/session';
-
-                  extra.textContent = 'Physica or virtual card';
-                } else {
-                  paymentAmountDisplay.textContent = '';
-                }
-              });
-
-              //   This code is running in index.html but it's from the RegisterForm content End 
-
-
+    
+      // Register Page
+      fetch('registerPage/plans.html')
+        .then(response => response.text())
+        .then(data => {
+    
+          document.getElementById('place-for-plans').innerHTML = data;
+    
+    
+          document.getElementById('all-games-place').style.display = 'none';
+          document.getElementById('place-for-plans').style.display = 'block';
+    
+          // Back button functionality inside index.html
+          document.getElementById('plans-to-home-btn').addEventListener('click', function () {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
             });
+            document.getElementById('all-games-place').style.display = 'block';
+            document.getElementById('place-for-plans').style.display = 'none';
+          });
+    
+          // Registering Form page
+          const registerButtons = document.querySelectorAll('.open-reg-form-btn');
+          let selectedPlan = null;
+    
+          registerButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+              event.preventDefault();
+    
+              const planElement = this.closest('.plan');
+              if (planElement) {
+                selectedPlan = planElement.getAttribute('data-plan-value');
+                console.log("Selected plan:", selectedPlan);
+    
+              } else {
+                console.error("Plan element not found.");
+              }
+    
+    
+              //  console.log("Selected plan:", selectedPlan);
+              window.scrollBy({
+                top: 300,
+                behavior: 'smooth'
+              });
+    
+    
+              fetch('registerPage/registration-and-payment-form.html')
+                .then(response => response.text())
+                .then(data => {
+    
+                  document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
+    
+                  //getting plans in registratoin page from plans.html
+                  document.getElementById('planSelection').value = selectedPlan;
+                  // Show the registration page
+    
+                  document.getElementById('all-games-place').style.display = 'none';
+                  document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
+                  document.getElementById('place-for-plans').style.display = 'none';
+    
+    
+    
+    
+                  document.getElementById('reg-to-plans-btn').addEventListener("click", function (event) {
+                    event.preventDefault();
+                    document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+                    document.getElementById('place-for-plans').style.display = 'block';
+    
+                  });
+                  //   Add event listener for form submission
+                  //   This code is running in index.html but it's from the RegisterForm content
+    
+                  document.getElementById('open-payment-page-btn').addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default form submission
+    
+                    document.getElementById('registration-form').style.display = 'none'; // Hide registration form
+                    document.getElementById('paymentForm').style.display = 'block'; // Show payment form
+    
+                  });
+    
+                  document.getElementById('payment-to-reg-form-btn').addEventListener('click', function () {
+                    document.getElementById('paymentForm').style.display = 'none';
+                    document.getElementById('registration-form').style.display = 'block';
+                  });
+    
+                  document.getElementById('planSelection').addEventListener('change', function () {
+                    let selectedPlan = this.value;
+                    let paymentAmountDisplay = document.getElementById('pay-amount-show');
+                    let validity = document.getElementById('validity');
+                    let gameplay = document.getElementById('gameplay');
+                    let gamePackage = document.getElementById('package');
+                    let cost = document.getElementById('cost');
+                    let accessories = document.getElementById('accessories');
+                    let steering = document.getElementById('steering');
+    
+                    let extra = document.getElementById('extra');
+                    if (selectedPlan === 'bronze') {
+                      paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
+                      validity.textContent = 'Validity: 10 Days';
+                      gameplay.textContent = 'Total Gameplay: 5 Hours';
+                      gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
+                      cost.textContent = '30 Minutes/vCard';
+                      accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                      steering.textContent = 'Steering Wheel: ₹10/session';
+    
+                      extra.textContent = '';
+                    } else if (selectedPlan === 'silver') {
+                      paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
+                      validity.textContent = 'Validity: 15 Days';
+                      gameplay.textContent = 'Total Gameplay: 8 Hours';
+                      gamePackage.textContent = 'gamePackage (10 Card) for ₹300';
+                      cost.textContent = '45 Minutes/vCard';
+                      accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                      steering.textContent = '';
+    
+                      extra.textContent = 'Steering Wheel: ₹10/session';
+                    } else if (selectedPlan === 'gold') {
+                      paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
+                      validity.textContent = 'Validity: Forever';
+                      gameplay.textContent = 'Total Gameplay: 8 Hours';
+                      gamePackage.textContent = 'gamePackage (10 Card) for ₹400';
+                      cost.textContent = '45 Minutes/vCard';
+                      accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                      steering.textContent = 'Steering Wheel: ₹10/session';
+    
+                      extra.textContent = 'Physical card will be provided';
+                    } else if (selectedPlan === 'birthdayspecial') {
+                      paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
+                      validity.textContent = 'Validity: 1 Day';
+                      gameplay.textContent = 'Total Gameplay: 15-20 Minute';
+                      gamePackage.textContent = 'gamePackage (5 Card) for ₹50';
+                      cost.textContent = '15-20 Minutes/Card';
+                      accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                      steering.textContent = 'Steering Wheel: ₹10/session';
+    
+                      extra.textContent = 'Physica or virtual card';
+                    } else {
+                      paymentAmountDisplay.textContent = '';
+                    }
+                  });
+    
+                  //   This code is running in index.html but it's from the RegisterForm content End 
+    
+    
+                });
+            });
+          });
+    
+    
+          document.getElementById('home').addEventListener('click', function () {
+            document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+            document.getElementById('place-for-plans').style.display = 'none';
+    
+            document.getElementById('all-games-place').style.display = 'block';
+            filterGames('all');
+          });
+    
+          document.getElementById('top-10-games').addEventListener('click', function () {
+            document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+            document.getElementById('place-for-plans').style.display = 'none';
+            document.getElementById('all-games-place').style.display = 'block';
+            showTrendingGames();
+          });
+          // Registering Form page end 
+    
+          // Script for Registering in firestore
+    
+          // Script for Registering in firestore end
+    
+    
+        })
+        .catch(error => {
+          console.error('Error loading page:', error);
+          document.getElementById('place-for-reg-and-pay-form').innerHTML = "<p>Error loading content.</p>";
+          document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
         });
+    }else{
+      document.getElementById('userBtn').click();
+    }
       });
 
 
-      document.getElementById('home').addEventListener('click', function () {
-        document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-        document.getElementById('place-for-plans').style.display = 'none';
-
-        document.getElementById('all-games-place').style.display = 'block';
-        filterGames('all');
-      });
-
-      document.getElementById('top-10-games').addEventListener('click', function () {
-        document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-        document.getElementById('place-for-plans').style.display = 'none';
-        document.getElementById('all-games-place').style.display = 'block';
-        showTrendingGames();
-      });
-      // Registering Form page end 
-
-      // Script for Registering in firestore
-
-      // Script for Registering in firestore end
-
-
-    })
-    .catch(error => {
-      console.error('Error loading page:', error);
-      document.getElementById('place-for-reg-and-pay-form').innerHTML = "<p>Error loading content.</p>";
-      document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
-    });
 });
+// registration btn2 
+// if user exist then show plan otherwise go to the signup page
+document.getElementById('RegisterBtn2').addEventListener('click', function(event) {
+  event.preventDefault(); 
+  document.getElementById('registrationBtn').click();
 
+});
+// registration btn2 end
 // logout btn
 document.getElementById('logoutOption').addEventListener('click', function (event) {
   event.preventDefault();
