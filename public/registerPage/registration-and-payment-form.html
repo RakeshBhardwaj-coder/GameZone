@@ -160,11 +160,13 @@
 </head>
 
 <body>
+<div class="loadingBar"></div>
+
     <div id="reg-and-payment-page">
 
         <div id="registration-form">
             <h1>Registration</h1>
-            <form>
+            <form id="registrationFormfilling">
                
 
                
@@ -176,10 +178,10 @@
                 
 
                 <label for="dateOfBirth">Date of Birth:</label><br>
-                <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required><br>
 
                 <label for="gender">Gender:</label><br>
-                <select id="gender" name="gender">
+                <select id="gender" name="gender" required>
                     <option value="">Select Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -188,7 +190,7 @@
 
                 <label for="gender">Choose your plan:</label><br>
 
-                <select id="planSelection">
+                <select id="planSelection" required>
                     <option value="">Select your plan</option>
                     <option value="bronze">Bronze (250 Rs)</option>
                     <option value="silver">Silver (300 Rs)</option>
@@ -196,7 +198,7 @@
                     <option value="birthdayspecial">Birthday Special (100 Rs)</option>
                 </select>
                 <input type="hidden" id="planPrice" value=""/>
-                <button id="open-payment-page-btn">Next</button>
+                <button type="submit" id="open-payment-page-btn">Next</button>
                 <button id="reg-to-plans-btn">Back</button>
 
             </form>

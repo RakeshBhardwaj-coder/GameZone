@@ -3,8 +3,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 // import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, onAuthStateChanged,signInWithEmailAndPassword , signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
   authDomain: "playgamezonegames.firebaseapp.com",
@@ -434,24 +434,24 @@ sparkle.style.opacity = '0';
 
 
 document.getElementById('registrationBtn').addEventListener('click', function () {
-  onAuthStateChanged(auth,(user)=>{
-    if(user){
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
       window.scrollBy({
         top: 300,
         behavior: 'smooth'
       });
-    
+
       // Register Page
       fetch('registerPage/plans.html')
         .then(response => response.text())
         .then(data => {
-    
+
           document.getElementById('place-for-plans').innerHTML = data;
-    
-    
+
+
           document.getElementById('all-games-place').style.display = 'none';
           document.getElementById('place-for-plans').style.display = 'block';
-    
+
           // Back button functionality inside index.html
           document.getElementById('plans-to-home-btn').addEventListener('click', function () {
             window.scrollTo({
@@ -461,71 +461,74 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             document.getElementById('all-games-place').style.display = 'block';
             document.getElementById('place-for-plans').style.display = 'none';
           });
-    
+
           // Registering Form page
           const registerButtons = document.querySelectorAll('.open-reg-form-btn');
           let selectedPlan = null;
-    
+
           registerButtons.forEach(button => {
             button.addEventListener('click', function (event) {
               event.preventDefault();
-    
+
               const planElement = this.closest('.plan');
               if (planElement) {
                 selectedPlan = planElement.getAttribute('data-plan-value');
                 console.log("Selected plan:", selectedPlan);
-    
+
               } else {
                 console.error("Plan element not found.");
               }
-    
-    
+
+
               //  console.log("Selected plan:", selectedPlan);
               window.scrollBy({
                 top: 300,
                 behavior: 'smooth'
               });
-    
-    
+
+
               fetch('registerPage/registration-and-payment-form.html')
                 .then(response => response.text())
                 .then(data => {
-    
+
                   document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
-    
+
                   //getting plans in registratoin page from plans.html
                   document.getElementById('planSelection').value = selectedPlan;
                   // Show the registration page
-    
+
                   document.getElementById('all-games-place').style.display = 'none';
                   document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
                   document.getElementById('place-for-plans').style.display = 'none';
-    
-    
-    
-    
+
+
+
+
                   document.getElementById('reg-to-plans-btn').addEventListener("click", function (event) {
                     event.preventDefault();
                     document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
                     document.getElementById('place-for-plans').style.display = 'block';
-    
+
                   });
                   //   Add event listener for form submission
                   //   This code is running in index.html but it's from the RegisterForm content
-    
-                  document.getElementById('open-payment-page-btn').addEventListener('click', function (event) {
+
+                  document.getElementById('registrationFormfilling').addEventListener('submit', function (event) {
                     event.preventDefault(); // Prevent default form submission
-    
-                    document.getElementById('registration-form').style.display = 'none'; // Hide registration form
-                    document.getElementById('paymentForm').style.display = 'block'; // Show payment form
-    
+
+
+
+                    processAdditionalUserData();
+
+
+
                   });
-    
+
                   document.getElementById('payment-to-reg-form-btn').addEventListener('click', function () {
                     document.getElementById('paymentForm').style.display = 'none';
                     document.getElementById('registration-form').style.display = 'block';
                   });
-    
+
                   document.getElementById('planSelection').addEventListener('change', function () {
                     let selectedPlan = this.value;
                     let paymentAmountDisplay = document.getElementById('pay-amount-show');
@@ -535,7 +538,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     let cost = document.getElementById('cost');
                     let accessories = document.getElementById('accessories');
                     let steering = document.getElementById('steering');
-    
+
                     let extra = document.getElementById('extra');
                     if (selectedPlan === 'bronze') {
                       paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
@@ -545,7 +548,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       cost.textContent = '30 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       steering.textContent = 'Steering Wheel: ₹10/session';
-    
+
                       extra.textContent = '';
                     } else if (selectedPlan === 'silver') {
                       paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
@@ -555,7 +558,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       cost.textContent = '45 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       steering.textContent = '';
-    
+
                       extra.textContent = 'Steering Wheel: ₹10/session';
                     } else if (selectedPlan === 'gold') {
                       paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
@@ -565,7 +568,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       cost.textContent = '45 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       steering.textContent = 'Steering Wheel: ₹10/session';
-    
+
                       extra.textContent = 'Physical card will be provided';
                     } else if (selectedPlan === 'birthdayspecial') {
                       paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
@@ -575,33 +578,33 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       cost.textContent = '15-20 Minutes/Card';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       steering.textContent = 'Steering Wheel: ₹10/session';
-    
+
                       extra.textContent = 'Physica or virtual card';
                     } else {
                       paymentAmountDisplay.textContent = '';
                     }
                   });
-    
+
                   //   This code is running in index.html but it's from the RegisterForm content End 
 
                   // script for registration and Payment form
 
                   // script for registration and Payment form end
-    
-    
+
+
                 });
             });
           });
-    
-    
+
+
           document.getElementById('home').addEventListener('click', function () {
             document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
             document.getElementById('place-for-plans').style.display = 'none';
-    
+
             document.getElementById('all-games-place').style.display = 'block';
             filterGames('all');
           });
-    
+
           document.getElementById('top-10-games').addEventListener('click', function () {
             document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
             document.getElementById('place-for-plans').style.display = 'none';
@@ -609,29 +612,72 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             showTrendingGames();
           });
           // Registering Form page end 
-    
+
           // Script for Registering in firestore
-    
+
+
+
+          async function processAdditionalUserData() {
+
+            const user = auth.currentUser;
+            if (!user) {
+              console.log("User not logged in");
+              return;
+            }
+
+
+            document.getElementById('registration-form').style.display = 'none'; // Hide registration form
+            document.getElementById('paymentForm').style.display = 'none';
+            loadingBar.style.display = "block"; // Show loadingbar form
+
+            const userId = user.uid;
+            const dob = document.getElementById("dateOfBirth").value; // Get DOB from input field
+            const gender = document.getElementById("gender").value; // Get gender from input field
+            const plan = document.getElementById("planSelection").value; // Get plan from input field
+
+            await addAdditionalUserDataToFirestore(userId, dob, gender, plan);
+
+          }
+
+          async function addAdditionalUserDataToFirestore(userId, dob, gender, plan) {
+
+            try {
+              await updateDoc(doc(db, "users", userId), {
+                dob: dob,
+                gender: gender,
+                plan: plan,
+              });
+              console.log("Additional user data added to Firestore.");
+              document.getElementById('registration-form').style.display = 'none'; // Hide registration form
+              document.getElementById('paymentForm').style.display = 'block';
+              loadingBar.style.display = "none"; // hide loadingbar 
+
+
+            } catch (error) {
+              console.error("Error adding additional user data:", error);
+              // Handle error (e.g., display an error message)
+            }
+          }
           // Script for Registering in firestore end
-    
-    
+
+
         })
         .catch(error => {
           console.error('Error loading page:', error);
           document.getElementById('place-for-reg-and-pay-form').innerHTML = "<p>Error loading content.</p>";
           document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
         });
-    }else{
+    } else {
       document.getElementById('userBtn').click();
     }
-      });
+  });
 
 
 });
 // registration btn2 
 // if user exist then show plan otherwise go to the signup page
-document.getElementById('RegisterBtn2').addEventListener('click', function(event) {
-  event.preventDefault(); 
+document.getElementById('RegisterBtn2').addEventListener('click', function (event) {
+  event.preventDefault();
   document.getElementById('registrationBtn').click();
 
 });
@@ -671,7 +717,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       document.getElementById('place-for-user-signup').innerHTML = data;
       document.getElementById('all-games-place').style.display = 'none';
       document.getElementById('place-for-user-signup').style.display = 'block';
-  document.getElementById('place-for-user-login').style.display = 'none';
+      document.getElementById('place-for-user-login').style.display = 'none';
 
 
 
@@ -767,42 +813,42 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             const loginContainer = document.querySelector(".login-container");
             const alertText = document.getElementById("alert-text");
             const loadingBar = document.querySelector(".loadingBar");// Assuming you have a loading bar element
-            
+
             loginForm.addEventListener("submit", (event) => {
-                event.preventDefault();
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                loginContainer.style.display = "none";
-                loadingBar.style.display = "block";
-                alertText.textContent = "";
-                console.log("Auth Object:", auth);
-            
-                signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        const user = userCredential.user;
-                        console.log("User logged in:", user);
-                        window.location.href = "index.html"; // Redirect after successful login
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        console.error("Login error:", errorCode, errorMessage);
-            
-                        // Handle specific error codes for better user feedback
-                        if (errorCode === "auth/invalid-credential") {
-                            alertText.innerHTML = "Incorrect Email or password.<br> Please try again!";
-                        } 
-                        else {
-                            alertText.textContent = "Login failed: " + errorMessage; // General error message
-                        }
-                    })
-                    .finally(() => {
-                        loadingBar.style.display = "none";
-                        loginContainer.style.display = "block"; // Re-display the login form after error or success
-                    });
+              event.preventDefault();
+              const email = document.getElementById("email").value;
+              const password = document.getElementById("password").value;
+              loginContainer.style.display = "none";
+              loadingBar.style.display = "block";
+              alertText.textContent = "";
+              console.log("Auth Object:", auth);
+
+              signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                  const user = userCredential.user;
+                  console.log("User logged in:", user);
+                  window.location.href = "index.html"; // Redirect after successful login
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.error("Login error:", errorCode, errorMessage);
+
+                  // Handle specific error codes for better user feedback
+                  if (errorCode === "auth/invalid-credential") {
+                    alertText.innerHTML = "Incorrect Email or password.<br> Please try again!";
+                  }
+                  else {
+                    alertText.textContent = "Login failed: " + errorMessage; // General error message
+                  }
+                })
+                .finally(() => {
+                  loadingBar.style.display = "none";
+                  loginContainer.style.display = "block"; // Re-display the login form after error or success
+                });
             });
-            
-           // script for login end
+
+            // script for login end
 
           });
 
@@ -814,112 +860,120 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
 
       // script for signup page button 
+      const verifyEmailBtn = document.getElementById("verifyEmailBtn");
       const signupForm = document.getElementById("signupForm");
       const signupButton = document.getElementById("signUpBtn");
       const loadingBar = document.querySelector(".loadingBar");
       const signupContainer = document.querySelector(".signup-container");
       const alertText = document.getElementById("alert-text");
-      
-      signupForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-      
+      let emailVerified = false; // Track email verification status
+
+      verifyEmailBtn.addEventListener("click", () => {
         const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const username = document.getElementById("username").value;
-      
+        const password = document.getElementById("password").value; // You might not need this here, but it's in your original code
+
         // Show loading indicator
         signupContainer.style.display = "none";
         loadingBar.style.display = "block";
         alertText.textContent = "";
-      
+
         createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("User created:", user);
-      
-            return sendEmailVerification(user); // Send verification email
-          })
-          .then(() => {
-            alertText.textContent =
-              "Verification email sent. Please check your inbox!";
-            return updateProfile(auth.currentUser, { displayName: username });
-          })
-          .then(() => {
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log("User created:", user);
+                return sendEmailVerification(user);
+            })
+            .then(() => {
+                alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
+                // Start polling for verification
+                startVerificationPolling();
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Verification error:", errorCode, errorMessage);
+                alertText.innerHTML = "Error during verification process: " + errorMessage;
+            })
+            .finally(() => {
+                signupContainer.style.display = "block";
+                loadingBar.style.display = "none";
+            });
+    });
+
+    function startVerificationPolling() {
+      let verificationCheckInterval = setInterval(() => {
+          auth.currentUser.reload().then(() => {
+              const user = auth.currentUser;
+              if (user.emailVerified) {
+                  console.log("Email verified after polling!");
+                  alertText.innerHTML = "Email Verified!<br>You can now sign up.";
+                  emailVerified = true;
+                  signUpBtn.disabled = false; // Enable the Sign Up button
+                  clearInterval(verificationCheckInterval); // Stop polling
+              }
+          }).catch((error) => {
+              console.error("Error reloading user during polling:", error);
+              clearInterval(verificationCheckInterval); // Stop polling on error
+          });
+      }, 5000); // Check every 5 seconds (adjust as needed)
+
+      // Set a timeout to stop polling after a long period
+      setTimeout(() => {
+          clearInterval(verificationCheckInterval);
+          console.log("Verification polling stopped after timeout");
+      }, 300000); // Stop polling after 5 minutes
+  }
+  
+  signupForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!emailVerified) {
+        alertText.innerHTML = "Please verify your email first!";
+        return;
+    }
+
+    const username = document.getElementById("username").value;
+
+    // Show loading indicator
+    signupContainer.style.display = "none";
+    loadingBar.style.display = "block";
+    alertText.textContent = "";
+
+    updateProfile(auth.currentUser, { displayName: username })
+        .then(() => {
             console.log("Username updated");
-            // You can redirect to a "verify email" page or show a message.
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error("Signup error:", errorCode, errorMessage);
-      
-            if (errorCode === "auth/email-already-in-use") {
-              alertText.innerHTML = "Email is already registered!<br>go to Login page, <br>or<br> please check email, if not verified!";
-              // Check if the user is verified
-              auth.fetchSignInMethodsForEmail(email).then((signInMethods) => {
-                if (signInMethods.length > 0) {
-                  auth.getUserByEmail(email).then((userRecord) => {
-                    if (userRecord.emailVerified) {
-                      alertText.innerHTML =
-                        "Email is already registered and verified. Please proceed to login.";
-                    } else {
-                      alertText.innerHTML =
-                        "Email is already registered but not verified. Please verify your email. We've sent a new verification link.";
-                      auth.sendSignInLinkToEmail(email, {
-                        url: "YOUR_REDIRECT_URL", // Replace with your actual redirect URL
-                        handleCodeInApp: true, // This is true when your app will handle the action code.
-                      }).then(() => {
-                        console.log("Verification link sent");
-                      }).catch((err) => {
-                        console.log("Error sending verification link", err);
-                      });
-                    }
-                  }).catch((err) => {
-                    console.log("Error getting user", err);
-                  });
-                }
-              });
-            } else {
-              alertText.innerHTML = "Signup failed: " + errorMessage;
-            }
-          })
-          .finally(() => {
+            return saveUserDataToFirestore(auth.currentUser);
+        })
+        .then(() => {
+            alertText.innerHTML = "Sign up successful!";
+            window.location.href = "index.html"; // Redirect or show success message
+        })
+        .catch((error) => {
+            console.error("Sign up error:", error);
+            alertText.innerHTML = "Sign up failed: " + error.message;
+        })
+        .finally(() => {
             signupContainer.style.display = "block";
             loadingBar.style.display = "none";
-          });
-      });
-      
-      // Assuming 'auth' is your Firebase Auth instance
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          if (user.emailVerified) {
-            console.log("Email verified!");
-            alertText.innerHTML = "Email Verified! You can now proceed.";
-            // signup & saved to firestore
-            saveUserDataToFirestore(user); // Function to save data to Firestore
-            window.location.href = "index.html"; // Redirect to dashboard
-          } else {
-            console.log("Email is not verified. Please verify!");
-            alertText.innerHTML = "Please verify your email to continue.";
-          }
-        }
-      });
-      
-      // (Optional) Function to save user data to Firestore
-      async function saveUserDataToFirestore(user) {
-        try {
-          const username = document.getElementById("username").value;
-          await setDoc(doc(db, "users", user.uid), {
+        });
+});
+
+// Function to save user data to Firestore
+async function saveUserDataToFirestore(user) {
+    try {
+        const username = document.getElementById("username").value;
+        await setDoc(doc(db, "users", user.uid), {
             username: username,
             email: user.email,
             uid: user.uid,
-          });
-          console.log("User data saved to Firestore.");
-        } catch (error) {
-          console.error("Error saving user data:", error);
-          alertText.textContent = "Error saving user data.";
-        }
-      }
+        });
+        console.log("User data saved to Firestore.");
+    } catch (error) {
+        console.error("Error saving user data:", error);
+        alertText.textContent = "Error saving user data.";
+    }
+}
+
       // script for signup page button end
 
 
