@@ -751,29 +751,49 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
             // script for login
             const loginForm = document.getElementById("loginForm");
-
+            const loginContainer = document.querySelector(".login-container");
+            const alertText = document.getElementById("alert-text");
+            const loadingBar = document.querySelector(".loadingBar");// Assuming you have a loading bar element
+            
             loginForm.addEventListener("submit", (event) => {
-              event.preventDefault();
-              const email = document.getElementById("email").value;
-              const password = document.getElementById("password").value;
-
-              signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                  const user = userCredential.user;
-                  console.log("User logged in:", user);
-                  alert("Login Successfully!!!");
-
-                  // Redirect to a dashboard or home page after successful login
-                  window.location.href = "index.html"; // Replace with your desired page
-                })
-                .catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  console.error("Login error:", errorCode, errorMessage);
-                  alert("Login failed: " + errorMessage);
-                });
+                event.preventDefault();
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                loginContainer.style.display = "none";
+                loadingBar.style.display = "block";
+                alertText.textContent = "";
+                console.log("Auth Object:", auth);
+            
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        console.log("User logged in:", user);
+                        window.location.href = "index.html"; // Redirect after successful login
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.error("Login error:", errorCode, errorMessage);
+            
+                        // Handle specific error codes for better user feedback
+                        if (errorCode === "auth/user-not-found") {
+                            alertText.textContent = "User not found. Please check your email or register.";
+                        } else if (errorCode === "auth/wrong-password") {
+                            alertText.textContent = "Incorrect password. Please try again.";
+                        } else if (errorCode === "auth/invalid-email"){
+                            alertText.textContent = "Invalid email format.";
+                        }
+                        else {
+                            alertText.textContent = "Login failed: " + errorMessage; // General error message
+                        }
+                    })
+                    .finally(() => {
+                        loadingBar.style.display = "none";
+                        loginContainer.style.display = "block"; // Re-display the login form after error or success
+                    });
             });
-            // script for login end
+            
+           // script for login end
 
           });
 

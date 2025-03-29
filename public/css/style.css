@@ -128,7 +128,7 @@ body{
     border-top: 6px solid #007bff;
     border-radius: 50%;
     animation: spin 1.2s linear infinite;
-    display: none; 
+    display: none;
   }
 
   @keyframes spin {
@@ -138,7 +138,7 @@ body{
   }
   /* loading bar end */
   #alert-text{
-    text-align: center;
+            text-align: center;
             margin-top: 20px;
             font-family: "Open Sans", serif;
             color: #1456ac; /* Red for errors */
