@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Profile Card</title>
+    <style>
+        .user-profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .card {
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            text-align: left;
+            position: relative;
+        }
+
+        .plan {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .details p {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .details strong {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .time-details {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 10px;
+        }
+
+        .time-details div {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            background-color: #fff;
+        }
+
+        .time-details strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .social-links {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+            font-size: 1.2em;
+            color: #666;
+            background-color: #eee;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .bronze {
+            background-color: #cd7f32;
+            color: #2b2b2b;
+        }
+
+        .silver {
+            background-color: #c0c0c0;
+            color: #333;
+        }
+
+        .gold {
+            background-color: #ffd700;
+            color: #000;
+        }
+
+        .platinum {
+            background-color: #e5e4e2;
+            color: #333;
+        }
+
+        .diamond {
+            background: linear-gradient(135deg, #b9f2ff, #89cff0);
+            color: #333;
+        }
+
+        .bronze .card,
+        .silver .card,
+        .gold .card,
+        .platinum .card,
+        .diamond .card {
+            background-color: #fff;
+        }
+
+        .bronze .plan,
+        .silver .plan,
+        .gold .plan,
+        .platinum .plan,
+        .diamond .plan {
+            color: white;
+        }
+
+        .bronze .plan {
+            background-color: #cd7f32;
+        }
+
+        .silver .plan {
+            background-color: #c0c0c0;
+        }
+
+        .gold .plan {
+            background-color: #ffd700;
+            color: black;
+        }
+
+        .platinum .plan {
+            background-color: #e5e4e2;
+            color: black;
+        }
+
+        .diamond .plan {
+            background: linear-gradient(135deg, #b9f2ff, #89cff0);
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="user-profile-container">
+        <div class="card bronze">
+            <div class="plan" id="plan">Plan: Bronze</div>
+            <div class="profile-header">
+                <div>
+                    <div id="userName">Rakesh Bhardwaj</div>
+                    <div id="details">
+                        <p id="email"><strong>Email:</strong> john.doe@example.com</p>
+                        <p id="gender"><strong>Gender:</strong> Male</p>
+                        <p id="dob"><strong>Dob:</strong> 05/11/2020</p>
+                    </div>
+                </div>
+            </div>
+            <div class="time-details">
+                <div id="totalHour"><strong>Total</strong> 10 Hr</div>
+                <div id="expiryDate"><strong>Expire On</strong> 24/08/2025</div>
+                <div id="leftHour"><strong>Left</strong> 10 Hr</div>
+                <div id="usedHour"><strong>Used</strong> 0 Hr</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

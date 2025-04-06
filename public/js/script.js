@@ -4,7 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebas
 // import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
   authDomain: "playgamezonegames.firebaseapp.com",
@@ -617,7 +617,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
                   //   This code is running in index.html but it's from the RegisterForm content End 
 
-               
+
 
 
                 });
@@ -730,6 +730,87 @@ document.getElementById('logoutOption').addEventListener('click', function (even
 
 });
 // logout btn end
+
+// User Profile Page
+
+document.getElementById('userProfile').addEventListener('click', function (event) {
+  window.scrollBy({
+    top: 300,
+    behavior: 'smooth'
+  });
+
+  event.preventDefault();
+  fetch('account/userProfile.html')
+    .then(response => response.text())
+    .then(data => {
+
+      document.getElementById('place-for-user-profile').innerHTML = data;
+      document.getElementById('all-games-place').style.display = 'none';
+      document.getElementById('place-for-user-signup').style.display = 'none';
+      document.getElementById('place-for-user-login').style.display = 'none';
+      document.getElementById('place-for-user-profile').style.display = 'block';
+
+      onAuthStateChanged(auth, (user) => {
+
+        if (user) {
+
+          const uid = user.uid;
+          displayUserData(uid);
+
+        }
+      })
+
+    });
+})
+
+// User Profile End
+// user Profile Page Firebase Data Script 
+
+async function displayUserData(userId) {
+
+  try {
+
+      const userDocRef = doc(db, "users", userId); // Corrected: use doc() from firebase/firestore
+
+      const docSnap = await getDoc(userDocRef); // Corrected: use getDoc()
+
+
+      if (docSnap.exists()) {
+          const userData = docSnap.data();
+          console.log("User Data:", userData);
+
+          // document.getElementById("userName").textContent = userData.name;
+          document.querySelector(".user-name").textContent = userData.name || "User Name";
+          document.getElementById("email").innerHTML = `<strong>Email:</strong> ${userData.email || "N/A"}`;
+          document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender || "N/A"}`;
+          document.getElementById("dob").innerHTML = `<strong>Dob:</strong> ${userData.dob || "N/A"}`;
+          document.getElementById("totalHour").innerHTML = `<strong>Total</strong> ${userData.totalHour || "N/A"} Hr`;
+          document.getElementById("expiryDate").innerHTML = `<strong>Expire On</strong> ${userData.expiryDate || "N/A"}`;
+          document.getElementById("leftHour").innerHTML = `<strong>Left</strong> ${userData.leftHour || "N/A"} Hr`;
+          document.getElementById("usedHour").innerHTML = `<strong>Used</strong> ${userData.usedHour || "N/A"} Hr`;
+          document.getElementById("plan").textContent = `Plan: ${userData.plan || "N/A"}`;
+
+          // Set card color based on plan
+          const card = document.querySelector(".card");
+          if (card) {
+            let planClass = "bronze"; // Default class
+            if (userData.plan) {
+                const lowercasePlan = userData.plan.toLowerCase();
+                if (lowercasePlan === "silver" || lowercasePlan === "gold" || lowercasePlan === "bronze") {
+                    planClass = lowercasePlan;
+                }
+            }
+            card.className = "card " + planClass;
+        }
+
+    } else {
+        console.log("No such document!");
+    }
+} catch (error) {
+    console.error("Error fetching document:", error);
+}
+}
+// user Profile Page Firebase Data Script End
 
 // user-login page
 
@@ -908,103 +989,104 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         alertText.textContent = "";
 
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log("User created:", user);
-                return sendEmailVerification(user);
-            })
-            .then(() => {
-                alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
-                // Start polling for verification
-                startVerificationPolling();
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error("Verification error:", errorCode, errorMessage);
-                alertText.innerHTML = "Please Provide Valid Email Address!" ;
-                signupContainer.style.display = "block"; })
-            .finally(() => {
-                // signupContainer.style.display = "block";
-                loadingBar.style.display = "none";
-            });
-    });
-
-    function startVerificationPolling() {
-      let verificationCheckInterval = setInterval(() => {
-          auth.currentUser.reload().then(() => {
-              const user = auth.currentUser;
-              if (user.emailVerified) {
-                  console.log("Email verified after polling!");
-                  alertText.innerHTML = "Email Verified!<br>You can now sign up.";
-                  emailVerified = true;
-                signupContainer.style.display = "block";
-
-                  signUpBtn.disabled = false; // Enable the Sign Up button
-                  clearInterval(verificationCheckInterval); // Stop polling
-              }
-          }).catch((error) => {
-              console.error("Error reloading user during polling:", error);
-              clearInterval(verificationCheckInterval); // Stop polling on error
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("User created:", user);
+            return sendEmailVerification(user);
+          })
+          .then(() => {
+            alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
+            // Start polling for verification
+            startVerificationPolling();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Verification error:", errorCode, errorMessage);
+            alertText.innerHTML = "Please Provide Valid Email Address!";
+            signupContainer.style.display = "block";
+          })
+          .finally(() => {
+            // signupContainer.style.display = "block";
+            loadingBar.style.display = "none";
           });
-      }, 5000); // Check every 5 seconds (adjust as needed)
+      });
 
-      // Set a timeout to stop polling after a long period
-      setTimeout(() => {
+      function startVerificationPolling() {
+        let verificationCheckInterval = setInterval(() => {
+          auth.currentUser.reload().then(() => {
+            const user = auth.currentUser;
+            if (user.emailVerified) {
+              console.log("Email verified after polling!");
+              alertText.innerHTML = "Email Verified!<br>You can now sign up.";
+              emailVerified = true;
+              signupContainer.style.display = "block";
+
+              signUpBtn.disabled = false; // Enable the Sign Up button
+              clearInterval(verificationCheckInterval); // Stop polling
+            }
+          }).catch((error) => {
+            console.error("Error reloading user during polling:", error);
+            clearInterval(verificationCheckInterval); // Stop polling on error
+          });
+        }, 5000); // Check every 5 seconds (adjust as needed)
+
+        // Set a timeout to stop polling after a long period
+        setTimeout(() => {
           clearInterval(verificationCheckInterval);
           console.log("Verification polling stopped after timeout");
-      }, 300000); // Stop polling after 5 minutes
-  }
-  
-  signupForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+        }, 300000); // Stop polling after 5 minutes
+      }
 
-    if (!emailVerified) {
-        alertText.innerHTML = "Please verify your email first!";
-        return;
-    }
+      signupForm.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-    const username = document.getElementById("username").value;
+        if (!emailVerified) {
+          alertText.innerHTML = "Please verify your email first!";
+          return;
+        }
 
-    // Show loading indicator
-    signupContainer.style.display = "none";
-    loadingBar.style.display = "block";
-    alertText.textContent = "";
+        const username = document.getElementById("username").value;
 
-    updateProfile(auth.currentUser, { displayName: username })
-        .then(() => {
+        // Show loading indicator
+        signupContainer.style.display = "none";
+        loadingBar.style.display = "block";
+        alertText.textContent = "";
+
+        updateProfile(auth.currentUser, { displayName: username })
+          .then(() => {
             console.log("Username updated");
             return saveUserDataToFirestore(auth.currentUser);
-        })
-        .then(() => {
+          })
+          .then(() => {
             alertText.innerHTML = "Sign up successful!";
             window.location.href = "index.html"; // Redirect or show success message
-        })
-        .catch((error) => {
+          })
+          .catch((error) => {
             console.error("Sign up error:", error);
             alertText.innerHTML = "Sign up failed: " + error.message;
-        })
-        .finally(() => {
+          })
+          .finally(() => {
             signupContainer.style.display = "block";
             loadingBar.style.display = "none";
-        });
-});
+          });
+      });
 
-// Function to save user data to Firestore
-async function saveUserDataToFirestore(user) {
-    try {
-        const username = document.getElementById("username").value;
-        await setDoc(doc(db, "users", user.uid), {
+      // Function to save user data to Firestore
+      async function saveUserDataToFirestore(user) {
+        try {
+          const username = document.getElementById("username").value;
+          await setDoc(doc(db, "users", user.uid), {
             username: username,
             email: user.email,
             uid: user.uid,
-        });
-        console.log("User data saved to Firestore.");
-    } catch (error) {
-        console.error("Error saving user data:", error);
-        alertText.textContent = "Error saving user data.";
-    }
-}
+          });
+          console.log("User data saved to Firestore.");
+        } catch (error) {
+          console.error("Error saving user data:", error);
+          alertText.textContent = "Error saving user data.";
+        }
+      }
 
       // script for signup page button end
 
