@@ -706,11 +706,11 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 });
 // registration btn2 
 // if user exist then show plan otherwise go to the signup page
-document.getElementById('RegisterBtn2').addEventListener('click', function (event) {
-  event.preventDefault();
-  document.getElementById('registrationBtn').click();
+// document.getElementById('RegisterBtn2').addEventListener('click', function (event) {
+//   event.preventDefault();
+//   document.getElementById('registrationBtn').click();
 
-});
+// });
 // registration btn2 end
 // logout btn
 document.getElementById('logoutOption').addEventListener('click', function (event) {
@@ -923,9 +923,9 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                 const errorMessage = error.message;
                 console.error("Verification error:", errorCode, errorMessage);
                 alertText.innerHTML = "Please Provide Valid Email Address!" ;
-            })
+                signupContainer.style.display = "block"; })
             .finally(() => {
-                signupContainer.style.display = "block";
+                // signupContainer.style.display = "block";
                 loadingBar.style.display = "none";
             });
     });
@@ -938,6 +938,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                   console.log("Email verified after polling!");
                   alertText.innerHTML = "Email Verified!<br>You can now sign up.";
                   emailVerified = true;
+                signupContainer.style.display = "block";
+
                   signUpBtn.disabled = false; // Enable the Sign Up button
                   clearInterval(verificationCheckInterval); // Stop polling
               }
