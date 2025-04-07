@@ -243,6 +243,7 @@ searchInput.addEventListener('input', () => {
 document.getElementById('search-btn').addEventListener('click', function (event) {
   event.preventDefault(); // Prevent the default anchor behavior
 
+  HomeButtonClicked()
   const imageElement = document.getElementById('gameContainer');
 
   if (imageElement) {
@@ -815,14 +816,14 @@ async function displayUserData(userId) {
           console.log("User Data:", userData);
 
           // document.getElementById("userName").textContent = userData.name;
-          document.querySelector(".user-name").textContent = userData.name || "User Name";
-          document.getElementById("email").innerHTML = `<strong>Email:</strong> ${userData.email || "N/A"}`;
-          document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender || "N/A"}`;
-          document.getElementById("dob").innerHTML = `<strong>Dob:</strong> ${userData.dob || "N/A"}`;
-          document.getElementById("totalHour").innerHTML = ` ${userData.totalHour || "N/A"} Hr`;
-          document.getElementById("expiryDate").innerHTML = `${userData.expiryDate || "N/A"}`;
-          document.getElementById("leftHour").innerHTML = `${userData.leftHour || "N/A"} Hr`;
-          document.getElementById("usedHour").innerHTML = `${userData.usedHour || "N/A"} Hr`;
+          document.getElementById("userName").textContent = userData.username || "Username";
+          document.getElementById("email").innerHTML = `<strong>Email:</strong> ${userData.email}`;
+          document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender}`;
+          document.getElementById("dob").innerHTML = `<strong>Dob:</strong> ${userData.dob}`;
+          document.getElementById("totalHour").innerHTML = ` ${userData.totalHour} Hr`;
+          document.getElementById("expiryDate").innerHTML = `${userData.expiryDate}`;
+          document.getElementById("leftHour").innerHTML = `${userData.leftHour} Hr`;
+          document.getElementById("usedHour").innerHTML = `${userData.usedHour} Hr`;
           document.getElementById("profilePlan").textContent = `Plan: ${userData.plan || "N/A"}`;
 
           // Set card color based on plan
