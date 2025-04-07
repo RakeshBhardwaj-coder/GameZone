@@ -636,20 +636,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
           });
 
 
-          document.getElementById('home').addEventListener('click', function () {
-            document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-            document.getElementById('place-for-plans').style.display = 'none';
-
-            document.getElementById('all-games-place').style.display = 'block';
-            filterGames('all');
-          });
-
-          document.getElementById('top-10-games').addEventListener('click', function () {
-            document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-            document.getElementById('place-for-plans').style.display = 'none';
-            document.getElementById('all-games-place').style.display = 'block';
-            showTrendingGames();
-          });
+         HomeButtonClicked();
+         Top10ButtonClicked();
+        
           // Registering Form page end 
 
           // Script for Registering in firestore
@@ -741,7 +730,7 @@ document.getElementById('logoutOption').addEventListener('click', function (even
 
 });
 // logout btn end
-// Show only fun()
+// Show only Button clicked options fun()
 function ShowUserProfile(data){
   document.getElementById('place-for-user-profile').innerHTML = data;
 
@@ -761,8 +750,16 @@ function HomeButtonClicked(){
     document.getElementById('place-for-user-login').style.display = 'none';
     document.getElementById('place-for-user-signup').style.display = 'none';
   
-  
-  
+  });
+}
+function Top10ButtonClicked(){
+  document.getElementById('top-10-games').addEventListener('click', function () {
+    document.getElementById('all-games-place').style.display = 'block';
+    document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+    document.getElementById('place-for-plans').style.display = 'none';
+    document.getElementById('place-for-user-login').style.display = 'none';
+    document.getElementById('place-for-user-signup').style.display = 'none';
+    showTrendingGames();
   });
 }
 // Show Only fun() end
@@ -1614,38 +1611,7 @@ ageFilter.addEventListener('change', () => {
   }
 });
 
-// trending button
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   const  top10GamesBtn = document.getElementById(" top-10-games");
-
-
-//   //auto-scroll
-// //   top10GamesBtn.addEventListener('click', function (event) {
-// //     event.preventDefault(); // Prevent the default anchor behavior
-
-// //     const imageElement = document.getElementById('gameContainer');
-
-// //     // if (imageElement) {
-// //     //   imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
-// //     // }
-// //   showTrendingGames();
-
-// //   });
-
-
-// //   //  top10GamesBtn.addEventListener("click", function (event) {
-// //   //   event.preventDefault();
-
-
-// //   // });
-
-// // });
-document.getElementById('top-10-games').addEventListener('click', function () {
-  document.getElementById('place-for-user-login').style.display = 'none';
-  document.getElementById('place-for-user-signup').style.display = 'none';
-  showTrendingGames();
-});
+Top10ButtonClicked();
 
 
 function showTrendingGames() {
