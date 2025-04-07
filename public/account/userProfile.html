@@ -109,6 +109,28 @@
             color: #f30000;
         }
 
+        .profilePlan:hover {
+  background: linear-gradient(135deg, #6A11CB, #2575FC); /* Change gradient on hover */
+}
+
+.profilePlan:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start off-screen */
+  width: 50%; /* Width of the shimmer */
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)); /* Shimmer gradient */
+  transform: skewX(-25deg); /* Angle the shimmer */
+  animation: shimmer 1.5s linear infinite; /* Apply shimmer animation */
+}
+
+@keyframes shimmer {
+  100% {
+    left: 150%; /* Move shimmer across the button */
+  }
+}
+
         /* Color themes */
         .bronze { background-color: #cd7f32; color: #2b2b2b; }
         .silver { background-color: #c0c0c0; color: #333; }
