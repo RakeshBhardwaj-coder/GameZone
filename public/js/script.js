@@ -730,7 +730,16 @@ document.getElementById('logoutOption').addEventListener('click', function (even
 
 });
 // logout btn end
+// Show only fun()
+function ShowUserProfile(data){
+  document.getElementById('place-for-user-profile').innerHTML = data;
 
+  document.getElementById('all-games-place').style.display = 'none';
+  document.getElementById('place-for-user-signup').style.display = 'none';
+  document.getElementById('place-for-user-login').style.display = 'none';
+  document.getElementById('place-for-user-profile').style.display = 'block';
+}
+// Show Only fun() end
 // User Profile Page
 
 document.getElementById('userProfile').addEventListener('click', function (event) {
@@ -744,11 +753,7 @@ document.getElementById('userProfile').addEventListener('click', function (event
     .then(response => response.text())
     .then(data => {
 
-      document.getElementById('place-for-user-profile').innerHTML = data;
-      document.getElementById('all-games-place').style.display = 'none';
-      document.getElementById('place-for-user-signup').style.display = 'none';
-      document.getElementById('place-for-user-login').style.display = 'none';
-      document.getElementById('place-for-user-profile').style.display = 'block';
+      ShowUserProfile(data);
 
       onAuthStateChanged(auth, (user) => {
 
