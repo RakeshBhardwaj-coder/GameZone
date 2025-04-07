@@ -81,39 +81,7 @@ videoCloseUnMute.addEventListener('click', () => {
 
 // music end
 
-// user profile details design
-// document.addEventListener("DOMContentLoaded", function () {
-//   const userProfileContainers = document.querySelectorAll(".userProfileContainer");
 
-//   userProfileContainers.forEach((container) => {
-//     const userOptions = container.querySelector(".user-options");
-
-//     function adjustPosition() {
-//       const rect = container.getBoundingClientRect();
-//       const optionsRect = userOptions.getBoundingClientRect();
-//       const viewportWidth = window.innerWidth;
-
-//       // Check if the dropdown overflows the right edge
-//       if (optionsRect.right > viewportWidth) {
-//         userOptions.style.left = "auto";
-//         userOptions.style.right = "0"; // Align to the right edge of the container
-//       } else {
-//         userOptions.style.left = "0"; // Align to the left edge of the container
-//         userOptions.style.right = "auto";
-//       }
-//     }
-
-//     // Initial position adjustment
-//     adjustPosition();
-
-//     // Adjust position on window resize
-//     window.addEventListener("resize", adjustPosition);
-
-//     // Adjust position when the user-options is toggled.
-//     container.addEventListener('mouseover', adjustPosition);
-//   });
-// });
-// user profile details design end
 
 // Logo Effect
 const gamezoneLogo = document.querySelector('#gamezone-logo img');
@@ -172,6 +140,8 @@ function topFunction() {
   };
   scrollToTop();
 }
+
+
 
 
 
@@ -382,6 +352,38 @@ navLinksAnchors.forEach(link => {
 
 
 //mobile mode slider end
+
+// showing Username & Email using firebase
+
+const userName = document.querySelector('.user-name');
+const userEmail = document.querySelector('.user-email');
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const uid = user.uid;
+        userEmail.textContent = user.email;
+
+        
+            // Option 2: Get username from Firestore if displayName is null
+            const userDocRef = doc(db, "users", uid);
+            getDoc(userDocRef)
+                .then((docSnap) => {
+                    if (docSnap.exists()) {
+                        const usernameFromFirestore = docSnap.data().username;
+                        userName.textContent = usernameFromFirestore;
+                    } 
+                })
+                .catch((error) => {
+                    console.error("Error getting document:", error);
+                    userName.textContent = "User"; // Default on error
+                });
+        
+    } else {
+        userName.textContent = "User";
+        userEmail.textContent="example@gmail.com" // Default if no user is signed in
+    }
+});
+// showing Username & Email using firebase end
 
 // welcome Box animation
 const centerText = document.querySelector('.center-text');
