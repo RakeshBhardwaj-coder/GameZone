@@ -56,7 +56,7 @@
         .plan:hover,
         .plan.hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 16px rgb(0, 255, 0);
         }
 
         .plan::before {
@@ -66,7 +66,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(252, 234, 187, 0.9), rgba(248, 181, 0, 0.9));
+
+            background: linear-gradient(135deg, #FF9800, #FF5722);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
@@ -75,8 +76,8 @@
 
         .plan:hover::before,
         .plan.hover::before {
-            opacity: 1;
-            clip-path: circle(150% at 50% 50%);
+            opacity: .5;
+            clip-path: circle(100% at 23% 20%);
         }
 
         .bronze {
@@ -228,10 +229,9 @@
                 <p>Validity: Forever</p>
                 <p>Total Gameplay: 8 Hours</p>
                 <p>Package (10 Card) for ₹400</p>
-                <p>45 Minutes/Card <span class="price-details">(40 Rs./Card)</span></p>
+                <p>45 Minutes/vCard <span class="price-details">(40 Rs./vCard)</span></p>
                 <p>Gamepad, Keyboard, and Mouse</p>
                 <p>Steering Wheel: ₹10/session</p>
-                <p class="physical-cards">Physical cards provided</p>
                 <a class="open-reg-form-btn">Register Now</a>
             </div>
             <div class="plan birthday" id="plan" data-plan-value="Birthdayspecial">
@@ -239,7 +239,7 @@
                 <p>Validity: 1 day</p>
                 <p>Total Gameplay: 15-20 Minute</p>
                 <p>Package (5 Card) for ₹50</p>
-                <p>15 Minutes/Card <span class="price-details">(3.4 Rs./Card)</span></p>
+                <p>15 Minutes/vCard <span class="price-details">(3.4 Rs./vCard)</span></p>
                 <p>Gamepad, Keyboard, and Mouse</p>
                 <p>Steering Wheel: ₹10/session</p>
                 <p class="play-all">Play All Cards at Once!</p>
