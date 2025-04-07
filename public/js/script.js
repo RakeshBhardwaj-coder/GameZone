@@ -626,17 +626,12 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
 
           document.getElementById('home').addEventListener('click', function () {
-            document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-            document.getElementById('place-for-plans').style.display = 'none';
-
-            document.getElementById('all-games-place').style.display = 'block';
+            ShowHome()
             filterGames('all');
           });
 
           document.getElementById('top-10-games').addEventListener('click', function () {
-            document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-            document.getElementById('place-for-plans').style.display = 'none';
-            document.getElementById('all-games-place').style.display = 'block';
+            ShowHome()
             showTrendingGames();
           });
           // Registering Form page end 
@@ -733,11 +728,26 @@ document.getElementById('logoutOption').addEventListener('click', function (even
 // Show only fun()
 function ShowUserProfile(data){
   document.getElementById('place-for-user-profile').innerHTML = data;
+  document.getElementById('place-for-user-profile').style.display = 'block';
 
   document.getElementById('all-games-place').style.display = 'none';
+  document.getElementById('place-for-plans').style.display = 'none';
+  document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+  document.getElementById('place-for-user-forgotPassword').style.display = 'none';
   document.getElementById('place-for-user-signup').style.display = 'none';
   document.getElementById('place-for-user-login').style.display = 'none';
-  document.getElementById('place-for-user-profile').style.display = 'block';
+}
+function ShowHome(){
+  document.getElementById('all-games-place').innerHTML = data;
+
+  document.getElementById('all-games-place').style.display = 'block';
+  document.getElementById('place-for-plans').style.display = 'none';
+  document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+  document.getElementById('place-for-user-forgotPassword').style.display = 'none';
+  document.getElementById('place-for-user-signup').style.display = 'none';
+  document.getElementById('place-for-user-login').style.display = 'none';
+  document.getElementById('place-for-user-profile').style.display = 'none';
+
 }
 // Show Only fun() end
 // User Profile Page
@@ -764,8 +774,20 @@ document.getElementById('userProfile').addEventListener('click', function (event
 
         }
       })
+  // go to home
+  document.getElementById('home').addEventListener('click', function () {
+    ShowHome()
+    filterGames('all');
+  });
 
+  document.getElementById('top-10-games').addEventListener('click', function () {
+    ShowHome()
+    showTrendingGames();
+  });
+  // go to home end
     });
+
+  
 })
 
 // User Profile End
@@ -1112,11 +1134,7 @@ document.getElementById('home').addEventListener('click', function () {
   //this will back to filter normal
   // choos
   filterGames('all');
-  document.getElementById('all-games-place').style.display = 'block';
-  document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-  document.getElementById('place-for-plans').style.display = 'none';
-  document.getElementById('place-for-user-login').style.display = 'none';
-  document.getElementById('place-for-user-signup').style.display = 'none';
+  ShowHome();
 
 
 
