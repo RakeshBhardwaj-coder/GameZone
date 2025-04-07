@@ -11,7 +11,7 @@
         .centerCards {
             font-family: sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             min-height: 100vh;
             min-width: 95.5vw;
             background-color: #1f1f1f;
@@ -23,8 +23,8 @@
 
         .plans-title {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-size: 2.2em;
             color: #ffffff;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -33,30 +33,30 @@
         .gameCards {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
-            width: 90%; /* Adjust width for better responsiveness */
-            max-width: 1200px; /* Limit maximum width */
+            width: 95%;
+            max-width: 1100px;
         }
 
         .plan {
             width: 100%;
-            max-width: 350px;
-            padding: 40px;
-            border-radius: 15px;
+            max-width: 300px;
+            padding: 30px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: #333; /* Darker background for better contrast */
+            background-color: #333;
             color: #fff;
         }
 
         .plan:hover,
         .plan.hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         .plan::before {
@@ -99,31 +99,31 @@
         }
 
         .plan h2 {
-            margin-bottom: 25px;
-            font-size: 2em;
+            font-size: 1.8em;
             text-align: center;
             font-weight: bold;
+            margin-bottom: 15px;
         }
 
         .plan p {
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            line-height: 1.6;
+            font-size: 1em;
+            line-height: 1.4;
+            margin-bottom: 8px;
         }
 
         .plan p.price {
             font-weight: bold;
-            font-size: 1.3em;
+            font-size: 1.2em;
         }
 
         .open-reg-form-btn {
             display: inline-block;
             background-color: #4CAF50;
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             text-decoration: none;
-            border-radius: 8px;
-            margin-top: 25px;
+            border-radius: 6px;
+            margin-top: 15px;
             transition: background-color 0.3s ease;
             font-weight: bold;
         }
@@ -134,32 +134,32 @@
 
         .gold p.physical-cards {
             font-style: italic;
-            margin-top: 25px;
+            margin-top: 15px;
         }
 
         .price-details {
-            font-size: 0.9em;
+            font-size: 0.8em;
             display: block;
             color: #888888;
         }
 
         .birthday h2 {
-            font-size: 1.8em;
+            font-size: 1.6em;
             position: relative;
-            padding-top: 25px;
+            padding-top: 20px;
         }
 
         .birthday h2::before {
-            content: "Birthday special";
+            content: "Birthday Special";
             position: absolute;
-            top: 0;
+            top: -15px;
             left: 0;
             width: 100%;
             background-color: #f8b500;
             color: white;
-            padding: 8px 0;
-            font-size: 1em;
-            border-radius: 8px 8px 0 0;
+            padding: 6px 0;
+            font-size: 0.9em;
+            border-radius: 6px 6px 0 0;
             font-weight: bold;
         }
 
@@ -173,27 +173,27 @@
 
         .birthday .play-all {
             font-weight: bold;
-            margin-top: 25px;
+            margin-top: 15px;
         }
 
         #plans-to-home-btn {
-            margin: 30px;
+            margin: 20px;
             background-color: #05b153;
             color: white;
-            padding: 15px 50px;
+            padding: 12px 40px;
             border: none;
-            border-radius: 8px;
-            font-size: 18px;
+            border-radius: 6px;
+            font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             font-weight: bold;
         }
 
         #plans-to-home-btn:hover {
             background-color: #0a8f27;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
         }
     </style>
 
