@@ -544,12 +544,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   document.getElementById('registrationFormfilling').addEventListener('submit', function (event) {
                     event.preventDefault(); // Prevent default form submission
 
-
-
                     processAdditionalUserData();
-
-
-
                   });
 
                   document.getElementById('payment-to-reg-form-btn').addEventListener('click', function () {
@@ -773,58 +768,6 @@ function Top10ButtonClicked() {
   });
 }
 
-// // show only place-for-user-profile
-// function ShowUserProfile(data){
-//   document.getElementById('place-for-user-profile').innerHTML = data;
-//   document.getElementById('place-for-user-profile').style.display = 'block';
-//   document.getElementById('all-games-place').style.display = 'none';
-//   document.getElementById('place-for-plans').style.display = 'none';
-//   document.getElementById('place-for-user-signup').style.display = 'none';
-//   document.getElementById('place-for-user-login').style.display = 'none';
-//   document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-//   document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-// }
-
-// // ShowPlans(data); //show only place-for-plans
-// function ShowPlans(data){
-//   document.getElementById('place-for-plans').innerHTML = data;
-//   document.getElementById('place-for-plans').style.display = 'block';
-//   document.getElementById('all-games-place').style.display = 'none';
-//   document.getElementById('place-for-user-signup').style.display = 'none';
-//   document.getElementById('place-for-user-login').style.display = 'none';
-//   document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-//   document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-//   document.getElementById('place-for-user-profile').style.display = 'none';
-// }
-// // HomeButtonClicked(); //hide all the button and show only all-games-place
-
-// function HomeButtonClicked(){
-//   document.getElementById('home').addEventListener('click', function () {
-//     //this will back to filter normal
-//     filterGames('all');
-//     document.getElementById('all-games-place').style.display = 'block';
-//     document.getElementById('place-for-plans').style.display = 'none';
-//     document.getElementById('place-for-user-signup').style.display = 'none';
-//     document.getElementById('place-for-user-login').style.display = 'none';
-//     document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-//     document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-//     document.getElementById('place-for-user-profile').style.display = 'none';
-//   });
-// }
-// // Top10ButtonClicked(); //hide all the button and show only top-10-games
-
-// function Top10ButtonClicked(){
-//     document.getElementById('top-10-games').addEventListener('click', function () {
-//     document.getElementById('all-games-place').style.display = 'block';
-//     document.getElementById('place-for-plans').style.display = 'none';
-//     document.getElementById('place-for-user-signup').style.display = 'none';
-//     document.getElementById('place-for-user-login').style.display = 'none';
-//     document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-//     document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-//     document.getElementById('place-for-user-profile').style.display = 'none';
-//     showTrendingGames();
-//   });
-// }
 // Show Only fun() end
 // User Profile Page
 
