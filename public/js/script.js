@@ -821,7 +821,7 @@ async function displayUserData(userId) {
           document.getElementById("expiryDate").innerHTML = `${userData.expiryDate || "N/A"}`;
           document.getElementById("leftHour").innerHTML = `${userData.leftHour || "N/A"} Hr`;
           document.getElementById("usedHour").innerHTML = `${userData.usedHour || "N/A"} Hr`;
-          document.getElementById("plan").textContent = `Plan: ${userData.plan || "N/A"}`;
+          document.getElementById("profilePlan").textContent = `Plan: ${userData.plan || "N/A"}`;
 
           // Set card color based on plan
           const card = document.querySelector(".card");
