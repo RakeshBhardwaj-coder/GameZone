@@ -49,9 +49,17 @@ function toggleMute() {
   }
 }
 
+// go to top of the page btn 
+document.getElementById("pageUpButton").addEventListener('click', function(){
+  // Smooth scroll to the top of the page.
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
+});
+// go to top of the page btn end
 
-// 
 
 videoOnMute.addEventListener('click', () => {
 
@@ -482,6 +490,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
           document.getElementById('all-games-place').style.display = 'none';
           document.getElementById('place-for-plans').style.display = 'block';
 
+  //  when home button click go to home
+          HomeButtonClicked();
+         
           // Back button functionality inside index.html
           document.getElementById('plans-to-home-btn').addEventListener('click', function () {
             window.scrollTo({
@@ -738,6 +749,21 @@ function ShowUserProfile(data){
   document.getElementById('place-for-user-signup').style.display = 'none';
   document.getElementById('place-for-user-login').style.display = 'none';
   document.getElementById('place-for-user-profile').style.display = 'block';
+}
+function HomeButtonClicked(){
+  document.getElementById('home').addEventListener('click', function () {
+    //this will back to filter normal
+    // choos
+    filterGames('all');
+    document.getElementById('all-games-place').style.display = 'block';
+    document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+    document.getElementById('place-for-plans').style.display = 'none';
+    document.getElementById('place-for-user-login').style.display = 'none';
+    document.getElementById('place-for-user-signup').style.display = 'none';
+  
+  
+  
+  });
 }
 // Show Only fun() end
 // User Profile Page
