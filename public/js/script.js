@@ -29,7 +29,8 @@ const videoOnMute = document.getElementById('gameContainer');
 const videoCloseUnMute = document.getElementById('close-button');
 var isGlobalMuted = false;
 
-function toggleMute() {
+muteButton.addEventListener('click', (event) => {
+  event.preventDefault();
   isGlobalMuted = !isGlobalMuted; // Toggle the boolean value
 
   // Update button text or perform other actions based on isGlobalMuted
@@ -47,7 +48,8 @@ function toggleMute() {
       unmuteIcon.style.display = "none"; // Or any text indicating it's unmuted
     }
   }
-}
+})
+
 
 // go to top of the page btn 
 document.getElementById("pageUpButton").addEventListener('click', function(){
