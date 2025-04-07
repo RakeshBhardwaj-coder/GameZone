@@ -484,11 +484,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
         .then(response => response.text())
         .then(data => {
 
-          document.getElementById('place-for-plans').innerHTML = data;
-
-
-          document.getElementById('all-games-place').style.display = 'none';
-          document.getElementById('place-for-plans').style.display = 'block';
+          ShowPlans(data);  //show only place-for-plans
 
   //  when home button click go to home
           HomeButtonClicked();
@@ -499,8 +495,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
               top: 0,
               behavior: 'smooth'
             });
-            document.getElementById('all-games-place').style.display = 'block';
-            document.getElementById('place-for-plans').style.display = 'none';
+            
+            HomeButtonClicked()
           });
 
           // Registering Form page
@@ -701,8 +697,6 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
       document.getElementById('userBtn').click();
     }
   });
-
-
 });
 // registration btn2 
 // if user exist then show plan otherwise go to the signup page
@@ -731,37 +725,103 @@ document.getElementById('logoutOption').addEventListener('click', function (even
 });
 // logout btn end
 // Show only Button clicked options fun()
-function ShowUserProfile(data){
-  document.getElementById('place-for-user-profile').innerHTML = data;
 
-  document.getElementById('all-games-place').style.display = 'none';
-  document.getElementById('place-for-user-signup').style.display = 'none';
-  document.getElementById('place-for-user-login').style.display = 'none';
+function hideAllPlaces() {
+  const places = [
+    'all-games-place',
+    'place-for-plans',
+    'place-for-user-signup',
+    'place-for-user-login',
+    'place-for-user-forgotPassword',
+    'place-for-reg-and-pay-form',
+    'place-for-user-profile',
+  ];
+
+  places.forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
+}
+
+function ShowUserProfile(data) {
+  hideAllPlaces();
+  document.getElementById('place-for-user-profile').innerHTML = data;
   document.getElementById('place-for-user-profile').style.display = 'block';
 }
-function HomeButtonClicked(){
-  document.getElementById('home').addEventListener('click', function () {
-    //this will back to filter normal
-    // choos
-    filterGames('all');
+
+function ShowPlans(data) {
+  hideAllPlaces();
+  document.getElementById('place-for-plans').innerHTML = data;
+  document.getElementById('place-for-plans').style.display = 'block';
+}
+
+function HomeButtonClicked() {
+  document.getElementById('home').addEventListener('click', function() {
+    filterGames('all'); // Assuming filterGames is defined elsewhere
+    hideAllPlaces();
     document.getElementById('all-games-place').style.display = 'block';
-    document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-    document.getElementById('place-for-plans').style.display = 'none';
-    document.getElementById('place-for-user-login').style.display = 'none';
-    document.getElementById('place-for-user-signup').style.display = 'none';
-  
   });
 }
-function Top10ButtonClicked(){
-  document.getElementById('top-10-games').addEventListener('click', function () {
+
+function Top10ButtonClicked() {
+  document.getElementById('top-10-games').addEventListener('click', function() {
+    hideAllPlaces();
     document.getElementById('all-games-place').style.display = 'block';
-    document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-    document.getElementById('place-for-plans').style.display = 'none';
-    document.getElementById('place-for-user-login').style.display = 'none';
-    document.getElementById('place-for-user-signup').style.display = 'none';
-    showTrendingGames();
+    showTrendingGames(); // Assuming showTrendingGames is defined elsewhere
   });
 }
+
+// // show only place-for-user-profile
+// function ShowUserProfile(data){
+//   document.getElementById('place-for-user-profile').innerHTML = data;
+//   document.getElementById('place-for-user-profile').style.display = 'block';
+//   document.getElementById('all-games-place').style.display = 'none';
+//   document.getElementById('place-for-plans').style.display = 'none';
+//   document.getElementById('place-for-user-signup').style.display = 'none';
+//   document.getElementById('place-for-user-login').style.display = 'none';
+//   document.getElementById('place-for-user-forgotPassword').style.display = 'none';
+//   document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+// }
+
+// // ShowPlans(data); //show only place-for-plans
+// function ShowPlans(data){
+//   document.getElementById('place-for-plans').innerHTML = data;
+//   document.getElementById('place-for-plans').style.display = 'block';
+//   document.getElementById('all-games-place').style.display = 'none';
+//   document.getElementById('place-for-user-signup').style.display = 'none';
+//   document.getElementById('place-for-user-login').style.display = 'none';
+//   document.getElementById('place-for-user-forgotPassword').style.display = 'none';
+//   document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+//   document.getElementById('place-for-user-profile').style.display = 'none';
+// }
+// // HomeButtonClicked(); //hide all the button and show only all-games-place
+
+// function HomeButtonClicked(){
+//   document.getElementById('home').addEventListener('click', function () {
+//     //this will back to filter normal
+//     filterGames('all');
+//     document.getElementById('all-games-place').style.display = 'block';
+//     document.getElementById('place-for-plans').style.display = 'none';
+//     document.getElementById('place-for-user-signup').style.display = 'none';
+//     document.getElementById('place-for-user-login').style.display = 'none';
+//     document.getElementById('place-for-user-forgotPassword').style.display = 'none';
+//     document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+//     document.getElementById('place-for-user-profile').style.display = 'none';
+//   });
+// }
+// // Top10ButtonClicked(); //hide all the button and show only top-10-games
+
+// function Top10ButtonClicked(){
+//     document.getElementById('top-10-games').addEventListener('click', function () {
+//     document.getElementById('all-games-place').style.display = 'block';
+//     document.getElementById('place-for-plans').style.display = 'none';
+//     document.getElementById('place-for-user-signup').style.display = 'none';
+//     document.getElementById('place-for-user-login').style.display = 'none';
+//     document.getElementById('place-for-user-forgotPassword').style.display = 'none';
+//     document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
+//     document.getElementById('place-for-user-profile').style.display = 'none';
+//     showTrendingGames();
+//   });
+// }
 // Show Only fun() end
 // User Profile Page
 
@@ -787,7 +847,6 @@ document.getElementById('userProfile').addEventListener('click', function (event
 
         }
       })
-
     });
 })
 
@@ -1131,19 +1190,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 // user login page end
 
 // Home Link Functionality
-document.getElementById('home').addEventListener('click', function () {
-  //this will back to filter normal
-  // choos
-  filterGames('all');
-  document.getElementById('all-games-place').style.display = 'block';
-  document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
-  document.getElementById('place-for-plans').style.display = 'none';
-  document.getElementById('place-for-user-login').style.display = 'none';
-  document.getElementById('place-for-user-signup').style.display = 'none';
+HomeButtonClicked();
 
-
-
-});
 // RegisterPage End
 
 
@@ -1611,7 +1659,7 @@ ageFilter.addEventListener('change', () => {
   }
 });
 
-Top10ButtonClicked();
+Top10ButtonClicked(); //hide all the button and show only Top-10-games-page
 
 
 function showTrendingGames() {
