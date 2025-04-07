@@ -784,10 +784,10 @@ async function displayUserData(userId) {
           document.getElementById("email").innerHTML = `<strong>Email:</strong> ${userData.email || "N/A"}`;
           document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender || "N/A"}`;
           document.getElementById("dob").innerHTML = `<strong>Dob:</strong> ${userData.dob || "N/A"}`;
-          document.getElementById("totalHour").innerHTML = `<strong>Total</strong> ${userData.totalHour || "N/A"} Hr`;
-          document.getElementById("expiryDate").innerHTML = `<strong>Expire On</strong> ${userData.expiryDate || "N/A"}`;
-          document.getElementById("leftHour").innerHTML = `<strong>Left</strong> ${userData.leftHour || "N/A"} Hr`;
-          document.getElementById("usedHour").innerHTML = `<strong>Used</strong> ${userData.usedHour || "N/A"} Hr`;
+          document.getElementById("totalHour").innerHTML = ` ${userData.totalHour || "N/A"} Hr`;
+          document.getElementById("expiryDate").innerHTML = `${userData.expiryDate || "N/A"}`;
+          document.getElementById("leftHour").innerHTML = `${userData.leftHour || "N/A"} Hr`;
+          document.getElementById("usedHour").innerHTML = `${userData.usedHour || "N/A"} Hr`;
           document.getElementById("plan").textContent = `Plan: ${userData.plan || "N/A"}`;
 
           // Set card color based on plan
