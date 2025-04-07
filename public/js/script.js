@@ -528,17 +528,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 .then(response => response.text())
                 .then(data => {
 
-                  document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
 
-                  //getting plans in registratoin page from plans.html
-                  document.getElementById('planSelection').value = selectedPlan;
-                  // Show the registration page
-
-                  document.getElementById('all-games-place').style.display = 'none';
-                  document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
-                  document.getElementById('place-for-plans').style.display = 'none';
-
-
+                  ShowRegistraion_PaymentForm(data,selectedPlan);
 
 
                   document.getElementById('reg-to-plans-btn').addEventListener("click", function (event) {
@@ -752,6 +743,18 @@ function ShowPlans(data) {
   hideAllPlaces();
   document.getElementById('place-for-plans').innerHTML = data;
   document.getElementById('place-for-plans').style.display = 'block';
+}
+function ShowRegistraion_PaymentForm(data, selectedPlan){
+
+  document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
+
+  //getting plans in registratoin page from plans.html
+  document.getElementById('planSelection').value = selectedPlan;
+  // Show the registration page
+
+  document.getElementById('all-games-place').style.display = 'none';
+  document.getElementById('place-for-reg-and-pay-form').style.display = 'block';
+  document.getElementById('place-for-plans').style.display = 'none';
 }
 
 function HomeButtonClicked() {
