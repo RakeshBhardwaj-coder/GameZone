@@ -802,9 +802,25 @@ document.getElementById('userProfile').addEventListener('click', function (event
 })
 
 // User Profile End
+
+
 // user Profile Page Firebase Data Script 
 
+
+
 async function displayUserData(userId) {
+  function setUserStatus(isOnline) {
+    const dot = document.getElementById('dot');
+    const activeText = document.getElementById('active');
+
+    if (isOnline) {
+        dot.style.backgroundColor = 'green';
+        activeText.textContent = 'online';
+    } else {
+        dot.style.backgroundColor = 'red';
+        activeText.textContent = 'offline';
+    }
+}
 
   try {
 
@@ -821,12 +837,14 @@ async function displayUserData(userId) {
           document.getElementById("userName").textContent = userData.username || "Username";
           document.getElementById("email").innerHTML = `<strong>Email:</strong> ${userData.email}`;
           document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender}`;
-          document.getElementById("dob").innerHTML = `<strong>Dob:</strong> ${userData.dob}`;
+          document.getElementById("dob").innerHTML = `<strong>DOB:</strong> ${userData.dob}`;
           document.getElementById("totalHour").innerHTML = ` ${userData.totalHour} Hr`;
           document.getElementById("expiryDate").innerHTML = `${userData.expiryDate}`;
           document.getElementById("leftHour").innerHTML = `${userData.leftHour} Hr`;
           document.getElementById("usedHour").innerHTML = `${userData.usedHour} Hr`;
           document.getElementById("profilePlan").textContent = `Plan: ${userData.plan || "N/A"}`;
+          let status = userData.isActive; 
+          setUserStatus(status) //show online & offline status
 
           // Set card color based on plan
           const card = document.querySelector(".card");
