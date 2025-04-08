@@ -545,8 +545,12 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
 
                   ShowRegistraion_PaymentForm(data,selectedPlan);
-
-
+     // Set the selected plan in the form
+     const planSelection = document.getElementById('planSelection');
+     if (planSelection) {
+      planSelection.value = selectedPlan;
+      planSelection.dispatchEvent(new Event('change')); // Trigger change event
+  }
                   document.getElementById('reg-to-plans-btn').addEventListener("click", function (event) {
                     event.preventDefault();
                     document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
@@ -862,18 +866,7 @@ async function displayUserData(userId) {
           let status = userData.isActive; 
           setUserStatus(status) //show online & offline status
 
-          // Set card color based on plan
-          // const card = document.querySelector(".card");
-        //   if (card) {
-        //     let planClass = "Bronze"; // Default class
-        //     if (userData.plan) {
-        //         const lowercasePlan = userData.plan.toLowerCase();
-        //         if (lowercasePlan === "Silver" || lowercasePlan === "Gold" || lowercasePlan === "Bronze") {
-        //             planClass = lowercasePlan;
-        //         }
-        //     }
-        //     card.className = "card " + planClass;
-        // }
+      
 
     } else {
         console.log("No such document!");
