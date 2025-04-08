@@ -50,6 +50,16 @@ muteButton.addEventListener('click', (event) => {
   }
 })
 
+// general Code
+function capitalizeFirstLetter(str) {
+  if (typeof str !== 'string' || !str) {
+    return str; // Return the input if it's not a string or empty
+  }
+
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+// general code end
 
 // go to top of the page btn 
 document.getElementById("pageUpButton").addEventListener('click', function(){
@@ -659,9 +669,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
             try {
               await updateDoc(doc(db, "users", userId), {
-                dob: dob,
+                dob: capitalizeFirstLetter(dob),
                 gender: gender,
-                plan: plan,
+                plan: capitalizeFirstLetter(plan),
               });
               const loadingBar = document.querySelector(".loadingBar");
               console.log("Additional user data added to Firestore.");
@@ -733,6 +743,12 @@ function hideAllPlaces() {
   });
 }
 
+function ShowUserSignUp(data){
+  hideAllPlaces();
+  document.getElementById('place-for-user-signup').innerHTML = data;
+  document.getElementById('place-for-user-signup').style.display = 'block';
+
+}
 function ShowUserProfile(data) {
   hideAllPlaces();
   document.getElementById('place-for-user-profile').innerHTML = data;
@@ -847,17 +863,17 @@ async function displayUserData(userId) {
           setUserStatus(status) //show online & offline status
 
           // Set card color based on plan
-          const card = document.querySelector(".card");
-          if (card) {
-            let planClass = "bronze"; // Default class
-            if (userData.plan) {
-                const lowercasePlan = userData.plan.toLowerCase();
-                if (lowercasePlan === "silver" || lowercasePlan === "gold" || lowercasePlan === "bronze") {
-                    planClass = lowercasePlan;
-                }
-            }
-            card.className = "card " + planClass;
-        }
+          // const card = document.querySelector(".card");
+        //   if (card) {
+        //     let planClass = "Bronze"; // Default class
+        //     if (userData.plan) {
+        //         const lowercasePlan = userData.plan.toLowerCase();
+        //         if (lowercasePlan === "Silver" || lowercasePlan === "Gold" || lowercasePlan === "Bronze") {
+        //             planClass = lowercasePlan;
+        //         }
+        //     }
+        //     card.className = "card " + planClass;
+        // }
 
     } else {
         console.log("No such document!");
@@ -881,12 +897,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
   fetch('account/signup.html')
     .then(response => response.text())
     .then(data => {
-      document.getElementById('place-for-user-signup').innerHTML = data;
-      document.getElementById('all-games-place').style.display = 'none';
-      document.getElementById('place-for-user-signup').style.display = 'block';
-      document.getElementById('place-for-user-login').style.display = 'none';
-
-
+      
+      ShowUserSignUp(data);
 
       // handle forgot button in signupPage
       document.getElementById('forgotPageBtn').addEventListener('click', function (event) {
@@ -1029,7 +1041,6 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       // script for signup page button 
       const verifyEmailBtn = document.getElementById("verifyEmailBtn");
       const signupForm = document.getElementById("signupForm");
-      const signupButton = document.getElementById("signUpBtn");
       const loadingBar = document.querySelector(".loadingBar");
       const signupContainer = document.querySelector(".signup-container");
       const alertText = document.getElementById("alert-text");
@@ -1059,7 +1070,13 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.error("Verification error:", errorCode, errorMessage);
-            alertText.innerHTML = "Please Provide Valid Email Address!";
+            if (errorCode === "auth/email-already-in-use") {
+              alertText.innerHTML = "Email already exists. Please log in.";
+            } else {
+              alertText.innerHTML = "Please Provide Valid Email Address!";
+            }
+ 
+        
             signupContainer.style.display = "block";
           })
           .finally(() => {
@@ -1133,8 +1150,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         try {
           const username = document.getElementById("username").value;
           await setDoc(doc(db, "users", user.uid), {
-            username: username,
-            email: user.email,
+            username: capitalizeFirstLetter(username),
+            email: capitalizeFirstLetter(user.email),
             uid: user.uid,
           });
           console.log("User data saved to Firestore.");
