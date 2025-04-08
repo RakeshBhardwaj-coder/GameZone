@@ -62,7 +62,7 @@ function capitalizeFirstLetter(str) {
 // general code end
 
 // go to top of the page btn 
-document.getElementById("pageUpButton").addEventListener('click', function(){
+document.getElementById("pageUpButton").addEventListener('click', function () {
   // Smooth scroll to the top of the page.
   window.scrollTo({
     top: 0,
@@ -372,29 +372,29 @@ const userName = document.querySelector('.user-name');
 const userEmail = document.querySelector('.user-email');
 
 onAuthStateChanged(auth, (user) => {
-    if (user) {
-        const uid = user.uid;
-        userEmail.textContent = user.email;
+  if (user) {
+    const uid = user.uid;
+    userEmail.textContent = user.email;
 
-        
-            // Option 2: Get username from Firestore if displayName is null
-            const userDocRef = doc(db, "users", uid);
-            getDoc(userDocRef)
-                .then((docSnap) => {
-                    if (docSnap.exists()) {
-                        const usernameFromFirestore = docSnap.data().username;
-                        userName.textContent = usernameFromFirestore;
-                    } 
-                })
-                .catch((error) => {
-                    console.error("Error getting document:", error);
-                    userName.textContent = "User"; // Default on error
-                });
-        
-    } else {
-        userName.textContent = "User";
-        userEmail.textContent="example@gmail.com" // Default if no user is signed in
-    }
+
+    // Option 2: Get username from Firestore if displayName is null
+    const userDocRef = doc(db, "users", uid);
+    getDoc(userDocRef)
+      .then((docSnap) => {
+        if (docSnap.exists()) {
+          const usernameFromFirestore = docSnap.data().username;
+          userName.textContent = usernameFromFirestore;
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting document:", error);
+        userName.textContent = "User"; // Default on error
+      });
+
+  } else {
+    userName.textContent = "User";
+    userEmail.textContent = "example@gmail.com" // Default if no user is signed in
+  }
 });
 // showing Username & Email using firebase end
 
@@ -501,16 +501,16 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
           ShowPlans(data);  //show only place-for-plans
 
-  //  when home button click go to home
+          //  when home button click go to home
           HomeButtonClicked();
-         
+
           // Back button functionality inside index.html
           document.getElementById('plans-to-home-btn').addEventListener('click', function () {
             window.scrollTo({
               top: 0,
               behavior: 'smooth'
             });
-            
+
             HomeButtonClicked()
           });
 
@@ -544,13 +544,14 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 .then(data => {
 
 
-                  ShowRegistraion_PaymentForm(data,selectedPlan);
-     // Set the selected plan in the form
-     const planSelection = document.getElementById('planSelection');
-     if (planSelection) {
-      planSelection.value = selectedPlan;
-      planSelection.dispatchEvent(new Event('change')); // Trigger change event
-  }
+                  ShowRegistraion_PaymentForm(data, selectedPlan);
+                  // Set the selected plan in the form
+                  const planSelection = document.getElementById('planSelection');
+
+                  if (planSelection) {
+                    planSelection.value = selectedPlan;
+                    planSelection.dispatchEvent(new Event('change')); // Trigger change event
+                  }
                   document.getElementById('reg-to-plans-btn').addEventListener("click", function (event) {
                     event.preventDefault();
                     document.getElementById('place-for-reg-and-pay-form').style.display = 'none';
@@ -570,9 +571,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     document.getElementById('paymentForm').style.display = 'none';
                     document.getElementById('registration-form').style.display = 'block';
                   });
-
-                  document.getElementById('planSelection').addEventListener('change', function () {
-                    let selectedPlan = this.value;
+                  // Function to update payment details based on selected plan
+                  function updatePaymentDetails(selectedPlan) {
                     let paymentAmountDisplay = document.getElementById('pay-amount-show');
                     let validity = document.getElementById('validity');
                     let gameplay = document.getElementById('gameplay');
@@ -580,8 +580,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     let cost = document.getElementById('cost');
                     let accessories = document.getElementById('accessories');
                     let steering = document.getElementById('steering');
-
                     let extra = document.getElementById('extra');
+
                     if (selectedPlan === 'Bronze') {
                       paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
                       validity.textContent = 'Validity: 10 Days';
@@ -590,7 +590,6 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       cost.textContent = '30 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       steering.textContent = 'Steering Wheel: ₹10/session';
-
                       extra.textContent = '';
                     } else if (selectedPlan === 'Silver') {
                       paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
@@ -600,7 +599,6 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       cost.textContent = '45 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       steering.textContent = '';
-
                       extra.textContent = 'Steering Wheel: ₹10/session';
                     } else if (selectedPlan === 'Gold') {
                       paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
@@ -610,7 +608,6 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       cost.textContent = '45 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       steering.textContent = 'Steering Wheel: ₹10/session';
-
                       extra.textContent = 'Physical card will be provided';
                     } else if (selectedPlan === 'Birthdayspecial') {
                       paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
@@ -620,11 +617,16 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       cost.textContent = '15-20 Minutes/Card';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       steering.textContent = 'Steering Wheel: ₹10/session';
-
                       extra.textContent = 'Physica or virtual card';
                     } else {
                       paymentAmountDisplay.textContent = '';
                     }
+                  }
+                  // Initial update based on selectedPlan
+                  updatePaymentDetails(selectedPlan);
+
+                  document.getElementById('planSelection').addEventListener('change', function () {
+                    updatePaymentDetails(this.value);
                   });
 
                   //   This code is running in index.html but it's from the RegisterForm content End 
@@ -637,9 +639,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
           });
 
 
-         HomeButtonClicked();
-         Top10ButtonClicked();
-        
+          HomeButtonClicked();
+          Top10ButtonClicked();
+
           // Registering Form page end 
 
           // Script for Registering in firestore
@@ -747,7 +749,7 @@ function hideAllPlaces() {
   });
 }
 
-function ShowUserSignUp(data){
+function ShowUserSignUp(data) {
   hideAllPlaces();
   document.getElementById('place-for-user-signup').innerHTML = data;
   document.getElementById('place-for-user-signup').style.display = 'block';
@@ -764,7 +766,7 @@ function ShowPlans(data) {
   document.getElementById('place-for-plans').innerHTML = data;
   document.getElementById('place-for-plans').style.display = 'block';
 }
-function ShowRegistraion_PaymentForm(data, selectedPlan){
+function ShowRegistraion_PaymentForm(data, selectedPlan) {
 
   document.getElementById('place-for-reg-and-pay-form').innerHTML = data;
 
@@ -778,7 +780,7 @@ function ShowRegistraion_PaymentForm(data, selectedPlan){
 }
 
 function HomeButtonClicked() {
-  document.getElementById('home').addEventListener('click', function() {
+  document.getElementById('home').addEventListener('click', function () {
     filterGames('all'); // Assuming filterGames is defined elsewhere
     hideAllPlaces();
     document.getElementById('all-games-place').style.display = 'block';
@@ -786,7 +788,7 @@ function HomeButtonClicked() {
 }
 
 function Top10ButtonClicked() {
-  document.getElementById('top-10-games').addEventListener('click', function() {
+  document.getElementById('top-10-games').addEventListener('click', function () {
     hideAllPlaces();
     document.getElementById('all-games-place').style.display = 'block';
     showTrendingGames(); // Assuming showTrendingGames is defined elsewhere
@@ -834,46 +836,46 @@ async function displayUserData(userId) {
     const activeText = document.getElementById('active');
 
     if (isOnline) {
-        dot.style.backgroundColor = 'green';
-        activeText.textContent = 'online';
+      dot.style.backgroundColor = 'green';
+      activeText.textContent = 'online';
     } else {
-        dot.style.backgroundColor = 'red';
-        activeText.textContent = 'offline';
+      dot.style.backgroundColor = 'red';
+      activeText.textContent = 'offline';
     }
-}
+  }
 
   try {
 
-      const userDocRef = doc(db, "users", userId); // Corrected: use doc() from firebase/firestore
+    const userDocRef = doc(db, "users", userId); // Corrected: use doc() from firebase/firestore
 
-      const docSnap = await getDoc(userDocRef); // Corrected: use getDoc()
+    const docSnap = await getDoc(userDocRef); // Corrected: use getDoc()
 
 
-      if (docSnap.exists()) {
-          const userData = docSnap.data();
-          console.log("User Data:", userData);
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      console.log("User Data:", userData);
 
-          // document.getElementById("userName").textContent = userData.name;
-          document.getElementById("userName").textContent = userData.username || "Username";
-          document.getElementById("email").innerHTML = `<strong>Email:</strong> ${userData.email}`;
-          document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender}`;
-          document.getElementById("dob").innerHTML = `<strong>DOB:</strong> ${userData.dob}`;
-          document.getElementById("totalHour").innerHTML = ` ${userData.totalHour} Hr`;
-          document.getElementById("expiryDate").innerHTML = `${userData.expiryDate}`;
-          document.getElementById("leftHour").innerHTML = `${userData.leftHour} Hr`;
-          document.getElementById("usedHour").innerHTML = `${userData.usedHour} Hr`;
-          document.getElementById("profilePlan").textContent = `Plan: ${userData.plan || "N/A"}`;
-          let status = userData.isActive; 
-          setUserStatus(status) //show online & offline status
+      // document.getElementById("userName").textContent = userData.name;
+      document.getElementById("userName").textContent = userData.username || "Username";
+      document.getElementById("email").innerHTML = `<strong>Email:</strong> ${userData.email}`;
+      document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender}`;
+      document.getElementById("dob").innerHTML = `<strong>DOB:</strong> ${userData.dob}`;
+      document.getElementById("totalHour").innerHTML = ` ${userData.totalHour} Hr`;
+      document.getElementById("expiryDate").innerHTML = `${userData.expiryDate}`;
+      document.getElementById("leftHour").innerHTML = `${userData.leftHour} Hr`;
+      document.getElementById("usedHour").innerHTML = `${userData.usedHour} Hr`;
+      document.getElementById("profilePlan").textContent = `Plan: ${userData.plan || "N/A"}`;
+      let status = userData.isActive;
+      setUserStatus(status) //show online & offline status
 
-      
+
 
     } else {
-        console.log("No such document!");
+      console.log("No such document!");
     }
-} catch (error) {
+  } catch (error) {
     console.error("Error fetching document:", error);
-}
+  }
 }
 // user Profile Page Firebase Data Script End
 
@@ -890,7 +892,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
   fetch('account/signup.html')
     .then(response => response.text())
     .then(data => {
-      
+
       ShowUserSignUp(data);
 
       // handle forgot button in signupPage
@@ -1068,8 +1070,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             } else {
               alertText.innerHTML = "Please Provide Valid Email Address!";
             }
- 
-        
+
+
             signupContainer.style.display = "block";
           })
           .finally(() => {
