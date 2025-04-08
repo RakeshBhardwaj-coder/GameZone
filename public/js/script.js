@@ -676,7 +676,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             try {
               await updateDoc(doc(db, "users", userId), {
                 dob: capitalizeFirstLetter(dob),
-                gender: gender,
+                gender: capitalizeFirstLetter(gender),
                 plan: capitalizeFirstLetter(plan),
               });
               const loadingBar = document.querySelector(".loadingBar");
