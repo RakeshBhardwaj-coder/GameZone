@@ -910,24 +910,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             document.getElementById('backPageBtn').addEventListener('click', function () {
               document.getElementById('place-for-user-signup').style.display = 'block';
               document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-              // event.preventDefault();
-              //   fetch('account/login.html')
-              //   .then(response => response.text())
-              //   .then(data => {
-              // document.getElementById('place-for-user-login').innerHTML = data;
-              //       document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-              //       document.getElementById('place-for-user-login').style.display = 'block';
-
-              //   });
-
-              // handle forgot button for signupPage
-
-              // document.getElementById('forgotPageBtn').addEventListener('click', function () {
-              //   document.getElementById('place-for-user-forgotPassword').style.display = 'block';
-              //   document.getElementById('place-for-user-login').style.display = 'none';
-
-
-              // });
+             
 
             });
             // back to login page end
@@ -1038,6 +1021,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       const signupForm = document.getElementById("signupForm");
       const loadingBar = document.querySelector(".loadingBar");
       const signupContainer = document.querySelector(".signup-container");
+      const loginContainer = document.querySelector(".login-container");
       const alertText = document.getElementById("alert-text");
       let emailVerified = false; // Track email verification status
 
@@ -1128,7 +1112,18 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
           })
           .then(() => {
             alertText.innerHTML = "Sign up successful! Now Login";
-            
+         
+fetch('account/login.html')
+.then(response => response.text())
+.then(data => {
+  document.getElementById('place-for-user-login').innerHTML = data;
+  document.getElementById('place-for-user-signup').style.display = 'none';
+  document.getElementById('place-for-user-login').style.display = 'block';
+
+
+
+});
+                   
             // open login page
             // window.location.href = "index.html"; // Redirect or show success message
           })
@@ -1137,38 +1132,11 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             alertText.innerHTML = "Sign up failed: " + error.message;
           })
           .finally(() => {
-            signupContainer.style.display = "block";
+            // signupContainer.style.display = "block";
             loadingBar.style.display = "none";
           });
-      })
-      .catch((error)=>{
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        if (errorCode === 'auth/email-already-in-use') {
-          fetchSignInMethodsForEmail(auth, email)
-          .then((signInMethods) => {
-            if (signInMethods && signInMethods.length > 0) {
-              alertText.innerHTML = "Account exists, please log in.";
-              signupContainer.style.display = "block";
-              loadingBar.style.display = "none";
-            } else {
-              alertText.innerHTML = "Sign up failed: " + errorMessage;
-              signupContainer.style.display = "block";
-              loadingBar.style.display = "none";
-            }
-          }).catch((fetchError)=>{
-            console.error("Error fetching sign in methods", fetchError);
-            alertText.innerHTML = "Sign up failed: " + errorMessage;
-            signupContainer.style.display = "block";
-            loadingBar.style.display = "none";
-          });}
-          else{
-            alertText.innerHTML = "Sign up failed: " + errorMessage;
-            signupContainer.style.display = "block";
-            loadingBar.style.display = "none";
-          }
-
       });
+     
 
       // Function to save user data to Firestore
       async function saveUserDataToFirestore(user) {
