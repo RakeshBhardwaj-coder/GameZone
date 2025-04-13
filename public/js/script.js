@@ -1127,8 +1127,10 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             return saveUserDataToFirestore(auth.currentUser);
           })
           .then(() => {
-            alertText.innerHTML = "Sign up successful!";
-            window.location.href = "index.html"; // Redirect or show success message
+            alertText.innerHTML = "Sign up successful! Now Login";
+            
+            // open login page
+            // window.location.href = "index.html"; // Redirect or show success message
           })
           .catch((error) => {
             console.error("Sign up error:", error);
@@ -1138,6 +1140,34 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             signupContainer.style.display = "block";
             loadingBar.style.display = "none";
           });
+      })
+      .catch((error)=>{
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === 'auth/email-already-in-use') {
+          fetchSignInMethodsForEmail(auth, email)
+          .then((signInMethods) => {
+            if (signInMethods && signInMethods.length > 0) {
+              alertText.innerHTML = "Account exists, please log in.";
+              signupContainer.style.display = "block";
+              loadingBar.style.display = "none";
+            } else {
+              alertText.innerHTML = "Sign up failed: " + errorMessage;
+              signupContainer.style.display = "block";
+              loadingBar.style.display = "none";
+            }
+          }).catch((fetchError)=>{
+            console.error("Error fetching sign in methods", fetchError);
+            alertText.innerHTML = "Sign up failed: " + errorMessage;
+            signupContainer.style.display = "block";
+            loadingBar.style.display = "none";
+          });}
+          else{
+            alertText.innerHTML = "Sign up failed: " + errorMessage;
+            signupContainer.style.display = "block";
+            loadingBar.style.display = "none";
+          }
+
       });
 
       // Function to save user data to Firestore
