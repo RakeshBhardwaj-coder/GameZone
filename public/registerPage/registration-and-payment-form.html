@@ -156,18 +156,70 @@
                 font-size: 1em;
             }
         }
+
+
+        /* user Plan data */
+        #userPlanData {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 600px;
+  background-color: #f9f9f9;
+}
+
+#userPlanData > div {
+  text-align: center;
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  min-width: 150px;
+  background-color: white;
+}
+
+#userPlanData h3#title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+#userPlanData h3#data {
+  font-size: 1.2em;
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* Group Total Hour and Expiry On in a single row */
+#userPlanData > div:nth-child(1),
+#userPlanData > div:nth-child(2) {
+  flex-basis: 45%; /* Adjust as needed, leaving some space for margin */
+}
+
+/* Price to Pay on a separate row */
+#userPlanData > div:nth-child(3) {
+  flex-basis: 100%; /* Take full width to be on a new row */
+}
+
+        /* user Plan data end*/
+
+        
     </style>
 </head>
 
 <body>
-<div class="loadingBar"></div>
+    <div class="loadingBar"></div>
 
     <div id="reg-and-payment-page">
 
         <div id="registration-form">
             <h1>Registration</h1>
             <form id="registrationFormfilling">
-        
+
                 <label for="dateOfBirth">Date of Birth:</label><br>
                 <input type="date" id="dateOfBirth" name="dateOfBirth" value="2006-01-01" required><br>
 
@@ -187,13 +239,18 @@
                     <option value="Gold">Gold (400 Rs)</option>
                     <option value="Birthdayspecial">Birthday Special (100 Rs)</option>
                 </select>
-                
-                <input type="hidden" id="planPrice" value=""/>
+
+                <label for="startDate">Plan start Date:</label><br>
+                <input type="date" id="startDate" name="startDate" required><br>
+
+                <input type="hidden" id="planPrice" value="" />
                 <button type="submit" id="open-payment-page-btn">Next</button>
                 <button id="reg-to-plans-btn">Back</button>
 
-            </form>
 
+
+            </form>
+            
         </div>
 
 
@@ -201,7 +258,25 @@
             <h1>Payment Method</h1>
             <h3>Selected</h3>
 
+            <div id="userPlanData">
+                <div>
+                    <h3 id="title">Total Hour</h3>
+                    <h3 id="data">10Hr</h3>
+                </div>
+                <div>
+                    <h3 id="title">Expiry On</h3>
+                    <h3 id="data">dd/MM/yyyy</h3>
+                </div>
+
+                <div>
+                    <h3 id="title">Price to Pay</h3>
+                    <h3 id="data">400₹</h3>
+                </div>
+                
+            </div>
+
             <h2 id="pay-amount-show"></h2>
+
 
             <div class="selected-plan-details-show">
                 <p id="validity">Validity: </p>
