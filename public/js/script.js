@@ -984,7 +984,16 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                 .then((userCredential) => {
                   const user = userCredential.user;
                   console.log("User logged in:", user);
-                  window.location.href = "index.html"; // Redirect after successful login
+                  // window.location.href = "index.html"; // Redirect after successful login
+
+                fetch('registerPage/plans.html')
+                .then(response => response.text())
+                .then(data => {
+                  ShowPlans(data);
+
+                });
+
+
                 })
                 .catch((error) => {
                   const errorCode = error.code;
