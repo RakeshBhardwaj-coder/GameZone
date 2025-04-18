@@ -574,6 +574,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   // Function to update payment details based on selected plan
                   function updatePaymentDetails(selectedPlan) {
                     let paymentAmountDisplay = document.getElementById('pay-amount-show');
+                    let totalHour = document.getElementById('totalHour');
+                    let price = document.getElementById('price');
+
                     let validity = document.getElementById('validity');
                     let gameplay = document.getElementById('gameplay');
                     let gamePackage = document.getElementById('package');
@@ -584,7 +587,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
                     if (selectedPlan === 'Bronze') {
                       paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
-                      validity.textContent = 'Validity: 10 Days';
+                      validity.textContent = '10';
+                      price.textContent = '250'+'₹'
+                      totalHour.textContent =  validity.textContent +"Hours";
                       gameplay.textContent = 'Total Gameplay: 5 Hours';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
                       cost.textContent = '30 Minutes/vCard';
@@ -593,7 +598,11 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       extra.textContent = '';
                     } else if (selectedPlan === 'Silver') {
                       paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
-                      validity.textContent = 'Validity: 15 Days';
+                      validity.textContent = '15';
+                      totalHour.textContent =  validity.textContent +"Hours";
+                      price.textContent = '300'+'₹'
+
+
                       gameplay.textContent = 'Total Gameplay: 8 Hours';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹300';
                       cost.textContent = '45 Minutes/vCard';
@@ -602,7 +611,12 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       extra.textContent = 'Steering Wheel: ₹10/session';
                     } else if (selectedPlan === 'Gold') {
                       paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
-                      validity.textContent = 'Validity: Forever';
+                      validity.textContent = '365';
+                      totalHour.textContent =  validity.textContent +"Hours";
+                      price.textContent = '400'+'₹'
+
+
+
                       gameplay.textContent = 'Total Gameplay: 8 Hours';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹400';
                       cost.textContent = '45 Minutes/vCard';
@@ -611,7 +625,10 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       extra.textContent = 'Physical card will be provided';
                     } else if (selectedPlan === 'Birthdayspecial') {
                       paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
-                      validity.textContent = 'Validity: 1 Day';
+                      validity.textContent = '1';
+                      totalHour.textContent =  validity.textContent +"Hours";
+                      price.textContent = '100'+'₹'
+
                       gameplay.textContent = 'Total Gameplay: 15-20 Minute';
                       gamePackage.textContent = 'gamePackage (5 Card) for ₹50';
                       cost.textContent = '15-20 Minutes/Card';
