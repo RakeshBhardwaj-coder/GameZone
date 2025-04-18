@@ -572,84 +572,65 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     document.getElementById('registration-form').style.display = 'block';
                   });
                   // Function to update payment details based on selected plan
-                    function updatePaymentDetails(selectedPlan) {
-                      const planDetails = {
-                        Bronze: {
-                          paymentText: 'Bronze | Pay 250 Rs.',
-                          price: '250₹',
-                          validity: '10',
-                          gameplay: '5 Hours',
-                          package: 'gamePackage (10 Card) for ₹150',
-                          cost: '30 Minutes/vCard',
-                          accessories: 'Gamepad, Keyboard, and Mouse',
-                          steering: 'Steering Wheel: ₹10/session',
-                          extra: '',
-                        },
-                        Silver: {
-                          paymentText: 'Silver | Pay 300 Rs.',
-                          price: '300₹',
-                          validity: '15',
-                          gameplay: '8 Hours',
-                          package: 'gamePackage (10 Card) for ₹300',
-                          cost: '45 Minutes/vCard',
-                          accessories: 'Gamepad, Keyboard, and Mouse',
-                          steering: '',
-                          extra: 'Steering Wheel: ₹10/session',
-                        },
-                        Gold: {
-                          paymentText: 'Gold | Pay 400 Rs.',
-                          price: '400₹',
-                          validity: 'Validity: Forever',
-                          gameplay: '8 Hours',
-                          package: 'gamePackage (10 Card) for ₹400',
-                          cost: '45 Minutes/vCard',
-                          accessories: 'Gamepad, Keyboard, and Mouse',
-                          steering: 'Steering Wheel: ₹10/session',
-                          extra: 'Physical card will be provided',
-                        },
-                        Birthdayspecial: {
-                          paymentText: 'Birthdayspecial | Pay 100 Rs.',
-                          price: '400₹',
-                          validity: '1',
-                          gameplay: '15-20 Minute',
-                          package: 'gamePackage (5 Card) for ₹50',
-                          cost: '15-20 Minutes/Card',
-                          accessories: 'Gamepad, Keyboard, and Mouse',
-                          steering: 'Steering Wheel: ₹10/session',
-                          extra: 'Physica or virtual card',
-                        },
-                      };
-                    
-                      const paymentAmountDisplay = document.getElementById('pay-amount-show');
-                      const price = document.getElementById('price');
-                      const startingDate = document.getElementById('startDate')
-                      const expiryDate = documet.getElementById('expiryDate');
-                      const validity = document.getElementById('validity');
-                      const gameplay = document.getElementById('gameplay');
-                      const gamePackage = document.getElementById('package');
-                      const cost = document.getElementById('cost');
-                      const accessories = document.getElementById('accessories');
-                      const steering = document.getElementById('steering');
-                      const extra = document.getElementById('extra');
-                    
-                      const selectedPlanDetails = planDetails[selectedPlan];
-                    
-                      if (selectedPlanDetails) {
-                        paymentAmountDisplay.textContent = selectedPlanDetails.paymentText;
-                        price.textContent = "rakesh";
-                        validity.textContent = selectedPlanDetails.validity;
-                        expiryDate.textContent = "  ok";//calculateExpiryDate(startingDate, validity)
-                        gameplay.textContent = selectedPlanDetails.gameplay;
-                        gamePackage.textContent = selectedPlanDetails.package;
-                        cost.textContent = selectedPlanDetails.cost;
-                        accessories.textContent = selectedPlanDetails.accessories;
-                        steering.textContent = selectedPlanDetails.steering;
-                        extra.textContent = selectedPlanDetails.extra;
-                      } else {
-                        paymentAmountDisplay.textContent = '';
-                      }
+                  function updatePaymentDetails(selectedPlan) {
+                    let paymentAmountDisplay = document.getElementById('pay-amount-show');
+                    let price = document.getElementById('price');
+                    let validity = document.getElementById('validity');
+                    let gameplay = document.getElementById('gameplay');
+                    let gamePackage = document.getElementById('package');
+                    let cost = document.getElementById('cost');
+                    let accessories = document.getElementById('accessories');
+                    let steering = document.getElementById('steering');
+                    let extra = document.getElementById('extra');
+
+                    if (selectedPlan === 'Bronze') {
+                      paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
+                      price.textContent = '400₹';
+
+                      validity.textContent = 'Validity: 10 Days';
+                      gameplay.textContent = 'Total Gameplay: 5 Hours';
+                      gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
+                      cost.textContent = '30 Minutes/vCard';
+                      accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                      steering.textContent = 'Steering Wheel: ₹10/session';
+                      extra.textContent = '';
+                    } else if (selectedPlan === 'Silver') {
+                      price.textContent = '400₹';
+
+                      paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
+                      validity.textContent = 'Validity: 15 Days';
+                      gameplay.textContent = 'Total Gameplay: 8 Hours';
+                      gamePackage.textContent = 'gamePackage (10 Card) for ₹300';
+                      cost.textContent = '45 Minutes/vCard';
+                      accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                      steering.textContent = '';
+                      extra.textContent = 'Steering Wheel: ₹10/session';
+                    } else if (selectedPlan === 'Gold') {
+                      price.textContent = '400₹';
+
+                      paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
+                      validity.textContent = 'Validity: Forever';
+                      gameplay.textContent = 'Total Gameplay: 8 Hours';
+                      gamePackage.textContent = 'gamePackage (10 Card) for ₹400';
+                      cost.textContent = '45 Minutes/vCard';
+                      accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                      steering.textContent = 'Steering Wheel: ₹10/session';
+                      extra.textContent = 'Physical card will be provided';
+                    } else if (selectedPlan === 'Birthdayspecial') {
+                      price.textContent = '400₹';
+
+                      paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
+                      validity.textContent = 'Validity: 1 Day';
+                      gameplay.textContent = 'Total Gameplay: 15-20 Minute';
+                      gamePackage.textContent = 'gamePackage (5 Card) for ₹50';
+                      cost.textContent = '15-20 Minutes/Card';
+                      accessories.textContent = 'Gamepad, Keyboard, and Mouse';
+                      steering.textContent = 'Steering Wheel: ₹10/session';
+                      extra.textContent = 'Physica or virtual card';
+                    } else {
+                      paymentAmountDisplay.textContent = '';
                     }
-                  
+                  }
                   // Initial update based on selectedPlan
                   updatePaymentDetails(selectedPlan);
 
@@ -671,28 +652,6 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
           Top10ButtonClicked();
 
           // Registering Form page end 
-
-          // expiry date calculation
-          function calculateExpiryDate(startDateStr, validityDaysStr) {
-            const [startDay, startMonth, startYear] = startDateStr.split('/').map(Number);
-            const startDate = new Date(startYear, startMonth - 1, startDay);
-            const validityDays = parseInt(validityDaysStr, 10);
-      
-            if (isNaN(startDate.getTime()) || isNaN(validityDays)) {
-              return "Invalid input";
-            }
-      
-            const expiryDate = new Date(startDate);
-            expiryDate.setDate(startDate.getDate() + validityDays);
-      
-            const expiryDay = String(expiryDate.getDate()).padStart(2, '0');
-            const expiryMonth = String(expiryDate.getMonth() + 1).padStart(2, '0');
-            const expiryYear = expiryDate.getFullYear();
-      
-            return `${expiryDay}/${expiryMonth}/${expiryYear}`;
-          }
-      
-          // expiry date calculation end
 
           // Script for Registering in firestore
 
