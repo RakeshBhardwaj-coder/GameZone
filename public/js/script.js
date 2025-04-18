@@ -589,7 +589,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
                       validity.textContent = '10';
                       price.textContent = '250'+'₹'
-                      totalHour.textContent =  validity.textContent +"Hours";
+                      totalHour.textContent =  validity.textContent +" Hr";
                       gameplay.textContent = 'Total Gameplay: 5 Hours';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
                       cost.textContent = '30 Minutes/vCard';
@@ -599,7 +599,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     } else if (selectedPlan === 'Silver') {
                       paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
                       validity.textContent = '15';
-                      totalHour.textContent =  validity.textContent +"Hours";
+                      totalHour.textContent =  validity.textContent +" Hr";
                       price.textContent = '300'+'₹'
 
 
@@ -612,7 +612,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     } else if (selectedPlan === 'Gold') {
                       paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
                       validity.textContent = '365';
-                      totalHour.textContent =  validity.textContent +"Hours";
+                      totalHour.textContent =  validity.textContent +" Hour";
                       price.textContent = '400'+'₹'
 
 
@@ -626,7 +626,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     } else if (selectedPlan === 'Birthdayspecial') {
                       paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
                       validity.textContent = '1';
-                      totalHour.textContent =  validity.textContent +"Hours";
+                      totalHour.textContent =  validity.textContent +" Hr";
                       price.textContent = '100'+'₹'
 
                       gameplay.textContent = 'Total Gameplay: 15-20 Minute';
