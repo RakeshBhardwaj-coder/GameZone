@@ -576,7 +576,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     let paymentAmountDisplay = document.getElementById('pay-amount-show');
                     let totalHour = document.getElementById('totalHour');
                     let price = document.getElementById('price');
-
+                    let expiryDate = document.getElementById('expiryDate');
                     let validity = document.getElementById('validity');
                     let gameplay = document.getElementById('gameplay');
                     let gamePackage = document.getElementById('package');
@@ -588,8 +588,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     if (selectedPlan === 'Bronze') {
                       paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
                       validity.textContent = '10';
-                      price.textContent = '250'+'₹'
+                      price.textContent = '250'+'₹';
                       totalHour.textContent =  validity.textContent +" Hr";
+                      expiryDate.textContent = calculateExpiryDate('startDate','10');
                       gameplay.textContent = 'Total Gameplay: 5 Hours';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
                       cost.textContent = '30 Minutes/vCard';
@@ -661,6 +662,28 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
           // Registering Form page end 
 
+           // Calculating Expiry Date
+      function calculateExpiryDate(startDateStr, validityDaysStr) {
+        const [startDay, startMonth, startYear] = startDateStr.split('/').map(Number);
+        const startDate = new Date(startYear, startMonth - 1, startDay);
+        const validityDays = parseInt(validityDaysStr, 10);
+  
+        if (isNaN(startDate.getTime()) || isNaN(validityDays)) {
+          return "Invalid input";
+        }
+  
+        const expiryDate = new Date(startDate);
+        expiryDate.setDate(startDate.getDate() + validityDays);
+  
+        const expiryDay = String(expiryDate.getDate()).padStart(2, '0');
+        const expiryMonth = String(expiryDate.getMonth() + 1).padStart(2, '0');
+        const expiryYear = expiryDate.getFullYear();
+  
+        return `${expiryDay}/${expiryMonth}/${expiryYear}`;
+      }
+  
+      // Calculating Expiry Date end
+
           // Script for Registering in firestore
 
 
@@ -683,7 +706,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             const dob = document.getElementById("dateOfBirth").value; // Get DOB from input field
             const gender = document.getElementById("gender").value; // Get gender from input field
             const plan = document.getElementById("planSelection").value; // Get plan from input field
-
+            // const startingDate = documentId.getElementById("startDate").value;
             await addAdditionalUserDataToFirestore(userId, dob, gender, plan);
 
           }
@@ -695,6 +718,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 dob: capitalizeFirstLetter(dob),
                 gender: capitalizeFirstLetter(gender),
                 plan: capitalizeFirstLetter(plan),
+                startDate: capitalizeFirstLetter("18/04/2025")
+                // startDate: capitalizeFirstLetter(planStartingDate)
               });
               const loadingBar = document.querySelector(".loadingBar");
               console.log("Additional user data added to Firestore.");
@@ -1040,6 +1065,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
       });
       // login page end
+
+     
 
 
       // script for signup page button 
