@@ -588,9 +588,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     if (selectedPlan === 'Bronze') {
                       paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
                       validity.textContent = '10';
-                      price.textContent = '250'+'₹';
-                      totalHour.textContent =  validity.textContent +" Hr";
-                      expiryDate.textContent = calculateExpiryDate('startDate','10');
+                      price.textContent = '250' + '₹';
+                      totalHour.textContent = validity.textContent + " Hr";
+                      expiryDate.textContent = calculateExpiryDate('startDate', '10');
                       gameplay.textContent = 'Total Gameplay: 5 Hours';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
                       cost.textContent = '30 Minutes/vCard';
@@ -600,8 +600,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     } else if (selectedPlan === 'Silver') {
                       paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
                       validity.textContent = '15';
-                      totalHour.textContent =  validity.textContent +" Hr";
-                      price.textContent = '300'+'₹'
+                      totalHour.textContent = validity.textContent + " Hr";
+                      price.textContent = '300' + '₹'
 
 
                       gameplay.textContent = 'Total Gameplay: 8 Hours';
@@ -613,8 +613,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     } else if (selectedPlan === 'Gold') {
                       paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
                       validity.textContent = '365';
-                      totalHour.textContent =  validity.textContent +" Hour";
-                      price.textContent = '400'+'₹'
+                      totalHour.textContent = validity.textContent + " Hour";
+                      price.textContent = '400' + '₹'
 
 
 
@@ -627,8 +627,8 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     } else if (selectedPlan === 'Birthdayspecial') {
                       paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
                       validity.textContent = '1';
-                      totalHour.textContent =  validity.textContent +" Hr";
-                      price.textContent = '100'+'₹'
+                      totalHour.textContent = validity.textContent + " Hr";
+                      price.textContent = '100' + '₹'
 
                       gameplay.textContent = 'Total Gameplay: 15-20 Minute';
                       gamePackage.textContent = 'gamePackage (5 Card) for ₹50';
@@ -662,27 +662,27 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
           // Registering Form page end 
 
-           // Calculating Expiry Date
-      function calculateExpiryDate(startDateStr, validityDaysStr) {
-        const [startDay, startMonth, startYear] = startDateStr.split('/').map(Number);
-        const startDate = new Date(startYear, startMonth - 1, startDay);
-        const validityDays = parseInt(validityDaysStr, 10);
-  
-        if (isNaN(startDate.getTime()) || isNaN(validityDays)) {
-          return "Invalid input";
-        }
-  
-        const expiryDate = new Date(startDate);
-        expiryDate.setDate(startDate.getDate() + validityDays);
-  
-        const expiryDay = String(expiryDate.getDate()).padStart(2, '0');
-        const expiryMonth = String(expiryDate.getMonth() + 1).padStart(2, '0');
-        const expiryYear = expiryDate.getFullYear();
-  
-        return `${expiryDay}/${expiryMonth}/${expiryYear}`;
-      }
-  
-      // Calculating Expiry Date end
+          // Calculating Expiry Date
+          function calculateExpiryDate(startDateStr, validityDaysStr) {
+            const [startDay, startMonth, startYear] = startDateStr.split('/').map(Number);
+            const startDate = new Date(startYear, startMonth - 1, startDay);
+            const validityDays = parseInt(validityDaysStr, 10);
+
+            if (isNaN(startDate.getTime()) || isNaN(validityDays)) {
+              return "Invalid input";
+            }
+
+            const expiryDate = new Date(startDate);
+            expiryDate.setDate(startDate.getDate() + validityDays);
+
+            const expiryDay = String(expiryDate.getDate()).padStart(2, '0');
+            const expiryMonth = String(expiryDate.getMonth() + 1).padStart(2, '0');
+            const expiryYear = expiryDate.getFullYear();
+
+            return `${expiryDay}/${expiryMonth}/${expiryYear}`;
+          }
+
+          // Calculating Expiry Date end
 
           // Script for Registering in firestore
 
@@ -706,28 +706,26 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             const dob = document.getElementById("dateOfBirth").value; // Get DOB from input field
             const gender = document.getElementById("gender").value; // Get gender from input field
             const plan = document.getElementById("planSelection").value; // Get plan from input field
-            // const startingDate = documentId.getElementById("startDate").value;
-            await addAdditionalUserDataToFirestore(userId, dob, gender, plan);
+            const startDate = document.getElementById("startDate").value;
+
+            await addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate);
 
           }
 
-          async function addAdditionalUserDataToFirestore(userId, dob, gender, plan) {
+          async function addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate) {
 
             try {
               await updateDoc(doc(db, "users", userId), {
                 dob: capitalizeFirstLetter(dob),
                 gender: capitalizeFirstLetter(gender),
                 plan: capitalizeFirstLetter(plan),
-                startDate: capitalizeFirstLetter("18/04/2025")
-                // startDate: capitalizeFirstLetter(planStartingDate)
+                startDate: capitalizeFirstLetter(startDate)
               });
               const loadingBar = document.querySelector(".loadingBar");
               console.log("Additional user data added to Firestore.");
               document.getElementById('registration-form').style.display = 'none'; // Hide registration form
               document.getElementById('paymentForm').style.display = 'block';
               loadingBar.style.display = "none"; // hide loadingbar 
-
-
             } catch (error) {
               console.error("Error adding additional user data:", error);
               // Handle error (e.g., display an error message)
@@ -952,7 +950,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             document.getElementById('backPageBtn').addEventListener('click', function () {
               document.getElementById('place-for-user-signup').style.display = 'block';
               document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-             
+
 
             });
             // back to login page end
@@ -1028,12 +1026,12 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                   console.log("User logged in:", user);
                   // window.location.href = "index.html"; // Redirect after successful login
 
-                fetch('registerPage/plans.html')
-                .then(response => response.text())
-                .then(data => {
-                  ShowPlans(data);
+                  fetch('registerPage/plans.html')
+                    .then(response => response.text())
+                    .then(data => {
+                      ShowPlans(data);
 
-                });
+                    });
 
 
                 })
@@ -1066,7 +1064,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       });
       // login page end
 
-     
+
 
 
       // script for signup page button 
@@ -1165,18 +1163,18 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
           })
           .then(() => {
             alertText.innerHTML = "Sign up successful! Now Login";
-         
-fetch('account/login.html')
-.then(response => response.text())
-.then(data => {
-  document.getElementById('place-for-user-login').innerHTML = data;
-  document.getElementById('place-for-user-signup').style.display = 'none';
-  document.getElementById('place-for-user-login').style.display = 'block';
+
+            fetch('account/login.html')
+              .then(response => response.text())
+              .then(data => {
+                document.getElementById('place-for-user-login').innerHTML = data;
+                document.getElementById('place-for-user-signup').style.display = 'none';
+                document.getElementById('place-for-user-login').style.display = 'block';
 
 
 
-});
-                   
+              });
+
             // open login page
             // window.location.href = "index.html"; // Redirect or show success message
           })
@@ -1189,7 +1187,7 @@ fetch('account/login.html')
             loadingBar.style.display = "none";
           });
       });
-     
+
 
       // Function to save user data to Firestore
       async function saveUserDataToFirestore(user) {
