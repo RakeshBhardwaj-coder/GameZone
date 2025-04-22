@@ -100,7 +100,7 @@
 
         /* online offlien dot end */
        
-        #dob, #age {
+        #dob, #age{
     display: inline-block; /* display elements in a line */
     margin-right: 10px;    /* add some horizontal space between them */
 }
@@ -187,6 +187,47 @@
             color: #f30000;
         }
 
+        .expiry-container {
+  position: relative; /* Needed for absolute positioning of extraDetails */
+}
+
+.extraDetails {
+  position: absolute;
+  top: -200%; /* Position below the "Expire On" section */
+  left: 50%;
+  transform: translateX(-50%); /* Center the details horizontally */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Ensure it appears above other elements */
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth transition */
+  min-width: 150px; /* Adjust as needed */
+  text-align: left;
+  font-size: x-small;
+}
+
+.expiry-container:hover .extraDetails {
+  opacity: 1; /* Show on hover */
+  visibility: visible; /* Show on hover */
+}
+p{
+    margin: 10px 2px;
+}
+#paidAmount{
+    margin-top: 250px;
+}
+
+.extraDetails p {
+  margin-bottom: 8px; /* Space out the details */
+}
+.extraDetails strong{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
         
 
 
@@ -276,11 +317,16 @@
 
                     <div id="details">
                         <p id="email"><strong>Email:</strong> email@gmail.com</p>
+                        <p id="gender"><strong>Gender:</strong> N/A</p>
+
                         <div>
                             <p id="dob"><strong>Dob:</strong> dd/MM/yyyy </p> 
                             <p id="age"><strong>Age:</strong> N/A</p> 
                         </div>
-                        <p id="gender"><strong>Gender:</strong> N/A</p>
+                        
+                            <p id="payingAmount"><strong>Paying Amount:</strong> N/A</p>
+
+                       
                     </div>
                 </div>
             </div>
@@ -291,10 +337,11 @@
                 <div class="expiry-container">
                     <strong>Expire On</strong>
                     <p id="expiryDate">dd/MM/yyyy</p>
-                    <div class="expiry-details">
-                      <p id="expiry-time">Time: HH:MM AM/PM</p>
-                      <p id="time-zone">Time Zone: IST</p>
-                      <p id="days-remaining">X Days Remaining</p>
+                   
+                    <div class="extraDetails">
+                      <p id="startDate"><strong>Start Date:</strong> dd/MM/yyyy </p>
+                      <p id="planForDays"><strong>Plan For days</strong> X days </p>
+                      <p id="remainingDays"><strong>Remaining</strong> X days</p>
                       </div>
                   </div>
                 <div><strong>Left</strong>

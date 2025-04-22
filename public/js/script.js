@@ -660,7 +660,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
           // Registering Form page end 
 
-       
+
 
           // Script for Registering in firestore
 
@@ -686,22 +686,38 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             const plan = document.getElementById("planSelection").value; // Get plan from input field
             const startDate = document.getElementById("startDate").value;
             var planForDays;
-            if(plan=='Bronze')
-              planForDays = 10
-            else if(plan=='Silver')
-              planForDays = 20
-            else if(plan=='Gold')
-              planForDays = 30
-            else if(plan=='Birthdayspecial')
-              planForDays = 1
-            else
+            var paidAmount;
+            var isPaid = false;
+            if (plan == 'Bronze') {
+              planForDays = 10;
+              paidAmount = 150;
+            }
+
+            else if (plan == 'Silver') {
+              planForDays = 15;
+              paidAmount = 300;
+            }
+            else if (plan == 'Gold') {
+              planForDays = 365;
+              paidAmount = 400;
+            }
+
+            else if (plan == 'Birthdayspecial') {
+              planForDays = 1;
+              paidAmount = 50;
+            }
+
+            else {
               planForDays = 0
+              paidAmount = 0;
 
-            await addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate, planForDays);
 
+            }
+
+            await addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate, planForDays, paidAmount, isPaid);
           }
 
-          async function addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate, planForDays) {
+          async function addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate, planForDays, paidAmount, isPaid) {
 
             try {
               await updateDoc(doc(db, "users", userId), {
@@ -709,7 +725,9 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                 gender: capitalizeFirstLetter(gender),
                 plan: capitalizeFirstLetter(plan),
                 startDate: FormatDate(startDate),
-                planForDays: planForDays
+                planForDays: planForDays,
+                paidAmount: paidAmount,
+                isPaid: isPaid
               });
               const loadingBar = document.querySelector(".loadingBar");
               console.log("Additional user data added to Firestore.");
@@ -865,18 +883,12 @@ document.getElementById('userProfile').addEventListener('click', function (event
 
 async function displayUserData(userId) {
   // show extra details when hover on expiryDate
-  const extraDetailsDiv = document.getElementById('extraDetails');
-  const expiryOnElement = document.querySelector('#container strong');
-  const containerDiv = document.getElementById('container');
 
-  function showExtraDetails() {
-    extraDetailsDiv.style.display = 'block';
-    containerDiv.insertBefore(extraDetailsDiv, expiryOnElement);
-  }
-  expiryOnElement.addEventListener('mouseover', showExtraDetails);
+
+
 
   // show extra details when hover on expiryDate end
-  
+
   function setUserStatus(isOnline) {
     const dot = document.getElementById('dot');
     const activeText = document.getElementById('active');
@@ -891,7 +903,7 @@ async function displayUserData(userId) {
   }
 
   try {
-    
+
 
     const userDocRef = doc(db, "users", userId); // Corrected: use doc() from firebase/firestore
 
@@ -908,8 +920,14 @@ async function displayUserData(userId) {
       document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender}`;
       document.getElementById("dob").innerHTML = `<strong>DOB:</strong> ${userData.dob}`;
       document.getElementById("age").innerHTML = `<strong>Age:</strong> ${CalculateAge(userData.dob)} yr` || ' N/A';
+      document.getElementById("payingAmount").innerHTML = `<strong>Paying Amount:</strong> ${userData.paidAmount}₹`;
+
       document.getElementById("totalHour").innerHTML = ` ${userData.totalHour} Hr`;
       document.getElementById("expiryDate").innerHTML = `${calculateExpiryDate(userData.startDate, userData.planForDays)}`;
+      document.getElementById("startDate").innerHTML = `<strong>Start Date:</strong> ${userData.startDate}`
+      document.getElementById("planForDays").innerHTML = `<strong>Plan For Days:</strong> ${userData.planForDays}`
+      document.getElementById("remainingDays").innerHTML = `<strong>Remaining Days:</strong> ${calculateRemainingDays(userData.startDate, userData.planForDays)}`
+
       document.getElementById("leftHour").innerHTML = `${userData.leftHour} Hr`;
       document.getElementById("usedHour").innerHTML = `${userData.usedHour} Hr`;
       document.getElementById("profilePlan").textContent = `Plan: ${userData.plan || "N/A"}`;
@@ -926,6 +944,8 @@ async function displayUserData(userId) {
   }
 }
 
+
+
 // calculating Age
 function CalculateAge(dateString) {
   // Parse the date string.
@@ -940,37 +960,65 @@ function CalculateAge(dateString) {
   let age = today.getFullYear() - birthDate.getFullYear();
   const m = today.getMonth() - birthDate.getMonth();
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
+    age--;
   }
   return age;
 }
 
 // calculating Age end
 
-   // Calculating Expiry Date
-   function calculateExpiryDate(startDateStr, planForDays) {
-    // Split the start date string into day, month, and year
-    const [day, month, year] = startDateStr.split('/').map(Number);
+// Calculating Expiry Date
+function calculateExpiryDate(startDateStr, planForDays) {
+  // Split the start date string into day, month, and year
+  const [day, month, year] = startDateStr.split('/').map(Number);
 
-    // Create a new Date object (Note: JavaScript months are 0-indexed)
-    const startDate = new Date(year, month - 1, day);
-  
-    // Calculate the expiry date in milliseconds
-    const expiryDateMs = startDate.getTime() + (planForDays * 24 * 60 * 60 * 1000);
-  
-    // Create a new Date object for the expiry date
-    const expiryDate = new Date(expiryDateMs);
-  
-    // Extract the day, month, and year from the expiry date
-    const expiryDay = String(expiryDate.getDate()).padStart(2, '0');
-    const expiryMonth = String(expiryDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, so add 1
-    const expiryYear = expiryDate.getFullYear();
-  
-    // Format the expiry date back into "dd/mm/yyyy" format
-    return `${expiryDay}/${expiryMonth}/${expiryYear}`;
-  }
+  // Create a new Date object (Note: JavaScript months are 0-indexed)
+  const startDate = new Date(year, month - 1, day);
 
-  // Calculating Expiry Date end
+  // Calculate the expiry date in milliseconds
+  const expiryDateMs = startDate.getTime() + (planForDays * 24 * 60 * 60 * 1000);
+
+  // Create a new Date object for the expiry date
+  const expiryDate = new Date(expiryDateMs);
+
+  // Extract the day, month, and year from the expiry date
+  const expiryDay = String(expiryDate.getDate()).padStart(2, '0');
+  const expiryMonth = String(expiryDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, so add 1
+  const expiryYear = expiryDate.getFullYear();
+
+  // Format the expiry date back into "dd/mm/yyyy" format
+  return `${expiryDay}/${expiryMonth}/${expiryYear}`;
+}
+
+// Calculating Expiry Date end
+
+// Calculate Remaining Date
+function calculateRemainingDays(startDate, planforDays) {
+  // Split the start date string into day, month, and year
+  const [day, month, year] = startDate.split('/').map(Number);
+
+  // Create a Date object from the start date (month is 0-indexed)
+  const startDateObject = new Date(year, month - 1, day);
+
+  // Calculate the end date by adding the planned number of days
+  const endDateObject = new Date(startDateObject);
+  endDateObject.setDate(startDateObject.getDate() + planforDays);
+
+  // Get the current date
+  const currentDateObject = new Date();
+
+  // Calculate the difference between the end date and the current date in milliseconds
+  const timeDifference = endDateObject.getTime() - currentDateObject.getTime();
+
+  // Convert the time difference to days
+  const remainingDays = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+  return remainingDays;
+}
+
+
+// Calculate Remaining Date end
+
 // user Profile Page Firebase Data Script End
 
 // user-login page
@@ -1138,35 +1186,38 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         signupContainer.style.display = "none";
         loadingBar.style.display = "block";
         alertText.textContent = "";
+     
 
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("User created:", user);
-            return sendEmailVerification(user);
-          })
-          .then(() => {
-            alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
-            // Start polling for verification
-            startVerificationPolling();
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error("Verification error:", errorCode, errorMessage);
-            if (errorCode === "auth/email-already-in-use") {
-              alertText.innerHTML = "Email already exists. Please log in.";
-            } else {
-              alertText.innerHTML = "Please Provide Valid Email Address!";
-            }
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              console.log("User created:", user);
+              return sendEmailVerification(user);
+            })
+            .then(() => {
+              alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
+              // Start polling for verification
+              startVerificationPolling();
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.error("Verification error:", errorCode, errorMessage);
+              if (errorCode === "auth/email-already-in-use") {
+                alertText.innerHTML = "Email already exists. Please log in.";
+              } else {
+                alertText.innerHTML = "Please Provide Valid Email Address!";
+              }
 
 
-            signupContainer.style.display = "block";
-          })
-          .finally(() => {
-            // signupContainer.style.display = "block";
-            loadingBar.style.display = "none";
-          });
+              signupContainer.style.display = "block";
+            })
+            .finally(() => {
+              // signupContainer.style.display = "block";
+              loadingBar.style.display = "none";
+            });
+      
+
       });
 
       function startVerificationPolling() {
