@@ -1215,45 +1215,60 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       const loginContainer = document.querySelector(".login-container");
       const alertText = document.getElementById("alert-text");
       let emailVerified = false; // Track email verification status
-    
+      let isTemp;
       verifyEmailBtn.addEventListener("click", () => {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value; // You might not need this here, but it's in your original code
+
 
         // Show loading indicator
         signupContainer.style.display = "none";
         loadingBar.style.display = "block";
         alertText.textContent = "";
 
+        try {
+          if (!email.endsWith("@gmail.com")) {
+            isTemp = true;
+            throw new Error("Temp Mail not allowed, Sorry!!!");
+          }else{
+            isTemp = false;
+          }
 
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("User created:", user);
-            return sendEmailVerification(user);
-          })
-          .then(() => {
-            alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
-            // Start polling for verification
-            startVerificationPolling();
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error("Verification error:", errorCode, errorMessage);
-            if (errorCode === "auth/email-already-in-use") {
-              alertText.innerHTML = "Email already exists. Please log in.";
-            } else {
-              alertText.innerHTML = "Please Provide Valid Email Address!";
-            }
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              console.log("User created:", user);
+              return sendEmailVerification(user);
+            })
+            .then(() => {
+              alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
+              // Start polling for verification
+              startVerificationPolling();
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.error("Verification error:", errorCode, errorMessage);
+              if (errorCode === "auth/email-already-in-use") {
+                alertText.innerHTML = "Email already exists. Please log in.";
+              } else {
+                alertText.innerHTML = "Please Provide Valid Email Address!";
+              }
 
 
-            signupContainer.style.display = "block";
-          })
-          .finally(() => {
-            // signupContainer.style.display = "block";
-            loadingBar.style.display = "none";
-          });
+              signupContainer.style.display = "block";
+            })
+            .finally(() => {
+              // signupContainer.style.display = "block";
+              loadingBar.style.display = "none";
+            });
+        } catch (error) {
+          alertText.textContent = error.message;
+          signupContainer.style.display = "block";
+          loadingBar.style.display = "none";
+        }
+
+
 
 
       });
@@ -1287,8 +1302,15 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
       signupForm.addEventListener("submit", (event) => {
         event.preventDefault();
+console.log("isTemp : "+isTemp);
+        if(isTemp){
+          alertText.innerHTML = "Temp mail not allowed, Sorry!!!";
+          signupContainer.style.display = "block";
+          loadingBar.style.display = "none";
+          return;
 
-        if (!emailVerified) {
+        }
+        if (!emailVerified && !isTemp) {
           updateButtonState(false)
           alertText.innerHTML = "Please verify your email first!";
           return;
