@@ -1230,7 +1230,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
           if (!email.endsWith("@gmail.com")) {
             isTemp = true;
             throw new Error("Temp Mail not allowed, Sorry!!!");
-          }else{
+          } else {
             isTemp = false;
           }
 
@@ -1302,8 +1302,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
       signupForm.addEventListener("submit", (event) => {
         event.preventDefault();
-console.log("isTemp : "+isTemp);
-        if(isTemp){
+        console.log("isTemp : " + isTemp);
+        if (isTemp) {
           alertText.innerHTML = "Temp mail not allowed, Sorry!!!";
           signupContainer.style.display = "block";
           loadingBar.style.display = "none";
