@@ -1178,6 +1178,25 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       // script for signup page button 
 
       // Verify and Sign up button Hide/Unhide fun 
+
+      function updateEmail() {
+        const textField = document.getElementById('email'); // Replace 'yourTextFieldId'
+        const alertText = document.getElementById('aleart-text')
+        if (textField) {
+          textField.addEventListener('input', function () {
+            console.log('Text field updated:', textField.value);
+            if(email.endsWith("@gmail.com")){
+              alertText.innerHTML = "Perfect, You can verify your email.";
+            }else{
+              alertText.innerHTML = "Sorry!!!, Email is not Valid or Temporary.";
+
+            }
+            // You can perform other actions here whenever the text changes
+          });
+        } else {
+          console.error('Text field with ID "yourTextFieldId" not found.');
+        }
+      }
       function updateButtonState(emailVerified) {
         const verifyEmailBtn = document.getElementById("verifyEmailBtn");
         const signUpBtn = document.getElementById("signUpBtn");
@@ -1187,17 +1206,17 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
           signUpBtn.classList.remove('dull-btn');
           signUpBtn.disabled = false; // Enable the button
 
-          verifyEmailBtn.classList.remove('active-btn');
-          verifyEmailBtn.classList.add('dull-btn');
-          verifyEmailBtn.disabled = true; // Disable the button
+          // verifyEmailBtn.classList.remove('active-btn');
+          // verifyEmailBtn.classList.add('dull-btn');
+          // verifyEmailBtn.disabled = true; // Disable the button
 
 
 
 
         } else {
-          verifyEmailBtn.classList.add('active-btn');
-          verifyEmailBtn.classList.remove('dull-btn');
-          verifyEmailBtn.disabled = false; // Enable the button
+          // verifyEmailBtn.classList.add('active-btn');
+          // verifyEmailBtn.classList.remove('dull-btn');
+          // verifyEmailBtn.disabled = false; // Enable the button
 
           signUpBtn.classList.remove('active-btn');
           signUpBtn.classList.add('dull-btn');
@@ -1215,45 +1234,68 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       const loginContainer = document.querySelector(".login-container");
       const alertText = document.getElementById("alert-text");
       let emailVerified = false; // Track email verification status
-    
-      verifyEmailBtn.addEventListener("click", () => {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value; // You might not need this here, but it's in your original code
-
-        // Show loading indicator
-        signupContainer.style.display = "none";
-        loadingBar.style.display = "block";
-        alertText.textContent = "";
 
 
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("User created:", user);
-            return sendEmailVerification(user);
-          })
-          .then(() => {
-            alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
-            // Start polling for verification
-            startVerificationPolling();
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error("Verification error:", errorCode, errorMessage);
-            if (errorCode === "auth/email-already-in-use") {
-              alertText.innerHTML = "Email already exists. Please log in.";
-            } else {
-              alertText.innerHTML = "Please Provide Valid Email Address!";
+      verifyEmailBtn.addEventListener("submit", () => {
+          // updateEmail(); //checking email is Temporary or not.
+
+          const textField = document.getElementById('email'); // Replace 'yourTextFieldId'
+        const alertText = document.getElementById('alert-text')
+        if (textField) {
+          textField.addEventListener('input', function () {
+            console.log('Text field updated:', textField.value);
+            if(email.endsWith("@gmail.com")){
+              alertText.innerHTML = "Perfect, You can verify your email.";
+               signupContainer.style.display = "block";
+            }else{
+              alertText.innerHTML = "Sorry!!!, Email is not Valid or Temporary.";
+              signupContainer.style.display = "block";
+
+
             }
-
-
-            signupContainer.style.display = "block";
-          })
-          .finally(() => {
-            // signupContainer.style.display = "block";
-            loadingBar.style.display = "none";
+            // You can perform other actions here whenever the text changes
           });
+        } else {
+          console.error('Text field with ID "yourTextFieldId" not found.');
+        }
+
+        // const email = document.getElementById("email").value;
+        // const password = document.getElementById("password").value; // You might not need this here, but it's in your original code
+
+        // // Show loading indicator
+        // signupContainer.style.display = "none";
+        // loadingBar.style.display = "block";
+        // alertText.textContent = "";
+
+
+        // createUserWithEmailAndPassword(auth, email, password)
+        //   .then((userCredential) => {
+        //     const user = userCredential.user;
+        //     console.log("User created:", user);
+        //     return sendEmailVerification(user);
+        //   })
+        //   .then(() => {
+        //     alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
+        //     // Start polling for verification
+        //     startVerificationPolling();
+        //   })
+        //   .catch((error) => {
+        //     const errorCode = error.code;
+        //     const errorMessage = error.message;
+        //     console.error("Verification error:", errorCode, errorMessage);
+        //     if (errorCode === "auth/email-already-in-use") {
+        //       alertText.innerHTML = "Email already exists. Please log in.";
+        //     } else {
+        //       alertText.innerHTML = "Please Provide Valid Email Address!";
+        //     }
+
+
+        //     signupContainer.style.display = "block";
+        //   })
+        //   .finally(() => {
+        //     // signupContainer.style.display = "block";
+        //     loadingBar.style.display = "none";
+        //   });
 
 
       });
@@ -1285,92 +1327,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         }, 300000); // Stop polling after 5 minutes
       }
 
-      signupForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        if (!emailVerified) {
-          updateButtonState(false)
-          alertText.innerHTML = "Please verify your email first!";
-          return;
-        }
-
-        const username = document.getElementById("username").value;
-
-        // Show loading indicator
-        signupContainer.style.display = "none";
-        loadingBar.style.display = "block";
-        alertText.textContent = "";
-
-        updateProfile(auth.currentUser, { displayName: username })
-          .then(() => {
-            console.log("Username updated");
-            return saveUserDataToFirestore(auth.currentUser);
-          })
-          .then(() => {
-            alertText.innerHTML = "Sign up successful! Now Login";
-
-            fetch('account/login.html')
-              .then(response => response.text())
-              .then(data => {
-                ShowUserLogin(data);
-                // handle forgot page in login page after submit signup page
-                document.getElementById('forgotPageBtn').addEventListener('click', function (event) {
-                  event.preventDefault();
-                  fetch('account/forgotPassword.html')
-                    .then(response => response.text())
-                    .then(data => {
-                      ShowUserForgetPassword(data);
 
 
-                      // handle back to login page in forgot page  after submit signup page
-                      document.getElementById('backPageBtn').addEventListener('click', function () {
-                        document.getElementById('place-for-user-login').style.display = 'block';
-                        document.getElementById('place-for-user-forgotPassword').style.display = 'none';
-                      });
-                    });
-
-                });
-
-
-                // back to signup Page
-                document.getElementById('switchPageBtn').addEventListener('click', function () {
-
-                  document.getElementById('place-for-user-login').style.display = 'none';
-                  document.getElementById('place-for-user-signup').style.display = 'block';
-                });
-                // back to signup page end
-
-              });
-
-            // open login page
-            // window.location.href = "index.html"; // Redirect or show success message
-          })
-          .catch((error) => {
-            console.error("Sign up error:", error);
-            alertText.innerHTML = "Sign up failed: " + error.message;
-          })
-          .finally(() => {
-            // signupContainer.style.display = "block";
-            loadingBar.style.display = "none";
-          });
-      });
-
-
-      // Function to save user data to Firestore
-      async function saveUserDataToFirestore(user) {
-        try {
-          const username = document.getElementById("username").value;
-          await setDoc(doc(db, "users", user.uid), {
-            username: capitalizeFirstLetter(username),
-            email: capitalizeFirstLetter(user.email),
-            uid: user.uid,
-          });
-          console.log("User data saved to Firestore.");
-        } catch (error) {
-          console.error("Error saving user data:", error);
-          alertText.textContent = "Error saving user data.";
-        }
-      }
 
       // script for signup page button end
 
