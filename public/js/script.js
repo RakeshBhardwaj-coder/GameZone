@@ -1215,6 +1215,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       const loginContainer = document.querySelector(".login-container");
       const alertText = document.getElementById("alert-text");
       let emailVerified = false; // Track email verification status
+    
       verifyEmailBtn.addEventListener("click", () => {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value; // You might not need this here, but it's in your original code
