@@ -804,7 +804,19 @@ function ShowUserSignUp(data) {
   hideAllPlaces();
   document.getElementById('place-for-user-signup').innerHTML = data;
   document.getElementById('place-for-user-signup').style.display = 'block';
+}
 
+function ShowUserLogin(data) {
+  hideAllPlaces();
+  document.getElementById('place-for-user-login').innerHTML = data;
+  document.getElementById('place-for-user-login').style.display = 'block';
+
+}
+
+function ShowUserForgetPassword(data) {
+  hideAllPlaces();
+  document.getElementById('place-for-user-forgotPassword').innerHTML = data;
+  document.getElementById('place-for-user-forgotPassword').style.display = 'block';
 }
 function ShowUserProfile(data) {
   hideAllPlaces();
@@ -1073,9 +1085,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         fetch('account/login.html')
           .then(response => response.text())
           .then(data => {
-            document.getElementById('place-for-user-login').innerHTML = data;
-            document.getElementById('place-for-user-login').style.display = 'block';
-            document.getElementById('place-for-user-signup').style.display = 'none';
+            ShowUserLogin(data);
 
             // handle forgot page in login page by signup page
             document.getElementById('forgotPageBtn').addEventListener('click', function (event) {
@@ -1083,9 +1093,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
               fetch('account/forgotPassword.html')
                 .then(response => response.text())
                 .then(data => {
-                  document.getElementById('place-for-user-forgotPassword').innerHTML = data;
-                  document.getElementById('place-for-user-login').style.display = 'none';
-                  document.getElementById('place-for-user-forgotPassword').style.display = 'block';
+                  ShowUserForgetPassword(data);
 
 
                   // handle back to login page in forgot page by signup page
@@ -1167,17 +1175,46 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       // login page end
 
 
-
-
       // script for signup page button 
+
+      // Verify and Sign up button Hide/Unhide fun 
+      function updateButtonState(emailVerified) {
+        const verifyEmailBtn = document.getElementById("verifyEmailBtn");
+        const signUpBtn = document.getElementById("signUpBtn");
+
+        if (emailVerified) {
+          signUpBtn.classList.add('active-btn');
+          signUpBtn.classList.remove('dull-btn');
+          signUpBtn.disabled = false; // Enable the button
+
+          verifyEmailBtn.classList.remove('active-btn');
+          verifyEmailBtn.classList.add('dull-btn');
+          verifyEmailBtn.disabled = true; // Disable the button
+
+
+
+
+        } else {
+          verifyEmailBtn.classList.add('active-btn');
+          verifyEmailBtn.classList.remove('dull-btn');
+          verifyEmailBtn.disabled = false; // Enable the button
+
+          signUpBtn.classList.remove('active-btn');
+          signUpBtn.classList.add('dull-btn');
+          signUpBtn.disabled = true; // Diable the button
+
+        }
+      }
+
+      // Verify and Sign up button Hide/Unhide fun end
       const verifyEmailBtn = document.getElementById("verifyEmailBtn");
       const signupForm = document.getElementById("signupForm");
+      const signUpBtn = document.getElementById("signUpBtn");
       const loadingBar = document.querySelector(".loadingBar");
       const signupContainer = document.querySelector(".signup-container");
       const loginContainer = document.querySelector(".login-container");
       const alertText = document.getElementById("alert-text");
       let emailVerified = false; // Track email verification status
-
       verifyEmailBtn.addEventListener("click", () => {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value; // You might not need this here, but it's in your original code
@@ -1186,37 +1223,37 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         signupContainer.style.display = "none";
         loadingBar.style.display = "block";
         alertText.textContent = "";
-     
-
-          createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-              const user = userCredential.user;
-              console.log("User created:", user);
-              return sendEmailVerification(user);
-            })
-            .then(() => {
-              alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
-              // Start polling for verification
-              startVerificationPolling();
-            })
-            .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              console.error("Verification error:", errorCode, errorMessage);
-              if (errorCode === "auth/email-already-in-use") {
-                alertText.innerHTML = "Email already exists. Please log in.";
-              } else {
-                alertText.innerHTML = "Please Provide Valid Email Address!";
-              }
 
 
-              signupContainer.style.display = "block";
-            })
-            .finally(() => {
-              // signupContainer.style.display = "block";
-              loadingBar.style.display = "none";
-            });
-      
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("User created:", user);
+            return sendEmailVerification(user);
+          })
+          .then(() => {
+            alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
+            // Start polling for verification
+            startVerificationPolling();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Verification error:", errorCode, errorMessage);
+            if (errorCode === "auth/email-already-in-use") {
+              alertText.innerHTML = "Email already exists. Please log in.";
+            } else {
+              alertText.innerHTML = "Please Provide Valid Email Address!";
+            }
+
+
+            signupContainer.style.display = "block";
+          })
+          .finally(() => {
+            // signupContainer.style.display = "block";
+            loadingBar.style.display = "none";
+          });
+
 
       });
 
@@ -1228,6 +1265,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
               console.log("Email verified after polling!");
               alertText.innerHTML = "Email Verified!<br>You can now sign up.";
               emailVerified = true;
+              updateButtonState(true);
               signupContainer.style.display = "block";
 
               signUpBtn.disabled = false; // Enable the Sign Up button
@@ -1250,6 +1288,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         event.preventDefault();
 
         if (!emailVerified) {
+          updateButtonState(false)
           alertText.innerHTML = "Please verify your email first!";
           return;
         }
@@ -1272,11 +1311,33 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             fetch('account/login.html')
               .then(response => response.text())
               .then(data => {
-                document.getElementById('place-for-user-login').innerHTML = data;
-                document.getElementById('place-for-user-signup').style.display = 'none';
-                document.getElementById('place-for-user-login').style.display = 'block';
+                ShowUserLogin(data);
+                // handle forgot page in login page after submit signup page
+                document.getElementById('forgotPageBtn').addEventListener('click', function (event) {
+                  event.preventDefault();
+                  fetch('account/forgotPassword.html')
+                    .then(response => response.text())
+                    .then(data => {
+                      ShowUserForgetPassword(data);
 
 
+                      // handle back to login page in forgot page  after submit signup page
+                      document.getElementById('backPageBtn').addEventListener('click', function () {
+                        document.getElementById('place-for-user-login').style.display = 'block';
+                        document.getElementById('place-for-user-forgotPassword').style.display = 'none';
+                      });
+                    });
+
+                });
+
+
+                // back to signup Page
+                document.getElementById('switchPageBtn').addEventListener('click', function () {
+
+                  document.getElementById('place-for-user-login').style.display = 'none';
+                  document.getElementById('place-for-user-signup').style.display = 'block';
+                });
+                // back to signup page end
 
               });
 

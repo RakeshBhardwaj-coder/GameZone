@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .dull-btn {
+      opacity: 0.5; /* Make it semi-transparent */
+      cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
+      /* You can add other styles like a lighter background color or grey text */
+    }
+    
+    .active-btn {
+      opacity: 1; /* Make it fully opaque */
+      cursor: pointer; /* Change the cursor to indicate it's clickable */
+      /* Restore any other styles to their active state */
+    }
+      </style>
 </head>
 <body>
     <!-- Loading bar -->
@@ -28,8 +41,8 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="form-group">
-                <button id="verifyEmailBtn">Email Verify!</button>
-                <button type="submit" id="signUpBtn" >Sign Up</button>
+                <button type="submit" id="verifyEmailBtn"  class="active-btn" >Email Verify!</button>
+                <button  type="submit" id="signUpBtn" class="dull-btn" disabled>Sign Up</button>
                 
             </div>
         </form>
