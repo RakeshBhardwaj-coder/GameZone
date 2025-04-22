@@ -576,7 +576,6 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     let paymentAmountDisplay = document.getElementById('pay-amount-show');
                     let totalHour = document.getElementById('totalHour');
                     let price = document.getElementById('price');
-                    let expiryDate = document.getElementById('expiryDate');
                     let validity = document.getElementById('validity');
                     let gameplay = document.getElementById('gameplay');
                     let gamePackage = document.getElementById('package');
@@ -590,7 +589,6 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       validity.textContent = '10';
                       price.textContent = '250' + '₹';
                       totalHour.textContent = validity.textContent + " Hr";
-                      expiryDate.textContent = calculateExpiryDate('startDate', '10');
                       gameplay.textContent = 'Total Gameplay: 5 Hours';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
                       cost.textContent = '30 Minutes/vCard';
@@ -662,27 +660,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
           // Registering Form page end 
 
-          // Calculating Expiry Date
-          function calculateExpiryDate(startDateStr, validityDaysStr) {
-            const [startDay, startMonth, startYear] = startDateStr.split('/').map(Number);
-            const startDate = new Date(startYear, startMonth - 1, startDay);
-            const validityDays = parseInt(validityDaysStr, 10);
-
-            if (isNaN(startDate.getTime()) || isNaN(validityDays)) {
-              return "Invalid input";
-            }
-
-            const expiryDate = new Date(startDate);
-            expiryDate.setDate(startDate.getDate() + validityDays);
-
-            const expiryDay = String(expiryDate.getDate()).padStart(2, '0');
-            const expiryMonth = String(expiryDate.getMonth() + 1).padStart(2, '0');
-            const expiryYear = expiryDate.getFullYear();
-
-            return `${expiryDay}/${expiryMonth}/${expiryYear}`;
-          }
-
-          // Calculating Expiry Date end
+       
 
           // Script for Registering in firestore
 
@@ -707,19 +685,31 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
             const gender = document.getElementById("gender").value; // Get gender from input field
             const plan = document.getElementById("planSelection").value; // Get plan from input field
             const startDate = document.getElementById("startDate").value;
+            var planForDays;
+            if(plan=='Bronze')
+              planForDays = 10
+            else if(plan=='Silver')
+              planForDays = 20
+            else if(plan=='Gold')
+              planForDays = 30
+            else if(plan=='Birthdayspecial')
+              planForDays = 1
+            else
+              planForDays = 0
 
-            await addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate);
+            await addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate, planForDays);
 
           }
 
-          async function addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate) {
+          async function addAdditionalUserDataToFirestore(userId, dob, gender, plan, startDate, planForDays) {
 
             try {
               await updateDoc(doc(db, "users", userId), {
-                dob: capitalizeFirstLetter(dob),
+                dob: FormatDate(dob),
                 gender: capitalizeFirstLetter(gender),
                 plan: capitalizeFirstLetter(plan),
-                startDate: capitalizeFirstLetter(startDate)
+                startDate: FormatDate(startDate),
+                planForDays: planForDays
               });
               const loadingBar = document.querySelector(".loadingBar");
               console.log("Additional user data added to Firestore.");
@@ -745,14 +735,17 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
     }
   });
 });
-// registration btn2 
-// if user exist then show plan otherwise go to the signup page
-// document.getElementById('RegisterBtn2').addEventListener('click', function (event) {
-//   event.preventDefault();
-//   document.getElementById('registrationBtn').click();
 
-// });
-// registration btn2 end
+// formating date in dd/MM/yyyy formate 
+function FormatDate(date) {
+  const newDate = new Date(date);
+  const day = String(newDate.getDate()).padStart(2, '0');
+  const month = String(newDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+  const year = newDate.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+// formating date in dd/MM/yyyy formate end
+
 // logout btn
 document.getElementById('logoutOption').addEventListener('click', function (event) {
   event.preventDefault();
@@ -871,6 +864,19 @@ document.getElementById('userProfile').addEventListener('click', function (event
 
 
 async function displayUserData(userId) {
+  // show extra details when hover on expiryDate
+  const extraDetailsDiv = document.getElementById('extraDetails');
+  const expiryOnElement = document.querySelector('#container strong');
+  const containerDiv = document.getElementById('container');
+
+  function showExtraDetails() {
+    extraDetailsDiv.style.display = 'block';
+    containerDiv.insertBefore(extraDetailsDiv, expiryOnElement);
+  }
+  expiryOnElement.addEventListener('mouseover', showExtraDetails);
+
+  // show extra details when hover on expiryDate end
+  
   function setUserStatus(isOnline) {
     const dot = document.getElementById('dot');
     const activeText = document.getElementById('active');
@@ -885,6 +891,7 @@ async function displayUserData(userId) {
   }
 
   try {
+    
 
     const userDocRef = doc(db, "users", userId); // Corrected: use doc() from firebase/firestore
 
@@ -900,8 +907,9 @@ async function displayUserData(userId) {
       document.getElementById("email").innerHTML = `<strong>Email:</strong> ${userData.email}`;
       document.getElementById("gender").innerHTML = `<strong>Gender:</strong> ${userData.gender}`;
       document.getElementById("dob").innerHTML = `<strong>DOB:</strong> ${userData.dob}`;
+      document.getElementById("age").innerHTML = `<strong>Age:</strong> ${CalculateAge(userData.dob)} yr` || ' N/A';
       document.getElementById("totalHour").innerHTML = ` ${userData.totalHour} Hr`;
-      document.getElementById("expiryDate").innerHTML = `${userData.expiryDate}`;
+      document.getElementById("expiryDate").innerHTML = `${calculateExpiryDate(userData.startDate, userData.planForDays)}`;
       document.getElementById("leftHour").innerHTML = `${userData.leftHour} Hr`;
       document.getElementById("usedHour").innerHTML = `${userData.usedHour} Hr`;
       document.getElementById("profilePlan").textContent = `Plan: ${userData.plan || "N/A"}`;
@@ -917,6 +925,52 @@ async function displayUserData(userId) {
     console.error("Error fetching document:", error);
   }
 }
+
+// calculating Age
+function CalculateAge(dateString) {
+  // Parse the date string.
+  const dateParts = dateString.split("/");
+  const day = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1; // Month is 0-indexed
+  const year = parseInt(dateParts[2], 10);
+  const birthDate = new Date(year, month, day);
+
+
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+  }
+  return age;
+}
+
+// calculating Age end
+
+   // Calculating Expiry Date
+   function calculateExpiryDate(startDateStr, planForDays) {
+    // Split the start date string into day, month, and year
+    const [day, month, year] = startDateStr.split('/').map(Number);
+
+    // Create a new Date object (Note: JavaScript months are 0-indexed)
+    const startDate = new Date(year, month - 1, day);
+  
+    // Calculate the expiry date in milliseconds
+    const expiryDateMs = startDate.getTime() + (planForDays * 24 * 60 * 60 * 1000);
+  
+    // Create a new Date object for the expiry date
+    const expiryDate = new Date(expiryDateMs);
+  
+    // Extract the day, month, and year from the expiry date
+    const expiryDay = String(expiryDate.getDate()).padStart(2, '0');
+    const expiryMonth = String(expiryDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, so add 1
+    const expiryYear = expiryDate.getFullYear();
+  
+    // Format the expiry date back into "dd/mm/yyyy" format
+    return `${expiryDay}/${expiryMonth}/${expiryYear}`;
+  }
+
+  // Calculating Expiry Date end
 // user Profile Page Firebase Data Script End
 
 // user-login page

@@ -99,7 +99,11 @@
         }
 
         /* online offlien dot end */
-
+       
+        #dob, #age {
+    display: inline-block; /* display elements in a line */
+    margin-right: 10px;    /* add some horizontal space between them */
+}
         .card {
             width: 90%;
             /* Use percentage for responsiveness */
@@ -182,6 +186,8 @@
             /* Adjusted margin for smaller screens */
             color: #f30000;
         }
+
+        
 
 
 
@@ -269,9 +275,12 @@
                     </div>
 
                     <div id="details">
-                        <p id="email"><strong>Email:</strong>email@gmail.com</p>
-                        <p id="gender"><strong>Gender:</strong>N/A</p>
-                        <p id="dob"><strong>Dob:</strong>dd/MM/yyyy</p>
+                        <p id="email"><strong>Email:</strong> email@gmail.com</p>
+                        <div>
+                            <p id="dob"><strong>Dob:</strong> dd/MM/yyyy </p> 
+                            <p id="age"><strong>Age:</strong> N/A</p> 
+                        </div>
+                        <p id="gender"><strong>Gender:</strong> N/A</p>
                     </div>
                 </div>
             </div>
@@ -279,9 +288,15 @@
                 <div><strong>Total</strong>
                     <p id="totalHour">0 Hr</p>
                 </div>
-                <div><strong>Expire On</strong>
+                <div class="expiry-container">
+                    <strong>Expire On</strong>
                     <p id="expiryDate">dd/MM/yyyy</p>
-                </div>
+                    <div class="expiry-details">
+                      <p id="expiry-time">Time: HH:MM AM/PM</p>
+                      <p id="time-zone">Time Zone: IST</p>
+                      <p id="days-remaining">X Days Remaining</p>
+                      </div>
+                  </div>
                 <div><strong>Left</strong>
                     <p id="leftHour">0 Hr</p>
                 </div>
