@@ -1172,12 +1172,9 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       // script for signup page button 
       const verifyEmailBtn = document.getElementById("verifyEmailBtn");
       const signupForm = document.getElementById("signupForm");
-      const signupBtn = document.getElementById("signUpBtn");
-
-      
       const loadingBar = document.querySelector(".loadingBar");
       const signupContainer = document.querySelector(".signup-container");
-      // const loginContainer = document.querySelector(".login-container");
+      const loginContainer = document.querySelector(".login-container");
       const alertText = document.getElementById("alert-text");
       let emailVerified = false; // Track email verification status
 
@@ -1189,11 +1186,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         signupContainer.style.display = "none";
         loadingBar.style.display = "block";
         alertText.textContent = "";
-
-
-
-        if (email.endsWith("@gmail.com")) {
-
+     
 
           createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -1204,10 +1197,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             .then(() => {
               alertText.innerHTML = "Verification email sent.<br> Please check your inbox!";
               // Start polling for verification
-              console.log(email);
-              alertText.textContent = "email verification sent";
               startVerificationPolling();
-            
             })
             .catch((error) => {
               const errorCode = error.code;
@@ -1221,25 +1211,12 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
 
               signupContainer.style.display = "block";
-              loadingBar.style.display = "none";
             })
             .finally(() => {
               // signupContainer.style.display = "block";
               loadingBar.style.display = "none";
             });
-            
-        }
-        else {
-          signupBtn.disabled = true;
-          console.log("chusx2");
-          alertText.textContent = "Temp mail is not valid, please use your own account";
-          signupContainer.style.display = "block";
-          loadingBar.style.display = "none";
-          return;
-        }
-
-
-
+      
 
       });
 
@@ -1266,13 +1243,10 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         setTimeout(() => {
           clearInterval(verificationCheckInterval);
           console.log("Verification polling stopped after timeout");
-          alertText.textContent = "Verification email not received after 5 minutes. Please try again.";
-      signupContainer.style.display = "block";
-      loadingBar.style.display = "none";
-        }, 120000); // Stop polling after 2 minutes
+        }, 300000); // Stop polling after 5 minutes
       }
 
-      signupForm.addEventListener("click", () => {
+      signupForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
         if (!emailVerified) {
