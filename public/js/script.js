@@ -585,55 +585,57 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                     let extra = document.getElementById('extra');
 
                     if (selectedPlan === 'Bronze') {
-                      paymentAmountDisplay.textContent = 'Bronze | Pay 250 Rs.';
+                      paymentAmountDisplay.textContent = 'Bronze | Pay 150 Rs.';
                       validity.textContent = '10';
-                      price.textContent = '250' + '₹';
-                      totalHour.textContent = validity.textContent + " Hr";
-                      gameplay.textContent = 'Total Gameplay: 5 Hours';
+                      price.textContent = '150' + '₹';
+                      totalHour.textContent = "5";
+                      gameplay.textContent = '5';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
                       cost.textContent = '30 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-                      steering.textContent = 'Steering Wheel: ₹10/session';
-                      extra.textContent = '';
+                      // steering.textContent = 'Steering Wheel: ₹10/session';
+                      extra.textContent = 'N/A';
                     } else if (selectedPlan === 'Silver') {
                       paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
                       validity.textContent = '15';
-                      totalHour.textContent = validity.textContent + " Hr";
+                      totalHour.textContent = '8';
                       price.textContent = '300' + '₹'
 
 
-                      gameplay.textContent = 'Total Gameplay: 8 Hours';
+                      gameplay.textContent = '8';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹300';
                       cost.textContent = '45 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-                      steering.textContent = '';
-                      extra.textContent = 'Steering Wheel: ₹10/session';
+                      // steering.textContent = '';
+                      extra.textContent = 'N/A';
                     } else if (selectedPlan === 'Gold') {
                       paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
-                      validity.textContent = '365';
+                      validity.textContent = '30';
                       totalHour.textContent = validity.textContent + " Hour";
                       price.textContent = '400' + '₹'
 
 
 
-                      gameplay.textContent = 'Total Gameplay: 8 Hours';
+                      gameplay.textContent = '8';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹400';
                       cost.textContent = '45 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-                      steering.textContent = 'Steering Wheel: ₹10/session';
-                      extra.textContent = 'Physical card will be provided';
+                      // steering.textContent = 'Steering Wheel: ₹10/session';
+                      extra.textContent = 'N/A';
+
                     } else if (selectedPlan === 'Birthdayspecial') {
                       paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
                       validity.textContent = '1';
                       totalHour.textContent = validity.textContent + " Hr";
                       price.textContent = '100' + '₹'
 
-                      gameplay.textContent = 'Total Gameplay: 15-20 Minute';
-                      gamePackage.textContent = 'gamePackage (5 Card) for ₹50';
-                      cost.textContent = '15-20 Minutes/Card';
+                      gameplay.textContent = '0.5';
+                      gamePackage.textContent = 'gamePackage (5 Card) for ₹100';
+                      cost.textContent = '30 Minutes/vCard';
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
-                      steering.textContent = 'Steering Wheel: ₹10/session';
-                      extra.textContent = 'Physica or virtual card';
+                      // steering.textContent = 'Steering Wheel: ₹10/session';
+                      extra.textContent = 'N/A';
+                      
                     } else {
                       paymentAmountDisplay.textContent = '';
                     }
@@ -698,7 +700,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
               paidAmount = 300;
             }
             else if (plan == 'Gold') {
-              planForDays = 365;
+              planForDays = 30;
               paidAmount = 400;
             }
 
