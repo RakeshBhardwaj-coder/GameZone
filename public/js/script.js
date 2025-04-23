@@ -1203,10 +1203,10 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
               if (user) {
                console.log("User is already logged in:", user);
                alertText.textContent = "You are already logged in.";
+               alert("You are already logged in.");
                loginContainer.style.display = "none";
                loadingBar.style.display = "none";
-               // Optionally, redirect the user to another page
-               // window.location.href = "index.html";
+               window.location.href = "index.html";
               } else {
                console.log("No user is currently logged in.");
                loginContainer.style.display = "block"; // Ensure login form is visible if not logged in
