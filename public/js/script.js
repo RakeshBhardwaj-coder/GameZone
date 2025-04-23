@@ -575,19 +575,24 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                   function updatePaymentDetails(selectedPlan) {
                     let paymentAmountDisplay = document.getElementById('pay-amount-show');
                     let totalHour = document.getElementById('totalHour');
-                    let price = document.getElementById('price');
                     let validity = document.getElementById('validity');
                     let gameplay = document.getElementById('gameplay');
                     let gamePackage = document.getElementById('package');
                     let cost = document.getElementById('cost');
                     let accessories = document.getElementById('accessories');
                     let steering = document.getElementById('steering');
-                    let extra = document.getElementById('extra');
+
+                    let price = document.getElementById('price');
+                    let planName = document.getElementById('planName');
+
 
                     if (selectedPlan === 'Bronze') {
+
+                      planName.textContent = 'Bronze';
+                      price.textContent = '150' + '₹';
+
                       paymentAmountDisplay.textContent = 'Bronze | Pay 150 Rs.';
                       validity.textContent = '10';
-                      price.textContent = '150' + '₹';
                       totalHour.textContent = "5";
                       gameplay.textContent = '5';
                       gamePackage.textContent = 'gamePackage (10 Card) for ₹150';
@@ -596,10 +601,13 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       // steering.textContent = 'Steering Wheel: ₹10/session';
                       extra.textContent = 'N/A';
                     } else if (selectedPlan === 'Silver') {
+                      planName.textContent = 'Silver';
+                      price.textContent = '300' + '₹';
+
                       paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
                       validity.textContent = '15';
                       totalHour.textContent = '8';
-                      price.textContent = '300' + '₹'
+                      
 
 
                       gameplay.textContent = '8';
@@ -609,6 +617,10 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       // steering.textContent = '';
                       extra.textContent = 'N/A';
                     } else if (selectedPlan === 'Gold') {
+
+                      planName.textContent = 'Gold';
+                      price.textContent = '400' + '₹';
+
                       paymentAmountDisplay.textContent = 'Gold | Pay 400 Rs.';
                       validity.textContent = '30';
                       totalHour.textContent = validity.textContent + " Hour";
@@ -624,6 +636,10 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       extra.textContent = 'N/A';
 
                     } else if (selectedPlan === 'Birthdayspecial') {
+
+                      planName.textContent = 'Birthdayspecial';
+                      price.textContent = '150' + '₹';
+
                       paymentAmountDisplay.textContent = 'Birthdayspecial | Pay 100 Rs.';
                       validity.textContent = '1';
                       totalHour.textContent = validity.textContent + " Hr";

@@ -159,52 +159,73 @@
 
 
         /* user Plan data */
+
+        h3{
+            text-align: center;
+        }
         #userPlanData {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin: 20px auto;
-  max-width: 600px;
-  background-color: #f9f9f9;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin: 30px auto;
+  max-width: 700px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 #userPlanData > div {
   text-align: center;
-  margin: 10px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  min-width: 150px;
-  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+#userPlanData h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
 }
 
 #userPlanData h3#title {
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  color: #777;
+  letter-spacing: 0.5px;
 }
 
-#userPlanData h3#data {
-  font-size: 1.2em;
-  color: #007bff;
+#userPlanData h3:not(#title) {
+  font-size: 1.3em;
+  color: #333;
   font-weight: 600;
 }
 
-/* Group Total Hour and Expiry On in a single row */
-#userPlanData > div:nth-child(1),
-#userPlanData > div:nth-child(2) {
-  flex-basis: 45%; /* Adjust as needed, leaving some space for margin */
+/* Style for Plan Name to span across */
+#userPlanData > h3#planName {
+  grid-column: 1 / -1; /* Span all columns */
+  text-align: center;
+  font-size: 1.5em;
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-/* Price to Pay on a separate row */
-#userPlanData > div:nth-child(3) {
-  flex-basis: 100%; /* Take full width to be on a new row */
+/* Style for Price to Pay to stand out */
+#userPlanData > div:last-child {
+  grid-column: 1 / -1; /* Span all columns */
+  background-color: #e6f7ff;
+  border: 1px solid #b3e7ff;
 }
 
+#userPlanData > div:last-child h3:not(#title) {
+  color: #0056b3;
+}
+#priceToPayContainer:hover{
+    scale: 1.05;
+}
         /* user Plan data end*/
 
         
@@ -221,7 +242,7 @@
             <form id="registrationFormfilling">
 
                 <label for="dateOfBirth">Date of Birth:</label><br>
-                <input type="date" id="dateOfBirth" name="dateOfBirth" value="2006-01-01" required/><br>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" value="2006-01-01" required style="cursor: pointer;" onclick="document.getElementById('dateOfBirth').showPicker();"/><br>
 
                 <label for="gender">Gender:</label><br>
                 <select id="gender" name="gender" required>
@@ -234,14 +255,14 @@
                 <label for="plan">Choose your plan:</label><br>
                 <select id="planSelection" required>
                     <option value="">Select your plan</option>
-                    <option value="Bronze">Bronze (250 Rs)</option>
+                    <option value="Bronze">Bronze (150 Rs)</option>
                     <option value="Silver">Silver (300 Rs)</option>
                     <option value="Gold">Gold (400 Rs)</option>
-                    <option value="Birthdayspecial">Birthday Special (100 Rs)</option>
+                    <!-- <option value="Birthdayspecial">Birthday Special (100 Rs)</option> -->
                 </select>
 
                 <label for="startDate">Plan start Date:</label><br>
-                <input type="date" id="startDate" name="startDate" required /> <br>
+                <input type="date" id="startDate" name="startDate" required style="cursor: pointer;" onclick="document.getElementById('startDate').showPicker();"/> <br>
 
                 <input type="hidden" id="planPrice" value="" />
                 <button type="submit" id="open-payment-page-btn">Next </button>
@@ -256,29 +277,35 @@
 
         <div class="payment-form" id="paymentForm">
             <h1>Payment Method</h1>
-            <h3>Selected</h3>
+            <p>Please scan the QR code to complete your payment.</p>
+            <img src="img/payment_QR_code.jpeg" alt="QR Code">
+            
 
             <div id="userPlanData">
-                <div>
+            <h3>Selected Plan</h3>
+
+                <!-- <div>
                     <h3 id="title">Total Hour</h3>
                     <h3 id="totalHour">0</h3>
                 </div>
                 <div>
                     <h3 id="title">Expiry On</h3>
                     <h3 id="expiryDate">dd/MM/yyyy</h3>
-                </div>
-
-                <div>
+                </div> -->
+            
+                    <h3 id="planName">Plan name</h3>
+             
+                <div id="priceToPayContainer">
                     <h3 id="title">Price to Pay</h3>
-                    <h3 id="price">0₹</h3>
+                    <h3 id="price">X₹</h3>
                 </div>
                 
             </div>
 
-            <h2 id="pay-amount-show"></h2>
+            <!-- <h2 id="pay-amount-show"></h2> -->
 
 
-            <div class="selected-plan-details-show">
+            <!-- <div class="selected-plan-details-show">
                 <p id="validity">Validity: </p>
                 <p id="gameplay">Total Gameplay:</p>
                 <p id="package">Package </p>
@@ -286,16 +313,15 @@
                 <p id="accessories">Gamepad, Keyboard, and Mouse</p>
                 <p id="steering">Steering Wheel: ₹10/session</p>
                 <p id="extra"></p>
-            </div>
+            </div> -->
 
-            <p>Please scan the QR code to complete your payment.</p>
-            <img src="img/payment_QR_code.jpeg" alt="QR Code">
-            <div class="upi-container">
+           
+            <!-- <div class="upi-container">
                 <h2>or</h2>
                 <h3>click below to redirect to your app</h3>
-                <a href="upi://pay?pa=gamezone@jio&pn=GameZone&mc=0000&mode=02&purpose=00" class="upi-link">Pay via UPI
+                <a href="upi://pay?pa=gamezoneowner@jio&pn=GameZone&mc=0000&mode=02&purpose=00" class="upi-link">Pay via UPI
                     Apps</a>
-            </div>
+            </div> -->
             <button id="payment-to-reg-form-btn">Done</button>
         </div>
     </div>
