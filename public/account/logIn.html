@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+    </style>
 </head>
+
 <body>
 
-       <!-- Loading bar -->
-<h2 id="alert-text"></h2>
-<div class="loadingBar"></div>
+    <!-- Loading bar -->
 
-<!-- Loading bar end -->
+    <div id="completeCentered">
+        <h2 id="alert-text"></h2>
+        <div class="loadingBar"></div>
+    </div>
+    <!-- Loading bar end -->
     <div class="login-container">
         <h2>Login</h2>
         <form id="loginForm">
@@ -32,45 +39,6 @@
         <p id="text">Don't have an account? <a id="switchPageBtn">Sign Up</a></p>
     </div>
 
-    <!-- <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
-            authDomain: "playgamezonegames.firebaseapp.com",
-            projectId: "playgamezonegames",
-            storageBucket: "playgamezonegames.firebasestorage.app",
-            messagingSenderId: "168604180866",
-            appId: "1:168604180866:web:4b4dfedfa115ec1e352f9b",
-            measurementId: "G-NS89D5N201"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        const loginForm = document.getElementById("loginForm");
-
-        loginForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    console.log("User logged in:", user);
-                    // Redirect to a dashboard or home page after successful login
-                    window.location.href = "../index.html"; // Replace with your desired page
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error("Login error:", errorCode, errorMessage);
-                    alert("Login failed: " + errorMessage);
-                });
-        });
-    </script> -->
 </body>
+
 </html>

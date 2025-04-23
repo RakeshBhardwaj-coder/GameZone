@@ -3,7 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 // import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDMcJSbVSEebZ2mDCv1_A8wCDEhddefpBo",
@@ -607,7 +607,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       paymentAmountDisplay.textContent = 'Silver | Pay 300 Rs.';
                       validity.textContent = '15';
                       totalHour.textContent = '8';
-                      
+
 
 
                       gameplay.textContent = '8';
@@ -651,7 +651,7 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
                       accessories.textContent = 'Gamepad, Keyboard, and Mouse';
                       // steering.textContent = 'Steering Wheel: ₹10/session';
                       extra.textContent = 'N/A';
-                      
+
                     } else {
                       paymentAmountDisplay.textContent = '';
                     }
@@ -694,9 +694,10 @@ document.getElementById('registrationBtn').addEventListener('click', function ()
 
 
             const loadingBar = document.querySelector(".loadingBar");
+            loadingBar.style.display = "block"; // Show loadingbar form
+
             document.getElementById('registration-form').style.display = 'none'; // Hide registration form
             document.getElementById('paymentForm').style.display = 'none';
-            loadingBar.style.display = "block"; // Show loadingbar form
 
             const userId = user.uid;
             const dob = document.getElementById("dateOfBirth").value; // Get DOB from input field
@@ -1055,6 +1056,7 @@ function calculateRemainingDays(startDate, planforDays) {
 
 document.getElementById('userBtn').addEventListener('click', function (event) {
 
+
   window.scrollBy({
     top: 300,
     behavior: 'smooth'
@@ -1073,9 +1075,37 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
         fetch('account/forgotPassword.html')
           .then(response => response.text())
           .then(data => {
-            document.getElementById('place-for-user-forgotPassword').innerHTML = data;
-            document.getElementById('place-for-user-signup').style.display = 'none';
-            document.getElementById('place-for-user-forgotPassword').style.display = 'block';
+            ShowUserForgetPassword(data);
+
+            // // script for Forget Password handle
+            // const forgotPasswordForm = document.getElementById("forgotPasswordForm");
+            // forgotPasswordForm.addEventListener("submit", (event) => {
+            //   event.preventDefault();
+
+            //   console.log("chyys");
+            //   const email = document.getElementById("email").value;
+            //   const alertText = document.getElementById("alert-text");
+            //   const loadingBar = document.querySelector(".loadingBar");
+
+            //   sendPasswordResetEmail(auth, email)
+            //     .then(() => {
+            //       // loadingBar.style.display = "block"; // Show loadingbar form
+
+            //       alert("Password reset email sent. Check your inbox.");
+            //       alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
+            //       // Optionally, redirect to a confirmation page
+            //       // window.location.href = "login.html"; // Redirect to login page
+            //     })
+            //     .catch((error) => {
+            //       const errorCode = error.code;
+            //       const errorMessage = error.message;
+            //       console.error("Forgot password error:", errorCode, errorMessage);
+            //       alert("Failed to send reset email: " + errorMessage);
+            //     });
+            // });
+            // // script for forget Password handle end
+
+
 
             // handle backto-signup Page in forgot page to signup page
             // back to signup page 
@@ -1088,7 +1118,6 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             // back to login page end
 
           });
-
 
       });
 
@@ -1112,6 +1141,33 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                 .then(response => response.text())
                 .then(data => {
                   ShowUserForgetPassword(data);
+                  // // script for Forget Password handle
+                  // const forgotPasswordForm = document.getElementById("forgotPasswordForm");
+                  // forgotPasswordForm.addEventListener("submit", (event) => {
+                  //   event.preventDefault();
+
+                  //   console.log("chyys");
+                  //   const email = document.getElementById("email").value;
+                  //   const alertText = document.getElementById("alert-text");
+                  //   const loadingBar = document.querySelector(".loadingBar");
+
+                  //   sendPasswordResetEmail(auth, email)
+                  //     .then(() => {
+                  //       // loadingBar.style.display = "block"; // Show loadingbar form
+
+                  //       alert("Password reset email sent. Check your inbox.");
+                  //       alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
+                  //       // Optionally, redirect to a confirmation page
+                  //       // window.location.href = "login.html"; // Redirect to login page
+                  //     })
+                  //     .catch((error) => {
+                  //       const errorCode = error.code;
+                  //       const errorMessage = error.message;
+                  //       console.error("Forgot password error:", errorCode, errorMessage);
+                  //       alert("Failed to send reset email: " + errorMessage);
+                  //     });
+                  // });
+                  // // script for forget Password handle end
 
 
                   // handle back to login page in forgot page by signup page
@@ -1131,6 +1187,8 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
               document.getElementById('place-for-user-signup').style.display = 'block';
             });
             // back to signup page end
+
+
 
 
             // script for login
@@ -1360,6 +1418,36 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                     .then(response => response.text())
                     .then(data => {
                       ShowUserForgetPassword(data);
+
+
+                      // // script for Forget Password handle
+                      // const forgotPasswordForm = document.getElementById("forgotPasswordForm");
+                      // forgotPasswordForm.addEventListener("submit", (event) => {
+                      //   event.preventDefault();
+
+                      //   console.log("chyys");
+                      //   const email = document.getElementById("email").value;
+                      //   const alertText = document.getElementById("alert-text");
+                      //   const loadingBar = document.querySelector(".loadingBar");
+
+                      //   sendPasswordResetEmail(auth, email)
+                      //     .then(() => {
+                      //       // loadingBar.style.display = "block"; // Show loadingbar form
+
+                      //       alert("Password reset email sent. Check your inbox.");
+                      //       alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
+                      //       // Optionally, redirect to a confirmation page
+                      //       // window.location.href = "login.html"; // Redirect to login page
+                      //     })
+                      //     .catch((error) => {
+                      //       const errorCode = error.code;
+                      //       const errorMessage = error.message;
+                      //       console.error("Forgot password error:", errorCode, errorMessage);
+                      //       alert("Failed to send reset email: " + errorMessage);
+                      //     });
+                      // });
+                      // // script for forget Password handle end
+
 
 
                       // handle back to login page in forgot page  after submit signup page

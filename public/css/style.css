@@ -140,6 +140,9 @@ body {
   }
 }
 
+#completeCentered{
+  text-align: center;
+}
 /* loading bar end */
 #alert-text {
   text-align: center;
@@ -158,6 +161,25 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 300px;
+}
+
+body.night-mode .signup-container,
+body.night-mode .login-container,
+body.night-mode .forgot-password-container {
+  background-color: rgb(46, 41, 41);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+body.night-mode #text{
+  color: wheat;
+}
+body.night-mode input{
+  background-color: rgb(83, 87, 90);
+  color: white;
+  border-color:rgb(58, 56, 56);
+  
 }
 
 /* h2 {
@@ -456,6 +478,9 @@ body.night-mode #toggleView:hover {
 
 body.night-mode #toggleView img {
   filter: invert(100%);
+}
+body.night-mode .user-name, .user-email{
+  color: #000000;
 }
 
 body.night-mode {
