@@ -1196,50 +1196,66 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             const loginContainer = document.querySelector(".login-container");
             const alertText = document.getElementById("alert-text");
             const loadingBar = document.querySelector(".loadingBar");// Assuming you have a loading bar element
-
+           
+            // Function to check if the user is already logged in
+            function checkIfLoggedIn() {
+             auth.onAuthStateChanged((user) => {
+              if (user) {
+               console.log("User is already logged in:", user);
+               alertText.textContent = "You are already logged in.";
+               loginContainer.style.display = "none";
+               loadingBar.style.display = "none";
+               // Optionally, redirect the user to another page
+               // window.location.href = "index.html";
+              } else {
+               console.log("No user is currently logged in.");
+               loginContainer.style.display = "block"; // Ensure login form is visible if not logged in
+              }
+             });
+            }
+           
+            // Call checkIfLoggedIn when the script loads
+            checkIfLoggedIn();
+           
             loginForm.addEventListener("submit", (event) => {
-              event.preventDefault();
-              const email = document.getElementById("email").value;
-              const password = document.getElementById("password").value;
-              loginContainer.style.display = "none";
-              loadingBar.style.display = "block";
-              alertText.textContent = "";
-              console.log("Auth Object:", auth);
-
-              signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                  const user = userCredential.user;
-                  console.log("User logged in:", user);
-                  // window.location.href = "index.html"; // Redirect after successful login
-
-                  fetch('registerPage/plans.html')
-                    .then(response => response.text())
-                    .then(data => {
-                      ShowPlans(data);
-
-                    });
-
-
-                })
-                .catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  console.error("Login error:", errorCode, errorMessage);
-
-                  // Handle specific error codes for better user feedback
-                  if (errorCode === "auth/invalid-credential") {
-                    alertText.innerHTML = "Incorrect Email or password.<br> Please try again!";
-                  }
-                  else {
-                    alertText.textContent = "Login failed: " + errorMessage; // General error message
-                  }
-                })
-                .finally(() => {
-                  loadingBar.style.display = "none";
-                  loginContainer.style.display = "block"; // Re-display the login form after error or success
+             event.preventDefault();
+             const emailForLogin = document.getElementById("emailForLogin").value;
+             const passwordForLogin = document.getElementById("passwordForLogin").value;
+             loginContainer.style.display = "none";
+             loadingBar.style.display = "block";
+             alertText.textContent = "";
+      
+           
+             signInWithEmailAndPassword(auth, emailForLogin, passwordForLogin)
+              .then((userCredential) => {
+               const user = userCredential.user;
+               console.log("User logged in:", user);
+               // window.location.href = "index.html"; // Redirect after successful login
+           
+               fetch('registerPage/plans.html')
+                .then(response => response.text())
+                .then(data => {
+                 ShowPlans(data);
                 });
-            });
+              })
+              .catch((error) => {
+               const errorCode = error.code;
+               const errorMessage = error.message;
+               console.error("Login error:", errorCode, errorMessage);
+           
+               // Handle specific error codes for better user feedback
+               if (errorCode === "auth/invalid-credential") {
+                alertText.innerHTML = "Incorrect Email or password.<br> Please try again!";
+               } else {
+                alertText.textContent = "Login failed: " + errorMessage; // General error message
+               }
+              })
+              .finally(() => {
+               loadingBar.style.display = "none";
+               loginContainer.style.display = "block"; // Re-display the login form after error or success
+              });
 
+            });
             // script for login end
 
           });
