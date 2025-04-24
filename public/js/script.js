@@ -1072,7 +1072,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
       // handle forgot button in signupPage
       document.getElementById('forgotPageBtn').addEventListener('click', function (event) {
         event.preventDefault();
-        fetch('account/resetPassword.html')
+        fetch('account/forgotPassword.html')
           .then(response => response.text())
           .then(data => {
             ShowUserForgetPassword(data);
@@ -1137,7 +1137,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             // handle forgot page in login page by signup page
             document.getElementById('forgotPageBtn').addEventListener('click', function (event) {
               event.preventDefault();
-              fetch('account/resetPassword.html')
+              fetch('account/forgotPassword.html')
                 .then(response => response.text())
                 .then(data => {
                   ShowUserForgetPassword(data);
@@ -1430,7 +1430,7 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                 // handle forgot page in login page after submit signup page
                 document.getElementById('forgotPageBtn').addEventListener('click', function (event) {
                   event.preventDefault();
-                  fetch('account/resetPassword.html')
+                  fetch('account/forgotPassword.html')
                     .then(response => response.text())
                     .then(data => {
                       ShowUserForgetPassword(data);
