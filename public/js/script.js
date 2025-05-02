@@ -1077,15 +1077,6 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
           .then(data => {
             ShowUserForgetPassword(data);
 
-    //         const resetBtn = document.getElementById("resetPassBtn").value;
-    //         const alertText = document.getElementById("alert-text").value;
-    //         resetBtn.addEventListener("click",(event)=>{
-    //           event.preventDefault();
-    // console.log("haaha");
-    //  alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
-    
-    //      });
-
             // // script for Forget Password handle
             // const forgotPasswordForm = document.getElementById("forgotPasswordForm");
             // forgotPasswordForm.addEventListener("submit", (event) => {
@@ -1188,49 +1179,6 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
 
             });
 
-            // testing
-            const externalModal = document.getElementById("externalModal");
-            const openExternalPageBtn = document.getElementById("resetPageBtn");
-            const modalContentDiv = document.getElementById("modalContent");
-            const closeButton = document.querySelector("#externalModal .close-button");
-          
-            // Function to fetch and display content
-            async function loadExternalContent(url) {
-              try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                  throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const html = await response.text();
-                modalContentDiv.innerHTML = html;
-                externalModal.style.display = "block";
-              } catch (error) {
-                console.error("Could not load external content:", error);
-                modalContentDiv.innerHTML = "<p>Failed to load content.</p>";
-                externalModal.style.display = "block";
-              }
-            }
-          
-            // Event listener for the button
-            openExternalPageBtn.addEventListener("click", function() {
-              loadExternalContent("account/resetPassword.html"); // Replace with the actual path to your external HTML file
-            });
-          
-            // Event listener for the close button
-            closeButton.addEventListener("click", function() {
-              externalModal.style.display = "none";
-              modalContentDiv.innerHTML = ""; // Clear previous content
-            });
-          
-            // Close the modal if the user clicks outside of it
-            window.addEventListener("click", function(event) {
-              if (event.target == externalModal) {
-                externalModal.style.display = "none";
-                modalContentDiv.innerHTML = ""; // Clear previous content
-              }
-            });
-            // testing
-
 
             // back to signup Page
             document.getElementById('switchPageBtn').addEventListener('click', function () {
@@ -1259,8 +1207,6 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                loginContainer.style.display = "none";
                loadingBar.style.display = "none";
                window.location.href = "index.html";
-               console.log("user is currently logged in.");
-
               } else {
                console.log("No user is currently logged in.");
                loginContainer.style.display = "block"; // Ensure login form is visible if not logged in
