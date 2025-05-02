@@ -1,6 +1,5 @@
 // start point / top 
-import './searchSuggestions.js'
-import './searchBarScroll.js'
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 // import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
@@ -176,7 +175,139 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // scroll-up button end
 
+//Search suggestion started
+const searchInput = document.getElementById('search-input');
+const clearButton = document.getElementById('clear-button');
+const suggestionsBox = document.getElementById('suggestions-box');
+const suggestionsList = document.getElementById('suggestions-list');
 
+// Replace with your actual data source (e.g., an array or fetch from an API)
+const allSuggestions = [
+  "Valorant",
+  "CS2: Counter Strike 2",
+  "PUBG Battlegrounds",
+  "Shatterline",
+  "Delta Force",
+  "Destiny 2",
+  "Fortnite",
+  "Asphalt 8",
+  "Metalstorm",
+  "Dauntless",
+  "Paladins",
+  "Rocket Racing",
+  "Rocket League",
+  "Apex Legends",
+  "Genshin Impact",
+  "World War Z: Aftermath",
+  "Fall Guys",
+  "Marvel Rivals",
+  "Call of Duty®: Warzone™",
+  "Dota 2",
+  "Overwatch® 2",
+  "Once Human",
+  "Warframe",
+  "War Thunder",
+  "eFootball™",
+  "The First Descendant",
+  "Star Trek Online",
+  "Asphalt Legends Unite",
+  "Halo Infinite",
+  "Blood Strike",
+  "Sky: Children of the Light"
+];
+
+searchInput.addEventListener('input', () => {
+  if (this.value) {
+    clearButton.style.display = 'none';
+  } else {
+    clearButton.style.display = 'block';
+  }
+  const query = searchInput.value.trim().toLowerCase(); // Make the search case-insensitive
+
+  if (query) {
+    // Filter the suggestions based on the query
+    const filteredSuggestions = allSuggestions.filter(suggestion =>
+      suggestion.toLowerCase().startsWith(query)
+    );
+
+    suggestionsList.innerHTML = ''; // Clear previous suggestions
+
+    if (filteredSuggestions.length > 0) {
+      filteredSuggestions.forEach(suggestion => {
+        const li = document.createElement('li');
+        li.textContent = suggestion;
+        li.addEventListener('click', () => {
+          searchInput.value = suggestion;
+          suggestionsBox.style.display = 'none';
+        });
+        suggestionsList.appendChild(li);
+      });
+      suggestionsBox.style.display = 'block';
+    } else {
+      suggestionsBox.style.display = 'none'; // Hide if no matching suggestions
+    }
+  } else {
+    suggestionsBox.style.display = 'none'; // Hide if the input is empty
+  }
+});
+
+//auto-scroll by searchbar
+document.getElementById('search-btn').addEventListener('click', function (event) {
+  event.preventDefault(); // Prevent the default anchor behavior
+
+  HomeButtonClicked()
+  const imageElement = document.getElementById('gameContainer');
+
+  if (imageElement) {
+    imageElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll and center the image
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.search-bar')) {
+    suggestionsBox.style.display = 'none';
+  }
+});
+
+clearButton.addEventListener('click', function () {
+  searchInput.value = '';
+  searchInput.focus(); // Keep focus in the input
+  clearButton.style.display = 'none';
+});
+
+//Optional: clear button also hides on focus out if the search input is empty.
+searchInput.addEventListener('focusout', function () {
+  if (!this.value) {
+    clearButton.style.display = 'none';
+  }
+});
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.search-bar')) {
+    suggestionsBox.style.display = 'none';
+  }
+});
+
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    suggestionsBox.style.display = 'none';
+  }
+});
+
+document.getElementById('search-btn').addEventListener('click', () => {
+  suggestionsBox.style.display = 'none';
+});
+
+
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    suggestionsBox.style.display = 'none';
+  }
+});
+
+document.getElementById('search-btn').addEventListener('click', () => {
+  suggestionsBox.style.display = 'none';
+});
+//Search suggestion End
 
 
 // day/night button
