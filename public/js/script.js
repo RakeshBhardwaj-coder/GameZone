@@ -217,10 +217,10 @@ const allSuggestions = [
 ];
 
 searchInput.addEventListener('input', () => {
-  if (this.value) {
-    clearButton.style.display = 'none';
-  } else {
+  if (searchInput.value) {
     clearButton.style.display = 'block';
+  } else {
+    clearButton.style.display = 'none';
   }
   const query = searchInput.value.trim().toLowerCase(); // Make the search case-insensitive
 
