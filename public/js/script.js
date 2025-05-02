@@ -1077,32 +1077,32 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
           .then(data => {
             ShowUserForgetPassword(data);
 
-            // // script for Forget Password handle
-            // const forgotPasswordForm = document.getElementById("forgotPasswordForm");
-            // forgotPasswordForm.addEventListener("submit", (event) => {
-            //   event.preventDefault();
+           // script for Forget Password handle
+            const forgotPasswordForm = document.getElementById("resetPassBtn");
+            forgotPasswordForm.addEventListener("click", (event) => {
+              event.preventDefault();
 
-            //   console.log("chyys");
-            //   const email = document.getElementById("email").value;
-            //   const alertText = document.getElementById("alert-text");
-            //   const loadingBar = document.querySelector(".loadingBar");
+              const email = document.getElementById("emailForForgotPass").value;
+              const alertText = document.getElementById("alert-text");
+              const loadingBar = document.querySelector(".loadingBar");
+             
 
-            //   sendPasswordResetEmail(auth, email)
-            //     .then(() => {
-            //       // loadingBar.style.display = "block"; // Show loadingbar form
-
-            //       alert("Password reset email sent. Check your inbox.");
-            //       alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
-            //       // Optionally, redirect to a confirmation page
-            //       // window.location.href = "login.html"; // Redirect to login page
-            //     })
-            //     .catch((error) => {
-            //       const errorCode = error.code;
-            //       const errorMessage = error.message;
-            //       console.error("Forgot password error:", errorCode, errorMessage);
-            //       alert("Failed to send reset email: " + errorMessage);
-            //     });
-            // });
+              sendPasswordResetEmail(auth, email)
+                .then(() => {
+                  // Show the loading bar
+              loadingBar.style.display = "block";
+                  alert("Password reset email sent. Check your inbox.");
+                  alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
+                  // Optionally, redirect to a confirmation page
+                  window.location.href = "index.html"; // Redirect to login page
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.error("Forgot password error:", errorCode, errorMessage);
+                  alert("Failed to send reset email: " + errorMessage);
+                });
+            });
             // // script for forget Password handle end
 
 
@@ -1141,33 +1141,34 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                 .then(response => response.text())
                 .then(data => {
                   ShowUserForgetPassword(data);
-                  // // script for Forget Password handle
-                  // const forgotPasswordForm = document.getElementById("forgotPasswordForm");
-                  // forgotPasswordForm.addEventListener("submit", (event) => {
-                  //   event.preventDefault();
+                  
+           // script for Forget Password handle
+            const forgotPasswordForm = document.getElementById("resetPassBtn");
+            forgotPasswordForm.addEventListener("click", (event) => {
+              event.preventDefault();
 
-                  //   console.log("chyys");
-                  //   const email = document.getElementById("email").value;
-                  //   const alertText = document.getElementById("alert-text");
-                  //   const loadingBar = document.querySelector(".loadingBar");
+              const email = document.getElementById("emailForForgotPass").value;
+              const alertText = document.getElementById("alert-text");
+              const loadingBar = document.querySelector(".loadingBar");
+              
 
-                  //   sendPasswordResetEmail(auth, email)
-                  //     .then(() => {
-                  //       // loadingBar.style.display = "block"; // Show loadingbar form
-
-                  //       alert("Password reset email sent. Check your inbox.");
-                  //       alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
-                  //       // Optionally, redirect to a confirmation page
-                  //       // window.location.href = "login.html"; // Redirect to login page
-                  //     })
-                  //     .catch((error) => {
-                  //       const errorCode = error.code;
-                  //       const errorMessage = error.message;
-                  //       console.error("Forgot password error:", errorCode, errorMessage);
-                  //       alert("Failed to send reset email: " + errorMessage);
-                  //     });
-                  // });
-                  // // script for forget Password handle end
+              sendPasswordResetEmail(auth, email)
+                .then(() => {
+                  // Show the loading bar
+              loadingBar.style.display = "block";
+                  alert("Password reset email sent. Check your inbox.");
+                  alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
+                  // Optionally, redirect to a confirmation page
+                  window.location.href = "index.html"; // Redirect to login page
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.error("Forgot password error:", errorCode, errorMessage);
+                  alert("Failed to send reset email: " + errorMessage);
+                });
+            });
+            // // script for forget Password handle end
 
 
                   // handle back to login page in forgot page by signup page
@@ -1196,64 +1197,64 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
             const loginContainer = document.querySelector(".login-container");
             const alertText = document.getElementById("alert-text");
             const loadingBar = document.querySelector(".loadingBar");// Assuming you have a loading bar element
-           
+
             // Function to check if the user is already logged in
             function checkIfLoggedIn() {
-             auth.onAuthStateChanged((user) => {
-              if (user) {
-               console.log("User is already logged in:", user);
-               alertText.textContent = "You are already logged in.";
-               alert("You are already logged in.");
-               loginContainer.style.display = "none";
-               loadingBar.style.display = "none";
-               window.location.href = "index.html";
-              } else {
-               console.log("No user is currently logged in.");
-               loginContainer.style.display = "block"; // Ensure login form is visible if not logged in
-              }
-             });
+              auth.onAuthStateChanged((user) => {
+                if (user) {
+                  console.log("User is already logged in:", user);
+                  alertText.textContent = "You are already logged in.";
+                  alert("You are already logged in.");
+                  loginContainer.style.display = "none";
+                  loadingBar.style.display = "none";
+                  window.location.href = "index.html";
+                } else {
+                  console.log("No user is currently logged in.");
+                  loginContainer.style.display = "block"; // Ensure login form is visible if not logged in
+                }
+              });
             }
-           
+
             // Call checkIfLoggedIn when the script loads
             checkIfLoggedIn();
-           
+
             loginForm.addEventListener("submit", (event) => {
-             event.preventDefault();
-             const emailForLogin = document.getElementById("emailForLogin").value;
-             const passwordForLogin = document.getElementById("passwordForLogin").value;
-             loginContainer.style.display = "none";
-             loadingBar.style.display = "block";
-             alertText.textContent = "";
-      
-           
-             signInWithEmailAndPassword(auth, emailForLogin, passwordForLogin)
-              .then((userCredential) => {
-               const user = userCredential.user;
-               console.log("User logged in:", user);
-               // window.location.href = "index.html"; // Redirect after successful login
-           
-               fetch('registerPage/plans.html')
-                .then(response => response.text())
-                .then(data => {
-                 ShowPlans(data);
+              event.preventDefault();
+              const emailForLogin = document.getElementById("emailForLogin").value;
+              const passwordForLogin = document.getElementById("passwordForLogin").value;
+              loginContainer.style.display = "none";
+              loadingBar.style.display = "block";
+              alertText.textContent = "";
+
+
+              signInWithEmailAndPassword(auth, emailForLogin, passwordForLogin)
+                .then((userCredential) => {
+                  const user = userCredential.user;
+                  console.log("User logged in:", user);
+                  // window.location.href = "index.html"; // Redirect after successful login
+
+                  fetch('registerPage/plans.html')
+                    .then(response => response.text())
+                    .then(data => {
+                      ShowPlans(data);
+                    });
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.error("Login error:", errorCode, errorMessage);
+
+                  // Handle specific error codes for better user feedback
+                  if (errorCode === "auth/invalid-credential") {
+                    alertText.innerHTML = "Incorrect Email or password.<br> Please try again!";
+                  } else {
+                    alertText.textContent = "Login failed: " + errorMessage; // General error message
+                  }
+                })
+                .finally(() => {
+                  loadingBar.style.display = "none";
+                  loginContainer.style.display = "block"; // Re-display the login form after error or success
                 });
-              })
-              .catch((error) => {
-               const errorCode = error.code;
-               const errorMessage = error.message;
-               console.error("Login error:", errorCode, errorMessage);
-           
-               // Handle specific error codes for better user feedback
-               if (errorCode === "auth/invalid-credential") {
-                alertText.innerHTML = "Incorrect Email or password.<br> Please try again!";
-               } else {
-                alertText.textContent = "Login failed: " + errorMessage; // General error message
-               }
-              })
-              .finally(() => {
-               loadingBar.style.display = "none";
-               loginContainer.style.display = "block"; // Re-display the login form after error or success
-              });
 
             });
             // script for login end
@@ -1436,33 +1437,34 @@ document.getElementById('userBtn').addEventListener('click', function (event) {
                       ShowUserForgetPassword(data);
 
 
-                      // // script for Forget Password handle
-                      // const forgotPasswordForm = document.getElementById("forgotPasswordForm");
-                      // forgotPasswordForm.addEventListener("submit", (event) => {
-                      //   event.preventDefault();
+                     
+           // script for Forget Password handle
+            const forgotPasswordForm = document.getElementById("resetPassBtn");
+            forgotPasswordForm.addEventListener("click", (event) => {
+              event.preventDefault();
 
-                      //   console.log("chyys");
-                      //   const email = document.getElementById("email").value;
-                      //   const alertText = document.getElementById("alert-text");
-                      //   const loadingBar = document.querySelector(".loadingBar");
+              const email = document.getElementById("emailForForgotPass").value;
+              const alertText = document.getElementById("alert-text");
+              const loadingBar = document.querySelector(".loadingBar");
+              
 
-                      //   sendPasswordResetEmail(auth, email)
-                      //     .then(() => {
-                      //       // loadingBar.style.display = "block"; // Show loadingbar form
-
-                      //       alert("Password reset email sent. Check your inbox.");
-                      //       alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
-                      //       // Optionally, redirect to a confirmation page
-                      //       // window.location.href = "login.html"; // Redirect to login page
-                      //     })
-                      //     .catch((error) => {
-                      //       const errorCode = error.code;
-                      //       const errorMessage = error.message;
-                      //       console.error("Forgot password error:", errorCode, errorMessage);
-                      //       alert("Failed to send reset email: " + errorMessage);
-                      //     });
-                      // });
-                      // // script for forget Password handle end
+              sendPasswordResetEmail(auth, email)
+                .then(() => {
+                  // Show the loading bar
+              loadingBar.style.display = "block";
+                  alert("Password reset email sent. Check your inbox.");
+                  alertText.textContent = "Password reset email sent. Check your inbox then Login!!!";
+                  // Optionally, redirect to a confirmation page
+                  window.location.href = "index.html"; // Redirect to login page
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.error("Forgot password error:", errorCode, errorMessage);
+                  alert("Failed to send reset email: " + errorMessage);
+                });
+            });
+            // // script for forget Password handle end
 
 
 
