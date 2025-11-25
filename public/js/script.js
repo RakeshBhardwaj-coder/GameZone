@@ -1553,131 +1553,131 @@ const gameData = [
     "trending": true
   },
   {
-    "title": "CS2: Counter Strike 2",
-    "description": "Counter-Strike 2, powered by Source 2, delivers a major technical upgrade. Expect realistic visuals, advanced networking, and enhanced community tools, modernizing the classic competitive shooter experience.",
-    "thumbnail": "https://i.pinimg.com/736x/fc/8b/92/fc8b9209e84d5bd0d17ca199281666aa.jpg",
+    "title": "GTA5 Enhanced",
+    "description": "Grand Theft Auto V (GTA V) is an open-world action-adventure game set in the fictional state of San Andreas, focusing on the sprawling city of Los Santos.",
+    "thumbnail": "https://m.media-amazon.com/images/M/MV5BOGI2Yjk1ZTEtZTA2Yy00ZjQ3LTk4MTgtYTgyMGQ1Zjk3YjgzXkEyXkFqcGc@.jpg",
     "videoId": "c80dVYcL69E",
-    "genre": "First-Person Shooter",
-    "ageRating": "17",
-    "trending": true
-  },
-  {
-    "title": "PUBG Battlegrounds",
-    "description": "Play PUBG: BATTLEGROUNDS for free! Land on strategic locations, loot weapons and supplies, and survive to become the last team standing across various, diverse Battlegrounds in intense survival matches.",
-    "thumbnail": "https://i.pinimg.com/736x/36/80/1c/36801c4624e4c5e136624bc45c120cc3.jpg",
-    "videoId": "u1oqfdh4xBY",
-    "genre": "Shooter, Survival, Multiplayer",
+    "genre": "Open world",
     "ageRating": "12",
     "trending": true
   },
   {
-    "title": "Shatterline",
-    "description": "Get ready for the apocalypse! Shatterline is an intense FPS with roguelike co-op PVE and PVP modes. Pick a unique operator, customize your look and weapons, and combat the alien plague that threatens humanity.",
-    "thumbnail": "https://i.pinimg.com/736x/1b/f9/c0/1bf9c01eefcb1089f762d7b89feba79a.jpg",
-    "videoId": "mlFiQJpndqg",
-    "genre": "Shooter, First Person, Multiplayer, Competitive",
-    "ageRating": "12",
-    "trending": false
+    "title": "Sekiro",
+    "description": "Shadows Die Twice you are the 'one-armed wolf', a disgraced and disfigured warrior rescued from the brink of death. Bound to protect a young lord who is the descendant of an ancient bloodline, you become the target of many vicious enemies, including the dangerous Ashina clan.",
+    "thumbnail": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/814380/capsule_616x353.jpg",
+    "videoId": "rXMX4YJ7Lks",
+    "genre": "Sward fighting,fighting, Survival",
+    "ageRating": "18",
+    "trending": true
   },
   {
-    "title": "Delta Force",
-    "description": "Delta force : tactical shooting across three modes: massive PvP battles, high-stakes extraction gameplay, and a revamped Black Hawk Down campaign. Dive into diverse, intense combat experiences.",
-    "thumbnail": "https://i.pinimg.com/736x/a1/73/f2/a173f2b0e94d297c63a35cf06f269d65.jpg",
-    "videoId": "4I_QrwFd__o",
+    "title": "Marvel's Spider-Man 2",
+    "description": "Spider-Sense tingling… Mask-up for more thrilling web-slinging heroics as Marvel’s Spider-Man 2 swings onto PC. Developed by Insomniac Games in collaboration with Marvel, and optimized for PC by Nixxes Software.",
+    "thumbnail": "https://imgs.search.brave.com/7dQ-MuvyfzS2Sgyxx8VKPqqoNjfHGEFrgMkpq_bWdZY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNjLzFi/LzdjLzNjMWI3Yzll/NTk2ZjhhMjc4YTQz/NjRjNDE3YTRkMWU1/LmpwZw",
+    "videoId": "nq1M_Wc4FIc",
+    "genre": "Adventure, Third Person, fighting, Competitive",
+    "ageRating": "18",
+    "trending": true
+  },
+  {
+    "title": "God of War Ragnarök",
+    "description": "Death is never the end. Kratos will have access to his weapons, skills, shields and abilities, but each new attempt will reset his Stats, Runic Attacks and Perks. As Kratos progresses through each attempt, you will be presented with choices between rewards that will help you push deeper into the mysterious depths of Valhalla.",
+    "thumbnail": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/capsule_616x353.jpg",
+    "videoId": "dIQGI36BxDE",
     "genre": "Tactical Shooter",
-    "ageRating": "17",
+    "ageRating": "18",
     "trending": true
   },
   {
-    "title": "Destiny 2",
-    "description": "Destiny 2 : the mysteries of the solar system and experience responsive first-person shooter combat you and your friends love to play together join them anytime, anywhere, to fight for humanity.",
-    "thumbnail": "https://imgs.search.brave.com/qF1Rca7xoYUYRqaKpjKPO8iTALvPazJNDcZV4MieUZo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuaWdkYi5jb20v/aWdkYi9pbWFnZS91/cGxvYWQvdF9jb3Zl/cl9iaWcvY28xbjZ4/LnBuZw",
-    "videoId": "dZrxWFrd1zQ",
-    "genre": "Adventure,Shooter,Action",
+    "title": "RDR 2",
+    "description": "Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores,Red Dead Redemption 2 is the epic tale of outlaw Arthur Morgan and the infamous Van der Linde gang, on the run across America at the dawn of the modern age. Also includes access to the shared living world of Red Dead Online.",
+    "thumbnail": "https://i.pinimg.com/originals/c5/2a/78/c52a787b7790ca66c4ae9710d3d30e31.jpg",
+    "videoId": "gmA6MrX81z4",
+    "genre": "Adventure,Action",
     "ageRating": "16",
     "trending": false
   },
   {
-    "title": "Fortnite: All Editions",
-    "description": "Fortnite offers Battle Royale, Zero Build, live events, and millions of creator-made games. Race, parkour, survive—find your adventure. Available:- Fortnite, Fortnite OG, Fortnite Blastic,  Fortnite Festival, Fortnite Reload.",
-    "thumbnail": "https://i.pinimg.com/736x/7e/e8/c4/7ee8c4361736ed806711ae99f7d6762c.jpg",
-    "videoId": "KCxZ4njtiuw",
-    "genre": "Battle Royale",
+    "title": "The Last of Us Part",
+    "description": "Experience the emotional storytelling and unforgettable characters in The Last of Us™, winner of over 200 Game of the Year awards.In a ravaged civilization, where infected and hardened survivors run rampant, Joel, a weary protagonist, is hired to smuggle 14-year-old Ellie out of a military quarantine zone.",
+    "thumbnail": "https://imgs.search.brave.com/HvkgpD9q8sJjTs8amDKBLFev0t-zMHh52WoiF7leO-c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC9jLzEv/My83OTg2Ni0xNDQw/eDI1NjAtc2Ftc3Vu/Zy1oZC10aGUtbGFz/dC1vZi11cy1nYW1l/LWJhY2tncm91bmQt/aW1hZ2UuanBn",
+    "videoId": "R2Ebc_OFeug",
+    "genre": "Adventure, Action",
     "ageRating": "17",
     "trending": false
   },
   {
-    "title": "Asphalt 8 - Car Racing Game",
-    "description": "Experience multiplayer races with fast cars and motorcycles. Explore stunning scenarios and landscapes, ranging from the scorching Nevada Desert to the bustling streets of Tokyo, in high-octane racing action.",
-    "thumbnail": "https://i.pinimg.com/736x/ea/dd/b3/eaddb3ad14f395368963eb85f72d3b6f.jpg",
-    "videoId": "jpSGZsgga_I",
-    "genre": "Racing",
-    "ageRating": "7",
-    "trending": false
-  },
-  {
-    "title": "Metalstorm",
-    "description": "The ultimate team-based multiplayer air combat experience! A truly free-to-play game. Engage in live 5v5 air combat with friends against real players around the world, piloting powerful warplanes.",
-    "thumbnail": "https://play-lh.googleusercontent.com/JQNrDSNI-XKf_fFJgtfoZ8v0p2MmC8tgsDdr7tta2kvF7S5yOHr9kmcLBVoW4rQIAgg=w526-h296-rw",
-    "videoId": "xVG5lSfbciM",
-    "genre": "Action, Multiplayer",
-    "ageRating": "3",
-    "trending": false
-  },
-  {
-    "title": "Dauntless",
-    "description": "Dauntless: Become a Slayer and protect the Shattered Isles from formidable Behemoths in the ultimate free-to-slay monster-hunting co-op action game. Team up and take down massive creatures.",
-    "thumbnail": "https://i.pinimg.com/736x/80/62/89/8062898629299f947bfa0a65b01553be.jpg",
-    "videoId": "A95pYf5fyG8",
-    "genre": "Action, RPG, Multiplayer",
+    "title": "Assassin's Creed Unity",
+    "description": "Paris, 1789 – The French Revolution turns a once-magnificent city into a place of terror and chaos. Its cobblestone streets run red with the blood of commoners who dared to rise up against the oppressive aristocracy.",
+    "thumbnail": "https://imgs.search.brave.com/nGzhUQybl5xAauMO_ZsyA0BHzR3NIxj3PVW07IpyBQI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9nYW1l/bHVzdGVyLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNC8w/My9JTUdfMjcxMC5q/cGVn",
+    "videoId": "xzCEdSKMkdU",
+    "genre": "Stratgy, Fighting",
     "ageRating": "12",
     "trending": false
   },
-  {
-    "title": "Paladins",
-    "description": "The Paladins: The fantasy team-based shooter sensation. Wield guns and magic as a legendary Champion of the Realm, customizing your core set of abilities to play exactly how you want to play.",
-    "thumbnail": "https://i.pinimg.com/736x/7a/d1/93/7ad1937ab56c633c83cafb0bf33d6ac8.jpg",
-    "videoId": "g4WHiMVq1-8",
-    "genre": "Shooter, Competitive, Multiplayer",
-    "ageRating": "16",
-    "trending": false
-  },
-  {
-    "title": "Rocket Racing",
-    "description": "Rocket Racing: a high-speed arcade racer. Drift, fly, and boost through dynamic tracks with friends in this supersonic, get a great experience of racing with rocket racing this is for everyone.",
-    "thumbnail": "https://4kwallpapers.com/images/walls/thumbs_3t/21079.jpg",
-    "videoId": "NIhbK4-ZdKA",
-    "genre": "Racing",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Rocket League",
-    "description": "Rocket League: car soccer chaos! Drive, fly, score. Physics-based mayhem, easy to learn, hard to master. Intense matches, endless car customization. play with your friends and enjoy rocket league",
-    "thumbnail": "https://i.pinimg.com/736x/df/53/67/df536730950101114c8834a575d362ac.jpg",
-    "videoId": "SgSX3gOrj60",
-    "genre": "Racing",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Apex Legends",
-    "description": "Apex Legends: Hero shooter where legendary characters with powerful abilities team up to battle for fame & fortune on the fringes of the Frontier. this under the top10 list in Steam DB. play it now!",
-    "thumbnail": "https://myhotposters.com/cdn/shop/products/mL4368_1024x1024.jpg?v=1589304033",
-    "videoId": "UMJb_mkqynU",
-    "genre": "Action",
-    "ageRating": "12",
-    "trending": true
-  },
-  {
-    "title": "Genshin Impact",
-    "description": "Explore Teyvat, find your sibling. Team up with diverse characters, master elemental powers, and uncover the mysteries of this vibrant, open world. most beautiful graphics loved it if you love anime!",
-    "thumbnail": "https://i.pinimg.com/736x/f7/b5/3e/f7b53e11d0f66157b0153d6a815de990.jpg",
-    "videoId": "HLUY1nICQRY",
-    "genre": "Open World",
-    "ageRating": "12",
-    "trending": false
-  },
+  // {
+  //   "title": "Metalstorm",
+  //   "description": "The ultimate team-based multiplayer air combat experience! A truly free-to-play game. Engage in live 5v5 air combat with friends against real players around the world, piloting powerful warplanes.",
+  //   "thumbnail": "https://play-lh.googleusercontent.com/JQNrDSNI-XKf_fFJgtfoZ8v0p2MmC8tgsDdr7tta2kvF7S5yOHr9kmcLBVoW4rQIAgg=w526-h296-rw",
+  //   "videoId": "xVG5lSfbciM",
+  //   "genre": "Action, Multiplayer",
+  //   "ageRating": "3",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Dauntless",
+  //   "description": "Dauntless: Become a Slayer and protect the Shattered Isles from formidable Behemoths in the ultimate free-to-slay monster-hunting co-op action game. Team up and take down massive creatures.",
+  //   "thumbnail": "https://i.pinimg.com/736x/80/62/89/8062898629299f947bfa0a65b01553be.jpg",
+  //   "videoId": "A95pYf5fyG8",
+  //   "genre": "Action, RPG, Multiplayer",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Paladins",
+  //   "description": "The Paladins: The fantasy team-based shooter sensation. Wield guns and magic as a legendary Champion of the Realm, customizing your core set of abilities to play exactly how you want to play.",
+  //   "thumbnail": "https://i.pinimg.com/736x/7a/d1/93/7ad1937ab56c633c83cafb0bf33d6ac8.jpg",
+  //   "videoId": "g4WHiMVq1-8",
+  //   "genre": "Shooter, Competitive, Multiplayer",
+  //   "ageRating": "16",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Rocket Racing",
+  //   "description": "Rocket Racing: a high-speed arcade racer. Drift, fly, and boost through dynamic tracks with friends in this supersonic, get a great experience of racing with rocket racing this is for everyone.",
+  //   "thumbnail": "https://4kwallpapers.com/images/walls/thumbs_3t/21079.jpg",
+  //   "videoId": "NIhbK4-ZdKA",
+  //   "genre": "Racing",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Rocket League",
+  //   "description": "Rocket League: car soccer chaos! Drive, fly, score. Physics-based mayhem, easy to learn, hard to master. Intense matches, endless car customization. play with your friends and enjoy rocket league",
+  //   "thumbnail": "https://i.pinimg.com/736x/df/53/67/df536730950101114c8834a575d362ac.jpg",
+  //   "videoId": "SgSX3gOrj60",
+  //   "genre": "Racing",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Apex Legends",
+  //   "description": "Apex Legends: Hero shooter where legendary characters with powerful abilities team up to battle for fame & fortune on the fringes of the Frontier. this under the top10 list in Steam DB. play it now!",
+  //   "thumbnail": "https://myhotposters.com/cdn/shop/products/mL4368_1024x1024.jpg?v=1589304033",
+  //   "videoId": "UMJb_mkqynU",
+  //   "genre": "Action",
+  //   "ageRating": "12",
+  //   "trending": true
+  // },
+  // {
+  //   "title": "Genshin Impact",
+  //   "description": "Explore Teyvat, find your sibling. Team up with diverse characters, master elemental powers, and uncover the mysteries of this vibrant, open world. most beautiful graphics loved it if you love anime!",
+  //   "thumbnail": "https://i.pinimg.com/736x/f7/b5/3e/f7b53e11d0f66157b0153d6a815de990.jpg",
+  //   "videoId": "HLUY1nICQRY",
+  //   "genre": "Open World",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
   {
     "title": "World War Z: Aftermath",
     "description": "Zombie survival. Battle massive hordes in new, global locations. Intense story episodes, upgraded gameplay, and visceral action for 15 million players, Survival game for with epic story try at once!",
@@ -1687,142 +1687,141 @@ const gameData = [
     "ageRating": "18",
     "trending": false
   },
-  {
-    "title": "Fall Guys",
-    "description": "Fall Guys: the most playable multiplayer game of YouTube, play this fun Game, Stumble through wacky obstacle courses, compete with friends, or create your own wild levels. Multiplayer mayhem!",
-    "thumbnail": "https://i.pinimg.com/736x/63/6b/6f/636b6fb101da5efa2e69fa197114c47c.jpg",
-    "videoId": "Wj3dUvGLjNQ",
-    "genre": "Multiplayer, Competitive",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Marvel Rivals",
-    "description": "Marvel Rivals: Team-based superhero shooter. squads, combine powers for unique skills, and battle in dynamic, destructible arenas. The best game under top 10 list in Steam DB, Play Now! everyone Loving it!",
-    "thumbnail": "https://i.pinimg.com/736x/1b/fc/50/1bfc50dddefe8eb95d3c8634f114313c.jpg",
-    "videoId": "-b0veB7q9P4",
-    "genre": "Action, Shooter, Multiplayer, Competitive",
-    "ageRating": "12",
-    "trending": true
-  },
+  // {
+  //   "title": "Fall Guys",
+  //   "description": "Fall Guys: the most playable multiplayer game of YouTube, play this fun Game, Stumble through wacky obstacle courses, compete with friends, or create your own wild levels. Multiplayer mayhem!",
+  //   "thumbnail": "https://i.pinimg.com/736x/63/6b/6f/636b6fb101da5efa2e69fa197114c47c.jpg",
+  //   "videoId": "Wj3dUvGLjNQ",
+  //   "genre": "Multiplayer, Competitive",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Marvel Rivals",
+  //   "description": "Marvel Rivals: Team-based superhero shooter. squads, combine powers for unique skills, and battle in dynamic, destructible arenas. The best game under top 10 list in Steam DB, Play Now! everyone Loving it!",
+  //   "thumbnail": "https://i.pinimg.com/736x/1b/fc/50/1bfc50dddefe8eb95d3c8634f114313c.jpg",
+  //   "videoId": "-b0veB7q9P4",
+  //   "genre": "Action, Shooter, Multiplayer, Competitive",
+  //   "ageRating": "12",
+  //   "trending": true
+  // },
 
-  // From Steam Free games
-  {
-    "title": "Call of Duty®: Warzone™",
-    "description": "Welcome to Call of Duty®: Warzone™, the massive combat arena. Experience thrilling modes & new gameplay with different maps and tournaments, Get the best experience of war zone, best for action lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/ec/63/30/ec63301f24e5456516c9cd2754b53166.jpg",
-    "videoId": "0E44DClsX5Q",
-    "genre": "FPS, Multiplayer, Competitive, Battle Royale",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "Dota 2",
-    "description": "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. there's always something new to discover, this is Action lovers game & this is under top 10 list of Steam DB.",
-    "thumbnail": "https://i.redd.it/rjxu8q8u1ga91.jpg",
-    "videoId": "-cSFPIwMEq4",
-    "genre": "MOBA, Strategy, Multiplayer",
-    "ageRating": "12",
-    "trending": true
-  },
-  {
-    "title": "Overwatch® 2",
-    "description": "Overwatch 2: this is a critically acclaimed, team-based shooter game set in an optimistic future with an evolving roster of heroes. Team up with friends and jump in today, play the game like heroes does!",
-    "thumbnail": "https://i.pinimg.com/736x/d0/5e/56/d05e561afd6e03768fd587ca66ebaabf.jpg",
-    "videoId": "LGgqyer-qr4",
-    "genre": "Hero Shooter, Multiplayer, FPS",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Once Human",
-    "description": "A multiplayer open-world survival game, post-apocalyptic future. Unite with friends to fight monstrous enemies, uncover secret plots, compete for resources, and build your own territory. Once.",
-    "thumbnail": "https://i.pinimg.com/736x/e1/72/a7/e172a7addc10db413978655407173228.jpg",
-    "videoId": "XXpfbP9Ml_4",
-    "genre": "Multiplayer, Open World, Survival",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "Warframe",
-    "description": "Warframe: Awaken as an unstoppable warrior and battle alongside your friends, online action game, craft a loadout of devastating weaponry and define your playstyle to become an unstoppable force.",
-    "thumbnail": "https://i.pinimg.com/736x/6b/de/3d/6bde3dd1efb3a7846434161e76bdc27d.jpg",
-    "videoId": "SsOgrkdLHD8",
-    "genre": "Action RPG, Action, Looter Shooter",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "War Thunder",
-    "description": "War Thunder: The MMO military game dedicated to aviation, armoured vehicles, and naval craft, the most advanced modern combat units. Join now battles on land, in the air, and at sea. Action Lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/c4/c1/02/c4c1028838c27c48dfdc47da5598ae13.jpg",
-    "videoId": "pzgPXOw2plI",
-    "genre": "Simulation, VR",
-    "ageRating": "12",
-    "trending": true
-  },
-  {
-    "title": "eFootball™",
-    "description": "eFootball : A worldwide total of 750 million downloads is waiting for you! to Play eFootball™ with users around the world and get the experience like real game. Best for Sport lovers & under the top-10 list of steam DB.",
-    "thumbnail": "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
-    "videoId": "BdyXsZMPjWo",
-    "genre": "Football, Sports",
-    "ageRating": "12",
-    "trending": false
-  }, {
-    "title": "The First Descendant",
-    "description": "The First Descendant : A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
-    "videoId": "e15nHHJjpJg",
-    "genre": "Looter shooter, PvE",
-    "ageRating": "18",
-    "trending": false
-  },
-  {
-    "title": "Star Trek Online",
-    "description": "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space Lovers!",
-    "thumbnail": "https://imgs.search.brave.com/LOmpJznhOCOM_eSP2rUi7JaJvttJc5MRKAfUJdd6yxM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5hcGkucGxheXN0/YXRpb24uY29tL3Z1/bGNhbi9pbWcvY2Zu/LzExMzA3dGdlOW44/SWIzRW9Hc2RHZnNC/ZWg0a3pGdW1rNG84/LXVhbFdIejlBSjk2/NFl3UUY4QnJGWFh6/bkdITEVRZV9wVFhC/aHZpTDc4cVVYQzRz/VmtaRDBKZjBwSy1z/cy5wbmc",
-    "videoId": "8pzGjFCVhSE",
-    "genre": "Sci-fi,MMO, Space, Multiplayer",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Asphalt Legends Unite",
-    "description": "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat race, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars, Racing Lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/4a/f1/bd/4af1bd26fa79c549274f0fa071e8a511.jpg",
-    "videoId": "rH-eZd01NEQ",
-    "genre": "Racing",
-    "ageRating": "10",
-    "trending": false
-  },
-  {
-    "title": "Halo Infinite",
-    "description": "Experience the halo sci-fi Action game with epic story that engage you to this game. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the <br>sci-fi Action story game Lovers!",
-    "thumbnail": "https://www.charlieintel.com/cdn-image/wp-content/uploads/2021/06/New-concept-art-leaked-for-Halo-Infinite.jpg?width=1200&quality=60&format=auto",
-    "videoId": "rFh2i4AlPD4",
-    "genre": "FPS, Multiplayer, Singleplayer",
-    "ageRating": "16",
-    "trending": false
-  },
-  {
-    "title": "Blood Strike",
-    "description": "Battle Royale, Squad Fight, or Hot Zone, Blood Strike offers a wide range of playable Strikers, unique active and passive ability letting you deploy drones, shield walls and everything in between.",
-    "thumbnail": "https://i.pinimg.com/736x/a5/97/1d/a5971d3d6fbb664c62fa6a9b6428ad06.jpg",
-    "videoId": "V581-wZLzdU",
-    "genre": "Battle Royale, Shooter, Adventure, Multiplyer",
-    "ageRating": "12",
-    "trending": false
-  },
-  {
-    "title": "Sky: Children of the Light",
-    "description": "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey, a beautifully-animated kingdom across seven realms and create enriching memories, Puzzle adventure Lovers!",
-    "thumbnail": "https://i.pinimg.com/736x/38/cc/e0/38cce048d46431483a1dce47dea9b846.jpg",
-    "videoId": "A3DNTfhUy0k",
-    "genre": "MMO, Multiplayer, Adventure",
-    "ageRating": "12",
-    "trending": false
-  },
+  // {
+  //   "title": "Call of Duty®: Warzone™",
+  //   "description": "Welcome to Call of Duty®: Warzone™, the massive combat arena. Experience thrilling modes & new gameplay with different maps and tournaments, Get the best experience of war zone, best for action lovers!",
+  //   "thumbnail": "https://i.pinimg.com/736x/ec/63/30/ec63301f24e5456516c9cd2754b53166.jpg",
+  //   "videoId": "0E44DClsX5Q",
+  //   "genre": "FPS, Multiplayer, Competitive, Battle Royale",
+  //   "ageRating": "18",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Dota 2",
+  //   "description": "Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. there's always something new to discover, this is Action lovers game & this is under top 10 list of Steam DB.",
+  //   "thumbnail": "https://i.redd.it/rjxu8q8u1ga91.jpg",
+  //   "videoId": "-cSFPIwMEq4",
+  //   "genre": "MOBA, Strategy, Multiplayer",
+  //   "ageRating": "12",
+  //   "trending": true
+  // },
+  // {
+  //   "title": "Overwatch® 2",
+  //   "description": "Overwatch 2: this is a critically acclaimed, team-based shooter game set in an optimistic future with an evolving roster of heroes. Team up with friends and jump in today, play the game like heroes does!",
+  //   "thumbnail": "https://i.pinimg.com/736x/d0/5e/56/d05e561afd6e03768fd587ca66ebaabf.jpg",
+  //   "videoId": "LGgqyer-qr4",
+  //   "genre": "Hero Shooter, Multiplayer, FPS",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Once Human",
+  //   "description": "A multiplayer open-world survival game, post-apocalyptic future. Unite with friends to fight monstrous enemies, uncover secret plots, compete for resources, and build your own territory. Once.",
+  //   "thumbnail": "https://i.pinimg.com/736x/e1/72/a7/e172a7addc10db413978655407173228.jpg",
+  //   "videoId": "XXpfbP9Ml_4",
+  //   "genre": "Multiplayer, Open World, Survival",
+  //   "ageRating": "18",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Warframe",
+  //   "description": "Warframe: Awaken as an unstoppable warrior and battle alongside your friends, online action game, craft a loadout of devastating weaponry and define your playstyle to become an unstoppable force.",
+  //   "thumbnail": "https://i.pinimg.com/736x/6b/de/3d/6bde3dd1efb3a7846434161e76bdc27d.jpg",
+  //   "videoId": "SsOgrkdLHD8",
+  //   "genre": "Action RPG, Action, Looter Shooter",
+  //   "ageRating": "18",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "War Thunder",
+  //   "description": "War Thunder: The MMO military game dedicated to aviation, armoured vehicles, and naval craft, the most advanced modern combat units. Join now battles on land, in the air, and at sea. Action Lovers!",
+  //   "thumbnail": "https://i.pinimg.com/736x/c4/c1/02/c4c1028838c27c48dfdc47da5598ae13.jpg",
+  //   "videoId": "pzgPXOw2plI",
+  //   "genre": "Simulation, VR",
+  //   "ageRating": "12",
+  //   "trending": true
+  // },
+  // {
+  //   "title": "eFootball™",
+  //   "description": "eFootball : A worldwide total of 750 million downloads is waiting for you! to Play eFootball™ with users around the world and get the experience like real game. Best for Sport lovers & under the top-10 list of steam DB.",
+  //   "thumbnail": "https://i.pinimg.com/736x/58/19/16/58191693004605b3c9c8c35cb9aea23b.jpg",
+  //   "videoId": "BdyXsZMPjWo",
+  //   "genre": "Football, Sports",
+  //   "ageRating": "12",
+  //   "trending": false
+  // }, {
+  //   "title": "The First Descendant",
+  //   "description": "The First Descendant : A third-person looter shooter made by Unreal Engine 5. it have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. Action Lovers!",
+  //   "thumbnail": "https://i.pinimg.com/736x/aa/00/77/aa007790c0c35611b9cb6458abe8e676.jpg",
+  //   "videoId": "e15nHHJjpJg",
+  //   "genre": "Looter shooter, PvE",
+  //   "ageRating": "18",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Star Trek Online",
+  //   "description": "The Star Trek universe appears for the first time on a truly massive scale. Explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before. Space Lovers!",
+  //   "thumbnail": "https://imgs.search.brave.com/LOmpJznhOCOM_eSP2rUi7JaJvttJc5MRKAfUJdd6yxM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5hcGkucGxheXN0/YXRpb24uY29tL3Z1/bGNhbi9pbWcvY2Zu/LzExMzA3dGdlOW44/SWIzRW9Hc2RHZnNC/ZWg0a3pGdW1rNG84/LXVhbFdIejlBSjk2/NFl3UUY4QnJGWFh6/bkdITEVRZV9wVFhC/aHZpTDc4cVVYQzRz/VmtaRDBKZjBwSy1z/cy5wbmc",
+  //   "videoId": "8pzGjFCVhSE",
+  //   "genre": "Sci-fi,MMO, Space, Multiplayer",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Asphalt Legends Unite",
+  //   "description": "Spark your competitive soul with Asphalt Legends UNITE and feel the collective heartbeat race, perform jaw-dropping stunts, and charge towards victory while driving the finest hypercars, Racing Lovers!",
+  //   "thumbnail": "https://i.pinimg.com/736x/4a/f1/bd/4af1bd26fa79c549274f0fa071e8a511.jpg",
+  //   "videoId": "rH-eZd01NEQ",
+  //   "genre": "Racing",
+  //   "ageRating": "10",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Halo Infinite",
+  //   "description": "Experience the halo sci-fi Action game with epic story that engage you to this game. Featuring an expansive open-world campaign and a dynamic multiplayer experience, Best for the <br>sci-fi Action story game Lovers!",
+  //   "thumbnail": "https://www.charlieintel.com/cdn-image/wp-content/uploads/2021/06/New-concept-art-leaked-for-Halo-Infinite.jpg?width=1200&quality=60&format=auto",
+  //   "videoId": "rFh2i4AlPD4",
+  //   "genre": "FPS, Multiplayer, Singleplayer",
+  //   "ageRating": "16",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Blood Strike",
+  //   "description": "Battle Royale, Squad Fight, or Hot Zone, Blood Strike offers a wide range of playable Strikers, unique active and passive ability letting you deploy drones, shield walls and everything in between.",
+  //   "thumbnail": "https://i.pinimg.com/736x/a5/97/1d/a5971d3d6fbb664c62fa6a9b6428ad06.jpg",
+  //   "videoId": "V581-wZLzdU",
+  //   "genre": "Battle Royale, Shooter, Adventure, Multiplyer",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
+  // {
+  //   "title": "Sky: Children of the Light",
+  //   "description": "Sky: Children of the Light is a peaceful, award-winning MMO from the creators of Journey, a beautifully-animated kingdom across seven realms and create enriching memories, Puzzle adventure Lovers!",
+  //   "thumbnail": "https://i.pinimg.com/736x/38/cc/e0/38cce048d46431483a1dce47dea9b846.jpg",
+  //   "videoId": "A3DNTfhUy0k",
+  //   "genre": "MMO, Multiplayer, Adventure",
+  //   "ageRating": "12",
+  //   "trending": false
+  // },
 ];
 
 const searchButton = document.getElementById('search-btn');
