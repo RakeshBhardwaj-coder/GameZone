@@ -1556,7 +1556,7 @@ const gameData = [
     "title": "GTA5 Enhanced",
     "description": "Grand Theft Auto V (GTA V) is an open-world action-adventure game set in the fictional state of San Andreas, focusing on the sprawling city of Los Santos.",
     "thumbnail": "https://m.media-amazon.com/images/M/MV5BOGI2Yjk1ZTEtZTA2Yy00ZjQ3LTk4MTgtYTgyMGQ1Zjk3YjgzXkEyXkFqcGc@.jpg",
-    "videoId": "c80dVYcL69E",
+    "videoId": "hvoD7ehZPcM",
     "genre": "Open world",
     "ageRating": "12",
     "trending": true
@@ -1593,14 +1593,14 @@ const gameData = [
     "description": "Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores,Red Dead Redemption 2 is the epic tale of outlaw Arthur Morgan and the infamous Van der Linde gang, on the run across America at the dawn of the modern age. Also includes access to the shared living world of Red Dead Online.",
     "thumbnail": "https://i.pinimg.com/originals/c5/2a/78/c52a787b7790ca66c4ae9710d3d30e31.jpg",
     "videoId": "gmA6MrX81z4",
-    "genre": "Adventure,Action",
+    "genre": "Adventure, Action",
     "ageRating": "16",
     "trending": false
   },
   {
-    "title": "The Last of Us Part",
+    "title": "The Last of Us Part-1",
     "description": "Experience the emotional storytelling and unforgettable characters in The Last of Us™, winner of over 200 Game of the Year awards.In a ravaged civilization, where infected and hardened survivors run rampant, Joel, a weary protagonist, is hired to smuggle 14-year-old Ellie out of a military quarantine zone.",
-    "thumbnail": "https://imgs.search.brave.com/HvkgpD9q8sJjTs8amDKBLFev0t-zMHh52WoiF7leO-c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC9jLzEv/My83OTg2Ni0xNDQw/eDI1NjAtc2Ftc3Vu/Zy1oZC10aGUtbGFz/dC1vZi11cy1nYW1l/LWJhY2tncm91bmQt/aW1hZ2UuanBn",
+    "thumbnail": "https://imgs.search.brave.com/C-7NNmNdHzdjByrGY7Q9Qt_ioRUbiAlipGeTCGTeolU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC8xL2Yv/NC85MjctMjU2MHgx/NDQwLWRlc2t0b3At/aGQtdGhlLWxhc3Qt/b2YtdXMtZ2FtZS1i/YWNrZ3JvdW5kLWlt/YWdlLmpwZw",
     "videoId": "R2Ebc_OFeug",
     "genre": "Adventure, Action",
     "ageRating": "17",
@@ -1611,37 +1611,46 @@ const gameData = [
     "description": "Paris, 1789 – The French Revolution turns a once-magnificent city into a place of terror and chaos. Its cobblestone streets run red with the blood of commoners who dared to rise up against the oppressive aristocracy.",
     "thumbnail": "https://imgs.search.brave.com/nGzhUQybl5xAauMO_ZsyA0BHzR3NIxj3PVW07IpyBQI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9nYW1l/bHVzdGVyLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNC8w/My9JTUdfMjcxMC5q/cGVn",
     "videoId": "xzCEdSKMkdU",
-    "genre": "Stratgy, Fighting",
-    "ageRating": "12",
+    "genre": "strategy, Fighting",
+    "ageRating": "18",
     "trending": false
   },
-  // {
-  //   "title": "Metalstorm",
-  //   "description": "The ultimate team-based multiplayer air combat experience! A truly free-to-play game. Engage in live 5v5 air combat with friends against real players around the world, piloting powerful warplanes.",
-  //   "thumbnail": "https://play-lh.googleusercontent.com/JQNrDSNI-XKf_fFJgtfoZ8v0p2MmC8tgsDdr7tta2kvF7S5yOHr9kmcLBVoW4rQIAgg=w526-h296-rw",
-  //   "videoId": "xVG5lSfbciM",
-  //   "genre": "Action, Multiplayer",
-  //   "ageRating": "3",
-  //   "trending": false
-  // },
-  // {
-  //   "title": "Dauntless",
-  //   "description": "Dauntless: Become a Slayer and protect the Shattered Isles from formidable Behemoths in the ultimate free-to-slay monster-hunting co-op action game. Team up and take down massive creatures.",
-  //   "thumbnail": "https://i.pinimg.com/736x/80/62/89/8062898629299f947bfa0a65b01553be.jpg",
-  //   "videoId": "A95pYf5fyG8",
-  //   "genre": "Action, RPG, Multiplayer",
-  //   "ageRating": "12",
-  //   "trending": false
-  // },
-  // {
-  //   "title": "Paladins",
-  //   "description": "The Paladins: The fantasy team-based shooter sensation. Wield guns and magic as a legendary Champion of the Realm, customizing your core set of abilities to play exactly how you want to play.",
-  //   "thumbnail": "https://i.pinimg.com/736x/7a/d1/93/7ad1937ab56c633c83cafb0bf33d6ac8.jpg",
-  //   "videoId": "g4WHiMVq1-8",
-  //   "genre": "Shooter, Competitive, Multiplayer",
-  //   "ageRating": "16",
-  //   "trending": false
-  // },
+  {
+    "title": "Watch Dog 2",
+    "description": "Watch Dogs 2 is an action-adventure game with stealth elements and played from a third-person perspective as Marcus Holloway, a young hacker. Explore a massive and dynamic open-world offering an incredible variety of gameplay possibilities.",
+    "thumbnail": "https://imgs.search.brave.com/iAqq3ybkgBLvw0IfEKQHcxuSGlDyC1YmO3pZIKpoq0w/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk16UmpZalEx/WkRJdE5qazRZeTAw/WVRaaUxXRXhOemN0/Tm1ReE9ERTROakky/WmpWaVhrRXlYa0Zx/Y0djQC5qcGc",
+    "videoId": "hh9x4NqW0Dw",
+    "genre": "Open world, strategy, hacking",
+    "ageRating": "16",
+    "trending": false
+  },
+  {
+    "title": "Need for Speed Payback",
+    "description": "Set in the underworld of Fortune Valley, you and your crew were divided by betrayal and reunited by revenge to take down The House, a nefarious cartel that rules the city’s casinos, criminals and cops. In this corrupt gambler’s paradise, the stakes are high and The House always wins.",
+    "thumbnail": "https://imgs.search.brave.com/MJaW3ZOhLbKK8vj0qhT4uHHTnxwG4dCzzmFnM8qO6Z0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDIyNjc3/NDguanBn",
+    "videoId": "kc-OcOduEx0",
+    "genre": "Racing, wheel",
+    "ageRating": "8",
+    "trending": true
+  },
+   {
+    "title": "Forza horizon 5",
+    "description": "Set in the underworld of Fortune Valley, you and your crew were divided by betrayal and reunited by revenge to take down The House, a nefarious cartel that rules the city’s casinos, criminals and cops. In this corrupt gambler’s paradise, the stakes are high and The House always wins.",
+    "thumbnail": "https://imgs.search.brave.com/TRYctPO9UU_RUy687jiLQWyKBbv4r8TsW1UK3YHadeY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMtcHJkLmlnbmlt/Z3MuY29tLzIwMjEv/MDgvMjQvZm9yemEt/aG9yaXpvbi01LWJ1/dHRvbi1maW4tMTYy/OTgzMDA2ODM3OS5q/cGc_Y3JvcD0xOjEs/c21hcnQmZm9ybWF0/PWpwZyZhdXRvPXdl/YnAmcXVhbGl0eT04/MA",
+    "videoId": "Rv7xLt5yNsM",
+    "genre": "Racing, wheel",
+    "ageRating": "8",
+    "trending": true
+  },
+  {
+    "title": "Free Fire Max",
+    "description": "The Paladins: The fantasy team-based shooter sensation. Wield guns and magic as a legendary Champion of the Realm, customizing your core set of abilities to play exactly how you want to play.",
+    "thumbnail": "https://imgs.search.brave.com/LFyxzLqwCjIhulFFIajJaQJyyEaEVsHw5kGjbkvwV_k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDEyMTI1/MzE5LmpwZw",
+    "videoId": "g4WHiMVq1-8",
+    "genre": "Shooter, Competitive, Multiplayer",
+    "ageRating": "12",
+    "trending": true
+  },
   // {
   //   "title": "Rocket Racing",
   //   "description": "Rocket Racing: a high-speed arcade racer. Drift, fly, and boost through dynamic tracks with friends in this supersonic, get a great experience of racing with rocket racing this is for everyone.",
